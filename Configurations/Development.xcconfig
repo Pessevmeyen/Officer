@@ -1,1 +1,4 @@
 BACKEND_URL = https:\/\/mobven.com\/dev
+BUNDLE_ID = com.furkanerucar.officerDown.dev
+APP_NAME = Offidev
+SHOW_VERSION = YES
