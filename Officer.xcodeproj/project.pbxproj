@@ -49,6 +49,8 @@
 		8909FB0028735A0B00F84927 /* OfficerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OfficerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8909FB0428735A0B00F84927 /* OfficerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficerUITests.swift; sourceTree = "<group>"; };
 		8909FB0628735A0B00F84927 /* OfficerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		89F40B812875F2960035C6F4 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		89F40B822875F2F70035C6F4 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		8909FAD728735A0700F84927 = {
 			isa = PBXGroup;
 			children = (
+				89F40B802875F2790035C6F4 /* Configurations */,
 				8909FAE228735A0700F84927 /* Officer */,
 				8909FAF928735A0A00F84927 /* OfficerTests */,
 				8909FB0328735A0B00F84927 /* OfficerUITests */,
@@ -125,6 +128,15 @@
 				8909FB0628735A0B00F84927 /* OfficerUITestsLaunchTests.swift */,
 			);
 			path = OfficerUITests;
+			sourceTree = "<group>";
+		};
+		89F40B802875F2790035C6F4 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				89F40B812875F2960035C6F4 /* Development.xcconfig */,
+				89F40B822875F2F70035C6F4 /* Production.xcconfig */,
+			);
+			path = Configurations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
