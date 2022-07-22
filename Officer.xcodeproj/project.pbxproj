@@ -18,6 +18,8 @@
 		8909FB0728735A0B00F84927 /* OfficerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909FB0628735A0B00F84927 /* OfficerUITestsLaunchTests.swift */; };
 		8997ADEF288AC23B003D642F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADEE288AC23B003D642F /* RegisterViewController.swift */; };
 		8997ADF1288AC249003D642F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF0288AC249003D642F /* LoginViewController.swift */; };
+		8997ADF5288AD6A5003D642F /* CLTypingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */; };
+		8997ADF7288AD73E003D642F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF6288AD73E003D642F /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		8909FB0628735A0B00F84927 /* OfficerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8997ADEE288AC23B003D642F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		8997ADF0288AC249003D642F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLTypingLabel.swift; sourceTree = "<group>"; };
+		8997ADF6288AD73E003D642F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		89F40B812875F2960035C6F4 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		89F40B822875F2F70035C6F4 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,10 +115,12 @@
 				8909FAE728735A0700F84927 /* WelcomeViewController.swift */,
 				8997ADEE288AC23B003D642F /* RegisterViewController.swift */,
 				8997ADF0288AC249003D642F /* LoginViewController.swift */,
+				8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */,
 				8909FAE928735A0700F84927 /* Main.storyboard */,
 				8909FAEC28735A0A00F84927 /* Assets.xcassets */,
 				8909FAEE28735A0A00F84927 /* LaunchScreen.storyboard */,
 				8909FAF128735A0A00F84927 /* Info.plist */,
+				8997ADF6288AD73E003D642F /* Constants.swift */,
 			);
 			path = Officer;
 			sourceTree = "<group>";
@@ -276,9 +282,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8997ADF5288AD6A5003D642F /* CLTypingLabel.swift in Sources */,
 				8909FAE828735A0700F84927 /* WelcomeViewController.swift in Sources */,
 				8909FAE428735A0700F84927 /* AppDelegate.swift in Sources */,
 				8909FAE628735A0700F84927 /* SceneDelegate.swift in Sources */,
+				8997ADF7288AD73E003D642F /* Constants.swift in Sources */,
 				8997ADF1288AC249003D642F /* LoginViewController.swift in Sources */,
 				8997ADEF288AC23B003D642F /* RegisterViewController.swift in Sources */,
 			);
