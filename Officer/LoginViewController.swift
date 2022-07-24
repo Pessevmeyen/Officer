@@ -8,22 +8,30 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
+    @IBOutlet weak var emailTextField: CustomTextField!
+    @IBOutlet weak var passwordTextField: CustomTextField!
+    @IBOutlet weak var logInButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
+        hideKeyboardWhenTappedAround()
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func logInClicked(_ sender: UIButton) {
+    
+        if emailTextField.text != "" && passwordTextField.text != "" { // bu kontrolleri sonra auth ile yapıcaz.
+            logInButton.isUserInteractionEnabled = false // Kullanıcı birden fazla tıklayamasın diye.
+            //UIInputViewController().dismissKeyboard() //Kullanıcı buttona tıkladığında klavye otomatik kaybolacak.
+        }
+        
+        
+        print("login clicked")
+        
     }
-    */
-
+    
 }
+

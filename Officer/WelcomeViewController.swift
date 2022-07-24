@@ -10,20 +10,16 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
-    
     @IBOutlet weak var appNameLabel: CLTypingLabel!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
         
         appNameLabel.text = C.appName
         
-        // Do any additional setup after loading the view.
         registerButton.titleLabel?.textColor = .init(white: 1.0, alpha: 1.0)
         loginButton.titleLabel?.textColor = .init(white: 1.0, alpha: 1.0)
         

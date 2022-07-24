@@ -9,5 +9,5 @@ import Foundation
 
 
 struct C {
-    static let appName = "🏢Officer"
+    static let appName = "officer🌴"
 }

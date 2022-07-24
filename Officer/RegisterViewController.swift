@@ -8,14 +8,31 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
-
+    
+    @IBOutlet weak var emailTextField: CustomTextField!
+    @IBOutlet weak var passwordTextField: CustomTextField!
+    @IBOutlet weak var signInButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
+        hideKeyboardWhenTappedAround()
+        
     }
     
-
+    
+    
+    @IBAction func signInClicked(_ sender: UIButton) {
+        
+        if emailTextField.text != "" && passwordTextField.text != "" { // bu kontrolleri sonra auth ile yapıcaz.
+            signInButton.isUserInteractionEnabled = false // Kullanıcı birden fazla tıklayamasın diye.
+            //UIInputViewController().dismissKeyboard() //Kullanıcı buttona tıkladığında klavye otomatik kaybolacak.
+        }
+        
+        print("sign in clicked")
+    }
+    
     /*
     // MARK: - Navigation
 
