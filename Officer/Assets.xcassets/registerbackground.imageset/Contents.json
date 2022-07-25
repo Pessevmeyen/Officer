@@ -2,16 +2,27 @@
   "images" : [
     {
       "filename" : "gradient (4).png",
-      "idiom" : "universal",
-      "scale" : "1x"
+      "idiom" : "universal"
     },
     {
-      "idiom" : "universal",
-      "scale" : "2x"
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "gradient (4)-1.png",
+      "idiom" : "universal"
     },
     {
-      "idiom" : "universal",
-      "scale" : "3x"
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "gradient.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

@@ -20,9 +20,7 @@ class RegisterViewController: UIViewController {
         hideKeyboardWhenTappedAround()
         
     }
-    
-    
-    
+
     @IBAction func signInClicked(_ sender: UIButton) {
         
         if emailTextField.text != "" && passwordTextField.text != "" { // bu kontrolleri sonra auth ile yapıcaz.

@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,7 +32,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFFICER🌴" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5t-wQ-cnF" customClass="CLTypingLabel" customModule="Officer" customModuleProvider="target">
                                                 <rect key="frame" x="73" y="96.5" width="268" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="50"/>
-                                                <color key="textColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" name="appnamecolor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -48,7 +49,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1iD-Cq-XSe">
                                                         <rect key="frame" x="0.0" y="0.0" width="415" height="70"/>
-                                                        <color key="backgroundColor" red="0.57647058823529407" green="0.49019607843137253" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" name="registerbuttonbackground"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="415" id="B8F-CZ-V5T"/>
                                                             <constraint firstAttribute="height" constant="70" id="hcF-vg-Jgq"/>
@@ -56,7 +57,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="Register">
-                                                            <color key="titleColor" red="1" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleColor" name="registerbuttontextcolor"/>
                                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -65,7 +66,7 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCd-sx-D7V">
                                                         <rect key="frame" x="0.0" y="78" width="415" height="70"/>
-                                                        <color key="backgroundColor" red="0.74117647058823533" green="0.38039215686274508" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" name="loginbuttonbackground"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="70" id="ra8-Zg-F9v"/>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="ygf-7G-Q3s"/>
@@ -73,7 +74,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Log In">
                                                             <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="baseForegroundColor" name="loginbuttontextcolor"/>
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <segue destination="cow-ac-611" kind="show" id="0u8-Xs-nc4"/>
@@ -223,7 +224,7 @@
                                             <constraint firstAttribute="height" constant="36" id="z18-mD-aKQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="31"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="systemBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GIx-IF-NhT" customClass="CustomTextField" customModule="Officer" customModuleProvider="target">
@@ -232,27 +233,26 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="aBF-nB-02K"/>
                                         </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" systemColor="systemBackgroundColor"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i11-nG-GPI" customClass="CustomTextField" customModule="Officer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="176" width="374" height="60"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="sMS-BW-YoS"/>
                                         </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" systemColor="systemBackgroundColor"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
@@ -261,7 +261,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="signinbutton" title="Sign">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="signInClicked:" destination="xeA-BB-wJl" eventType="touchUpInside" id="zWJ-I7-CCN"/>
@@ -391,7 +391,7 @@
                                             <constraint firstAttribute="height" constant="36" id="PU0-CU-cZt"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="31"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="systemBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SeJ-qJ-mYm" customClass="CustomTextField" customModule="Officer" customModuleProvider="target">
@@ -399,12 +399,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="h1e-rc-dYN"/>
                                         </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" systemColor="systemBackgroundColor"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
@@ -413,12 +413,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="5XB-RD-aaR"/>
                                         </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" systemColor="systemBackgroundColor"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
@@ -470,7 +470,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" systemColor="systemBackgroundColor"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -488,7 +488,7 @@
             <size key="intrinsicContentSize" width="268" height="60"/>
         </designable>
     </designables>
-    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+    <color key="tintColor" systemColor="systemBackgroundColor"/>
     <resources>
         <image name="loginbackground" width="2000" height="3000"/>
         <image name="loginbutton" width="128" height="128"/>
@@ -496,6 +496,21 @@
         <image name="registerbackground" width="2000" height="3000"/>
         <image name="signinbutton" width="64" height="64"/>
         <image name="textfield" width="298" height="93"/>
+        <namedColor name="appnamecolor">
+            <color red="0.96100002527236938" green="0.94099998474121094" blue="0.73299998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="loginbuttonbackground">
+            <color red="0.74117647058823533" green="0.38039215686274508" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="loginbuttontextcolor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="registerbuttonbackground">
+            <color red="0.59600001573562622" green="0.51899999380111694" blue="0.7850000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="registerbuttontextcolor">
+            <color red="0.96100002527236938" green="0.94099998474121094" blue="0.73299998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

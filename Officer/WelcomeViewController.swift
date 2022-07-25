@@ -18,10 +18,11 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        appNameLabel.text = C.appName
+        setupUi()
         
-        registerButton.titleLabel?.textColor = .init(white: 1.0, alpha: 1.0)
-        loginButton.titleLabel?.textColor = .init(white: 1.0, alpha: 1.0)
+        buttonsBorderColors()
+        
+        
         
         let showVersion = (Bundle.main.infoDictionary?["SHOW_VERSION"] as? String) == "YES"
         if showVersion {
@@ -32,13 +33,35 @@ class WelcomeViewController: UIViewController {
         
     }
     
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        buttonsBorderColors()
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("view will apear")
         registerButton.titleLabel?.textColor = UIColor(white: 1.0, alpha: 1.0)
     }
     
+    //MARK: - All properties that UI  is loaded first time.
+    func setupUi() {
+        
+        appNameLabel.text = C.appName
+        
+        registerButton.layer.borderWidth = CGFloat(1)
+        loginButton.layer.borderWidth = CGFloat(1)
+        
+        registerButton.titleLabel?.textColor = .init(white: 1.0, alpha: 1.0)
+        loginButton.titleLabel?.textColor = .init(white: 1.0, alpha: 1.0)
+    }
+    
     
 
 }
+
+
+
+
 
