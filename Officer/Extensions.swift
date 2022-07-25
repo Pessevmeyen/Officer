@@ -9,12 +9,10 @@ import Foundation
 import UIKit
 
 
-//MARK: - WelcomeViewController Border Color
+//MARK: - WelcomeViewController's Buttons Border Color
 extension WelcomeViewController {
     func buttonsBorderColors() {
         registerButton.layer.borderColor = UIColor(named: C.borderColor)?.cgColor
         loginButton.layer.borderColor = UIColor(named: C.borderColor)?.cgColor
-        
-        
     }
 }

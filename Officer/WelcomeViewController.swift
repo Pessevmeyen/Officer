@@ -18,7 +18,7 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        setupUi()
+        setupUI()
         
         buttonsBorderColors()
         
@@ -45,15 +45,21 @@ class WelcomeViewController: UIViewController {
         registerButton.titleLabel?.textColor = UIColor(white: 1.0, alpha: 1.0)
     }
     
-    //MARK: - All properties that UI  is loaded first time.
-    func setupUi() {
+    
+    
+    //MARK: - All properties that UI is loaded first time.
+    func setupUI() {
         
         appNameLabel.text = C.appName
         
-        registerButton.layer.borderWidth = CGFloat(1)
-        loginButton.layer.borderWidth = CGFloat(1)
-        
+        //MARK: Register Button Attributes
+        registerButton.layer.cornerRadius = 35
+        registerButton.layer.borderWidth = CGFloat(2)
         registerButton.titleLabel?.textColor = .init(white: 1.0, alpha: 1.0)
+        
+        //MARK: Login Button Attributes
+        loginButton.layer.cornerRadius = 35
+        loginButton.layer.borderWidth = CGFloat(2)
         loginButton.titleLabel?.textColor = .init(white: 1.0, alpha: 1.0)
     }
     

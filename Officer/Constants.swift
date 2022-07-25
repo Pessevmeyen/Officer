@@ -11,4 +11,5 @@ import Foundation
 struct C {
     static let appName = "officer🌴"
     static let borderColor = "bordercolor"
+    static let underlineColor = "underlinecolor"
 }

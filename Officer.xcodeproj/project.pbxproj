@@ -48,7 +48,7 @@
 		8909FAE528735A0700F84927 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8909FAE728735A0700F84927 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8909FAEA28735A0700F84927 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8909FAEC28735A0A00F84927 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8909FAEC28735A0A00F84927 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Officer/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		8909FAEF28735A0A00F84927 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8909FAF128735A0A00F84927 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8909FAF628735A0A00F84927 /* OfficerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OfficerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -502,7 +502,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "com.furkanerucar.OfficerDown pp";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = ProductionDebug;
 		};
@@ -534,7 +534,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "com.furkanerucar.OfficerDown pp";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = ProductionRelease;
 		};
@@ -708,7 +708,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "com.furkanerucar.OfficerDown.dev pp";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = DevelopmentDebug;
 		};
@@ -836,7 +836,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "com.furkanerucar.OfficerDown.dev pp";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = DevelopmentRelease;
 		};

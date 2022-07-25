@@ -18,7 +18,7 @@ class CustomTextField: UITextField, UITextFieldDelegate {
     fileprivate func customTextField() {
         let underlineView = UIView()
         underlineView.translatesAutoresizingMaskIntoConstraints = false
-        underlineView.backgroundColor = .black
+        underlineView.backgroundColor = UIColor(named: C.underlineColor)
         addSubview(underlineView)
         
         NSLayoutConstraint.activate([
@@ -36,7 +36,6 @@ extension UITextField {
         get {
             return self.placeHolderColor
         }
-        
         set {
             self.attributedPlaceholder = NSAttributedString(string: self.placeholder != nil ? self.placeholder! : "", attributes: [NSAttributedString.Key.foregroundColor : newValue!])
         }
