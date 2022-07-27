@@ -8,8 +8,10 @@
 import Foundation
 
 
+
+//MARK: - Constants struct to avoid string errors.
 struct C {
-    static let appName = "officer🌴"
+    static let appName = "OfficerDown🌴"
     static let borderColor = "bordercolor"
     static let underlineColor = "underlinecolor"
 }

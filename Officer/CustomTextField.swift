@@ -7,11 +7,12 @@
 
 import UIKit
 
-class CustomTextField: UITextField, UITextFieldDelegate {
+
+//MARK: - Custom Text Field to changing placeholder color by stoyboard
+class CustomTextField: UITextField {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
             customTextField()
     }
 
@@ -31,13 +32,4 @@ class CustomTextField: UITextField, UITextFieldDelegate {
 }
 
 
-extension UITextField {
-    @IBInspectable var placeHolderColor: UIColor? {
-        get {
-            return self.placeHolderColor
-        }
-        set {
-            self.attributedPlaceholder = NSAttributedString(string: self.placeholder != nil ? self.placeholder! : "", attributes: [NSAttributedString.Key.foregroundColor : newValue!])
-        }
-    }
-}
+

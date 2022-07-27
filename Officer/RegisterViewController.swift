@@ -17,7 +17,11 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // passwordTextField.textContentType = .oneTimeCode // This provides password autofill label alert when user writing password.
+        
         hideKeyboardWhenTappedAround()
+        
+        
         
     }
 

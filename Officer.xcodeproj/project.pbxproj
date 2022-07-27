@@ -17,7 +17,6 @@
 		8909FB0528735A0B00F84927 /* OfficerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909FB0428735A0B00F84927 /* OfficerUITests.swift */; };
 		8909FB0728735A0B00F84927 /* OfficerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909FB0628735A0B00F84927 /* OfficerUITestsLaunchTests.swift */; };
 		891632D8288EAD5A0048644A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891632D7288EAD5A0048644A /* Extensions.swift */; };
-		89273242288CD2D700F16970 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89273241288CD2D700F16970 /* HideKeyboard.swift */; };
 		896177E4288B43D90078E299 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896177E3288B43D90078E299 /* CustomTextField.swift */; };
 		8997ADEF288AC23B003D642F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADEE288AC23B003D642F /* RegisterViewController.swift */; };
 		8997ADF1288AC249003D642F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF0288AC249003D642F /* LoginViewController.swift */; };
@@ -57,7 +56,6 @@
 		8909FB0428735A0B00F84927 /* OfficerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficerUITests.swift; sourceTree = "<group>"; };
 		8909FB0628735A0B00F84927 /* OfficerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		891632D7288EAD5A0048644A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		89273241288CD2D700F16970 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		896177E3288B43D90078E299 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		8997ADEE288AC23B003D642F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		8997ADF0288AC249003D642F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 				8997ADF6288AD73E003D642F /* Constants.swift */,
 				8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */,
 				896177E3288B43D90078E299 /* CustomTextField.swift */,
-				89273241288CD2D700F16970 /* HideKeyboard.swift */,
 				891632D7288EAD5A0048644A /* Extensions.swift */,
 			);
 			path = Officer;
@@ -299,7 +296,6 @@
 				891632D8288EAD5A0048644A /* Extensions.swift in Sources */,
 				8997ADF7288AD73E003D642F /* Constants.swift in Sources */,
 				8997ADF1288AC249003D642F /* LoginViewController.swift in Sources */,
-				89273242288CD2D700F16970 /* HideKeyboard.swift in Sources */,
 				8997ADEF288AC23B003D642F /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,6 +485,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
@@ -521,6 +518,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
@@ -695,6 +693,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
@@ -823,6 +822,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;

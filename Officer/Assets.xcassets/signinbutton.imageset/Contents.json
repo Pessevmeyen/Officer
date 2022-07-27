@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "image (3).png",
+      "filename" : "image (3)-3.png",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "light"
         }
       ],
-      "filename" : "image (3)-1.png",
+      "filename" : "image (3)-2.png",
       "idiom" : "universal"
     },
     {
@@ -21,7 +21,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "edit.png",
+      "filename" : "edit-3.png",
       "idiom" : "universal"
     }
   ],

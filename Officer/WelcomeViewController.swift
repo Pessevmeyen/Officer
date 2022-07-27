@@ -18,12 +18,6 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        setupUI()
-        
-        buttonsBorderColors()
-        
-        
-        
         let showVersion = (Bundle.main.infoDictionary?["SHOW_VERSION"] as? String) == "YES"
         if showVersion {
             // TODO: show version label
@@ -31,10 +25,15 @@ class WelcomeViewController: UIViewController {
             // hide
         }
         
+        setupUI()
+        
+        buttonsBorderColors()
+        
     }
     
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection) // super ekledik sorun çıkarıcak mı bak?
         buttonsBorderColors()
         
     }
