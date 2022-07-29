@@ -30,8 +30,8 @@
                                         <rect key="frame" x="0.0" y="286" width="414" height="250"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OfficerDown🌴" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="B5t-wQ-cnF" customClass="CLTypingLabel" customModule="Officer" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="95" width="372.5" height="60"/>
-                                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="50"/>
+                                                <rect key="frame" x="48.5" y="95" width="317" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
                                                 <color key="textColor" name="appnamecolor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -61,6 +61,17 @@
                                                             <color key="titleColor" name="registerbuttontextcolor"/>
                                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                                <size key="value" width="0.0" height="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <segue destination="xeA-BB-wJl" kind="show" identifier="toRegisterViewController" id="3pM-iP-gcJ"/>
                                                         </connections>
@@ -77,6 +88,17 @@
                                                             <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                             <color key="baseForegroundColor" name="loginbuttontextcolor"/>
                                                         </buttonConfiguration>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                                <size key="value" width="0.0" height="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <segue destination="cow-ac-611" kind="show" identifier="toLoginViewController" id="0u8-Xs-nc4"/>
                                                         </connections>
@@ -231,7 +253,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="RaD-97-xVg">
-                                <rect key="frame" x="20" y="108" width="374" height="427"/>
+                                <rect key="frame" x="20" y="108" width="374" height="363"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTA-sd-F1F">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="45"/>
@@ -271,9 +293,11 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSr-X0-XSg">
-                                        <rect key="frame" x="0.0" y="285" width="374" height="142"/>
+                                        <rect key="frame" x="0.0" y="285" width="374" height="78"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="loginbutton"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="loginbutton2" title=" Login">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="logInClicked:" destination="cow-ac-611" eventType="touchUpInside" id="Nre-Fm-eMj"/>
                                         </connections>
@@ -335,13 +359,13 @@
     </scenes>
     <designables>
         <designable name="B5t-wQ-cnF">
-            <size key="intrinsicContentSize" width="372.5" height="60"/>
+            <size key="intrinsicContentSize" width="317" height="60"/>
         </designable>
     </designables>
     <color key="tintColor" systemColor="systemBackgroundColor"/>
     <resources>
         <image name="loginbackground" width="2000" height="3000"/>
-        <image name="loginbutton" width="128" height="128"/>
+        <image name="loginbutton2" width="64" height="64"/>
         <image name="mainbackground" width="900" height="1600"/>
         <image name="registerbackground" width="2000" height="3000"/>
         <image name="signinbutton" width="64" height="64"/>

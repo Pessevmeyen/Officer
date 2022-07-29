@@ -60,6 +60,14 @@ class WelcomeViewController: UIViewController {
         loginButton.layer.cornerRadius = 35
         loginButton.layer.borderWidth = CGFloat(2)
         loginButton.titleLabel?.textColor = .init(white: 1.0, alpha: 1.0)
+        
+        
+        //MARK: App Name Attributes
+        appNameLabel.layer.shadowOffset = CGSize(width: 0, height: 1)
+        appNameLabel.layer.shadowColor = UIColor.systemBackground.cgColor
+        appNameLabel.layer.shadowRadius = 4
+        appNameLabel.layer.shadowOpacity = 1
+        appNameLabel.layer.masksToBounds = false
     }
     
     
