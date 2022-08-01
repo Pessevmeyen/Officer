@@ -22,6 +22,18 @@
 		8997ADF1288AC249003D642F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF0288AC249003D642F /* LoginViewController.swift */; };
 		8997ADF5288AD6A5003D642F /* CLTypingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */; };
 		8997ADF7288AD73E003D642F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF6288AD73E003D642F /* Constants.swift */; };
+		89FBB31728983BE2001C5B95 /* Office.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89FBB31028983BE2001C5B95 /* Office.storyboard */; };
+		89FBB31828983BE2001C5B95 /* OfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB31128983BE2001C5B95 /* OfficeViewController.swift */; };
+		89FBB31928983BE2001C5B95 /* OfficePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB31228983BE2001C5B95 /* OfficePresenter.swift */; };
+		89FBB31A28983BE2001C5B95 /* OfficeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB31328983BE2001C5B95 /* OfficeInteractor.swift */; };
+		89FBB31B28983BE2001C5B95 /* OfficeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB31428983BE2001C5B95 /* OfficeModels.swift */; };
+		89FBB31C28983BE2001C5B95 /* OfficeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB31528983BE2001C5B95 /* OfficeWorker.swift */; };
+		89FBB31D28983BE2001C5B95 /* OfficeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB31628983BE2001C5B95 /* OfficeRouter.swift */; };
+		89FBB32128983C02001C5B95 /* OfficeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB31F28983C02001C5B95 /* OfficeCell.swift */; };
+		89FBB32228983C02001C5B95 /* OfficeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FBB32028983C02001C5B95 /* OfficeCell.xib */; };
+		89FBB326289845CE001C5B95 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB325289845CE001C5B95 /* API.swift */; };
+		89FBB328289845E0001C5B95 /* OfficeRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB327289845E0001C5B95 /* OfficeRequestModel.swift */; };
+		89FBB32A28984604001C5B95 /* OfficeResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB32928984604001C5B95 /* OfficeResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +75,18 @@
 		8997ADF6288AD73E003D642F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		89F40B812875F2960035C6F4 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		89F40B822875F2F70035C6F4 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
+		89FBB31028983BE2001C5B95 /* Office.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Office.storyboard; sourceTree = "<group>"; };
+		89FBB31128983BE2001C5B95 /* OfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeViewController.swift; sourceTree = "<group>"; };
+		89FBB31228983BE2001C5B95 /* OfficePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficePresenter.swift; sourceTree = "<group>"; };
+		89FBB31328983BE2001C5B95 /* OfficeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeInteractor.swift; sourceTree = "<group>"; };
+		89FBB31428983BE2001C5B95 /* OfficeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeModels.swift; sourceTree = "<group>"; };
+		89FBB31528983BE2001C5B95 /* OfficeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeWorker.swift; sourceTree = "<group>"; };
+		89FBB31628983BE2001C5B95 /* OfficeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeRouter.swift; sourceTree = "<group>"; };
+		89FBB31F28983C02001C5B95 /* OfficeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeCell.swift; sourceTree = "<group>"; };
+		89FBB32028983C02001C5B95 /* OfficeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfficeCell.xib; sourceTree = "<group>"; };
+		89FBB325289845CE001C5B95 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		89FBB327289845E0001C5B95 /* OfficeRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeRequestModel.swift; sourceTree = "<group>"; };
+		89FBB32928984604001C5B95 /* OfficeResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +138,9 @@
 		8909FAE228735A0700F84927 /* Officer */ = {
 			isa = PBXGroup;
 			children = (
+				89FBB32428983C19001C5B95 /* Extension */,
+				89FBB32328983C11001C5B95 /* Networking */,
+				89FBB2C428980B7F001C5B95 /* Scenes */,
 				8909FAE328735A0700F84927 /* AppDelegate.swift */,
 				8909FAE528735A0700F84927 /* SceneDelegate.swift */,
 				8909FAE728735A0700F84927 /* WelcomeViewController.swift */,
@@ -155,6 +182,47 @@
 				89F40B822875F2F70035C6F4 /* Production.xcconfig */,
 			);
 			path = Configurations;
+			sourceTree = "<group>";
+		};
+		89FBB2C428980B7F001C5B95 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				89FBB31E28983BEE001C5B95 /* OfficeCell */,
+				89FBB31028983BE2001C5B95 /* Office.storyboard */,
+				89FBB31128983BE2001C5B95 /* OfficeViewController.swift */,
+				89FBB31228983BE2001C5B95 /* OfficePresenter.swift */,
+				89FBB31328983BE2001C5B95 /* OfficeInteractor.swift */,
+				89FBB31428983BE2001C5B95 /* OfficeModels.swift */,
+				89FBB31528983BE2001C5B95 /* OfficeWorker.swift */,
+				89FBB31628983BE2001C5B95 /* OfficeRouter.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		89FBB31E28983BEE001C5B95 /* OfficeCell */ = {
+			isa = PBXGroup;
+			children = (
+				89FBB31F28983C02001C5B95 /* OfficeCell.swift */,
+				89FBB32028983C02001C5B95 /* OfficeCell.xib */,
+			);
+			path = OfficeCell;
+			sourceTree = "<group>";
+		};
+		89FBB32328983C11001C5B95 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				89FBB325289845CE001C5B95 /* API.swift */,
+				89FBB327289845E0001C5B95 /* OfficeRequestModel.swift */,
+				89FBB32928984604001C5B95 /* OfficeResponseModel.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		89FBB32428983C19001C5B95 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,8 +329,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89FBB31728983BE2001C5B95 /* Office.storyboard in Resources */,
 				8909FAF028735A0A00F84927 /* LaunchScreen.storyboard in Resources */,
 				8909FAED28735A0A00F84927 /* Assets.xcassets in Resources */,
+				89FBB32228983C02001C5B95 /* OfficeCell.xib in Resources */,
 				8909FAEB28735A0700F84927 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,14 +358,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89FBB31A28983BE2001C5B95 /* OfficeInteractor.swift in Sources */,
+				89FBB32A28984604001C5B95 /* OfficeResponseModel.swift in Sources */,
+				89FBB31828983BE2001C5B95 /* OfficeViewController.swift in Sources */,
 				8997ADF5288AD6A5003D642F /* CLTypingLabel.swift in Sources */,
 				8909FAE828735A0700F84927 /* WelcomeViewController.swift in Sources */,
 				8909FAE428735A0700F84927 /* AppDelegate.swift in Sources */,
+				89FBB328289845E0001C5B95 /* OfficeRequestModel.swift in Sources */,
+				89FBB31928983BE2001C5B95 /* OfficePresenter.swift in Sources */,
 				8909FAE628735A0700F84927 /* SceneDelegate.swift in Sources */,
+				89FBB32128983C02001C5B95 /* OfficeCell.swift in Sources */,
+				89FBB31D28983BE2001C5B95 /* OfficeRouter.swift in Sources */,
 				896177E4288B43D90078E299 /* CustomTextField.swift in Sources */,
 				891632D8288EAD5A0048644A /* Extensions.swift in Sources */,
 				8997ADF7288AD73E003D642F /* Constants.swift in Sources */,
 				8997ADF1288AC249003D642F /* LoginViewController.swift in Sources */,
+				89FBB31C28983BE2001C5B95 /* OfficeWorker.swift in Sources */,
+				89FBB31B28983BE2001C5B95 /* OfficeModels.swift in Sources */,
+				89FBB326289845CE001C5B95 /* API.swift in Sources */,
 				8997ADEF288AC23B003D642F /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
