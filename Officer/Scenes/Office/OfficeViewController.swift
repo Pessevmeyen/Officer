@@ -54,6 +54,8 @@ final class OfficeViewController: UIViewController {
     }
 }
 
+
+
 extension OfficeViewController: OfficeDisplayLogic {
     //5
     func displayNews(viewModel: Office.Fetch.ViewModel) {
