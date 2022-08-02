@@ -12,21 +12,21 @@ enum Office {
     
     enum Fetch {
         
-        struct Request {
+        struct Request {//interacter'ın ihtiyacı olan request
             let result: String
         }
         
-        struct Response {
-            var offices: [Offices]
-            
+        struct Response { //presenter'ın ihtiyacı olan response
+            var officesList: [Offices]
         }
         
-        struct ViewModel {
-            let news: [Office.Fetch.ViewModel.New]
+        struct ViewModel { //Neyi göstereceksek. ViewController'ın ihtiyacı olan viewModel
             
-            struct New {
+            let officesList: [Office.Fetch.ViewModel.OfficeModel]
+            
+            struct OfficeModel {
                 let name: String?
-                let title: String?
+                let label: String?
                 let image: String?
             }
         }

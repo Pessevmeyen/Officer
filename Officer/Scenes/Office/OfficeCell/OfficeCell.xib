@@ -9,35 +9,85 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="63" id="KGk-i7-Jjw" customClass="OfficeCell" customModule="Officer" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="321" height="63"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="99" id="KGk-i7-Jjw" customClass="OfficeCell" customModule="Officer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="321" height="99"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="321" height="63"/>
+                <rect key="frame" x="0.0" y="0.0" width="321" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppBreweryLogo" translatesAutoresizingMaskIntoConstraints="NO" id="UhW-hZ-Rbn">
-                        <rect key="frame" x="20" y="10" width="42" height="42"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UhW-hZ-Rbn">
+                        <rect key="frame" x="20" y="22" width="54" height="55"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="42" id="HCH-iq-XZx"/>
                             <constraint firstAttribute="width" constant="42" id="Mhg-az-ipe"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ghd-FZ-B8g">
+                        <rect key="frame" x="82" y="26" width="219" height="40"/>
+                        <string key="text">Esentepe Mah. Talatpaşa Cad. No: 5 (Harman Sok. Girişi) Şişli / İstanbul Esentepe Mah. Talatpaşa Cad. No: 5 (Harman Sok. Girişi) Şişli / İstanbul </string>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Capacity 10-25" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2Np-Sq-vWr">
+                        <rect key="frame" x="82" y="67" width="47" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="space" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikg-Q6-pi8">
+                        <rect key="frame" x="259" y="67" width="46" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Kollektif House Levent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zsk-LU-5or">
+                        <rect key="frame" x="82" y="6" width="219" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="ylu-V3-A5O"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="rooms 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-WA-U9Y">
+                        <rect key="frame" x="170" y="67" width="43" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="lCu-fj-xrq"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="2Np-Sq-vWr" firstAttribute="top" secondItem="zsk-LU-5or" secondAttribute="bottom" constant="40" id="0yc-nB-PL2"/>
+                    <constraint firstItem="zsk-LU-5or" firstAttribute="leading" secondItem="ghd-FZ-B8g" secondAttribute="leading" id="1he-l8-xBH"/>
                     <constraint firstAttribute="bottom" secondItem="UhW-hZ-Rbn" secondAttribute="bottom" constant="11" id="3g1-md-0ku"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="UfM-WA-U9Y" secondAttribute="bottom" constant="4" id="9dR-G0-d8Q"/>
+                    <constraint firstItem="ghd-FZ-B8g" firstAttribute="leading" secondItem="2Np-Sq-vWr" secondAttribute="leading" id="AzJ-hh-oJn"/>
+                    <constraint firstItem="2Np-Sq-vWr" firstAttribute="top" secondItem="UfM-WA-U9Y" secondAttribute="top" id="GT8-bj-6EU"/>
                     <constraint firstItem="UhW-hZ-Rbn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="H3r-tr-wXx"/>
+                    <constraint firstItem="zsk-LU-5or" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="LDr-Hm-aQA"/>
                     <constraint firstItem="UhW-hZ-Rbn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Pxj-Gg-SLG"/>
+                    <constraint firstItem="zsk-LU-5or" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-49" id="Qn9-02-ZAs"/>
+                    <constraint firstItem="ikg-Q6-pi8" firstAttribute="leading" secondItem="UfM-WA-U9Y" secondAttribute="trailing" constant="46" id="SNo-oA-ryF"/>
+                    <constraint firstItem="UfM-WA-U9Y" firstAttribute="leading" secondItem="2Np-Sq-vWr" secondAttribute="trailing" constant="41" id="Unb-f1-2Qo"/>
+                    <constraint firstItem="ghd-FZ-B8g" firstAttribute="centerX" secondItem="UfM-WA-U9Y" secondAttribute="centerX" id="XDa-ei-8bl"/>
+                    <constraint firstItem="2Np-Sq-vWr" firstAttribute="top" secondItem="ghd-FZ-B8g" secondAttribute="bottom" constant="1" id="bmu-fE-DuS"/>
+                    <constraint firstItem="ghd-FZ-B8g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-29" id="nCz-Ld-eEq"/>
+                    <constraint firstItem="zsk-LU-5or" firstAttribute="leading" secondItem="UhW-hZ-Rbn" secondAttribute="trailing" constant="8" id="soW-an-ib5"/>
+                    <constraint firstItem="zsk-LU-5or" firstAttribute="trailing" secondItem="ghd-FZ-B8g" secondAttribute="trailing" id="uMJ-Pn-kNY"/>
+                    <constraint firstItem="2Np-Sq-vWr" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="uSY-fS-fao"/>
+                    <constraint firstItem="UfM-WA-U9Y" firstAttribute="top" secondItem="ikg-Q6-pi8" secondAttribute="top" id="ybs-Gu-H1u"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cellImageView" destination="UhW-hZ-Rbn" id="1DP-rd-HTS"/>
             </connections>
-            <point key="canvasLocation" x="131.15942028985509" y="138.28125"/>
+            <point key="canvasLocation" x="131.15942028985509" y="150.33482142857142"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="AppBreweryLogo" width="380" height="118"/>
-    </resources>
 </document>

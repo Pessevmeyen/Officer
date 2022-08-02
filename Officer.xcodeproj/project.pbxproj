@@ -180,17 +180,13 @@
 				89FBB32328983C11001C5B95 /* Networking */,
 				89FBB2C428980B7F001C5B95 /* Scenes */,
 				894D63ED2898EFEA001CF252 /* Details */,
+				894D640D289966FF001CF252 /* Welcome */,
+				894D640E28999ED0001CF252 /* CustomObjects */,
 				8909FAE328735A0700F84927 /* AppDelegate.swift */,
 				8909FAE528735A0700F84927 /* SceneDelegate.swift */,
-				8909FAE728735A0700F84927 /* WelcomeViewController.swift */,
-				8909FAE928735A0700F84927 /* Main.storyboard */,
 				8909FAEC28735A0A00F84927 /* Assets.xcassets */,
 				8909FAEE28735A0A00F84927 /* LaunchScreen.storyboard */,
 				8909FAF128735A0A00F84927 /* Info.plist */,
-				8997ADF6288AD73E003D642F /* Constants.swift */,
-				8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */,
-				896177E3288B43D90078E299 /* CustomTextField.swift */,
-				891632D7288EAD5A0048644A /* Extensions.swift */,
 			);
 			path = Officer;
 			sourceTree = "<group>";
@@ -267,6 +263,26 @@
 				894D64052898F403001CF252 /* RegisterRouter.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		894D640D289966FF001CF252 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				8909FAE728735A0700F84927 /* WelcomeViewController.swift */,
+				8909FAE928735A0700F84927 /* Main.storyboard */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		894D640E28999ED0001CF252 /* CustomObjects */ = {
+			isa = PBXGroup;
+			children = (
+				8997ADF6288AD73E003D642F /* Constants.swift */,
+				8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */,
+				896177E3288B43D90078E299 /* CustomTextField.swift */,
+				891632D7288EAD5A0048644A /* Extensions.swift */,
+			);
+			path = CustomObjects;
 			sourceTree = "<group>";
 		};
 		89F40B802875F2790035C6F4 /* Configurations */ = {

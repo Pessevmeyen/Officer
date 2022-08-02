@@ -8,16 +8,20 @@
 import UIKit
 
 protocol OfficeDisplayLogic: AnyObject {
-    func displayNews(viewModel: Office.Fetch.ViewModel)
+    func displayOfficesList()
 }
 
 final class OfficeViewController: UIViewController {
     
     var interactor: OfficeBusinessLogic?
     var router: (OfficeRoutingLogic & OfficeDataPassing)?
+    var viewModel: Office.Fetch.ViewModel?
+    
+    var networkManager = NetworkManager()
+    
     @IBOutlet weak var tableView: UITableView!
     
-    var viewModel: Office.Fetch.ViewModel?
+    
     
     // MARK: Object lifecycle
     
@@ -34,8 +38,11 @@ final class OfficeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.backBarButtonItem?.style = .done
+        
         //1
-        interactor?.fetchNews(request: Office.Fetch.Request(result: "5"))
+        interactor?.fetchOfficesList() //View controller interactor'a diyor ki, office listesini çek.
+        print(networkManager)
     }
     
     // MARK: Setup
@@ -55,13 +62,26 @@ final class OfficeViewController: UIViewController {
 }
 
 
+extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OfficeCell", for: indexPath) as? OfficeCell
+        return cell!
+    }
+    
+}
+
 
 extension OfficeViewController: OfficeDisplayLogic {
     //5
-    func displayNews(viewModel: Office.Fetch.ViewModel) {
-        self.viewModel = viewModel
+    func displayOfficesList() {
+        //Burada gelen office listesini gösteriyor.
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            self.tableView.reloadData() //displaynews'a gelmeden reload
         }
     }
 }

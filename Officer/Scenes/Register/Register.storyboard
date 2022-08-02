@@ -8,25 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="D3m-6j-bBI">
-            <objects>
-                <viewController id="nxe-uw-h5I" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="chM-je-gA4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cZo-gs-e4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1659" y="27"/>
-        </scene>
         <!--OfficerDown🌴-->
         <scene sceneID="pyM-aT-073">
             <objects>
-                <viewController id="u9j-yZ-vUh" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" id="u9j-yZ-vUh" customClass="RegisterViewController" customModule="Officer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cmO-3d-IhS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,6 +67,9 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                             <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="signInClicked:" destination="u9j-yZ-vUh" eventType="touchUpInside" id="6Lb-HS-krH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -107,6 +95,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="OfficerDown🌴" id="tYD-Xf-tus"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="pDJ-Uq-UlX" id="adg-HZ-HVD"/>
+                        <outlet property="passwordTextField" destination="e7f-z8-Rpq" id="EtS-UP-jhB"/>
+                        <outlet property="signInButton" destination="ySO-gT-L3z" id="MEY-QD-oIT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LN0-R5-ia4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

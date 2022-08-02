@@ -8,25 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="D3m-6j-bBI">
-            <objects>
-                <viewController id="nxe-uw-h5I" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="chM-je-gA4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cZo-gs-e4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="107" y="28"/>
-        </scene>
         <!--OfficerDown🌴-->
         <scene sceneID="0y5-qS-bFH">
             <objects>
-                <viewController id="oqT-t4-yEH" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="oqT-t4-yEH" customClass="LoginViewController" customModule="Officer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ViB-n2-xlp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,7 +65,11 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="loginbutton2" title=" Login">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                            <color key="baseForegroundColor" name="loginbuttontextcolor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="logInClicked:" destination="oqT-t4-yEH" eventType="touchUpInside" id="o0g-kj-DC9"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -105,6 +94,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="OfficerDown🌴" id="VhH-Pd-obi"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="Zl9-ac-eJh" id="ElQ-1k-3e2"/>
+                        <outlet property="logInButton" destination="V0n-yJ-mUW" id="1kU-10-Mk4"/>
+                        <outlet property="passwordTextField" destination="hZQ-y5-1vK" id="AUP-vd-gvt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I4O-tU-YFj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -114,6 +108,9 @@
     <resources>
         <image name="loginbackground" width="2000" height="3000"/>
         <image name="loginbutton2" width="64" height="64"/>
+        <namedColor name="loginbuttontextcolor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

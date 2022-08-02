@@ -39,6 +39,7 @@ final class RegisterViewController: UIViewController {
         
     }
     
+    
     // MARK: Setup
     
     private func setup() {
@@ -55,7 +56,7 @@ final class RegisterViewController: UIViewController {
     }
     
     @IBAction func signInClicked(_ sender: UIButton) {
-        print("sign in clicked")
+        goToDestinationVC(storyboardName: C.officeStoryboardName, storyboardID: C.officeStoryboardID)
     }
 }
 

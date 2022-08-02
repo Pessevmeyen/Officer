@@ -29,6 +29,8 @@ class WelcomeViewController: UIViewController {
         
         buttonsBorderColors()
         
+        
+        
     }
     
     
@@ -38,12 +40,13 @@ class WelcomeViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("view will apear")
-        registerButton.titleLabel?.textColor = UIColor(white: 1.0, alpha: 1.0)
+    @IBAction func registerClicked(_ sender: UIButton) {
+        goToDestinationVC(storyboardName: C.registerStoryboardName, storyboardID: C.registerStoryBoardID)
     }
     
+    @IBAction func loginClicked(_ sender: UIButton) {
+        goToDestinationVC(storyboardName: C.loginStoryboardName, storyboardID: C.loginStoryboardID)
+    }
     
     
     //MARK: - All properties that UI is loaded first time.
@@ -54,15 +57,15 @@ class WelcomeViewController: UIViewController {
         //MARK: Register Button Attributes
         registerButton.layer.cornerRadius = 35
         registerButton.layer.borderWidth = CGFloat(2)
-        registerButton.titleLabel?.textColor = .init(white: 1.0, alpha: 1.0)
+        
         
         //MARK: Login Button Attributes
         loginButton.layer.cornerRadius = 35
         loginButton.layer.borderWidth = CGFloat(2)
-        loginButton.titleLabel?.textColor = .init(white: 1.0, alpha: 1.0)
         
         
-        //MARK: App Name Attributes
+        //MARK: App Name Attributes.
+        //Added with @IBInspectable but didn't like neon effect, so was wroten here.
         appNameLabel.layer.shadowOffset = CGSize(width: 0, height: 1)
         appNameLabel.layer.shadowColor = UIColor.systemBackground.cgColor
         appNameLabel.layer.shadowRadius = 4

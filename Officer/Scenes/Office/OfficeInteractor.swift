@@ -8,28 +8,27 @@
 import Foundation
 
 protocol OfficeBusinessLogic: AnyObject {
-    func fetchNews(request: Office.Fetch.Request)
+    func fetchOfficesList()
 }
 
 protocol OfficeDataStore: AnyObject {
-    
+    var offices: [Offices]? { get set }
 }
 
 final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
     
-    
+    var offices: [Offices]?
     
     var presenter: OfficePresentationLogic?
     var worker: OfficeWorkingLogic = OfficeWorker()
     
-    var offices: [Offices]?
+    
     
     //2
-    func fetchNews(request: Office.Fetch.Request) {
-        worker.getNews(request: OfficeRequestModel()) { [weak self] _ in
-            // worker burada, interactor tarafından istenilen verileri getirecek.
-            self?.presenter?.presentNews()
+    func fetchOfficesList() { //interactor da worker'a diyor, office listesini getir.
+        worker.getOfficesList()
+        presenter?.presentOffices(response: Office.Fetch.Response(officesList: [])) //getirdikten sonra presenter'a diyor ki, officeleri sun.
         }
-    }
     
 }
+

@@ -19,6 +19,8 @@ extension WelcomeViewController {
 
 
 
+
+
 //MARK: - For Hiding Keyboard When User Tapped Around
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
@@ -30,7 +32,23 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
 }
+
+
+
+
+
+//MARK: - Changing View Controller
+extension UIViewController {
+    func goToDestinationVC(storyboardName: String, storyboardID: String) {
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(identifier: storyboardID)
+        self.navigationController?.pushViewController(destinationVC, animated: true)
+    }
+}
+
+
 
 
 
@@ -45,6 +63,9 @@ extension UITextField {
         }
     }
 }
+
+
+
 
 
 //MARK: - Button Shadow Attributes in StoryBoard

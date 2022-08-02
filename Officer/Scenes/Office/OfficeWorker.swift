@@ -8,14 +8,17 @@
 import Foundation
 
 protocol OfficeWorkingLogic: AnyObject {
-    func getNews(request: OfficeRequestModel, completion: @escaping ((Result<OfficeResponseModel, Error>) -> Void))
+    func getOfficesList() //
 }
 
 final class OfficeWorker: OfficeWorkingLogic {
     
+    
+    //worker'ın işi api'a gitmek
     //3
-    func getNews(request: OfficeRequestModel, completion: @escaping ((Result<OfficeResponseModel, Error>) -> Void)) {
+    func getOfficesList() {
         //worker burada verileri getirecek. Getirirse return ile interactor içindeki closure'a dönecek.
+        
     }
     
 }
