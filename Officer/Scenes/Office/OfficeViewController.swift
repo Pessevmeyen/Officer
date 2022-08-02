@@ -54,7 +54,19 @@ final class OfficeViewController: UIViewController {
     }
 }
 
-
+extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OfficeCell", for: indexPath) as? OfficeCell
+        cell?.textLabel?.text = "Sound Check"
+        return cell!
+    }
+    
+}
 
 extension OfficeViewController: OfficeDisplayLogic {
     //5
