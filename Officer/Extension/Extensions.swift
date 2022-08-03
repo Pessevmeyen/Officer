@@ -68,7 +68,7 @@ extension UITextField {
 
 
 
-//MARK: - Button Shadow Attributes in StoryBoard
+//MARK: - Button Shadow and Border Attributes in StoryBoard
 extension UIView {
     @IBInspectable var cornerRadius: CGFloat {
         get {

@@ -36,7 +36,7 @@ class WelcomeViewController: UIViewController {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection) // super ekledik sorun çıkarıcak mı bak?
-        buttonsBorderColors()
+        buttonsBorderColors() //Buna gerek var mı? kodu kaldırıp IBInspectable ile eklediğini dene
         
     }
     

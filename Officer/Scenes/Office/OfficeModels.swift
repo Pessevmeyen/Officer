@@ -17,7 +17,7 @@ enum Office {
         }
         
         struct Response { //presenter'ın ihtiyacı olan response
-            var officesList: [Offices]
+            var officesList: [OfficeData]
         }
         
         struct ViewModel { //Neyi göstereceksek. ViewController'ın ihtiyacı olan viewModel
@@ -25,9 +25,11 @@ enum Office {
             let officesList: [Office.Fetch.ViewModel.OfficeModel]
             
             struct OfficeModel {
-                let name: String?
-                let label: String?
+                let id: Int?
                 let image: String?
+                let name: String?
+
+
             }
         }
         

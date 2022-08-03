@@ -17,7 +17,9 @@ final class OfficeViewController: UIViewController {
     var router: (OfficeRoutingLogic & OfficeDataPassing)?
     var viewModel: Office.Fetch.ViewModel?
     
-    var networkManager = NetworkManager()
+    var networkManager: NetworkManager?
+    
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -42,7 +44,7 @@ final class OfficeViewController: UIViewController {
         
         //1
         interactor?.fetchOfficesList() //View controller interactor'a diyor ki, office listesini çek.
-        print(networkManager)
+        tableView.register(UINib(nibName: C.officeNibName, bundle: .main), forCellReuseIdentifier: C.officeCellID)
     }
     
     // MARK: Setup
@@ -65,11 +67,11 @@ final class OfficeViewController: UIViewController {
 extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OfficeCell", for: indexPath) as? OfficeCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: C.officeCellID, for: indexPath) as? OfficeCell
         return cell!
     }
     

@@ -1,17 +1,21 @@
+
+
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
 //
-//  OfficeViewController.swift
-//  Officer
-//
-//  Created by Furkan Eruçar on 1.08.2022.
-//
+//   let offices = try? newJSONDecoder().decode(Offices.self, from: jsonData)
+
+import Foundation
 
 
 
-// MARK: - Office datas
-struct OfficesData: Decodable {
+
+// MARK: - Office
+struct OfficeData: Codable {
     let address, capacity: String?
     let id: Int?
     let image: String?
+    let images: [String]?
     let location: Location?
     let name: String?
     let rooms: Int?
@@ -19,8 +23,8 @@ struct OfficesData: Decodable {
 }
 
 // MARK: - Location
-struct Location: Decodable {
+struct Location: Codable {
     let latitude, longitude: Double?
 }
 
-typealias Offices = [Office]
+typealias Offices = [OfficeData]

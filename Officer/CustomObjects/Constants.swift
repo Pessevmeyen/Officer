@@ -24,4 +24,7 @@ struct C {
     static let officeStoryboardName = "Office"
     static let registerStoryboardName = "Register"
     static let loginStoryboardName = "Login"
+    
+    static let officeCellID = "OfficeCell"
+    static let officeNibName = "OfficeCell"
 }

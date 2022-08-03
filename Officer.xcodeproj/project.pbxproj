@@ -78,7 +78,7 @@
 		8909FAE528735A0700F84927 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8909FAE728735A0700F84927 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8909FAEA28735A0700F84927 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8909FAEC28735A0A00F84927 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Officer/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		8909FAEC28735A0A00F84927 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Officer/SupportingFiles/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		8909FAEF28735A0A00F84927 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8909FAF128735A0A00F84927 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8909FAF628735A0A00F84927 /* OfficerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OfficerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,12 +179,8 @@
 				89FBB32428983C19001C5B95 /* Extension */,
 				89FBB32328983C11001C5B95 /* Networking */,
 				89FBB2C428980B7F001C5B95 /* Scenes */,
-				894D63ED2898EFEA001CF252 /* Details */,
-				894D640D289966FF001CF252 /* Welcome */,
+				8947863F289A6E9D00418A39 /* SupportingFiles */,
 				894D640E28999ED0001CF252 /* CustomObjects */,
-				8909FAE328735A0700F84927 /* AppDelegate.swift */,
-				8909FAE528735A0700F84927 /* SceneDelegate.swift */,
-				8909FAEC28735A0A00F84927 /* Assets.xcassets */,
 				8909FAEE28735A0A00F84927 /* LaunchScreen.storyboard */,
 				8909FAF128735A0A00F84927 /* Info.plist */,
 			);
@@ -208,6 +204,16 @@
 			path = OfficerUITests;
 			sourceTree = "<group>";
 		};
+		8947863F289A6E9D00418A39 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				8909FAE328735A0700F84927 /* AppDelegate.swift */,
+				8909FAE528735A0700F84927 /* SceneDelegate.swift */,
+				8909FAEC28735A0A00F84927 /* Assets.xcassets */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		894D63ED2898EFEA001CF252 /* Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,8 +234,8 @@
 				89FBB31E28983BEE001C5B95 /* OfficeCell */,
 				89FBB31028983BE2001C5B95 /* Office.storyboard */,
 				89FBB31128983BE2001C5B95 /* OfficeViewController.swift */,
-				89FBB31228983BE2001C5B95 /* OfficePresenter.swift */,
 				89FBB31328983BE2001C5B95 /* OfficeInteractor.swift */,
+				89FBB31228983BE2001C5B95 /* OfficePresenter.swift */,
 				89FBB31428983BE2001C5B95 /* OfficeModels.swift */,
 				89FBB31528983BE2001C5B95 /* OfficeWorker.swift */,
 				89FBB31628983BE2001C5B95 /* OfficeRouter.swift */,
@@ -280,7 +286,6 @@
 				8997ADF6288AD73E003D642F /* Constants.swift */,
 				8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */,
 				896177E3288B43D90078E299 /* CustomTextField.swift */,
-				891632D7288EAD5A0048644A /* Extensions.swift */,
 			);
 			path = CustomObjects;
 			sourceTree = "<group>";
@@ -297,9 +302,11 @@
 		89FBB2C428980B7F001C5B95 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				894D63ED2898EFEA001CF252 /* Details */,
 				894D63FC2898F3C5001CF252 /* Office */,
 				894D63FE2898F3F2001CF252 /* Register */,
 				894D63FD2898F3E6001CF252 /* Login */,
+				894D640D289966FF001CF252 /* Welcome */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -326,6 +333,7 @@
 		89FBB32428983C19001C5B95 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				891632D7288EAD5A0048644A /* Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";

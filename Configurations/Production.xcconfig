@@ -2,3 +2,4 @@ BACKEND_URL = https:\/\/mobven.com\/
 BUNDLE_ID = com.furkanerucar.officerDown
 APP_NAME = Officer
 SHOW_VERSION = NO
+BASE_URL = https:\/\/officer-ad6ef-default-rtdb.firebaseio.com\/offices.json

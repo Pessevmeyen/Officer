@@ -6,6 +6,8 @@
 	<string>$(BACKEND_URL)</string>
 	<key>SHOW_VERSION</key>
 	<string>$(SHOW_VERSION)</string>
+	<key>BASE_URL</key>
+	<string>$(BASE_URL)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
