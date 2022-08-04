@@ -50,7 +50,7 @@
 		89FBB31D28983BE2001C5B95 /* OfficeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB31628983BE2001C5B95 /* OfficeRouter.swift */; };
 		89FBB32128983C02001C5B95 /* OfficeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB31F28983C02001C5B95 /* OfficeCell.swift */; };
 		89FBB32228983C02001C5B95 /* OfficeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FBB32028983C02001C5B95 /* OfficeCell.xib */; };
-		89FBB326289845CE001C5B95 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB325289845CE001C5B95 /* API.swift */; };
+		89FBB326289845CE001C5B95 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB325289845CE001C5B95 /* NetworkManager.swift */; };
 		89FBB328289845E0001C5B95 /* OfficeRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB327289845E0001C5B95 /* OfficeRequestModel.swift */; };
 		89FBB32A28984604001C5B95 /* OfficeResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB32928984604001C5B95 /* OfficeResponseModel.swift */; };
 /* End PBXBuildFile section */
@@ -122,7 +122,7 @@
 		89FBB31628983BE2001C5B95 /* OfficeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeRouter.swift; sourceTree = "<group>"; };
 		89FBB31F28983C02001C5B95 /* OfficeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeCell.swift; sourceTree = "<group>"; };
 		89FBB32028983C02001C5B95 /* OfficeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfficeCell.xib; sourceTree = "<group>"; };
-		89FBB325289845CE001C5B95 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		89FBB325289845CE001C5B95 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		89FBB327289845E0001C5B95 /* OfficeRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeRequestModel.swift; sourceTree = "<group>"; };
 		89FBB32928984604001C5B95 /* OfficeResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -323,7 +323,7 @@
 		89FBB32328983C11001C5B95 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				89FBB325289845CE001C5B95 /* API.swift */,
+				89FBB325289845CE001C5B95 /* NetworkManager.swift */,
 				89FBB327289845E0001C5B95 /* OfficeRequestModel.swift */,
 				89FBB32928984604001C5B95 /* OfficeResponseModel.swift */,
 			);
@@ -502,7 +502,7 @@
 				894D63E82898EFE1001CF252 /* DetailsPresenter.swift in Sources */,
 				894D63FB2898F3B3001CF252 /* LoginRouter.swift in Sources */,
 				894D64082898F403001CF252 /* RegisterPresenter.swift in Sources */,
-				89FBB326289845CE001C5B95 /* API.swift in Sources */,
+				89FBB326289845CE001C5B95 /* NetworkManager.swift in Sources */,
 				894D64072898F403001CF252 /* RegisterViewController.swift in Sources */,
 				894D63EB2898EFE1001CF252 /* DetailsWorker.swift in Sources */,
 				894D640A2898F403001CF252 /* RegisterModels.swift in Sources */,

@@ -28,6 +28,10 @@ enum Office {
                 let id: Int?
                 let image: String?
                 let name: String?
+                let address: String?
+                let capacity: String?
+                let rooms: String?
+                let space: String?
 
 
             }

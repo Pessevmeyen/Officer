@@ -8,7 +8,7 @@
 import UIKit
 
 protocol OfficeDisplayLogic: AnyObject {
-    func displayOfficesList()
+    func displayOfficesList(viewModel: Office.Fetch.ViewModel)
 }
 
 final class OfficeViewController: UIViewController {
@@ -67,12 +67,16 @@ final class OfficeViewController: UIViewController {
 extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel?.officesList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: C.officeCellID, for: indexPath) as? OfficeCell
-        return cell!
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: C.officeCellID, for: indexPath) as? OfficeCell else {
+            fatalError("An Error Occured while dequeuering reusable cell")
+        }
+        guard let model = viewModel?.officesList[indexPath.row] else {fatalError("Not able to display model")}
+        cell.configureCell(viewModel: model)
+        return cell
     }
     
 }
@@ -80,9 +84,10 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension OfficeViewController: OfficeDisplayLogic {
     //5
-    func displayOfficesList() {
+    func displayOfficesList(viewModel: Office.Fetch.ViewModel) {
         //Burada gelen office listesini gösteriyor.
         DispatchQueue.main.async {
+            self.viewModel = viewModel
             self.tableView.reloadData() //displaynews'a gelmeden reload
         }
     }

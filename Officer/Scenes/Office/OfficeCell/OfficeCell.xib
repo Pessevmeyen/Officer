@@ -16,78 +16,82 @@
                 <rect key="frame" x="0.0" y="0.0" width="321" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UhW-hZ-Rbn">
-                        <rect key="frame" x="20" y="22" width="54" height="55"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainbackground" translatesAutoresizingMaskIntoConstraints="NO" id="UhW-hZ-Rbn">
+                        <rect key="frame" x="20" y="20" width="55" height="55"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="42" id="HCH-iq-XZx"/>
-                            <constraint firstAttribute="width" constant="42" id="Mhg-az-ipe"/>
+                            <constraint firstAttribute="width" constant="55" id="9Ad-YG-76N"/>
+                            <constraint firstAttribute="height" constant="55" id="HQF-zy-sLm"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ghd-FZ-B8g">
-                        <rect key="frame" x="82" y="26" width="219" height="40"/>
-                        <string key="text">Esentepe Mah. Talatpaşa Cad. No: 5 (Harman Sok. Girişi) Şişli / İstanbul Esentepe Mah. Talatpaşa Cad. No: 5 (Harman Sok. Girişi) Şişli / İstanbul </string>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ghd-FZ-B8g">
+                        <rect key="frame" x="82" y="26" width="223" height="37"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="37" id="2aM-HL-vLy"/>
+                        </constraints>
+                        <string key="text">Esentepe Mah. Talatpaşa Cad. No: 5 (Harman Sok. Girişi) Şişli / İstanbul Esentepe Mah. Talatpaşa Cad. No: 5 (Harman Sok. Girişi) Şişli / İstanbul</string>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Capacity 10-25" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2Np-Sq-vWr">
-                        <rect key="frame" x="82" y="67" width="47" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capacity 99-99" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2Np-Sq-vWr">
+                        <rect key="frame" x="82" y="67" width="76.5" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="space" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikg-Q6-pi8">
-                        <rect key="frame" x="259" y="67" width="46" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="space: 999m2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ikg-Q6-pi8">
+                        <rect key="frame" x="231" y="67" width="75" height="19"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Kollektif House Levent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zsk-LU-5or">
-                        <rect key="frame" x="82" y="6" width="219" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="ylu-V3-A5O"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office İsmi Label'ı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zsk-LU-5or">
+                        <rect key="frame" x="82" y="5" width="135.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="rooms 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-WA-U9Y">
-                        <rect key="frame" x="170" y="67" width="43" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="17" id="lCu-fj-xrq"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rooms 99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-WA-U9Y">
+                        <rect key="frame" x="172.5" y="72" width="50" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="2Np-Sq-vWr" firstAttribute="top" secondItem="zsk-LU-5or" secondAttribute="bottom" constant="40" id="0yc-nB-PL2"/>
-                    <constraint firstItem="zsk-LU-5or" firstAttribute="leading" secondItem="ghd-FZ-B8g" secondAttribute="leading" id="1he-l8-xBH"/>
-                    <constraint firstAttribute="bottom" secondItem="UhW-hZ-Rbn" secondAttribute="bottom" constant="11" id="3g1-md-0ku"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="UfM-WA-U9Y" secondAttribute="bottom" constant="4" id="9dR-G0-d8Q"/>
-                    <constraint firstItem="ghd-FZ-B8g" firstAttribute="leading" secondItem="2Np-Sq-vWr" secondAttribute="leading" id="AzJ-hh-oJn"/>
-                    <constraint firstItem="2Np-Sq-vWr" firstAttribute="top" secondItem="UfM-WA-U9Y" secondAttribute="top" id="GT8-bj-6EU"/>
-                    <constraint firstItem="UhW-hZ-Rbn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="H3r-tr-wXx"/>
-                    <constraint firstItem="zsk-LU-5or" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="LDr-Hm-aQA"/>
-                    <constraint firstItem="UhW-hZ-Rbn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Pxj-Gg-SLG"/>
-                    <constraint firstItem="zsk-LU-5or" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-49" id="Qn9-02-ZAs"/>
-                    <constraint firstItem="ikg-Q6-pi8" firstAttribute="leading" secondItem="UfM-WA-U9Y" secondAttribute="trailing" constant="46" id="SNo-oA-ryF"/>
-                    <constraint firstItem="UfM-WA-U9Y" firstAttribute="leading" secondItem="2Np-Sq-vWr" secondAttribute="trailing" constant="41" id="Unb-f1-2Qo"/>
-                    <constraint firstItem="ghd-FZ-B8g" firstAttribute="centerX" secondItem="UfM-WA-U9Y" secondAttribute="centerX" id="XDa-ei-8bl"/>
-                    <constraint firstItem="2Np-Sq-vWr" firstAttribute="top" secondItem="ghd-FZ-B8g" secondAttribute="bottom" constant="1" id="bmu-fE-DuS"/>
-                    <constraint firstItem="ghd-FZ-B8g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-29" id="nCz-Ld-eEq"/>
-                    <constraint firstItem="zsk-LU-5or" firstAttribute="leading" secondItem="UhW-hZ-Rbn" secondAttribute="trailing" constant="8" id="soW-an-ib5"/>
-                    <constraint firstItem="zsk-LU-5or" firstAttribute="trailing" secondItem="ghd-FZ-B8g" secondAttribute="trailing" id="uMJ-Pn-kNY"/>
-                    <constraint firstItem="2Np-Sq-vWr" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="uSY-fS-fao"/>
-                    <constraint firstItem="UfM-WA-U9Y" firstAttribute="top" secondItem="ikg-Q6-pi8" secondAttribute="top" id="ybs-Gu-H1u"/>
+                    <constraint firstItem="ikg-Q6-pi8" firstAttribute="leading" secondItem="UfM-WA-U9Y" secondAttribute="trailing" constant="8.5" id="3Wu-C2-Z0t"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="UfM-WA-U9Y" secondAttribute="bottom" constant="4" id="3ko-l2-2KQ"/>
+                    <constraint firstItem="zsk-LU-5or" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="9Tm-bx-hLn"/>
+                    <constraint firstItem="ghd-FZ-B8g" firstAttribute="leading" secondItem="zsk-LU-5or" secondAttribute="leading" id="Cyu-LV-jdA"/>
+                    <constraint firstItem="UhW-hZ-Rbn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="DDq-59-Yxk"/>
+                    <constraint firstItem="2Np-Sq-vWr" firstAttribute="top" secondItem="ikg-Q6-pi8" secondAttribute="top" id="NRv-6E-H6q"/>
+                    <constraint firstItem="ghd-FZ-B8g" firstAttribute="top" secondItem="zsk-LU-5or" secondAttribute="bottom" id="OLq-cP-xCV"/>
+                    <constraint firstAttribute="trailing" secondItem="ikg-Q6-pi8" secondAttribute="trailing" constant="15" id="SrZ-za-1fI"/>
+                    <constraint firstItem="zsk-LU-5or" firstAttribute="leading" secondItem="UhW-hZ-Rbn" secondAttribute="trailing" constant="7" id="Wzp-sY-E9T"/>
+                    <constraint firstItem="UfM-WA-U9Y" firstAttribute="leading" secondItem="2Np-Sq-vWr" secondAttribute="trailing" constant="14" id="ei3-xe-Je8"/>
+                    <constraint firstItem="ghd-FZ-B8g" firstAttribute="trailing" secondItem="ikg-Q6-pi8" secondAttribute="trailing" constant="-1" id="ido-gO-aT2"/>
+                    <constraint firstItem="UfM-WA-U9Y" firstAttribute="leading" secondItem="2Np-Sq-vWr" secondAttribute="trailing" constant="14" id="jcc-AR-WYw"/>
+                    <constraint firstAttribute="trailing" secondItem="UfM-WA-U9Y" secondAttribute="trailing" constant="98.5" id="kUJ-1v-9dV"/>
+                    <constraint firstItem="2Np-Sq-vWr" firstAttribute="leading" secondItem="UhW-hZ-Rbn" secondAttribute="trailing" constant="7" id="ndz-nD-cfD"/>
+                    <constraint firstItem="UhW-hZ-Rbn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="qJd-FO-Co4"/>
+                    <constraint firstAttribute="bottom" secondItem="UhW-hZ-Rbn" secondAttribute="bottom" constant="20" id="vbn-sC-wjA"/>
+                    <constraint firstItem="2Np-Sq-vWr" firstAttribute="top" secondItem="ghd-FZ-B8g" secondAttribute="bottom" constant="4" id="wDM-pD-F32"/>
+                    <constraint firstItem="UfM-WA-U9Y" firstAttribute="top" secondItem="ghd-FZ-B8g" secondAttribute="bottom" constant="9" id="yhl-1I-duu"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="addressLabel" destination="ghd-FZ-B8g" id="ljh-N3-EjK"/>
+                <outlet property="capacityLabel" destination="2Np-Sq-vWr" id="fwp-dE-bfp"/>
                 <outlet property="cellImageView" destination="UhW-hZ-Rbn" id="1DP-rd-HTS"/>
+                <outlet property="nameLabel" destination="zsk-LU-5or" id="NGE-VS-SXc"/>
+                <outlet property="roomsLabel" destination="UfM-WA-U9Y" id="oth-2I-Mrf"/>
+                <outlet property="spaceLabel" destination="ikg-Q6-pi8" id="O3e-1f-J7G"/>
             </connections>
             <point key="canvasLocation" x="131.15942028985509" y="150.33482142857142"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="mainbackground" width="900" height="1600"/>
+    </resources>
 </document>

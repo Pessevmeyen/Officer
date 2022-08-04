@@ -24,18 +24,13 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
     
     //2
     func fetchOfficesList() { //interactor da worker'a diyor, office listesini getir.
-        worker.getOfficesList { result in
+        worker.getOfficesList { [weak self] result in
             switch result {
             case .success(let response):
-                self.offices = response
-                guard let offices = self.offices else { return }
+                self?.offices = response //işlem kolaylığı açısından, office datalarını çektiğimiz için office diye isimlendirebiliriz bu datayı.
+                guard let offices = self?.offices else { return } //Optional gelen veriyi güvenli hale getiriyoruz.
                 print(offices)
-                
-                self.presenter?.presentOffices(response: Office.Fetch.Response(officesList: offices))
-                print(offices)
-                
-                
-
+                self?.presenter?.presentOffices(response: Office.Fetch.Response(officesList: offices)) //Buradan presenter'a aktarılıyor.
             case .failure(let error):
                 print(error.localizedDescription)
             }

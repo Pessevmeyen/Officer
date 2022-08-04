@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol OfficePresentationLogic: AnyObject {
     func presentOffices(response: Office.Fetch.Response)
@@ -20,10 +21,17 @@ final class OfficePresenter: OfficePresentationLogic {
         
         //worker'ın çektiği veriler, interactor ile buraya gelecek. Gelen veriler burada formatlanacak, şekil verilecek.
         var offices: [Office.Fetch.ViewModel.OfficeModel] = []
-        response.officesList.forEach {_ in
-            offices.append(Office.Fetch.ViewModel.OfficeModel(id: 1, image: "image", name: "name")) //Nereye append edilecek? ViewModel içine edilecek ki view controller gösterecek.
+        response.officesList.forEach { 
+            offices.append(Office.Fetch.ViewModel.OfficeModel(id: 1,
+                                                              image: "",
+                                                              name: $0.name,
+                                                              address: $0.address,
+                                                              capacity: $0.capacity,
+                                                              rooms: String($0.rooms ?? 1),
+                                                              space: $0.space)) //Nereye append edilecek? ViewModel içine edilecek ki view controller gösterecek.
             print(offices)
+            
         }
-        viewController?.displayOfficesList() // Presenter da view controller'a diyor, veriler hazır, office listesini gösterebilirsin
+        viewController?.displayOfficesList(viewModel: Office.Fetch.ViewModel(officesList: offices)) // Presenter da view controller'a diyor, veriler hazır, office listesini gösterebilirsin
     }
 }
