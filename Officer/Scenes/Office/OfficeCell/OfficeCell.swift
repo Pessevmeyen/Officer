@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class OfficeCell: UITableViewCell {
 
@@ -24,9 +25,10 @@ class OfficeCell: UITableViewCell {
     func configureCell(viewModel: Office.Fetch.ViewModel.OfficeModel) {
         nameLabel.text = viewModel.name
         addressLabel.text = viewModel.address
-        capacityLabel.text = viewModel.capacity
-        roomsLabel.text = viewModel.rooms
-        spaceLabel.text = viewModel.space
+        capacityLabel.text = "Capacity: \(viewModel.capacity ?? "")"
+        roomsLabel.text = "Rooms: \(viewModel.rooms ?? "")"
+        spaceLabel.text = "Space: \(viewModel.space ?? "")"
+        cellImageView.sd_setImage(with: URL(string: viewModel.image ?? ""))
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

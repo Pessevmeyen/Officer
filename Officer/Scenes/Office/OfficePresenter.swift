@@ -23,7 +23,7 @@ final class OfficePresenter: OfficePresentationLogic {
         var offices: [Office.Fetch.ViewModel.OfficeModel] = []
         response.officesList.forEach { 
             offices.append(Office.Fetch.ViewModel.OfficeModel(id: 1,
-                                                              image: "",
+                                                              image: $0.image,
                                                               name: $0.name,
                                                               address: $0.address,
                                                               capacity: $0.capacity,

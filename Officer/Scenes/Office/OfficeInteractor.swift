@@ -12,15 +12,19 @@ protocol OfficeBusinessLogic: AnyObject {
 }
 
 protocol OfficeDataStore: AnyObject {
-    var offices: Offices? { get set } //Daha sonra router ile veri aktarımı için verileri tutuyoruz burada.
+    var offices: Offices? { get set } //Daha sonra router ile veri aktarımı için verileri tutuyoruz burada. Request&Response modeli Array içinde tutuyoruz.
 }
 
 final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
-    
-    var offices: Offices?
-    
+
     var presenter: OfficePresentationLogic?
     var worker: OfficeWorkingLogic = OfficeWorker()
+    
+    init(worker: OfficeWorkingLogic) {
+        self.worker = worker
+    }
+    
+    var offices: Offices?
     
     //2
     func fetchOfficesList() { //interactor da worker'a diyor, office listesini getir.

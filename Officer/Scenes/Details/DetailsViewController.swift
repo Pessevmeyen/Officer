@@ -16,6 +16,10 @@ final class DetailsViewController: UIViewController {
     var interactor: DetailsBusinessLogic?
     var router: (DetailsRoutingLogic & DetailsDataPassing)?
     
+    var detailsID: Int?
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -26,6 +30,17 @@ final class DetailsViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
+    }
+    
+    init(detailsID: Int) {
+        super.init(nibName: nil, bundle: nil)
+        self.detailsID = detailsID
+        setup()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        interactor?.fetchDetails()
     }
     
     // MARK: Setup

@@ -20,11 +20,16 @@ struct C {
     static let loginStoryboardID = "LoginViewController"
     static let registerStoryBoardID = "RegisterViewController"
     static let officeStoryboardID = "OfficeViewController"
+    static let detailsStoryboardID = "DetailsViewController"
     
     static let officeStoryboardName = "Office"
     static let registerStoryboardName = "Register"
     static let loginStoryboardName = "Login"
+    static let detailsStoryboardName = "Details"
     
     static let officeCellID = "OfficeCell"
     static let officeNibName = "OfficeCell"
+    
+    static let detailsCellID = "DetailsCell"
+    static let detailsNibName = "DetailsCell"
 }

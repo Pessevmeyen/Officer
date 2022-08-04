@@ -41,6 +41,10 @@
 		896177E4288B43D90078E299 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896177E3288B43D90078E299 /* CustomTextField.swift */; };
 		8997ADF5288AD6A5003D642F /* CLTypingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */; };
 		8997ADF7288AD73E003D642F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF6288AD73E003D642F /* Constants.swift */; };
+		89D13EFA289BF993008E2238 /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D13EF8289BF993008E2238 /* DetailsCell.swift */; };
+		89D13EFB289BF993008E2238 /* DetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89D13EF9289BF993008E2238 /* DetailsCell.xib */; };
+		89DF91AA289BD2C20053B86B /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 89DF91A9289BD2C20053B86B /* SDWebImage */; };
+		89DF91AC289BD2C20053B86B /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 89DF91AB289BD2C20053B86B /* SDWebImageMapKit */; };
 		89FBB31728983BE2001C5B95 /* Office.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89FBB31028983BE2001C5B95 /* Office.storyboard */; };
 		89FBB31828983BE2001C5B95 /* OfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB31128983BE2001C5B95 /* OfficeViewController.swift */; };
 		89FBB31928983BE2001C5B95 /* OfficePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB31228983BE2001C5B95 /* OfficePresenter.swift */; };
@@ -51,8 +55,7 @@
 		89FBB32128983C02001C5B95 /* OfficeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB31F28983C02001C5B95 /* OfficeCell.swift */; };
 		89FBB32228983C02001C5B95 /* OfficeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FBB32028983C02001C5B95 /* OfficeCell.xib */; };
 		89FBB326289845CE001C5B95 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB325289845CE001C5B95 /* NetworkManager.swift */; };
-		89FBB328289845E0001C5B95 /* OfficeRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB327289845E0001C5B95 /* OfficeRequestModel.swift */; };
-		89FBB32A28984604001C5B95 /* OfficeResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB32928984604001C5B95 /* OfficeResponseModel.swift */; };
+		89FBB32A28984604001C5B95 /* Request&ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBB32928984604001C5B95 /* Request&ResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +114,8 @@
 		896177E3288B43D90078E299 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLTypingLabel.swift; sourceTree = "<group>"; };
 		8997ADF6288AD73E003D642F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		89D13EF8289BF993008E2238 /* DetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCell.swift; sourceTree = "<group>"; };
+		89D13EF9289BF993008E2238 /* DetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCell.xib; sourceTree = "<group>"; };
 		89F40B812875F2960035C6F4 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		89F40B822875F2F70035C6F4 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		89FBB31028983BE2001C5B95 /* Office.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Office.storyboard; sourceTree = "<group>"; };
@@ -123,8 +128,7 @@
 		89FBB31F28983C02001C5B95 /* OfficeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeCell.swift; sourceTree = "<group>"; };
 		89FBB32028983C02001C5B95 /* OfficeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfficeCell.xib; sourceTree = "<group>"; };
 		89FBB325289845CE001C5B95 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		89FBB327289845E0001C5B95 /* OfficeRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeRequestModel.swift; sourceTree = "<group>"; };
-		89FBB32928984604001C5B95 /* OfficeResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeResponseModel.swift; sourceTree = "<group>"; };
+		89FBB32928984604001C5B95 /* Request&ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request&ResponseModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89DF91AC289BD2C20053B86B /* SDWebImageMapKit in Frameworks */,
+				89DF91AA289BD2C20053B86B /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +223,7 @@
 		894D63ED2898EFEA001CF252 /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				89D13EF7289BF961008E2238 /* DetailsCell */,
 				894D63DF2898EFE1001CF252 /* Details.storyboard */,
 				894D63E02898EFE1001CF252 /* DetailsViewController.swift */,
 				894D63E12898EFE1001CF252 /* DetailsPresenter.swift */,
@@ -290,6 +297,15 @@
 			path = CustomObjects;
 			sourceTree = "<group>";
 		};
+		89D13EF7289BF961008E2238 /* DetailsCell */ = {
+			isa = PBXGroup;
+			children = (
+				89D13EF8289BF993008E2238 /* DetailsCell.swift */,
+				89D13EF9289BF993008E2238 /* DetailsCell.xib */,
+			);
+			path = DetailsCell;
+			sourceTree = "<group>";
+		};
 		89F40B802875F2790035C6F4 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,8 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				89FBB325289845CE001C5B95 /* NetworkManager.swift */,
-				89FBB327289845E0001C5B95 /* OfficeRequestModel.swift */,
-				89FBB32928984604001C5B95 /* OfficeResponseModel.swift */,
+				89FBB32928984604001C5B95 /* Request&ResponseModel.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -354,6 +369,10 @@
 			dependencies = (
 			);
 			name = Officer;
+			packageProductDependencies = (
+				89DF91A9289BD2C20053B86B /* SDWebImage */,
+				89DF91AB289BD2C20053B86B /* SDWebImageMapKit */,
+			);
 			productName = Officer;
 			productReference = 8909FAE028735A0700F84927 /* Officer.app */;
 			productType = "com.apple.product-type.application";
@@ -426,6 +445,9 @@
 				Base,
 			);
 			mainGroup = 8909FAD728735A0700F84927;
+			packageReferences = (
+				89DF91A8289BD2C20053B86B /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 8909FAE128735A0700F84927 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -449,6 +471,7 @@
 				8909FAED28735A0A00F84927 /* Assets.xcassets in Resources */,
 				89FBB32228983C02001C5B95 /* OfficeCell.xib in Resources */,
 				8909FAEB28735A0700F84927 /* Main.storyboard in Resources */,
+				89D13EFB289BF993008E2238 /* DetailsCell.xib in Resources */,
 				894D64062898F403001CF252 /* Register.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,14 +499,14 @@
 			files = (
 				894D63EA2898EFE1001CF252 /* DetailsModels.swift in Sources */,
 				89FBB31A28983BE2001C5B95 /* OfficeInteractor.swift in Sources */,
-				89FBB32A28984604001C5B95 /* OfficeResponseModel.swift in Sources */,
+				89FBB32A28984604001C5B95 /* Request&ResponseModel.swift in Sources */,
 				89FBB31828983BE2001C5B95 /* OfficeViewController.swift in Sources */,
 				8997ADF5288AD6A5003D642F /* CLTypingLabel.swift in Sources */,
 				894D64092898F403001CF252 /* RegisterInteractor.swift in Sources */,
 				894D63FA2898F3B3001CF252 /* LoginWorker.swift in Sources */,
+				89D13EFA289BF993008E2238 /* DetailsCell.swift in Sources */,
 				8909FAE828735A0700F84927 /* WelcomeViewController.swift in Sources */,
 				8909FAE428735A0700F84927 /* AppDelegate.swift in Sources */,
-				89FBB328289845E0001C5B95 /* OfficeRequestModel.swift in Sources */,
 				89FBB31928983BE2001C5B95 /* OfficePresenter.swift in Sources */,
 				8909FAE628735A0700F84927 /* SceneDelegate.swift in Sources */,
 				894D640C2898F403001CF252 /* RegisterRouter.swift in Sources */,
@@ -1140,6 +1163,30 @@
 			defaultConfigurationName = ProductionRelease;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		89DF91A8289BD2C20053B86B /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = exactVersion;
+				version = 5.9.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		89DF91A9289BD2C20053B86B /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89DF91A8289BD2C20053B86B /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		89DF91AB289BD2C20053B86B /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89DF91A8289BD2C20053B86B /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8909FAD828735A0700F84927 /* Project object */;
 }

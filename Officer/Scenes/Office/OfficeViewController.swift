@@ -51,7 +51,7 @@ final class OfficeViewController: UIViewController {
     
     private func setup() {
         let viewController = self
-        let interactor = OfficeInteractor()
+        let interactor = OfficeInteractor(worker: OfficeWorker())
         let presenter = OfficePresenter()
         let router = OfficeRouter()
         viewController.interactor = interactor
@@ -64,6 +64,8 @@ final class OfficeViewController: UIViewController {
 }
 
 
+
+//MARK: - TableView Delegate & Datasource
 extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,9 +81,14 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        router?.routeToDetails(index: indexPath.item)
+    }
+    
 }
 
 
+//MARK: - Display Logic
 extension OfficeViewController: OfficeDisplayLogic {
     //5
     func displayOfficesList(viewModel: Office.Fetch.ViewModel) {
