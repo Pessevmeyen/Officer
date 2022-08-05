@@ -8,23 +8,21 @@
 import Foundation
 
 protocol DetailsBusinessLogic: AnyObject {
-    func fetchDetails()
+    func fetchDetails(request: Details.Fetch.Request)
 }
 
 protocol DetailsDataStore: AnyObject {
-    var offices: OfficeData? { get set }
+    var officeData: OfficeData? { get set }
 }
 
 final class DetailsInteractor: DetailsBusinessLogic, DetailsDataStore {
     
-    var offices: OfficeData? //Request&Response modeldeki Modelimizin kendisi.
-    
-    
     var presenter: DetailsPresentationLogic?
     var worker: DetailsWorkingLogic = DetailsWorker()
+    var officeData: OfficeData? //Request&Response modeldeki Modelimizin kendisi.
     
-    func fetchDetails() {
-        print(offices)
+    func fetchDetails(request: Details.Fetch.Request) {
+        self.presenter?.presentDetails(response: .init(officeDetail: officeData))
     }
     
     

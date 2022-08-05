@@ -41,11 +41,11 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func registerClicked(_ sender: UIButton) {
-        goToDestinationVC(storyboardName: C.registerStoryboardName, storyboardID: C.registerStoryBoardID)
+        goToDestinationVC(storyboardName: C.registerStoryboardName, storyboardID: C.registerStoryboardIdentifier)
     }
     
     @IBAction func loginClicked(_ sender: UIButton) {
-        goToDestinationVC(storyboardName: C.loginStoryboardName, storyboardID: C.loginStoryboardID)
+        goToDestinationVC(storyboardName: C.loginStoryboardName, storyboardID: C.loginStoryboardIdentifier)
     }
     
     

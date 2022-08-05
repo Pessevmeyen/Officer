@@ -10,14 +10,37 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DetailsCell" id="gTV-IL-0wX" customClass="DetailsCell" customModule="Officer" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="163" height="144"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="163" height="144"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ahz-TR-zOW">
+                        <rect key="frame" x="0.0" y="0.0" width="163" height="144"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <point key="canvasLocation" x="132" y="109"/>
+            <constraints>
+                <constraint firstItem="ahz-TR-zOW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1Eh-MJ-XzI"/>
+                <constraint firstAttribute="trailing" secondItem="ahz-TR-zOW" secondAttribute="trailing" id="5kp-Ke-7J0"/>
+                <constraint firstItem="ahz-TR-zOW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="W9w-ep-4EP"/>
+                <constraint firstAttribute="bottom" secondItem="ahz-TR-zOW" secondAttribute="bottom" id="d7y-tr-a4U"/>
+            </constraints>
+            <size key="customSize" width="163" height="144"/>
+            <connections>
+                <outlet property="imageView" destination="ahz-TR-zOW" id="ghK-Ns-hWQ"/>
+            </connections>
+            <point key="canvasLocation" x="213.768115942029" y="139.28571428571428"/>
         </collectionViewCell>
     </objects>
 </document>

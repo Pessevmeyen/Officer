@@ -24,7 +24,7 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
         self.worker = worker
     }
     
-    var offices: Offices?
+    var offices: Offices? //Workerdan gelen response verisi buraya aktarılıyor.
     
     //2
     func fetchOfficesList() { //interactor da worker'a diyor, office listesini getir.

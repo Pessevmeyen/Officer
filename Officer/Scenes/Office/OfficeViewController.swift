@@ -44,7 +44,7 @@ final class OfficeViewController: UIViewController {
         
         //1
         interactor?.fetchOfficesList() //View controller interactor'a diyor ki, office listesini çek.
-        tableView.register(UINib(nibName: C.officeNibName, bundle: .main), forCellReuseIdentifier: C.officeCellID)
+        tableView.register(UINib(nibName: C.officeNibName, bundle: .main), forCellReuseIdentifier: C.officeCellIdentifier)
     }
     
     // MARK: Setup
@@ -68,21 +68,27 @@ final class OfficeViewController: UIViewController {
 //MARK: - TableView Delegate & Datasource
 extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "OFFICES"
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.officesList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: C.officeCellID, for: indexPath) as? OfficeCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: C.officeCellIdentifier, for: indexPath) as? OfficeCell else {
             fatalError("An Error Occured while dequeuering reusable cell")
         }
-        guard let model = viewModel?.officesList[indexPath.row] else {fatalError("Not able to display model")}
+        guard let model = viewModel?.officesList[indexPath.row] else {
+            fatalError("Not able to display model")
+        }
         cell.configureCell(viewModel: model)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        router?.routeToDetails(index: indexPath.item)
+        router?.routeToDetails(index: indexPath.item) //Seçilen cell'e ne olacağını yazıyoruz. Burada önce seçilen cell'in datasını route'a gönderiyoruz.
     }
     
 }

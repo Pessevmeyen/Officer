@@ -10,21 +10,28 @@ import Foundation
 // swiftlint:disable nesting
 enum Details {
     
-    enum Case {
+    enum Fetch {
         
         struct Request {
             
         }
         
         struct Response {
-            
+            let officeDetail: OfficeData?
         }
         
         struct ViewModel {
+
+                let id: Int?
+                let image: String?
+                let images: [String]?
+                let name: String?
+                let address: String?
+                let capacity: String?
+                let rooms: String?
+                let space: String?
             
         }
-        
     }
-    
 }
 // swiftlint:enable nesting

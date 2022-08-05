@@ -43,8 +43,6 @@ struct NetworkManager { //Class mı Struct mı olacak?
             return
         }
         
-        //guard let url = URL(string: "https://officer-ad6ef-default-rtdb.firebaseio.com/offices.json") else { return }
-        
         session.dataTask(with: url) { data, response, error in
             if let error = error {
                 print(error)
@@ -60,9 +58,11 @@ struct NetworkManager { //Class mı Struct mı olacak?
             if let response = response as? HTTPURLResponse, response.statusCode == 200 {
                 do {
                     let apiResponse = try self.decoder.decode(model.self, from: data)
-                    completion(.success(apiResponse))
-                    print(apiResponse)
-                    print(response)
+                    DispatchQueue.main.async { // Verileri çekerken main threadde çekersek, veriler çoğaldığında UI kitlenmez.
+                        completion(.success(apiResponse))
+                        print(apiResponse)
+                        print(response)
+                    }
                 } catch {
                     completion(.failure(error))
                     print(error.localizedDescription)

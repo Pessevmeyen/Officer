@@ -17,19 +17,27 @@ struct C {
     
     static let underlineColor = "underlinecolor"
     
-    static let loginStoryboardID = "LoginViewController"
-    static let registerStoryBoardID = "RegisterViewController"
-    static let officeStoryboardID = "OfficeViewController"
-    static let detailsStoryboardID = "DetailsViewController"
-    
-    static let officeStoryboardName = "Office"
-    static let registerStoryboardName = "Register"
+    //MARK: - Login Storyboard
+    static let loginStoryboardIdentifier = "LoginViewController"
     static let loginStoryboardName = "Login"
-    static let detailsStoryboardName = "Details"
     
-    static let officeCellID = "OfficeCell"
+    //MARK: - Register Storyboard
+    static let registerStoryboardName = "Register"
+    static let registerStoryboardIdentifier = "RegisterViewController"
+    
+    //MARK: - Office Storyboard
+    static let officeStoryboardName = "Office"
+    static let officeStoryboardIdentifier = "OfficeViewController"
+    
+    //MARK: - Office Cell
+    static let officeCellIdentifier = "OfficeCell"
     static let officeNibName = "OfficeCell"
     
-    static let detailsCellID = "DetailsCell"
+    //MARK: - Details Storyboard
+    static let detailsStoryboardIdentifier = "DetailsViewController"
+    static let detailsStoryboardName = "Details"
+    
+    //MARK: - Details Cell Storyboard
+    static let detailsCellReuseIdentifier = "DetailsCell"
     static let detailsNibName = "DetailsCell"
 }

@@ -55,7 +55,7 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction func logInClicked(_ sender: UIButton) {
-        goToDestinationVC(storyboardName: C.officeStoryboardName, storyboardID: C.officeStoryboardID)
+        goToDestinationVC(storyboardName: C.officeStoryboardName, storyboardID: C.officeStoryboardIdentifier)
     }
 }
 

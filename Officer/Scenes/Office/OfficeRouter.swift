@@ -24,7 +24,7 @@ final class OfficeRouter: OfficeRoutingLogic, OfficeDataPassing {
     func routeToDetails(index: Int) {
         let storyboard = UIStoryboard(name: "Details", bundle: nil)
         let destVC: DetailsViewController = storyboard.instantiateViewController(identifier: "DetailsViewController")
-        destVC.router?.dataStore?.offices = dataStore?.offices?[index] //Burada hangi index seçildiyde, o index'in datası aktarılıyor. Detailsdaki offices'e.
+        destVC.router?.dataStore?.officeData = dataStore?.offices?[index] //Burada hangi index seçildiyde, o index'in datası aktarılıyor. Detailsdaki offices'e.
         self.viewController?.navigationController?.pushViewController(destVC, animated: true)
     }
 }
