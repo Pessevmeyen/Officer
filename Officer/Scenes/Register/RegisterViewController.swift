@@ -56,7 +56,7 @@ final class RegisterViewController: UIViewController {
     }
     
     @IBAction func signInClicked(_ sender: UIButton) {
-        goToDestinationVC(storyboardName: C.officeStoryboardName, storyboardID: C.officeStoryboardIdentifier)
+        goToDestinationVC(storyboardName: Constants.officeStoryboardName, storyboardID: Constants.officeStoryboardIdentifier)
     }
 }
 

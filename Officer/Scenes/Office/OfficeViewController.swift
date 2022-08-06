@@ -44,7 +44,7 @@ final class OfficeViewController: UIViewController {
         
         //1
         interactor?.fetchOfficesList() //View controller interactor'a diyor ki, office listesini çek.
-        tableView.register(UINib(nibName: C.officeNibName, bundle: .main), forCellReuseIdentifier: C.officeCellIdentifier)
+        tableView.register(UINib(nibName: Constants.officeNibName, bundle: .main), forCellReuseIdentifier: Constants.officeCellIdentifier)
     }
     
     // MARK: Setup
@@ -77,7 +77,7 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: C.officeCellIdentifier, for: indexPath) as? OfficeCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.officeCellIdentifier, for: indexPath) as? OfficeCell else {
             fatalError("An Error Occured while dequeuering reusable cell")
         }
         guard let model = viewModel?.officesList[indexPath.row] else {

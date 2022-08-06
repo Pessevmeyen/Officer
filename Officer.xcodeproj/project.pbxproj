@@ -41,6 +41,13 @@
 		896177E4288B43D90078E299 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896177E3288B43D90078E299 /* CustomTextField.swift */; };
 		8997ADF5288AD6A5003D642F /* CLTypingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */; };
 		8997ADF7288AD73E003D642F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF6288AD73E003D642F /* Constants.swift */; };
+		89BC654B289F150100AFEE36 /* FullScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89BC6544289F150100AFEE36 /* FullScreen.storyboard */; };
+		89BC654C289F150100AFEE36 /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC6545289F150100AFEE36 /* FullScreenViewController.swift */; };
+		89BC654D289F150100AFEE36 /* FullScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC6546289F150100AFEE36 /* FullScreenPresenter.swift */; };
+		89BC654E289F150100AFEE36 /* FullScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC6547289F150100AFEE36 /* FullScreenInteractor.swift */; };
+		89BC654F289F150100AFEE36 /* FullScreenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC6548289F150100AFEE36 /* FullScreenModels.swift */; };
+		89BC6550289F150100AFEE36 /* FullScreenWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC6549289F150100AFEE36 /* FullScreenWorker.swift */; };
+		89BC6551289F150100AFEE36 /* FullScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC654A289F150100AFEE36 /* FullScreenRouter.swift */; };
 		89D13EFA289BF993008E2238 /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D13EF8289BF993008E2238 /* DetailsCell.swift */; };
 		89D13EFB289BF993008E2238 /* DetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89D13EF9289BF993008E2238 /* DetailsCell.xib */; };
 		89DF91AA289BD2C20053B86B /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 89DF91A9289BD2C20053B86B /* SDWebImage */; };
@@ -114,6 +121,13 @@
 		896177E3288B43D90078E299 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLTypingLabel.swift; sourceTree = "<group>"; };
 		8997ADF6288AD73E003D642F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		89BC6544289F150100AFEE36 /* FullScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullScreen.storyboard; sourceTree = "<group>"; };
+		89BC6545289F150100AFEE36 /* FullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
+		89BC6546289F150100AFEE36 /* FullScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenPresenter.swift; sourceTree = "<group>"; };
+		89BC6547289F150100AFEE36 /* FullScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenInteractor.swift; sourceTree = "<group>"; };
+		89BC6548289F150100AFEE36 /* FullScreenModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenModels.swift; sourceTree = "<group>"; };
+		89BC6549289F150100AFEE36 /* FullScreenWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenWorker.swift; sourceTree = "<group>"; };
+		89BC654A289F150100AFEE36 /* FullScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenRouter.swift; sourceTree = "<group>"; };
 		89D13EF8289BF993008E2238 /* DetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCell.swift; sourceTree = "<group>"; };
 		89D13EF9289BF993008E2238 /* DetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCell.xib; sourceTree = "<group>"; };
 		89F40B812875F2960035C6F4 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
@@ -297,6 +311,20 @@
 			path = CustomObjects;
 			sourceTree = "<group>";
 		};
+		89BC6552289F151000AFEE36 /* FullScreen */ = {
+			isa = PBXGroup;
+			children = (
+				89BC6544289F150100AFEE36 /* FullScreen.storyboard */,
+				89BC6545289F150100AFEE36 /* FullScreenViewController.swift */,
+				89BC6547289F150100AFEE36 /* FullScreenInteractor.swift */,
+				89BC6546289F150100AFEE36 /* FullScreenPresenter.swift */,
+				89BC6548289F150100AFEE36 /* FullScreenModels.swift */,
+				89BC6549289F150100AFEE36 /* FullScreenWorker.swift */,
+				89BC654A289F150100AFEE36 /* FullScreenRouter.swift */,
+			);
+			path = FullScreen;
+			sourceTree = "<group>";
+		};
 		89D13EF7289BF961008E2238 /* DetailsCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +346,7 @@
 		89FBB2C428980B7F001C5B95 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				89BC6552289F151000AFEE36 /* FullScreen */,
 				894D63ED2898EFEA001CF252 /* Details */,
 				894D63FC2898F3C5001CF252 /* Office */,
 				894D63FE2898F3F2001CF252 /* Register */,
@@ -465,6 +494,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89FBB31728983BE2001C5B95 /* Office.storyboard in Resources */,
+				89BC654B289F150100AFEE36 /* FullScreen.storyboard in Resources */,
 				894D63E62898EFE1001CF252 /* Details.storyboard in Resources */,
 				894D63F52898F3B3001CF252 /* Login.storyboard in Resources */,
 				8909FAF028735A0A00F84927 /* LaunchScreen.storyboard in Resources */,
@@ -498,6 +528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				894D63EA2898EFE1001CF252 /* DetailsModels.swift in Sources */,
+				89BC654F289F150100AFEE36 /* FullScreenModels.swift in Sources */,
 				89FBB31A28983BE2001C5B95 /* OfficeInteractor.swift in Sources */,
 				89FBB32A28984604001C5B95 /* Request&ResponseModel.swift in Sources */,
 				89FBB31828983BE2001C5B95 /* OfficeViewController.swift in Sources */,
@@ -513,6 +544,7 @@
 				894D63E92898EFE1001CF252 /* DetailsInteractor.swift in Sources */,
 				89FBB32128983C02001C5B95 /* OfficeCell.swift in Sources */,
 				894D63F72898F3B3001CF252 /* LoginPresenter.swift in Sources */,
+				89BC654D289F150100AFEE36 /* FullScreenPresenter.swift in Sources */,
 				89FBB31D28983BE2001C5B95 /* OfficeRouter.swift in Sources */,
 				896177E4288B43D90078E299 /* CustomTextField.swift in Sources */,
 				894D63F92898F3B3001CF252 /* LoginModels.swift in Sources */,
@@ -520,17 +552,21 @@
 				891632D8288EAD5A0048644A /* Extensions.swift in Sources */,
 				894D63F82898F3B3001CF252 /* LoginInteractor.swift in Sources */,
 				8997ADF7288AD73E003D642F /* Constants.swift in Sources */,
+				89BC654C289F150100AFEE36 /* FullScreenViewController.swift in Sources */,
 				89FBB31C28983BE2001C5B95 /* OfficeWorker.swift in Sources */,
 				89FBB31B28983BE2001C5B95 /* OfficeModels.swift in Sources */,
 				894D63E82898EFE1001CF252 /* DetailsPresenter.swift in Sources */,
 				894D63FB2898F3B3001CF252 /* LoginRouter.swift in Sources */,
+				89BC6551289F150100AFEE36 /* FullScreenRouter.swift in Sources */,
 				894D64082898F403001CF252 /* RegisterPresenter.swift in Sources */,
 				89FBB326289845CE001C5B95 /* NetworkManager.swift in Sources */,
 				894D64072898F403001CF252 /* RegisterViewController.swift in Sources */,
 				894D63EB2898EFE1001CF252 /* DetailsWorker.swift in Sources */,
 				894D640A2898F403001CF252 /* RegisterModels.swift in Sources */,
 				894D63EC2898EFE1001CF252 /* DetailsRouter.swift in Sources */,
+				89BC654E289F150100AFEE36 /* FullScreenInteractor.swift in Sources */,
 				894D63F62898F3B3001CF252 /* LoginViewController.swift in Sources */,
+				89BC6550289F150100AFEE36 /* FullScreenWorker.swift in Sources */,
 				894D63E72898EFE1001CF252 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -41,18 +41,18 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func registerClicked(_ sender: UIButton) {
-        goToDestinationVC(storyboardName: C.registerStoryboardName, storyboardID: C.registerStoryboardIdentifier)
+        goToDestinationVC(storyboardName: Constants.registerStoryboardName, storyboardID: Constants.registerStoryboardIdentifier)
     }
     
     @IBAction func loginClicked(_ sender: UIButton) {
-        goToDestinationVC(storyboardName: C.loginStoryboardName, storyboardID: C.loginStoryboardIdentifier)
+        goToDestinationVC(storyboardName: Constants.loginStoryboardName, storyboardID: Constants.loginStoryboardIdentifier)
     }
     
     
     //MARK: - All properties that UI is loaded first time.
     func setupUI() {
         
-        appNameLabel.text = C.appName
+        appNameLabel.text = Constants.appName
         
         //MARK: Register Button Attributes
         registerButton.layer.cornerRadius = 35

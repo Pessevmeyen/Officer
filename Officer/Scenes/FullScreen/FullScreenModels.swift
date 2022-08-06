@@ -1,14 +1,14 @@
 //
-//  DetailsModels.swift
+//  FullScreenModels.swift
 //  Officer
 //
-//  Created by Furkan Eruçar on 2.08.2022.
+//  Created by Furkan Eruçar on 7.08.2022.
 //
 
 import Foundation
 
 // swiftlint:disable nesting
-enum Details {
+enum FullScreen {
     
     enum Fetch {
         
@@ -22,15 +22,8 @@ enum Details {
         
         struct ViewModel {
 
-            let id: Int?
-            let image: String?
             let images: [String]?
-            let name: String?
-            let address: String?
-            let capacity: String?
-            let rooms: String?
-            let space: String?
-            
+           
         }
     }
 }

@@ -181,7 +181,7 @@
             <size key="intrinsicContentSize" width="317" height="61"/>
         </designable>
     </designables>
-    <color key="tintColor" systemColor="systemBackgroundColor"/>
+    <color key="tintColor" systemColor="labelColor"/>
     <resources>
         <image name="mainbackground" width="900" height="1600"/>
         <namedColor name="appnamecolor">
@@ -199,6 +199,9 @@
         <namedColor name="registerbuttontextcolor">
             <color red="0.96100002527236938" green="0.94099998474121094" blue="0.73299998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

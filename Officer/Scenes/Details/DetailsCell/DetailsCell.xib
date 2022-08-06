@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,31 +17,52 @@
                 <rect key="frame" x="0.0" y="0.0" width="163" height="144"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ahz-TR-zOW">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hev-s8-ep4">
                         <rect key="frame" x="0.0" y="0.0" width="163" height="144"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="15"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <real key="value" value="1"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </imageView>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BDi-T3-fxj">
+                                <rect key="frame" x="8" y="0.0" width="147" height="144"/>
+                                <gestureRecognizers/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="BDi-T3-fxj" secondAttribute="bottom" id="Lks-fB-wgk"/>
+                            <constraint firstItem="BDi-T3-fxj" firstAttribute="top" secondItem="hev-s8-ep4" secondAttribute="top" id="XU0-jY-DKj"/>
+                            <constraint firstItem="BDi-T3-fxj" firstAttribute="leading" secondItem="hev-s8-ep4" secondAttribute="leadingMargin" id="Z2u-Kh-lHF"/>
+                            <constraint firstItem="BDi-T3-fxj" firstAttribute="centerX" secondItem="hev-s8-ep4" secondAttribute="centerX" id="ZnG-S1-dkf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BDi-T3-fxj" secondAttribute="trailing" id="wdK-Xo-weN"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <gestureRecognizers/>
             <constraints>
-                <constraint firstItem="ahz-TR-zOW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1Eh-MJ-XzI"/>
-                <constraint firstAttribute="trailing" secondItem="ahz-TR-zOW" secondAttribute="trailing" id="5kp-Ke-7J0"/>
-                <constraint firstItem="ahz-TR-zOW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="W9w-ep-4EP"/>
-                <constraint firstAttribute="bottom" secondItem="ahz-TR-zOW" secondAttribute="bottom" id="d7y-tr-a4U"/>
+                <constraint firstItem="hev-s8-ep4" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9Ib-pB-jsm"/>
+                <constraint firstAttribute="trailing" secondItem="hev-s8-ep4" secondAttribute="trailing" id="MIa-qZ-gKi"/>
+                <constraint firstItem="hev-s8-ep4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="XYr-kI-fYA"/>
+                <constraint firstAttribute="bottom" secondItem="hev-s8-ep4" secondAttribute="bottom" id="z3W-33-8og"/>
             </constraints>
             <size key="customSize" width="163" height="144"/>
             <connections>
-                <outlet property="imageView" destination="ahz-TR-zOW" id="ghK-Ns-hWQ"/>
+                <outlet property="imageView" destination="BDi-T3-fxj" id="H0r-fC-IJE"/>
+                <outlet property="view" destination="hev-s8-ep4" id="eeT-v2-t4w"/>
             </connections>
             <point key="canvasLocation" x="213.768115942029" y="139.28571428571428"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

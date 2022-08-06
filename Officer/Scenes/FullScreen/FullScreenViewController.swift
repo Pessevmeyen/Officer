@@ -1,24 +1,20 @@
 //
-//  LoginViewController.swift
+//  FullScreenViewController.swift
 //  Officer
 //
-//  Created by Furkan Eruçar on 2.08.2022.
+//  Created by Furkan Eruçar on 7.08.2022.
 //
 
 import UIKit
 
-protocol LoginDisplayLogic: AnyObject {
+protocol FullScreenDisplayLogic: AnyObject {
     
 }
 
-final class LoginViewController: UIViewController {
+final class FullScreenViewController: UIViewController {
     
-    var interactor: LoginBusinessLogic?
-    var router: (LoginRoutingLogic & LoginDataPassing)?
-    
-    @IBOutlet weak var emailTextField: CustomTextField!
-    @IBOutlet weak var passwordTextField: CustomTextField!
-    @IBOutlet weak var logInButton: UIButton!
+    var interactor: FullScreenBusinessLogic?
+    var router: (FullScreenRoutingLogic & FullScreenDataPassing)?
     
     // MARK: Object lifecycle
     
@@ -35,7 +31,7 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        hideKeyboardWhenTappedAround()
+        //interactor.fetchData()
         
     }
     
@@ -43,9 +39,9 @@ final class LoginViewController: UIViewController {
     
     private func setup() {
         let viewController = self
-        let interactor = LoginInteractor()
-        let presenter = LoginPresenter()
-        let router = LoginRouter()
+        let interactor = FullScreenInteractor()
+        let presenter = FullScreenPresenter()
+        let router = FullScreenRouter()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -53,12 +49,8 @@ final class LoginViewController: UIViewController {
         router.viewController = viewController
         router.dataStore = interactor
     }
-    
-    @IBAction func logInClicked(_ sender: UIButton) {
-        goToDestinationVC(storyboardName: Constants.officeStoryboardName, storyboardID: Constants.officeStoryboardIdentifier)
-    }
 }
 
-extension LoginViewController: LoginDisplayLogic {
+extension FullScreenViewController: FullScreenDisplayLogic {
     
 }

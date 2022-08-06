@@ -19,7 +19,7 @@ class CustomTextField: UITextField {
     fileprivate func customTextField() {
         let underlineView = UIView()
         underlineView.translatesAutoresizingMaskIntoConstraints = false
-        underlineView.backgroundColor = UIColor(named: C.underlineColor)
+        underlineView.backgroundColor = UIColor(named: Constants.underlineColor)
         addSubview(underlineView)
         
         NSLayoutConstraint.activate([
