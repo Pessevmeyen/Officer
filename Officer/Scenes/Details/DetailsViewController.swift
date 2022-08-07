@@ -46,6 +46,7 @@ final class DetailsViewController: UIViewController {
         setup()
     }
     
+    //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,10 +55,6 @@ final class DetailsViewController: UIViewController {
         setRightBarButtonItem(buttonImage: "gridlayoutimage") //Navigation bar'daki buttonu oluşturacak.
         
         interactor?.fetchDetails(request: Details.Fetch.Request())
-        
-        let pictureTap = UITapGestureRecognizer(target: self, action: #selector(DetailsViewController.imageTapped(_:)))
-        detailImageView?.addGestureRecognizer(pictureTap)
-        detailImageView?.isUserInteractionEnabled = true //also can be set via storyboard
   
     }
     
@@ -77,26 +74,7 @@ final class DetailsViewController: UIViewController {
         
     }
     
-    @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
-        let imageView = sender.view as! UIImageView
-        let newImageView = UIImageView(image: imageView.image)
-        newImageView.frame = UIScreen.main.bounds
-        newImageView.backgroundColor = .black
-        newImageView.contentMode = .scaleAspectFit
-        newImageView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-        newImageView.addGestureRecognizer(tap)
-        self.view.addSubview(newImageView)
-        self.navigationController?.isNavigationBarHidden = true
-        self.tabBarController?.tabBar.isHidden = true
-        print("detail içinde image tapped")
-    }
 
-    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
-        self.navigationController?.isNavigationBarHidden = false
-        self.tabBarController?.tabBar.isHidden = false
-        sender.view?.removeFromSuperview()
-    }
 
 
     
@@ -107,6 +85,8 @@ final class DetailsViewController: UIViewController {
         add.customView?.borderWidth = 1
         navigationItem.rightBarButtonItems = [add]
     }
+    
+    
     
     //MARK: Setting Collection View
     func setCollectionView() {
@@ -130,8 +110,13 @@ final class DetailsViewController: UIViewController {
         }
         
     }
-      
+
 }
+
+
+
+//MARK: Extensions
+
 
 
 //MARK: - Collection View Delegate and Data Source | Section Number, Number of Items, Cell for Item, Did Select Item
@@ -153,12 +138,13 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
         guard let model = self.viewModel else {
             return UICollectionViewCell()
         }
+        
         cell.configureCell(viewModel: model)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        router?.routeToFullScreen(index: indexPath.item)
+        router?.routeToFullScreen(index: indexPath.row) //????? row? item?
     }
 }
 
@@ -235,8 +221,8 @@ extension DetailsViewController {
     // burada grid layouta dönüşecek.
     func makeGridLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: (view.frame.size.width / 4) - 5, height: (view.frame.size.width / 4) - 10)
         layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: (view.frame.size.width / 4) - 5, height: (view.frame.size.width / 4) - 10)
         layout.minimumLineSpacing = 5
         layout.minimumInteritemSpacing = 1
         

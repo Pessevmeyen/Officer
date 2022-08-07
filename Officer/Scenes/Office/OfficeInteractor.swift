@@ -8,7 +8,7 @@
 import Foundation
 
 protocol OfficeBusinessLogic: AnyObject {
-    func fetchOfficesList()
+    func fetchOfficesList(request: Office.Fetch.Request)
 }
 
 protocol OfficeDataStore: AnyObject {
@@ -27,7 +27,7 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
     var offices: Offices? //Workerdan gelen response verisi buraya aktarılıyor.
     
     //2
-    func fetchOfficesList() { //interactor da worker'a diyor, office listesini getir.
+    func fetchOfficesList(request: Office.Fetch.Request) { //interactor da worker'a diyor, office listesini getir.
         worker.getOfficesList { [weak self] result in
             switch result {
             case .success(let response):

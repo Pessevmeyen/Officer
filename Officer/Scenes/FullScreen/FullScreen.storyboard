@@ -15,13 +15,35 @@
                     <view key="view" contentMode="scaleToFill" id="chM-je-gA4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vpA-D1-Hht">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XRc-Pu-vDb">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="XRc-Pu-vDb" firstAttribute="leading" secondItem="8pK-Il-ajt" secondAttribute="leading" id="3D9-1I-eWN"/>
+                                    <constraint firstItem="8pK-Il-ajt" firstAttribute="bottom" secondItem="XRc-Pu-vDb" secondAttribute="bottom" id="egX-BV-soE"/>
+                                    <constraint firstItem="XRc-Pu-vDb" firstAttribute="top" secondItem="8pK-Il-ajt" secondAttribute="top" id="oCO-ae-qjh"/>
+                                    <constraint firstItem="8pK-Il-ajt" firstAttribute="trailing" secondItem="XRc-Pu-vDb" secondAttribute="trailing" id="s9n-Jj-7cN"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="HM8-Jb-0oF"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="8pK-Il-ajt"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="FullScreenImageView" destination="XRc-Pu-vDb" id="pGS-hj-630"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZo-gs-e4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="107" y="28"/>
+            <point key="canvasLocation" x="105.79710144927537" y="27.455357142857142"/>
         </scene>
     </scenes>
     <resources>

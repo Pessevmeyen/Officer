@@ -43,7 +43,7 @@ final class OfficeViewController: UIViewController {
         navigationItem.backBarButtonItem?.style = .done
         
         //1
-        interactor?.fetchOfficesList() //View controller interactor'a diyor ki, office listesini çek.
+        interactor?.fetchOfficesList(request: Office.Fetch.Request()) //View controller interactor'a diyor ki, office listesini çek.
         tableView.register(UINib(nibName: Constants.officeNibName, bundle: .main), forCellReuseIdentifier: Constants.officeCellIdentifier)
     }
     
@@ -88,7 +88,9 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        router?.routeToDetails(index: indexPath.item) //Seçilen cell'e ne olacağını yazıyoruz. Burada önce seçilen cell'in datasını route'a gönderiyoruz.
+        router?.routeToDetails(index: indexPath.row) //Seçilen cell'e ne olacağını yazıyoruz. Burada önce seçilen cell'in datasını route'a gönderiyoruz. row? item?
+        print(indexPath.row)
+        print(indexPath.item)
     }
     
 }

@@ -13,7 +13,7 @@ enum Office {
     enum Fetch {
         
         struct Request {//interacter'ın ihtiyacı olan request
-            let result: String
+            //let result: String
         }
         
         struct Response { //presenter'ın ihtiyacı olan response

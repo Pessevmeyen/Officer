@@ -8,11 +8,11 @@
 import Foundation
 
 protocol FullScreenBusinessLogic: AnyObject {
-    func fetchData()
+    func fetchData(request: FullScreen.Fetch.Request)
 }
 
 protocol FullScreenDataStore: AnyObject {
-    var fullScreenDataStore: Offices? { get set }
+    var fullScreenData: OfficeData? { get set }
 }
 
 final class FullScreenInteractor: FullScreenBusinessLogic, FullScreenDataStore {
@@ -20,10 +20,10 @@ final class FullScreenInteractor: FullScreenBusinessLogic, FullScreenDataStore {
     var presenter: FullScreenPresentationLogic?
     var worker: FullScreenWorkingLogic = FullScreenWorker()
     
-    var fullScreenDataStore: Offices?
+    var fullScreenData: OfficeData?
     
-    func fetchData() {
-        
+    func fetchData(request: FullScreen.Fetch.Request) {
+        self.presenter?.presentFullScreen(response: .init(officeDetail: fullScreenData))
     }
     
 }

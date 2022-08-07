@@ -20,12 +20,15 @@ final class DetailsRouter: DetailsRoutingLogic, DetailsDataPassing {
     
     weak var viewController: DetailsViewController?
     var dataStore: DetailsDataStore?
+    var officeData: [OfficeData]?
     
     func routeToFullScreen(index: Int) {
         let storyboard = UIStoryboard(name: "FullScreen", bundle: nil)
         let destVC: FullScreenViewController = storyboard.instantiateViewController(identifier: "FullScreenViewController")
-        //destVC.router?.fullScreenDataStore?.fullScreenDataStore = dataStore?.officeData?[index] //Burada hangi index seçildiyde, o index'in datası aktarılıyor. Detailsdaki offices'e.
+        destVC.router?.dataStore?.fullScreenData = dataStore?.officeData //Burada hangi index seçildiyde, o index'in datası aktarılıyor. Detailsdaki offices'e.
+        destVC.modalPresentationStyle = .popover //Navigation bağlı olduğu için popover yapamıyor
         self.viewController?.navigationController?.pushViewController(destVC, animated: true)
     }
     
 }
+

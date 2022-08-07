@@ -8,7 +8,7 @@
 import Foundation
 
 protocol OfficeWorkingLogic: AnyObject {
-    func getOfficesList(_ completion: @escaping ((Result<Offices, Error>) -> Void))
+    func getOfficesList(_ completion: @escaping ((Result<Offices, Error>) -> Void)) //Workerda çağırmamız gereken func bu, parametresiyle birlikte.
 }
 
 final class OfficeWorker: OfficeWorkingLogic {

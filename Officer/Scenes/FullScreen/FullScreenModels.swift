@@ -22,7 +22,7 @@ enum FullScreen {
         
         struct ViewModel {
 
-            let images: [String]?
+            let images: [String]
            
         }
     }
