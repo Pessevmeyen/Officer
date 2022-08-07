@@ -11,14 +11,11 @@ import SDWebImage
 class DetailsCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var view: UIView!
-    //var detailsViewController = DetailsViewController()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        
+    
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
         imageView.addGestureRecognizer(pictureTap)
         imageView.isUserInteractionEnabled = true

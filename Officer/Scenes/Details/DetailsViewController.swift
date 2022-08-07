@@ -15,7 +15,11 @@ final class DetailsViewController: UIViewController {
     
     var interactor: DetailsBusinessLogic?
     var router: (DetailsRoutingLogic & DetailsDataPassing)?
-    var viewModel: Details.Fetch.ViewModel?
+    var viewModel: Details.Fetch.ViewModel? {
+        didSet { //Details'a ilk girişte viewModel'ın içine data girene kadar title nil gelecek, o yüzden didSet'e aktardık ki, viewModel dolduğu anda tetiklensin.
+            self.title = viewModel?.name ?? ""
+        }
+    }
     
     var detailsID: Int?
     var detailImageView = DetailsCell().imageView
@@ -85,6 +89,7 @@ final class DetailsViewController: UIViewController {
         self.view.addSubview(newImageView)
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
+        print("detail içinde image tapped")
     }
 
     @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
@@ -115,10 +120,12 @@ final class DetailsViewController: UIViewController {
         if isGridLayout {
             collectionView.setCollectionViewLayout(createLayout(), animated: true)
             setRightBarButtonItem(buttonImage: "gridlayoutimage")
+            title = viewModel?.name
             isGridLayout = false
         } else {
             collectionView.setCollectionViewLayout(makeGridLayout(), animated: true) //Custom yaptığımız Collection View layout'u oluşturacak.
             setRightBarButtonItem(buttonImage: "listinglayoutimage")
+            title = "All Photos"
             isGridLayout = true
         }
         
@@ -133,7 +140,6 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.images?.count ?? 0
@@ -162,17 +168,17 @@ extension DetailsViewController: UICollectionViewDelegateFlowLayout {
     
     // Her bir sectionda sağdan soldan yukarıdan aşağıdan ne kadar boşluk istediği.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 5)
+        return UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
     }
     
     //
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //let gridLayout = collectionViewLayout as? UICollectionViewFlowLayout
-        //let heightPerItem = collectionView.frame.width / 4 //- (gridLayout?.minimumInteritemSpacing ?? CGFloat())
-        //let widthPerItem = collectionView.frame.width / 3
-        return CGSize(width: 101, height: 85)
-        //841x445
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        //let gridLayout = collectionViewLayout as? UICollectionViewFlowLayout
+//        //let heightPerItem = collectionView.frame.width / 4 //- (gridLayout?.minimumInteritemSpacing ?? CGFloat())
+//        //let widthPerItem = collectionView.frame.width / 3
+//        return CGSize(width: (view.frame.size.width / 3) - 3, height: (view.frame.size.height / 3) - 3)
+//        //841x445
+//    }
     
     
 }
@@ -183,7 +189,7 @@ extension DetailsViewController {
     func createLayout() -> UICollectionViewLayout {
         UICollectionViewCompositionalLayout { sectionIndex, _ in
             if sectionIndex == 0 {
-                return self.makeVerticalLayout()
+                return self.makeHorizontalLayout()
             } else {
                 return self.makeHorizontalLayout()
             }
@@ -218,9 +224,9 @@ extension DetailsViewController {
         item.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .estimated(300)) //Kullanıcı kaydıracağını anlasın diye.
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 10, bottom: 0, trailing: 10)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
         //section.orthogonalScrollingBehavior = .groupPagingCentered //Kaydırmanın olduğu yer
         return section
     }
@@ -229,9 +235,11 @@ extension DetailsViewController {
     // burada grid layouta dönüşecek.
     func makeGridLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: (view.frame.size.width / 4) - 5, height: (view.frame.size.width / 4) - 10)
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 15
-        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 5
+        layout.minimumInteritemSpacing = 1
+        
         return layout
     }
 }
