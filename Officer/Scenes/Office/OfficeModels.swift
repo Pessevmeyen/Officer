@@ -17,12 +17,12 @@ enum Office {
         }
         
         struct Response { //presenter'ın ihtiyacı olan response
-            var officesList: [OfficeData]
+            var officeResponse: [OfficeData]
         }
         
         struct ViewModel { //Neyi göstereceksek. ViewController'ın ihtiyacı olan viewModel
             
-            let officesList: [Office.Fetch.ViewModel.OfficeModel]
+            let officesListViewModel: [Office.Fetch.ViewModel.OfficeModel]
             
             struct OfficeModel {
                 let id: Int?

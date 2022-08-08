@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="286" width="414" height="250"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OfficerDown🌴" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="B5t-wQ-cnF" customClass="CLTypingLabel" customModule="Officer" customModuleProvider="target">
-                                                <rect key="frame" x="48.5" y="94.5" width="317" height="61"/>
+                                                <rect key="frame" x="48.5" y="95" width="317" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
                                                 <color key="textColor" name="appnamecolor"/>
                                                 <nil key="highlightedColor"/>

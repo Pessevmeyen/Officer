@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol OfficePresentationLogic: AnyObject {
-    func presentOffices(response: Office.Fetch.Response)
+    func presentRespondedData(response: Office.Fetch.Response)
 }
 
 final class OfficePresenter: OfficePresentationLogic {
@@ -17,11 +17,11 @@ final class OfficePresenter: OfficePresentationLogic {
     weak var viewController: OfficeDisplayLogic?
     
     //4
-    func presentOffices(response: Office.Fetch.Response) {
+    func presentRespondedData(response: Office.Fetch.Response) {
         
         //worker'ın çektiği veriler, interactor ile buraya gelecek. Gelen veriler burada formatlanacak, şekil verilecek.
         var offices: [Office.Fetch.ViewModel.OfficeModel] = []
-        response.officesList.forEach { //Burada gelen array şeklinde veri parametrelerini, Model içindeki parametrelere aktarıyoruz.
+        response.officeResponse.forEach { //Burada gelen array şeklinde veri parametrelerini, Model içindeki parametrelere aktarıyoruz.
             offices.append(Office.Fetch.ViewModel.OfficeModel(id: $0.id,
                                                               image: $0.image,
                                                               images: $0.images,
@@ -33,6 +33,6 @@ final class OfficePresenter: OfficePresentationLogic {
             print(offices)
             
         }
-        viewController?.displayOfficesList(viewModel: Office.Fetch.ViewModel(officesList: offices)) // Presenter da view controller'a diyor, veriler hazır, office listesini gösterebilirsin
+        viewController?.displayViewModelData(viewModel: Office.Fetch.ViewModel(officesListViewModel: offices)) // Presenter da view controller'a diyor, veriler hazır, office listesini gösterebilirsin
     }
 }

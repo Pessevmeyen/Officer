@@ -8,7 +8,7 @@
 import UIKit
 
 protocol OfficeDisplayLogic: AnyObject {
-    func displayOfficesList(viewModel: Office.Fetch.ViewModel)
+    func displayViewModelData(viewModel: Office.Fetch.ViewModel)
 }
 
 final class OfficeViewController: UIViewController {
@@ -40,11 +40,23 @@ final class OfficeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.backBarButtonItem?.style = .done
+        self.navigationItem.setHidesBackButton(true, animated: true) //Back button'ı iptal ediyoruz ki giriş yaptıktan sonra tekrar giriş ekranına dönülmesin.
         
         //1
-        interactor?.fetchOfficesList(request: Office.Fetch.Request()) //View controller interactor'a diyor ki, office listesini çek.
+        interactor?.fetchData(request: Office.Fetch.Request()) //View controller interactor'a diyor ki, office listesini çek.
         tableView.register(UINib(nibName: Constants.officeNibName, bundle: .main), forCellReuseIdentifier: Constants.officeCellIdentifier)
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        title = Constants.appName
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        title = ""
     }
     
     // MARK: Setup
@@ -65,7 +77,7 @@ final class OfficeViewController: UIViewController {
 
 
 
-//MARK: - TableView Delegate & Datasource
+//MARK: - TableView Delegate & Datasource | Number Of Rows In Section, CellForRowAt, DidSelectRowAt
 extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -73,14 +85,14 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.officesList.count ?? 0
+        return viewModel?.officesListViewModel.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.officeCellIdentifier, for: indexPath) as? OfficeCell else {
             fatalError("An Error Occured while dequeuering reusable cell")
         }
-        guard let model = viewModel?.officesList[indexPath.row] else {
+        guard let model = viewModel?.officesListViewModel[indexPath.row] else {
             fatalError("Not able to display model")
         }
         cell.configureCell(viewModel: model)
@@ -99,10 +111,10 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: - Display Logic
 extension OfficeViewController: OfficeDisplayLogic {
     //5
-    func displayOfficesList(viewModel: Office.Fetch.ViewModel) {
+    func displayViewModelData(viewModel: Office.Fetch.ViewModel) {
         //Burada gelen office listesini gösteriyor.
+        self.viewModel = viewModel
         DispatchQueue.main.async {
-            self.viewModel = viewModel
             self.tableView.reloadData() //displaynews'a gelmeden reload
         }
     }

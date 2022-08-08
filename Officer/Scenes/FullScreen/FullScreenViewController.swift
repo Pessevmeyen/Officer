@@ -18,9 +18,12 @@ final class FullScreenViewController: UIViewController {
     var router: (FullScreenRoutingLogic & FullScreenDataPassing)?
     var FullScreenViewModel: FullScreen.Fetch.ViewModel?
     
-    @IBOutlet weak var FullScreenImageView: UIImageView!
-    // MARK: Object lifecycle
+    let imageView = UIImageView()
     
+    @IBOutlet weak var FullScreenImageView: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -34,8 +37,11 @@ final class FullScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        scrollView.frame = view.frame
+        
         interactor?.fetchData(request: FullScreen.Fetch.Request())
         configureFullScreen(viewModel: FullScreen.Fetch.ViewModel(images: FullScreenViewModel?.images ?? []))
+        
     }
     
     // MARK: Setup
@@ -54,19 +60,25 @@ final class FullScreenViewController: UIViewController {
     }
     
     func configureFullScreen(viewModel: FullScreen.Fetch.ViewModel) {
-        for singleImage in viewModel.images { //Array halinde gelen image datalarını tek tek ekrana bastırmak için for kullandık. forEach veya map'da olurdu.
-            //imageViewButton.sd_setImage(with: URL(string: singleImage), for: .normal)
-            FullScreenImageView.sd_setImage(with: URL(string: singleImage)) //Array'i direk gösteremeyiz çünkü.
-            print(singleImage)
+        for i in 0..<viewModel.images.count {
+            let imageView = UIImageView()
+            let x = self.view.frame.size.width * CGFloat(i)
+            let y = self.view.frame.size.width / 2
+            imageView.frame = CGRect(x: x, y: y, width: self.view.frame.width, height: self.view.frame.height / 3)
+            imageView.contentMode = .scaleAspectFit
+            imageView.sd_setImage(with: URL(string: viewModel.images[i]))
+            //imageView.borderWidth = 1
+                    
+            scrollView.contentSize.width = scrollView.frame.size.width * CGFloat(i + 1)
+            scrollView.addSubview(imageView)
         }
+        
     }
+  
 }
 
 extension FullScreenViewController: FullScreenDisplayLogic {
     func displayFullScreenData(viewModel: FullScreen.Fetch.ViewModel) {
         self.FullScreenViewModel = viewModel
-        
-        
     }
-    
 }

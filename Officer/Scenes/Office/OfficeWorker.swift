@@ -8,7 +8,7 @@
 import Foundation
 
 protocol OfficeWorkingLogic: AnyObject {
-    func getOfficesList(_ completion: @escaping ((Result<Offices, Error>) -> Void)) //Workerda çağırmamız gereken func bu, parametresiyle birlikte.
+    func getRequestedData(_ completion: @escaping ((Result<OfficeDataArray, Error>) -> Void)) //Workerda çağırmamız gereken func bu, parametresiyle birlikte.
 }
 
 final class OfficeWorker: OfficeWorkingLogic {
@@ -16,9 +16,9 @@ final class OfficeWorker: OfficeWorkingLogic {
     
     //worker'ın işi api'a gitmek
     //3
-    func getOfficesList(_ completion: @escaping ((Result<Offices, Error>) -> Void)) {
+    func getRequestedData(_ completion: @escaping ((Result<OfficeDataArray, Error>) -> Void)) {
         //worker burada verileri getirecek. Getirirse return ile interactor içindeki closure'a dönecek.
-        NetworkManager.shared.fetch(decode: Offices.self) { result in
+        NetworkManager.shared.fetch(decode: OfficeDataArray.self) { result in
             switch result {
             case .success(let response):
                 completion(.success(response))

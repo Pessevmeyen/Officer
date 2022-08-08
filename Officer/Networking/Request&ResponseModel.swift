@@ -27,4 +27,4 @@ struct Location: Codable {
     let latitude, longitude: Double?
 }
 
-typealias Offices = [OfficeData]
+typealias OfficeDataArray = [OfficeData]

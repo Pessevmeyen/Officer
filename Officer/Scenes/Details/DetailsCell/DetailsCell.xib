@@ -33,10 +33,10 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <gestureRecognizers/>
             <constraints>
-                <constraint firstItem="BDi-T3-fxj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="43a-rt-Q5z"/>
-                <constraint firstAttribute="trailing" secondItem="BDi-T3-fxj" secondAttribute="trailing" id="7b7-Ot-tUJ"/>
-                <constraint firstItem="BDi-T3-fxj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Vcs-cd-Buh"/>
-                <constraint firstAttribute="bottom" secondItem="BDi-T3-fxj" secondAttribute="bottom" id="vJ8-YC-Ac4"/>
+                <constraint firstAttribute="bottom" secondItem="BDi-T3-fxj" secondAttribute="bottom" id="aJ8-Gx-XPf"/>
+                <constraint firstItem="BDi-T3-fxj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="hKW-d3-ugT"/>
+                <constraint firstAttribute="trailing" secondItem="BDi-T3-fxj" secondAttribute="trailing" id="jiy-Za-OqN"/>
+                <constraint firstItem="BDi-T3-fxj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xL9-lr-xEB"/>
             </constraints>
             <size key="customSize" width="163" height="144"/>
             <connections>

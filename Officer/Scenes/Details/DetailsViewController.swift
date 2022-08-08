@@ -22,7 +22,6 @@ final class DetailsViewController: UIViewController {
     }
     
     var detailsID: Int?
-    var detailImageView = DetailsCell().imageView
     
     var isGridLayout = false
     
@@ -55,6 +54,8 @@ final class DetailsViewController: UIViewController {
         setRightBarButtonItem(buttonImage: "gridlayoutimage") //Navigation bar'daki buttonu oluşturacak.
         
         interactor?.fetchDetails(request: Details.Fetch.Request())
+        
+        self.navigationController?.navigationBar.topItem?.backButtonTitle = "Back"
   
     }
     
@@ -74,35 +75,31 @@ final class DetailsViewController: UIViewController {
         
     }
     
-
+    //MARK: Setting Custom Collection View
+    func setCollectionView() {
+        collectionView.register(UINib(nibName: Constants.detailsNibName, bundle: .main), forCellWithReuseIdentifier: Constants.detailsCellReuseIdentifier)
+        collectionView.setCollectionViewLayout(createLayout(), animated: true) //Custom yaptığımız Collection View layout'u oluşturacak.
+    }
 
 
     
     //MARK: Right Bar Button
-    func setRightBarButtonItem(buttonImage: String!) {
+    func setRightBarButtonItem(buttonImage: String) {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "All Photos", style: .plain, target: self, action: #selector(changeLayout)) //????
         let add = UIBarButtonItem.init(image: UIImage(named: buttonImage), style: .done, target: self, action: #selector(changeLayout))
         add.customView?.borderWidth = 1
         navigationItem.rightBarButtonItems = [add]
     }
     
-    
-    
-    //MARK: Setting Collection View
-    func setCollectionView() {
-        collectionView.register(UINib(nibName: Constants.detailsNibName, bundle: .main), forCellWithReuseIdentifier: Constants.detailsCellReuseIdentifier)
-        collectionView.setCollectionViewLayout(createLayout(), animated: true) //Custom yaptığımız Collection View layout'u oluşturacak.
-    }
-    
-    
+    //MARK: The Action When Right Bar Button Tapped
     @objc func changeLayout() {
         
-        if isGridLayout {
+        if isGridLayout { // If user on Listing View
             collectionView.setCollectionViewLayout(createLayout(), animated: true)
             setRightBarButtonItem(buttonImage: "gridlayoutimage")
             title = viewModel?.name
             isGridLayout = false
-        } else {
+        } else { // If user on Grid View
             collectionView.setCollectionViewLayout(makeGridLayout(), animated: true) //Custom yaptığımız Collection View layout'u oluşturacak.
             setRightBarButtonItem(buttonImage: "listinglayoutimage")
             title = "All Photos"
@@ -158,13 +155,13 @@ extension DetailsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     //
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        //let gridLayout = collectionViewLayout as? UICollectionViewFlowLayout
-//        //let heightPerItem = collectionView.frame.width / 4 //- (gridLayout?.minimumInteritemSpacing ?? CGFloat())
-//        //let widthPerItem = collectionView.frame.width / 3
-//        return CGSize(width: (view.frame.size.width / 3) - 3, height: (view.frame.size.height / 3) - 3)
-//        //841x445
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let gridLayout = collectionViewLayout as? UICollectionViewFlowLayout
+//        let heightPerItem = collectionView.frame.width / 4 - (gridLayout?.minimumInteritemSpacing ?? CGFloat())
+//        let widthPerItem = collectionView.frame.width / 3
+        return CGSize(width: (view.frame.size.width / 4) - 5, height: (view.frame.size.width / 4) - 10)
+        //841x445
+    } //Burayı kaldırdım çünkü ilk başta grid yapısında olmuyor, sonra grid yapısına çeviriyorum, duruma göre hangisini gösterecek func var bi yerde.
     
     
 }
@@ -174,22 +171,24 @@ extension DetailsViewController: UICollectionViewDelegateFlowLayout {
 extension DetailsViewController {
     func createLayout() -> UICollectionViewLayout {
         UICollectionViewCompositionalLayout { sectionIndex, _ in
-            if sectionIndex == 0 {
-                return self.makeHorizontalLayout()
-            } else {
-                return self.makeHorizontalLayout()
-            }
-            
+            return self.makeHorizontalLayout()
         }
     }
 }
 
+extension DetailsViewController {
+    func createVerticalLayout() -> UICollectionViewLayout {
+        UICollectionViewCompositionalLayout { sectionIndex, _ in
+            return self.makeVerticalLayout()
+        }
+    }
+}
 
 extension DetailsViewController {
     
 }
 
-//MARK: - Collection View Horizontal ve Vertical Swiping Setting
+//MARK: - Collection View Vertical, Horizontal Swiping and Grid Setting
 extension DetailsViewController {
     
     func makeVerticalLayout() -> NSCollectionLayoutSection {
@@ -219,7 +218,7 @@ extension DetailsViewController {
     
     
     // burada grid layouta dönüşecek.
-    func makeGridLayout() -> UICollectionViewFlowLayout {
+    func makeGridLayout() -> UICollectionViewFlowLayout { //İki farklı layout verdiğim için bunu böyle yaptım. Doğrusunu sor.
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: (view.frame.size.width / 4) - 5, height: (view.frame.size.width / 4) - 10)
@@ -234,10 +233,10 @@ extension DetailsViewController {
 //MARK: - Display Logic
 extension DetailsViewController: DetailsDisplayLogic {
     func displayDetailsList(viewModel: Details.Fetch.ViewModel) {
+        self.viewModel = viewModel
         DispatchQueue.main.async {
-            self.viewModel = viewModel
             self.collectionView.reloadData()
-            print(viewModel)
+            //print(viewModel)
         }
     }
 }
