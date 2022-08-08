@@ -35,6 +35,7 @@ final class FullScreenViewController: UIViewController {
         setup()
     }
     
+    //MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,13 +63,13 @@ final class FullScreenViewController: UIViewController {
         router.dataStore = interactor
     }
     
-    
+    //MARK: - Configure the Image View
     func configureFullScreen(viewModel: FullScreen.Fetch.ViewModel) {
         for i in 0..<viewModel.images.count {
             let imageView = UIImageView()
             let x = self.view.frame.size.width * CGFloat(i)
             let y = self.view.frame.size.width / 2
-            imageView.frame = CGRect(x: x, y: y, width: self.view.frame.width, height: self.view.frame.height / 3)
+            imageView.frame = CGRect(x: x, y: y, width: self.view.frame.width, height: self.view.frame.height / 2)
             imageView.contentMode = .scaleAspectFit
             imageView.sd_setImage(with: URL(string: viewModel.images[i]))
             //imageView.borderWidth = 1
@@ -80,6 +81,8 @@ final class FullScreenViewController: UIViewController {
     }
 }
 
+
+//MARK: - Scroll View Delegate
 extension FullScreenViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset)

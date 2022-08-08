@@ -49,14 +49,15 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setCollectionView()
+        self.collectionView.register(UINib(nibName: Constants.detailsNibName, bundle: .main), forCellWithReuseIdentifier: Constants.detailsCellReuseIdentifier)
+        collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
         
         setRightBarButtonItem(buttonImage: "gridlayoutimage") //Navigation bar'daki buttonu oluşturacak.
         
         interactor?.fetchDetails(request: Details.Fetch.Request())
         
         self.navigationController?.navigationBar.topItem?.backButtonTitle = "Back"
-  
+        
     }
     
     // MARK: Setup
@@ -75,44 +76,64 @@ final class DetailsViewController: UIViewController {
         
     }
     
-    //MARK: Setting Custom Collection View
-    func setCollectionView() {
-        collectionView.register(UINib(nibName: Constants.detailsNibName, bundle: .main), forCellWithReuseIdentifier: Constants.detailsCellReuseIdentifier)
-        collectionView.setCollectionViewLayout(createLayout(), animated: true) //Custom yaptığımız Collection View layout'u oluşturacak.
-    }
-
-
+    
     
     //MARK: Right Bar Button
     func setRightBarButtonItem(buttonImage: String) {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "All Photos", style: .plain, target: self, action: #selector(changeLayout)) //????
-        let add = UIBarButtonItem.init(image: UIImage(named: buttonImage), style: .done, target: self, action: #selector(changeLayout))
-        add.customView?.borderWidth = 1
-        navigationItem.rightBarButtonItems = [add]
+        let changeLayoutButton = UIBarButtonItem.init(image: UIImage(named: buttonImage), style: .done, target: self, action: #selector(changeLayout))
+        changeLayoutButton.customView?.borderWidth = 1
+        navigationItem.rightBarButtonItems = [changeLayoutButton]
     }
+    
+    
     
     //MARK: The Action When Right Bar Button Tapped
     @objc func changeLayout() {
-        
+        print("tapped")
         if isGridLayout { // If user on Listing View
-            collectionView.setCollectionViewLayout(createLayout(), animated: true)
+            collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
             setRightBarButtonItem(buttonImage: "gridlayoutimage")
             title = viewModel?.name
             isGridLayout = false
         } else { // If user on Grid View
-            collectionView.setCollectionViewLayout(makeGridLayout(), animated: true) //Custom yaptığımız Collection View layout'u oluşturacak.
+            //collectionView.setCollectionViewLayout(makeGridLayout(), animated: true) //Custom yaptığımız Collection View layout'u oluşturacak.
+            collectionView.setCollectionViewLayout(setGridLayout(), animated: true)
             setRightBarButtonItem(buttonImage: "listinglayoutimage")
             title = "All Photos"
             isGridLayout = true
         }
-        
     }
-
 }
 
 
 
-//MARK: Extensions
+
+//MARK: - Setting Flow Layout and Grid Layout
+extension DetailsViewController {
+    
+    //Setting Custom Collection View
+    func setCollectionView() -> UICollectionViewFlowLayout {
+        let listLayout = UICollectionViewFlowLayout()
+        listLayout.scrollDirection = .horizontal
+        listLayout.itemSize = CGSize(width: (view.frame.size.width - 30), height: (view.frame.size.width / 2) + 50)
+        listLayout.minimumInteritemSpacing = 5
+        listLayout.minimumLineSpacing = 5
+        collectionView.setCollectionViewLayout(listLayout, animated: true)
+        return listLayout
+    }
+    
+    //Setting Grid Layout
+    func setGridLayout() -> UICollectionViewFlowLayout { //İki farklı layout verdiğim için bunu böyle yaptım. Doğrusunu sor.
+        let gridLayout = UICollectionViewFlowLayout()
+        gridLayout.scrollDirection = .vertical
+        gridLayout.itemSize = CGSize(width: (view.frame.size.width / 4) - 5, height: (view.frame.size.width / 4) - 10)
+        gridLayout.minimumLineSpacing = 5
+        gridLayout.minimumInteritemSpacing = 1
+        collectionView.setCollectionViewLayout(gridLayout, animated: true)
+        return gridLayout
+    }
+}
 
 
 
@@ -151,83 +172,24 @@ extension DetailsViewController: UICollectionViewDelegateFlowLayout {
     
     // Her bir sectionda sağdan soldan yukarıdan aşağıdan ne kadar boşluk istediği.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+        return UIEdgeInsets(top: 1, left: 5, bottom: 1, right: 1)
     }
     
-    //
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        let gridLayout = collectionViewLayout as? UICollectionViewFlowLayout
-//        let heightPerItem = collectionView.frame.width / 4 - (gridLayout?.minimumInteritemSpacing ?? CGFloat())
-//        let widthPerItem = collectionView.frame.width / 3
-        return CGSize(width: (view.frame.size.width / 4) - 5, height: (view.frame.size.width / 4) - 10)
-        //841x445
-    } //Burayı kaldırdım çünkü ilk başta grid yapısında olmuyor, sonra grid yapısına çeviriyorum, duruma göre hangisini gösterecek func var bi yerde.
-    
-    
-}
-
-
-//MARK: - Collection View Customization
-extension DetailsViewController {
-    func createLayout() -> UICollectionViewLayout {
-        UICollectionViewCompositionalLayout { sectionIndex, _ in
-            return self.makeHorizontalLayout()
-        }
-    }
-}
-
-extension DetailsViewController {
-    func createVerticalLayout() -> UICollectionViewLayout {
-        UICollectionViewCompositionalLayout { sectionIndex, _ in
-            return self.makeVerticalLayout()
-        }
-    }
-}
-
-extension DetailsViewController {
+//        let heightPerItem = collectionView.frame.width - (gridLayout?.minimumInteritemSpacing ?? CGFloat())
+//        let widthPerItem = collectionView.frame.width - (gridLayout?.minimumInteritemSpacing ?? CGFloat())
+//        print("\(widthPerItem + 100), \(heightPerItem)")
+//        return CGSize(width: widthPerItem + 100, height: heightPerItem)
+//
+//        return CGSize(width: (view.frame.size.width - 30), height: (view.frame.size.width / 2) + 50)
+//        //841x445
+//    }
     
 }
 
-//MARK: - Collection View Vertical, Horizontal Swiping and Grid Setting
-extension DetailsViewController {
-    
-    func makeVerticalLayout() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth (0.5))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.5))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 10, bottom: 0, trailing: 10)
-        return section
-    }
-    
-    func makeHorizontalLayout() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.9)) //itemin yatay ve dikey uzunluğu
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .estimated(300)) //Kullanıcı kaydıracağını anlasın diye.
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
-        //section.orthogonalScrollingBehavior = .groupPagingCentered //Kaydırmanın olduğu yer
-        return section
-    }
-    
-    
-    // burada grid layouta dönüşecek.
-    func makeGridLayout() -> UICollectionViewFlowLayout { //İki farklı layout verdiğim için bunu böyle yaptım. Doğrusunu sor.
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: (view.frame.size.width / 4) - 5, height: (view.frame.size.width / 4) - 10)
-        layout.minimumLineSpacing = 5
-        layout.minimumInteritemSpacing = 1
-        
-        return layout
-    }
-}
+
+
 
 
 //MARK: - Display Logic
