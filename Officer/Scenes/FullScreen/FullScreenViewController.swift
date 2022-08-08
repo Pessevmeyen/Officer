@@ -16,11 +16,12 @@ final class FullScreenViewController: UIViewController {
     
     var interactor: FullScreenBusinessLogic?
     var router: (FullScreenRoutingLogic & FullScreenDataPassing)?
-    var FullScreenViewModel: FullScreen.Fetch.ViewModel?
+    var viewModel: FullScreen.Fetch.ViewModel?
     
-    let imageView = UIImageView()
+    //let imageView = UIImageView()
     
-    @IBOutlet weak var FullScreenImageView: UIImageView!
+    //@IBOutlet weak var FullScreenImageView: UIImageView!
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
     
     // MARK: Object lifecycle
@@ -37,10 +38,12 @@ final class FullScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //scrollView.delegate = self
+        
         scrollView.frame = view.frame
         
         interactor?.fetchData(request: FullScreen.Fetch.Request())
-        configureFullScreen(viewModel: FullScreen.Fetch.ViewModel(images: FullScreenViewModel?.images ?? []))
+        configureFullScreen(viewModel: FullScreen.Fetch.ViewModel(images: viewModel?.images ?? []))
         
     }
     
@@ -59,6 +62,7 @@ final class FullScreenViewController: UIViewController {
         router.dataStore = interactor
     }
     
+    
     func configureFullScreen(viewModel: FullScreen.Fetch.ViewModel) {
         for i in 0..<viewModel.images.count {
             let imageView = UIImageView()
@@ -70,15 +74,22 @@ final class FullScreenViewController: UIViewController {
             //imageView.borderWidth = 1
                     
             scrollView.contentSize.width = scrollView.frame.size.width * CGFloat(i + 1)
+            scrollView.isPagingEnabled = true
             scrollView.addSubview(imageView)
         }
-        
     }
-  
+}
+
+extension FullScreenViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset)
+        pageControl.numberOfPages = viewModel?.images.count ?? 0
+        pageControl.currentPage = Int(scrollView.contentOffset.x / CGFloat(414))
+    }
 }
 
 extension FullScreenViewController: FullScreenDisplayLogic {
     func displayFullScreenData(viewModel: FullScreen.Fetch.ViewModel) {
-        self.FullScreenViewModel = viewModel
+        self.viewModel = viewModel
     }
 }
