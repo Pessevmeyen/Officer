@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol DetailsDisplayLogic: AnyObject {
     func displayDetailsList(viewModel: Details.Fetch.ViewModel)
@@ -145,7 +146,7 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.images?.count ?? 0
+        return viewModel?.images.count ?? 0
     }
     
     
@@ -157,7 +158,7 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
             return UICollectionViewCell()
         }
         
-        cell.configureCell(viewModel: model)
+        cell.configureCell(images: model.images[indexPath.row])
         return cell
     }
     
@@ -175,16 +176,7 @@ extension DetailsViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 1, left: 5, bottom: 1, right: 1)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let gridLayout = collectionViewLayout as? UICollectionViewFlowLayout
-//        let heightPerItem = collectionView.frame.width - (gridLayout?.minimumInteritemSpacing ?? CGFloat())
-//        let widthPerItem = collectionView.frame.width - (gridLayout?.minimumInteritemSpacing ?? CGFloat())
-//        print("\(widthPerItem + 100), \(heightPerItem)")
-//        return CGSize(width: widthPerItem + 100, height: heightPerItem)
-//
-//        return CGSize(width: (view.frame.size.width - 30), height: (view.frame.size.width / 2) + 50)
-//        //841x445
-//    }
+
     
 }
 
@@ -198,7 +190,6 @@ extension DetailsViewController: DetailsDisplayLogic {
         self.viewModel = viewModel
         DispatchQueue.main.async {
             self.collectionView.reloadData()
-            //print(viewModel)
         }
     }
 }

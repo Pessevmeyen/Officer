@@ -17,11 +17,13 @@ enum FullScreen {
         }
         
         struct Response {
-            let officeDetail: OfficeData?
+            let images: [String]?
+            let selectedIndex: Int?
         }
         
         struct ViewModel {
-
+            
+            let selectedIndex: Int
             let images: [String]
            
         }

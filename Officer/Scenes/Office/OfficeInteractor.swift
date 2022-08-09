@@ -33,7 +33,6 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
             case .success(let response):
                 self?.offices = response //işlem kolaylığı açısından, office datalarını çektiğimiz için office diye isimlendirebiliriz bu datayı.
                 guard let offices = self?.offices else { return } //Optional gelen veriyi güvenli hale getiriyoruz.
-                print(offices)
                 self?.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: offices)) //Buradan presenter'a aktarılıyor.
             case .failure(let error):
                 print(error.localizedDescription)

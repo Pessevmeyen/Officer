@@ -16,9 +16,8 @@ final class FullScreenPresenter: FullScreenPresentationLogic {
     weak var viewController: FullScreenDisplayLogic?
     
     func presentFullScreen(response: FullScreen.Fetch.Response) {
-        let office = response.officeDetail
-        viewController?.displayFullScreenData(viewModel: FullScreen.Fetch.ViewModel(images: office?.images ?? []))
-        
+        viewController?.displayFullScreenData(viewModel: FullScreen.Fetch.ViewModel(selectedIndex: response.selectedIndex ?? 0, images: response.images ?? []))
     }
+
     
 }

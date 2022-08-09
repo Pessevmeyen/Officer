@@ -22,7 +22,6 @@ final class OfficeWorker: OfficeWorkingLogic {
             switch result {
             case .success(let response):
                 completion(.success(response))
-                print(response)
             case .failure(let error):
                 completion(.failure(error))
             }

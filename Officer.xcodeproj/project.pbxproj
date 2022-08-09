@@ -39,6 +39,7 @@
 		894D640B2898F403001CF252 /* RegisterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D64042898F403001CF252 /* RegisterWorker.swift */; };
 		894D640C2898F403001CF252 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D64052898F403001CF252 /* RegisterRouter.swift */; };
 		896177E4288B43D90078E299 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896177E3288B43D90078E299 /* CustomTextField.swift */; };
+		896C5F8A28A2A690009C93F6 /* FullScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896C5F8928A2A690009C93F6 /* FullScreenCell.swift */; };
 		8997ADF5288AD6A5003D642F /* CLTypingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */; };
 		8997ADF7288AD73E003D642F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF6288AD73E003D642F /* Constants.swift */; };
 		89BC654B289F150100AFEE36 /* FullScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89BC6544289F150100AFEE36 /* FullScreen.storyboard */; };
@@ -119,6 +120,7 @@
 		894D64042898F403001CF252 /* RegisterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWorker.swift; sourceTree = "<group>"; };
 		894D64052898F403001CF252 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
 		896177E3288B43D90078E299 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		896C5F8928A2A690009C93F6 /* FullScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenCell.swift; sourceTree = "<group>"; };
 		8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLTypingLabel.swift; sourceTree = "<group>"; };
 		8997ADF6288AD73E003D642F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		89BC6544289F150100AFEE36 /* FullScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullScreen.storyboard; sourceTree = "<group>"; };
@@ -311,9 +313,18 @@
 			path = CustomObjects;
 			sourceTree = "<group>";
 		};
+		896C5F8828A2A65F009C93F6 /* FullScreenCell */ = {
+			isa = PBXGroup;
+			children = (
+				896C5F8928A2A690009C93F6 /* FullScreenCell.swift */,
+			);
+			path = FullScreenCell;
+			sourceTree = "<group>";
+		};
 		89BC6552289F151000AFEE36 /* FullScreen */ = {
 			isa = PBXGroup;
 			children = (
+				896C5F8828A2A65F009C93F6 /* FullScreenCell */,
 				89BC6544289F150100AFEE36 /* FullScreen.storyboard */,
 				89BC6545289F150100AFEE36 /* FullScreenViewController.swift */,
 				89BC6547289F150100AFEE36 /* FullScreenInteractor.swift */,
@@ -545,6 +556,7 @@
 				89FBB32128983C02001C5B95 /* OfficeCell.swift in Sources */,
 				894D63F72898F3B3001CF252 /* LoginPresenter.swift in Sources */,
 				89BC654D289F150100AFEE36 /* FullScreenPresenter.swift in Sources */,
+				896C5F8A28A2A690009C93F6 /* FullScreenCell.swift in Sources */,
 				89FBB31D28983BE2001C5B95 /* OfficeRouter.swift in Sources */,
 				896177E4288B43D90078E299 /* CustomTextField.swift in Sources */,
 				894D63F92898F3B3001CF252 /* LoginModels.swift in Sources */,

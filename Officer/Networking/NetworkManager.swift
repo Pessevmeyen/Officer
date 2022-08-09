@@ -60,8 +60,6 @@ struct NetworkManager { //Class mı Struct mı olacak?
                     let apiResponse = try self.decoder.decode(model.self, from: data)
                     DispatchQueue.main.async { // Verileri çekerken main threadde çekersek, veriler çoğaldığında UI kitlenmez.
                         completion(.success(apiResponse))
-                        print(apiResponse)
-                        print(response)
                     }
                 } catch {
                     completion(.failure(error))

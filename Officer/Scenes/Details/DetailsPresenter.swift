@@ -19,7 +19,7 @@ final class DetailsPresenter: DetailsPresentationLogic {
         let office = response.officeDetail
         viewController?.displayDetailsList(viewModel: Details.Fetch.ViewModel(id: office?.id,
                                                                               image: office?.image,
-                                                                              images: office?.images,
+                                                                              //images: images,
                                                                               name: office?.name,
                                                                               address: office?.address,
                                                                               capacity: office?.capacity,

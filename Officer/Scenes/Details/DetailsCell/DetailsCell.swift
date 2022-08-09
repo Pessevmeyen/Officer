@@ -15,15 +15,15 @@ class DetailsCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    
     }
 
-    func configureCell(viewModel: Details.Fetch.ViewModel) {
-        for singleImage in viewModel.images! { //Array halinde gelen image datalarını tek tek ekrana bastırmak için for kullandık. forEach veya map'da olurdu.
+    func configureCell(images: String) {
+        //for image in images.images { //Array halinde gelen image datalarını tek tek ekrana bastırmak için for kullandık. forEach veya map'da olurdu.
             //imageViewButton.sd_setImage(with: URL(string: singleImage), for: .normal)
-            imageView.sd_setImage(with: URL(string: singleImage)) //Array'i direk gösteremeyiz çünkü.
-            print(singleImage)
-        }
+            //imageView.image = UIImage(named: image) //Array'i direk gösteremeyiz çünkü.
+        //}
+        imageView.image = UIImage(named: images)
+        
        
     }
     

@@ -18,11 +18,16 @@ final class FullScreenViewController: UIViewController {
     var router: (FullScreenRoutingLogic & FullScreenDataPassing)?
     var viewModel: FullScreen.Fetch.ViewModel?
     
+    var selectedImage: String?
+    var selectedPictureNumber: FullScreen.Fetch.ViewModel?
+    var totalPictures: Int?
+    
+    //var images = ["mercury", "venus", "earth", "mars", "jupiter", "saturn"]
+    
     //let imageView = UIImageView()
     
-    //@IBOutlet weak var FullScreenImageView: UIImageView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var scrollView: UIScrollView!
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -39,12 +44,8 @@ final class FullScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //scrollView.delegate = self
-        
-        scrollView.frame = view.frame
-        
         interactor?.fetchData(request: FullScreen.Fetch.Request())
-        configureFullScreen(viewModel: FullScreen.Fetch.ViewModel(images: viewModel?.images ?? []))
+        //configureFullScreen(viewModel: FullScreen.Fetch.ViewModel(images: viewModel?.images ?? []))
         
     }
     
@@ -62,37 +63,48 @@ final class FullScreenViewController: UIViewController {
         router.viewController = viewController
         router.dataStore = interactor
     }
+}
+
+
+extension FullScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    //MARK: - Configure the Image View
-    func configureFullScreen(viewModel: FullScreen.Fetch.ViewModel) {
-        for i in 0..<viewModel.images.count {
-            let imageView = UIImageView()
-            let x = self.view.frame.size.width * CGFloat(i)
-            let y = self.view.frame.size.width / 2
-            imageView.frame = CGRect(x: x, y: y, width: self.view.frame.width, height: self.view.frame.height / 2)
-            imageView.contentMode = .scaleAspectFit
-            imageView.sd_setImage(with: URL(string: viewModel.images[i]))
-            //imageView.borderWidth = 1
-                    
-            scrollView.contentSize.width = scrollView.frame.size.width * CGFloat(i + 1)
-            scrollView.isPagingEnabled = true
-            scrollView.addSubview(imageView)
+    
+    //MARK: Kaç tane cell oluşacak
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel?.images.count ?? 0
+    }
+    
+    //MARK: Bu celller neyden oluşacak.
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FullScreenCell", for: indexPath) as? FullScreenCell else {
+            fatalError("An Error Occured While Reusable Cell")
         }
+        
+        guard let model = self.viewModel else {
+            return UICollectionViewCell()
+        }
+        
+        cell.configureCell(image: model.images[indexPath.row])
+        print(model.images[indexPath.row])
+        
+        return cell
     }
+    
+    // Her bir sectionda sağdan soldan yukarıdan aşağıdan ne kadar boşluk istediği.
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+   
 }
 
 
-//MARK: - Scroll View Delegate
-extension FullScreenViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset)
-        pageControl.numberOfPages = viewModel?.images.count ?? 0
-        pageControl.currentPage = Int(scrollView.contentOffset.x / CGFloat(414))
-    }
-}
-
+//MARK: - Display Logic
 extension FullScreenViewController: FullScreenDisplayLogic {
+    
     func displayFullScreenData(viewModel: FullScreen.Fetch.ViewModel) {
         self.viewModel = viewModel
+        collectionView.reloadData()
     }
+    
+    
 }

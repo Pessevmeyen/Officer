@@ -30,8 +30,6 @@ final class OfficePresenter: OfficePresentationLogic {
                                                               capacity: $0.capacity,
                                                               rooms: String($0.rooms ?? 0),
                                                               space: $0.space))
-            print(offices)
-            
         }
         viewController?.displayViewModelData(viewModel: Office.Fetch.ViewModel(officesListViewModel: offices)) // Presenter da view controller'a diyor, veriler hazır, office listesini gösterebilirsin
     }

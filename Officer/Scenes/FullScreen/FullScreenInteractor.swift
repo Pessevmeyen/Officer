@@ -12,7 +12,8 @@ protocol FullScreenBusinessLogic: AnyObject {
 }
 
 protocol FullScreenDataStore: AnyObject {
-    var fullScreenData: OfficeData? { get set }
+    var officeImages: [String]? { get set }
+    var selectedIndex: Int? { get set }
 }
 
 final class FullScreenInteractor: FullScreenBusinessLogic, FullScreenDataStore {
@@ -20,10 +21,11 @@ final class FullScreenInteractor: FullScreenBusinessLogic, FullScreenDataStore {
     var presenter: FullScreenPresentationLogic?
     var worker: FullScreenWorkingLogic = FullScreenWorker()
     
-    var fullScreenData: OfficeData?
+    var officeImages: [String]?
+    var selectedIndex: Int?
     
     func fetchData(request: FullScreen.Fetch.Request) {
-        self.presenter?.presentFullScreen(response: .init(officeDetail: fullScreenData))
+        presenter?.presentFullScreen(response: FullScreen.Fetch.Response(images: officeImages, selectedIndex: selectedIndex))
     }
     
 }
