@@ -28,5 +28,3 @@ final class OfficeRouter: OfficeRoutingLogic, OfficeDataPassing {
         self.viewController?.navigationController?.pushViewController(destVC, animated: true)
     }
 }
-
-//viewController?.goToDestinationVC(storyboardName: C.detailsStoryboardName, storyboardID: C.detailsStoryboardID)

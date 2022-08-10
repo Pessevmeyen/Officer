@@ -24,9 +24,9 @@ final class DetailsRouter: DetailsRoutingLogic, DetailsDataPassing {
     
     //MARK: Verileri İlgili ViewController'dan İstenilen View Controller'a aktardıktan sonra Ekranları bağladığımız delege fonksiyonu. Burada data tipleri Response Modelini tutan Structtır.
     func routeToFullScreen(index: Int) {
-        let storyboard = UIStoryboard(name: "FullScreen", bundle: nil)
-        let destinationVC: FullScreenViewController = storyboard.instantiateViewController(identifier: "FullScreenViewController")
-        destinationVC.router?.dataStore?.officeImages = ["mercury", "venus", "earth", "mars", "jupiter", "saturn"]
+        let storyboard = UIStoryboard(name: Constants.fullScreenStoryboardName, bundle: nil)
+        let destinationVC: FullScreenViewController = storyboard.instantiateViewController(identifier: Constants.fullScreenIdentifier)
+        destinationVC.router?.dataStore?.officeImages = ["mercury", "venus", "earth", "mars", "jupiter", "saturn"] //Buraya imageların array'i gelecek.
         destinationVC.router?.dataStore?.selectedIndex = index //Burada hangi index seçildiyde, o index'in datası aktarılıyor. Detailsdaki offices'e.
         
         destinationVC.modalPresentationStyle = .popover

@@ -14,6 +14,9 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
+    
+    
+    //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -29,8 +32,6 @@ class WelcomeViewController: UIViewController {
         
         buttonsBorderColors()
         
-        
-        
     }
     
     
@@ -40,10 +41,12 @@ class WelcomeViewController: UIViewController {
         
     }
     
+    //MARK: Register Button
     @IBAction func registerClicked(_ sender: UIButton) {
         goToDestinationVC(storyboardName: Constants.registerStoryboardName, storyboardID: Constants.registerStoryboardIdentifier)
     }
     
+    //MARK: Login Button
     @IBAction func loginClicked(_ sender: UIButton) {
         goToDestinationVC(storyboardName: Constants.loginStoryboardName, storyboardID: Constants.loginStoryboardIdentifier)
     }
@@ -65,7 +68,7 @@ class WelcomeViewController: UIViewController {
         
         
         //MARK: App Name Attributes.
-        //Added with @IBInspectable but didn't like neon effect, so was wroten here.
+        //Added with @IBInspectable but couldn't get neon like effect, so was wroten here.
         appNameLabel.layer.shadowOffset = CGSize(width: 0, height: 1)
         appNameLabel.layer.shadowColor = UIColor.systemBackground.cgColor
         appNameLabel.layer.shadowRadius = 4

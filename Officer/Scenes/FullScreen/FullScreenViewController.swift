@@ -23,13 +23,11 @@ final class FullScreenViewController: UIViewController {
     var router: (FullScreenRoutingLogic & FullScreenDataPassing)?
     var viewModel: FullScreen.Fetch.ViewModel?
     
-    var selectedImage: String?
-    var selectedPictureNumber: FullScreen.Fetch.ViewModel?
-    var totalPictures: Int?
-    
     weak var delegate: FullScreenDelegate?
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -115,7 +113,6 @@ extension FullScreenViewController: UICollectionViewDelegate, UICollectionViewDa
             delegate?.fullScreenDidScroll(indexPath: visibleIndexPath)
         }
     }
-    
 }
 
 

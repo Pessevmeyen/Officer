@@ -83,7 +83,7 @@ final class DetailsViewController: UIViewController {
     
     //MARK: Right Bar Button
     func setRightBarButtonItem(buttonImage: String) {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "All Photos", style: .plain, target: self, action: #selector(changeLayout)) //????
+        //navigationItem.rightBarButtonItem = UIBarButtonItem(title: "All Photos", style: .plain, target: self, action: #selector(changeLayout)) //????
         let changeLayoutButton = UIBarButtonItem.init(image: UIImage(named: buttonImage), style: .done, target: self, action: #selector(changeLayout))
         changeLayoutButton.customView?.borderWidth = 1
         navigationItem.rightBarButtonItems = [changeLayoutButton]
@@ -96,13 +96,13 @@ final class DetailsViewController: UIViewController {
         print("tapped")
         if isGridLayout { // If user on Listing View
             collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
-            setRightBarButtonItem(buttonImage: "gridlayoutimage")
+            setRightBarButtonItem(buttonImage: Constants.listingLayoutImage)
             title = viewModel?.name
             isGridLayout = false
         } else { // If user on Grid View
             //collectionView.setCollectionViewLayout(makeGridLayout(), animated: true) //Custom yaptığımız Collection View layout'u oluşturacak.
             collectionView.setCollectionViewLayout(setGridLayout(), animated: true)
-            setRightBarButtonItem(buttonImage: "listinglayoutimage")
+            setRightBarButtonItem(buttonImage: Constants.gridLayoutImage)
             title = "All Photos"
             isGridLayout = true
         }
@@ -150,7 +150,6 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.images.count ?? 0
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.detailsCellReuseIdentifier, for: indexPath) as? DetailsCell else {
