@@ -17,10 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kah-E5-M9S">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kah-E5-M9S">
                                 <rect key="frame" x="0.0" y="344" width="416" height="208"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q6H-zy-ewL">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="1" minimumInteritemSpacing="1" id="Q6H-zy-ewL">
                                     <size key="itemSize" width="415" height="210.5"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -35,7 +35,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="earth" translatesAutoresizingMaskIntoConstraints="NO" id="Vjg-mx-EL5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="415" height="217"/>
+                                                    <rect key="frame" x="-1" y="0.0" width="415" height="217"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="217" id="6NQ-Uh-Ptt"/>
                                                         <constraint firstAttribute="width" constant="415" id="KOl-O7-xzV"/>
@@ -47,8 +47,8 @@
                                                 <constraint firstItem="Vjg-mx-EL5" firstAttribute="centerX" secondItem="fF4-Ex-TVS" secondAttribute="centerX" id="9tJ-kk-9Au"/>
                                                 <constraint firstAttribute="trailing" secondItem="Vjg-mx-EL5" secondAttribute="trailing" id="JKy-Px-XrH"/>
                                                 <constraint firstItem="Vjg-mx-EL5" firstAttribute="leading" secondItem="fF4-Ex-TVS" secondAttribute="leading" id="K44-Of-ttG"/>
-                                                <constraint firstItem="Vjg-mx-EL5" firstAttribute="width" relation="lessThanOrEqual" secondItem="fF4-Ex-TVS" secondAttribute="width" id="Pkh-QL-auj"/>
-                                                <constraint firstItem="Vjg-mx-EL5" firstAttribute="height" relation="lessThanOrEqual" secondItem="fF4-Ex-TVS" secondAttribute="height" id="au9-pN-Uw2"/>
+                                                <constraint firstItem="Vjg-mx-EL5" firstAttribute="width" secondItem="fF4-Ex-TVS" secondAttribute="width" id="Pkh-QL-auj"/>
+                                                <constraint firstItem="Vjg-mx-EL5" firstAttribute="height" secondItem="fF4-Ex-TVS" secondAttribute="height" id="au9-pN-Uw2"/>
                                                 <constraint firstAttribute="bottom" secondItem="Vjg-mx-EL5" secondAttribute="bottom" id="vY0-ar-DxJ"/>
                                                 <constraint firstItem="Vjg-mx-EL5" firstAttribute="top" secondItem="fF4-Ex-TVS" secondAttribute="top" id="wU9-IU-lOY"/>
                                             </constraints>
@@ -56,7 +56,6 @@
                                         <size key="customSize" width="415" height="210.5"/>
                                         <connections>
                                             <outlet property="imageView" destination="Vjg-mx-EL5" id="QwD-gf-8nh"/>
-                                            <outlet property="pageControl" destination="y9l-G5-ziF" id="XCk-Zq-q37"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -65,23 +64,15 @@
                                     <outlet property="delegate" destination="nxe-uw-h5I" id="5wn-45-oCS"/>
                                 </connections>
                             </collectionView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="y9l-G5-ziF">
-                                <rect key="frame" x="0.0" y="560" width="414" height="26"/>
-                                <color key="pageIndicatorTintColor" systemColor="labelColor"/>
-                                <color key="currentPageIndicatorTintColor" systemColor="opaqueSeparatorColor"/>
-                            </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="y9l-G5-ziF" firstAttribute="top" secondItem="kah-E5-M9S" secondAttribute="bottom" constant="8" symbolic="YES" id="Cdo-dc-vBB"/>
+                            <constraint firstItem="kah-E5-M9S" firstAttribute="leading" secondItem="chM-je-gA4" secondAttribute="leading" id="1SM-ow-eZv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kah-E5-M9S" secondAttribute="trailing" constant="-22" id="FQy-uw-d7N"/>
-                            <constraint firstItem="y9l-G5-ziF" firstAttribute="trailing" secondItem="acR-sl-ate" secondAttribute="trailing" id="OKO-Nv-mNq"/>
                             <constraint firstItem="kah-E5-M9S" firstAttribute="centerY" secondItem="chM-je-gA4" secondAttribute="centerY" id="Pqy-RG-Bb4"/>
-                            <constraint firstItem="y9l-G5-ziF" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="RMQ-Op-9DF"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="bottom" secondItem="kah-E5-M9S" secondAttribute="bottom" constant="310" id="ROT-SB-Z63"/>
                             <constraint firstItem="kah-E5-M9S" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" constant="300" id="fpo-XE-UHc"/>
-                            <constraint firstItem="kah-E5-M9S" firstAttribute="leading" secondItem="y9l-G5-ziF" secondAttribute="leading" id="o4M-et-ydm"/>
                         </constraints>
                     </view>
                     <connections>
@@ -95,12 +86,6 @@
     </scenes>
     <resources>
         <image name="earth" width="1280" height="720"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

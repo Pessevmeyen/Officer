@@ -31,19 +31,10 @@ final class DetailsRouter: DetailsRoutingLogic, DetailsDataPassing {
         
         destinationVC.modalPresentationStyle = .popover
         destinationVC.modalTransitionStyle = .coverVertical
+        
+        destinationVC.delegate = viewController
+        
         viewController?.present(destinationVC, animated: true) // Burada pop'up olarak açılacak ekran. kullanıcı açısından daha basit olur.
-        
-        
-        //destinationVC.selectedPictureNumber = FullScreen.Fetch.ViewModel.init(images: dataStore?.officeData?.images ?? [String])[index]
-//        destinationVC.selectedPictureNumber = index // + 1
-//        destinationVC.totalPictures = dataStore?.officeData?.images?.count
-//        destinationVC.selectedImage = dataStore?.officeData?.images?[index]
-        
-        
-        //MARK: Burada ise pop-up değil de tam ekran çıkmasını istersek.
-        //destVC.modalPresentationStyle = .popover //Navigation bağlı olduğu için popover yapamıyor
-        //self.viewController?.navigationController?.pushViewController(destVC, animated: true)
-        //self.viewController?.show(destVC, sender: nil)
         
     }
     

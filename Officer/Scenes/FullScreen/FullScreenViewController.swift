@@ -12,6 +12,11 @@ protocol FullScreenDisplayLogic: AnyObject {
     func displayFullScreenData(viewModel: FullScreen.Fetch.ViewModel)
 }
 
+//MARK: Full Screen scroll edildiğinde bulunduğumuz indexi almak için delege oluşturduk
+protocol FullScreenDelegate: AnyObject {
+    func fullScreenDidScroll(indexPath: IndexPath)
+}
+
 final class FullScreenViewController: UIViewController {
     
     var interactor: FullScreenBusinessLogic?
@@ -22,12 +27,9 @@ final class FullScreenViewController: UIViewController {
     var selectedPictureNumber: FullScreen.Fetch.ViewModel?
     var totalPictures: Int?
     
-    //var images = ["mercury", "venus", "earth", "mars", "jupiter", "saturn"]
-    
-    //let imageView = UIImageView()
+    weak var delegate: FullScreenDelegate?
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var pageControl: UIPageControl!
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -40,12 +42,22 @@ final class FullScreenViewController: UIViewController {
         setup()
     }
     
-    //MARK: - View Did Load
+    
+    
+    //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
         interactor?.fetchData(request: FullScreen.Fetch.Request())
-        //configureFullScreen(viewModel: FullScreen.Fetch.ViewModel(images: viewModel?.images ?? []))
+        
+    }
+    
+    
+    //MARK: viewDidLayoutSubviews
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        collectionView.scrollToItem(at: IndexPath(row: viewModel?.selectedIndex ?? 0, section: 0), at: .left, animated: true)
         
     }
     
@@ -62,19 +74,21 @@ final class FullScreenViewController: UIViewController {
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
+        
     }
 }
 
 
+//MARK: - Collection View Delegates and Data Source | numberOfItemsInSection, cellForItemAt, insetForSectionAt, scrollViewDidEndDecelerating
 extension FullScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     
-    //MARK: Kaç tane cell oluşacak
+    //Kaç tane cell oluşacak
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.images.count ?? 0
     }
     
-    //MARK: Bu celller neyden oluşacak.
+    //Bu celller neyden oluşacak.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FullScreenCell", for: indexPath) as? FullScreenCell else {
             fatalError("An Error Occured While Reusable Cell")
@@ -85,8 +99,6 @@ extension FullScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         }
         
         cell.configureCell(image: model.images[indexPath.row])
-        print(model.images[indexPath.row])
-        
         return cell
     }
     
@@ -94,17 +106,24 @@ extension FullScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
-   
+    
+    // Scroll yapma bittiği zaman ne olacağı.
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        if let visibleIndexPath = collectionView.indexPathForItem(at: visiblePoint) {
+            delegate?.fullScreenDidScroll(indexPath: visibleIndexPath)
+        }
+    }
+    
 }
 
 
 //MARK: - Display Logic
 extension FullScreenViewController: FullScreenDisplayLogic {
-    
     func displayFullScreenData(viewModel: FullScreen.Fetch.ViewModel) {
         self.viewModel = viewModel
         collectionView.reloadData()
     }
-    
-    
 }
+

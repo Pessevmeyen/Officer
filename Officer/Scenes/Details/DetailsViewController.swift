@@ -61,6 +61,8 @@ final class DetailsViewController: UIViewController {
         
     }
     
+    
+    
     // MARK: Setup
     
     private func setup() {
@@ -180,6 +182,12 @@ extension DetailsViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
+extension DetailsViewController: FullScreenDelegate {
+    func fullScreenDidScroll(indexPath: IndexPath) {
+        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+        collectionView.reloadData()
+    }
+}
 
 
 
@@ -188,8 +196,6 @@ extension DetailsViewController: UICollectionViewDelegateFlowLayout {
 extension DetailsViewController: DetailsDisplayLogic {
     func displayDetailsList(viewModel: Details.Fetch.ViewModel) {
         self.viewModel = viewModel
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
+        collectionView.reloadData()
     }
 }

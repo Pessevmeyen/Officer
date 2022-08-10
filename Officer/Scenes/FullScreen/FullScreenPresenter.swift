@@ -19,5 +19,4 @@ final class FullScreenPresenter: FullScreenPresentationLogic {
         viewController?.displayFullScreenData(viewModel: FullScreen.Fetch.ViewModel(selectedIndex: response.selectedIndex ?? 0, images: response.images ?? []))
     }
 
-    
 }
