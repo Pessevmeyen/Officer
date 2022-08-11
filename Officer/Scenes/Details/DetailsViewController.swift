@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import MapKit
 
 protocol DetailsDisplayLogic: AnyObject {
     func displayDetailsList(viewModel: Details.Fetch.ViewModel)
@@ -26,12 +27,15 @@ final class DetailsViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var roomImageView: UIImageView!
+    @IBOutlet weak var mapView: MKMapView!
+
     
     
     var detailsID: Int?
     
     
     var isGridLayout = false
+    var isBigMap = false
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -57,7 +61,7 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.collectionView.register(UINib(nibName: Constants.detailsNibName, bundle: .main), forCellWithReuseIdentifier: Constants.detailsCellReuseIdentifier)
+        collectionView.register(UINib(nibName: Constants.detailsNibName, bundle: .main), forCellWithReuseIdentifier: Constants.detailsCellReuseIdentifier)
         collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
         
         navigationController?.navigationBar.topItem?.backButtonTitle = "Offices"
@@ -110,15 +114,14 @@ final class DetailsViewController: UIViewController {
     //MARK: The Action When Right Bar Button Tapped
     @objc func changeLayout() {
         print("tapped")
-        if isGridLayout { // If user on Listing View
+        if isGridLayout { // If user on Listing ViewConstants.gridLayoutImage
             collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
-            setRightBarButtonItem(buttonImage: Constants.listingLayoutImage)
+            setRightBarButtonItem(buttonImage: Constants.gridLayoutImage)
             title = viewModel?.name
             isGridLayout = false
         } else { // If user on Grid View
-            //collectionView.setCollectionViewLayout(makeGridLayout(), animated: true) //Custom yaptığımız Collection View layout'u oluşturacak.
+            setRightBarButtonItem(buttonImage: Constants.listingLayoutImage)
             collectionView.setCollectionViewLayout(setGridLayout(), animated: true)
-            setRightBarButtonItem(buttonImage: Constants.gridLayoutImage)
             title = "All Photos"
             isGridLayout = true
         }
@@ -158,7 +161,6 @@ extension DetailsViewController {
 
 //MARK: - Collection View Delegate and Data Source | Section Number, Number of Items, Cell for Item, Did Select Item
 extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
     
     //MARK: How much section will occure
     func numberOfSections(in collectionView: UICollectionView) -> Int {

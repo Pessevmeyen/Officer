@@ -57,6 +57,7 @@ final class FullScreenViewController: UIViewController {
         // Scrolls the collection view contents until the specified item is visible.
         collectionView.scrollToItem(at: IndexPath(row: viewModel?.selectedIndex ?? 0, section: 0), at: .left, animated: true)
         
+        
     }
     
     // MARK: Setup

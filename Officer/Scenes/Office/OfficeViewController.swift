@@ -40,11 +40,12 @@ final class OfficeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.setHidesBackButton(true, animated: true) //Back button'ı iptal ediyoruz ki giriş yaptıktan sonra tekrar giriş ekranına dönülmesin.
+        tableView.register(UINib(nibName: Constants.officeNibName, bundle: .main), forCellReuseIdentifier: Constants.officeCellIdentifier)
+        navigationItem.setHidesBackButton(true, animated: true) //Back button'ı iptal ediyoruz ki giriş yaptıktan sonra tekrar giriş ekranına dönülmesin.
+        setFilteringButton(buttonImage: "filterimage")
         
         //1
         interactor?.fetchData(request: Office.Fetch.Request()) //View controller interactor'a diyor ki, office listesini çek.
-        tableView.register(UINib(nibName: Constants.officeNibName, bundle: .main), forCellReuseIdentifier: Constants.officeCellIdentifier)
         
     }
     
@@ -71,6 +72,16 @@ final class OfficeViewController: UIViewController {
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
+    }
+    
+    func setFilteringButton(buttonImage: String) {
+        let filterButton = UIBarButtonItem.init(image: UIImage(named: buttonImage), style: .done, target: self, action: #selector(filter))
+        navigationItem.rightBarButtonItems = [filterButton]
+    }
+    
+    @objc func filter() {
+        print("tapped")
+        
     }
 }
 

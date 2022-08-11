@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "889369_filter_barista_coffee_coffe pot_coffee maker_icon.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
