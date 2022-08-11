@@ -25,6 +25,7 @@ final class DetailsViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var roomImageView: UIImageView!
     
     
     var detailsID: Int?
@@ -63,13 +64,10 @@ final class DetailsViewController: UIViewController {
         
         setRightBarButtonItem(buttonImage: "gridlayoutimage") //Navigation bar'daki buttonu oluşturacak.
         
-        
-        
         interactor?.fetchDetails(request: Details.Fetch.Request())
         
         setInformation()
-        
-        
+       
     }
     
     
@@ -91,7 +89,7 @@ final class DetailsViewController: UIViewController {
     }
     
     
-    
+    //MARK: - Custom Functions
     //MARK: Right Bar Button
     func setRightBarButtonItem(buttonImage: String) {
         //navigationItem.rightBarButtonItem = UIBarButtonItem(title: "All Photos", style: .plain, target: self, action: #selector(changeLayout)) //????
@@ -104,10 +102,11 @@ final class DetailsViewController: UIViewController {
         imageView.sd_setImage(with: URL(string: viewModel?.image ?? ""))
         nameLabel.text = viewModel?.name ?? "nil"
         addressLabel.text = viewModel?.address ?? "nil"
+        //roomImageView.image = UIImage(systemName: "door.left.hand.closed")
     }
     
     
-    
+    //MARK: - @objc functions
     //MARK: The Action When Right Bar Button Tapped
     @objc func changeLayout() {
         print("tapped")
@@ -132,7 +131,7 @@ final class DetailsViewController: UIViewController {
 //MARK: - Setting Flow Layout and Grid Layout
 extension DetailsViewController {
     
-    //Setting Custom Collection View
+    //MARK: Setting Custom Collection View
     func setCollectionView() -> UICollectionViewFlowLayout {
         let listLayout = UICollectionViewFlowLayout()
         listLayout.scrollDirection = .horizontal
@@ -143,7 +142,7 @@ extension DetailsViewController {
         return listLayout
     }
     
-    //Setting Grid Layout
+    //MARK: Setting Grid Layout
     func setGridLayout() -> UICollectionViewFlowLayout { //İki farklı layout verdiğim için bunu böyle yaptım. Doğrusunu sor.
         let gridLayout = UICollectionViewFlowLayout()
         gridLayout.scrollDirection = .vertical
@@ -160,14 +159,18 @@ extension DetailsViewController {
 //MARK: - Collection View Delegate and Data Source | Section Number, Number of Items, Cell for Item, Did Select Item
 extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
+    
+    //MARK: How much section will occure
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
+    //MARK: How much item will occure in one section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.images?.count ?? 0
     }
     
+    //MARK: This items occurs from what
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.detailsCellReuseIdentifier, for: indexPath) as? DetailsCell else {
             fatalError("An Error Occured While Reusable Cell")
@@ -180,12 +183,10 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
+    //MARK: What happen when a cell tapped
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         router?.routeToFullScreen(index: indexPath.row) //????? row? item?
     }
-    
-    
-    
 }
 
 

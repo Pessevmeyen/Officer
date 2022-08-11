@@ -80,12 +80,12 @@ final class FullScreenViewController: UIViewController {
 //MARK: - Collection View Delegates and Data Source | numberOfItemsInSection, cellForItemAt, insetForSectionAt, scrollViewDidEndDecelerating
 extension FullScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    //Kaç tane cell oluşacak
+    //MARK: How many cell will occure
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.images.count ?? 0
     }
     
-    //Bu celllerin her biri neyden oluşacak.
+    //MARK: This cells occurs from what
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FullScreenCell", for: indexPath) as? FullScreenCell else {
             fatalError("An Error Occured While Reusable Cell")
@@ -99,15 +99,16 @@ extension FullScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
     
-    // Her bir sectionda sağdan soldan yukarıdan aşağıdan ne kadar boşluk istediği.
+    //MARK: How much space around the section.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
-    // Scroll yapma bittiği zaman ne olacağı.
+    //MARK: Scroll yapma bittiği zaman ne olacağı.
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
         let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+
         if let visibleIndexPath = collectionView.indexPathForItem(at: visiblePoint) { //Gets the index path of the item at the specified point in the collection view.
             delegate?.fullScreenDidScroll(indexPath: visibleIndexPath)
         }

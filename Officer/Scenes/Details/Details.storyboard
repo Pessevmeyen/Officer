@@ -31,8 +31,56 @@
                                     <outlet property="delegate" destination="nxe-uw-h5I" id="JtX-zI-u11"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9fi-eA-v87">
+                                <rect key="frame" x="20" y="416" width="374" height="107"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemGray5Color"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Nl-Zy-4ED">
+                                <rect key="frame" x="20" y="551" width="374" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemGray5Color"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dkh-pS-zyg">
+                                <rect key="frame" x="20" y="604" width="374" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemGray5Color"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DJ8-LT-nrG">
-                                <rect key="frame" x="40" y="416" width="64" height="64"/>
+                                <rect key="frame" x="40" y="437" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="RBl-ae-Hd5"/>
                                     <constraint firstAttribute="height" constant="64" id="qSh-DT-zIM"/>
@@ -44,7 +92,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kollektif House Levent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orv-xa-y3b">
-                                <rect key="frame" x="114" y="418" width="280" height="21"/>
+                                <rect key="frame" x="114" y="439" width="280" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Dzw-4V-I5c"/>
                                 </constraints>
@@ -53,12 +101,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Esentepe Mah. Talatpaşa Cad. No: 5 (Harman Sok. Girişi) Şişli / İstanbul " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kY4-jP-nfb">
-                                <rect key="frame" x="114" y="439" width="280" height="41"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="114" y="460" width="280" height="41"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nPk-Ze-i4F">
+                                <rect key="frame" x="20" y="657" width="374" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemGray5Color"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -66,12 +130,12 @@
                             <constraint firstItem="Z7C-I4-Xph" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="9OZ-GQ-PCV"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="orv-xa-y3b" secondAttribute="trailing" constant="20" id="9ho-0F-M1H"/>
                             <constraint firstItem="orv-xa-y3b" firstAttribute="leading" secondItem="DJ8-LT-nrG" secondAttribute="trailing" constant="10" id="LmU-TL-pjL"/>
-                            <constraint firstItem="orv-xa-y3b" firstAttribute="top" secondItem="Z7C-I4-Xph" secondAttribute="bottom" constant="10" id="MsP-WZ-DCi"/>
+                            <constraint firstItem="orv-xa-y3b" firstAttribute="top" secondItem="Z7C-I4-Xph" secondAttribute="bottom" constant="31" id="MsP-WZ-DCi"/>
                             <constraint firstItem="Z7C-I4-Xph" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" id="Q6a-ox-15O"/>
-                            <constraint firstItem="DJ8-LT-nrG" firstAttribute="centerY" secondItem="chM-je-gA4" secondAttribute="centerY" id="THg-rE-Cj6"/>
+                            <constraint firstItem="DJ8-LT-nrG" firstAttribute="centerY" secondItem="chM-je-gA4" secondAttribute="centerY" constant="21" id="THg-rE-Cj6"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="Z7C-I4-Xph" secondAttribute="trailing" id="maJ-aM-vG5"/>
                             <constraint firstItem="DJ8-LT-nrG" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="40" id="mkL-N3-IBt"/>
-                            <constraint firstItem="DJ8-LT-nrG" firstAttribute="top" secondItem="Z7C-I4-Xph" secondAttribute="bottom" constant="8" symbolic="YES" id="tRq-FD-XPl"/>
+                            <constraint firstItem="DJ8-LT-nrG" firstAttribute="top" secondItem="Z7C-I4-Xph" secondAttribute="bottom" constant="29" id="tRq-FD-XPl"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="kY4-jP-nfb" secondAttribute="trailing" constant="20" id="w3C-s0-EDI"/>
                             <constraint firstItem="kY4-jP-nfb" firstAttribute="leading" secondItem="DJ8-LT-nrG" secondAttribute="trailing" constant="10" id="x5y-IF-F4z"/>
                             <constraint firstItem="kY4-jP-nfb" firstAttribute="top" secondItem="orv-xa-y3b" secondAttribute="bottom" id="y3F-L3-H9U"/>
@@ -107,6 +171,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
