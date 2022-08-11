@@ -46,7 +46,6 @@ final class OfficeViewController: UIViewController {
         interactor?.fetchData(request: Office.Fetch.Request()) //View controller interactor'a diyor ki, office listesini çek.
         tableView.register(UINib(nibName: Constants.officeNibName, bundle: .main), forCellReuseIdentifier: Constants.officeCellIdentifier)
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

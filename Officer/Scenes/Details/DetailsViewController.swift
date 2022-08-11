@@ -22,6 +22,11 @@ final class DetailsViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    
+    
     var detailsID: Int?
     
     
@@ -54,11 +59,16 @@ final class DetailsViewController: UIViewController {
         self.collectionView.register(UINib(nibName: Constants.detailsNibName, bundle: .main), forCellWithReuseIdentifier: Constants.detailsCellReuseIdentifier)
         collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
         
+        navigationController?.navigationBar.topItem?.backButtonTitle = "Offices"
+        
         setRightBarButtonItem(buttonImage: "gridlayoutimage") //Navigation bar'daki buttonu oluşturacak.
+        
+        
         
         interactor?.fetchDetails(request: Details.Fetch.Request())
         
-        self.navigationController?.navigationBar.topItem?.backButtonTitle = "Back"
+        setInformation()
+        
         
     }
     
@@ -88,6 +98,12 @@ final class DetailsViewController: UIViewController {
         let changeLayoutButton = UIBarButtonItem.init(image: UIImage(named: buttonImage), style: .done, target: self, action: #selector(changeLayout))
         changeLayoutButton.customView?.borderWidth = 1
         navigationItem.rightBarButtonItems = [changeLayoutButton]
+    }
+    
+    func setInformation() {
+        imageView.sd_setImage(with: URL(string: viewModel?.image ?? ""))
+        nameLabel.text = viewModel?.name ?? "nil"
+        addressLabel.text = viewModel?.address ?? "nil"
     }
     
     
@@ -180,9 +196,6 @@ extension DetailsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 1, left: 5, bottom: 1, right: 1)
     }
-    
-
-    
 }
 
 

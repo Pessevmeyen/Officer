@@ -28,7 +28,6 @@ final class FullScreenViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     
-    
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -52,9 +51,10 @@ final class FullScreenViewController: UIViewController {
     
     
     //MARK: viewDidLayoutSubviews
-    override func viewDidLayoutSubviews() {
+    override func viewDidLayoutSubviews() { // When the bounds change for a view controller's view, the view adjusts the positions of its subviews and then the system calls this method. However, this method being called does not indicate that the individual layouts of the view's subviews have been adjusted. Each subview is responsible for adjusting its own layout.
         super.viewDidLayoutSubviews()
         
+        // Scrolls the collection view contents until the specified item is visible.
         collectionView.scrollToItem(at: IndexPath(row: viewModel?.selectedIndex ?? 0, section: 0), at: .left, animated: true)
         
     }
@@ -80,13 +80,12 @@ final class FullScreenViewController: UIViewController {
 //MARK: - Collection View Delegates and Data Source | numberOfItemsInSection, cellForItemAt, insetForSectionAt, scrollViewDidEndDecelerating
 extension FullScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    
     //Kaç tane cell oluşacak
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.images.count ?? 0
     }
     
-    //Bu celller neyden oluşacak.
+    //Bu celllerin her biri neyden oluşacak.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FullScreenCell", for: indexPath) as? FullScreenCell else {
             fatalError("An Error Occured While Reusable Cell")
@@ -109,7 +108,7 @@ extension FullScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
         let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
-        if let visibleIndexPath = collectionView.indexPathForItem(at: visiblePoint) {
+        if let visibleIndexPath = collectionView.indexPathForItem(at: visiblePoint) { //Gets the index path of the item at the specified point in the collection view.
             delegate?.fullScreenDidScroll(indexPath: visibleIndexPath)
         }
     }

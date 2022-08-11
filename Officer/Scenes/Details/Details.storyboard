@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Z7C-I4-Xph">
-                                <rect key="frame" x="0.0" y="44" width="414" height="373"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="364"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Fts-P2-mzb">
                                     <size key="itemSize" width="128" height="128"/>
@@ -31,28 +31,85 @@
                                     <outlet property="delegate" destination="nxe-uw-h5I" id="JtX-zI-u11"/>
                                 </connections>
                             </collectionView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DJ8-LT-nrG">
+                                <rect key="frame" x="40" y="416" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="RBl-ae-Hd5"/>
+                                    <constraint firstAttribute="height" constant="64" id="qSh-DT-zIM"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kollektif House Levent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orv-xa-y3b">
+                                <rect key="frame" x="114" y="418" width="280" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Dzw-4V-I5c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Esentepe Mah. Talatpaşa Cad. No: 5 (Harman Sok. Girişi) Şişli / İstanbul " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kY4-jP-nfb">
+                                <rect key="frame" x="114" y="439" width="280" height="41"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Z7C-I4-Xph" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="9OZ-GQ-PCV"/>
-                            <constraint firstItem="acR-sl-ate" firstAttribute="bottom" secondItem="Z7C-I4-Xph" secondAttribute="bottom" constant="445" id="CqL-qY-irD"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="orv-xa-y3b" secondAttribute="trailing" constant="20" id="9ho-0F-M1H"/>
+                            <constraint firstItem="orv-xa-y3b" firstAttribute="leading" secondItem="DJ8-LT-nrG" secondAttribute="trailing" constant="10" id="LmU-TL-pjL"/>
+                            <constraint firstItem="orv-xa-y3b" firstAttribute="top" secondItem="Z7C-I4-Xph" secondAttribute="bottom" constant="10" id="MsP-WZ-DCi"/>
                             <constraint firstItem="Z7C-I4-Xph" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" id="Q6a-ox-15O"/>
+                            <constraint firstItem="DJ8-LT-nrG" firstAttribute="centerY" secondItem="chM-je-gA4" secondAttribute="centerY" id="THg-rE-Cj6"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="Z7C-I4-Xph" secondAttribute="trailing" id="maJ-aM-vG5"/>
+                            <constraint firstItem="DJ8-LT-nrG" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="40" id="mkL-N3-IBt"/>
+                            <constraint firstItem="DJ8-LT-nrG" firstAttribute="top" secondItem="Z7C-I4-Xph" secondAttribute="bottom" constant="8" symbolic="YES" id="tRq-FD-XPl"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="kY4-jP-nfb" secondAttribute="trailing" constant="20" id="w3C-s0-EDI"/>
+                            <constraint firstItem="kY4-jP-nfb" firstAttribute="leading" secondItem="DJ8-LT-nrG" secondAttribute="trailing" constant="10" id="x5y-IF-F4z"/>
+                            <constraint firstItem="kY4-jP-nfb" firstAttribute="top" secondItem="orv-xa-y3b" secondAttribute="bottom" id="y3F-L3-H9U"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addressLabel" destination="kY4-jP-nfb" id="1OR-pe-ejF"/>
                         <outlet property="collectionView" destination="Z7C-I4-Xph" id="Rop-cK-vX0"/>
+                        <outlet property="imageView" destination="DJ8-LT-nrG" id="Ndh-9s-fPZ"/>
+                        <outlet property="nameLabel" destination="orv-xa-y3b" id="wv6-6W-8pO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZo-gs-e4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="105.79710144927537" y="27.455357142857142"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="032-gF-BGG">
+            <objects>
+                <viewController id="gdG-G6-VDh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FdM-rY-JgG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="97h-Tz-Hfg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4DW-Wq-Vd5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928" y="36"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
