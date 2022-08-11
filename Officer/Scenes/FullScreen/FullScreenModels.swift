@@ -23,9 +23,9 @@ enum FullScreen {
         
         struct ViewModel {
             
-            let selectedIndex: Int
             let images: [String]
-           
+            let selectedIndex: Int
+            
         }
     }
 }

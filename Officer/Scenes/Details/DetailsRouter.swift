@@ -26,7 +26,7 @@ final class DetailsRouter: DetailsRoutingLogic, DetailsDataPassing {
     func routeToFullScreen(index: Int) {
         let storyboard = UIStoryboard(name: Constants.fullScreenStoryboardName, bundle: nil)
         let destinationVC: FullScreenViewController = storyboard.instantiateViewController(identifier: Constants.fullScreenIdentifier)
-        destinationVC.router?.dataStore?.officeImages = ["mercury", "venus", "earth", "mars", "jupiter", "saturn"] //Buraya imageların array'i gelecek.
+        destinationVC.router?.dataStore?.officeImages = dataStore?.officeData //Buraya imageların array'i gelecek.
         destinationVC.router?.dataStore?.selectedIndex = index //Burada hangi index seçildiyde, o index'in datası aktarılıyor. Detailsdaki offices'e.
         
         destinationVC.modalPresentationStyle = .popover

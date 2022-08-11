@@ -22,7 +22,7 @@ class DetailsCell: UICollectionViewCell {
             //imageViewButton.sd_setImage(with: URL(string: singleImage), for: .normal)
             //imageView.image = UIImage(named: image) //Array'i direk gösteremeyiz çünkü.
         //}
-        imageView.image = UIImage(named: images)
+        imageView.sd_setImage(with: URL(string: images))
         
        
     }

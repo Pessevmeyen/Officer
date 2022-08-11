@@ -13,8 +13,8 @@ class FullScreenCell: UICollectionViewCell {
     
     func configureCell(image: String) {
         
-        imageView.image = UIImage(named: image)
-       
+        imageView.sd_setImage(with: URL(string: image))
+     
     }
     
 }

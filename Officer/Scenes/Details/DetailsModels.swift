@@ -24,7 +24,7 @@ enum Details {
 
             let id: Int?
             let image: String?
-            let images = ["mercury", "venus", "earth", "mars", "jupiter", "saturn"]
+            let images: [String]?
             let name: String?
             let address: String?
             let capacity: String?

@@ -24,6 +24,7 @@ final class DetailsViewController: UIViewController {
     
     var detailsID: Int?
     
+    
     var isGridLayout = false
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -148,7 +149,7 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.images.count ?? 0
+        return viewModel?.images?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -159,13 +160,16 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
             return UICollectionViewCell()
         }
         
-        cell.configureCell(images: model.images[indexPath.row])
+        cell.configureCell(images: model.images?[indexPath.row] ?? "")
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         router?.routeToFullScreen(index: indexPath.row) //????? row? item?
     }
+    
+    
+    
 }
 
 
@@ -181,10 +185,14 @@ extension DetailsViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
+
+//MARK: - Full Screen Ekranından gelen index'in delegesi
 extension DetailsViewController: FullScreenDelegate {
     func fullScreenDidScroll(indexPath: IndexPath) {
         collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-        collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
 }
 
@@ -195,6 +203,8 @@ extension DetailsViewController: FullScreenDelegate {
 extension DetailsViewController: DetailsDisplayLogic {
     func displayDetailsList(viewModel: Details.Fetch.ViewModel) {
         self.viewModel = viewModel
-        collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
 }

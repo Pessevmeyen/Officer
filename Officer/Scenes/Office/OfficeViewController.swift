@@ -80,9 +80,9 @@ final class OfficeViewController: UIViewController {
 //MARK: - TableView Delegate & Datasource | Number Of Rows In Section, CellForRowAt, DidSelectRowAt
 extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "OFFICES"
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "OFFICES"
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.officesListViewModel.count ?? 0
@@ -112,6 +112,7 @@ extension OfficeViewController: OfficeDisplayLogic {
     func displayViewModelData(viewModel: Office.Fetch.ViewModel) {
         //Burada gelen office listesini gösteriyor.
         self.viewModel = viewModel
+        print(viewModel)
         DispatchQueue.main.async {
             self.tableView.reloadData() //displaynews'a gelmeden reload
         }

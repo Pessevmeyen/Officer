@@ -45,7 +45,7 @@ final class FullScreenViewController: UIViewController {
     //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         interactor?.fetchData(request: FullScreen.Fetch.Request())
         
     }
@@ -120,7 +120,9 @@ extension FullScreenViewController: UICollectionViewDelegate, UICollectionViewDa
 extension FullScreenViewController: FullScreenDisplayLogic {
     func displayFullScreenData(viewModel: FullScreen.Fetch.ViewModel) {
         self.viewModel = viewModel
-        collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
 }
 
