@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Z7C-I4-Xph">
-                                <rect key="frame" x="0.0" y="68" width="414" height="340"/>
+                                <rect key="frame" x="0.0" y="68" width="414" height="337"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Fts-P2-mzb">
                                     <size key="itemSize" width="128" height="128"/>
@@ -31,94 +31,6 @@
                                     <outlet property="delegate" destination="nxe-uw-h5I" id="JtX-zI-u11"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fi-eA-v87" userLabel="ortaView">
-                                <rect key="frame" x="20" y="423" width="374" height="86"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" systemColor="systemGray5Color"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Nl-Zy-4ED">
-                                <rect key="frame" x="20" y="551" width="374" height="53"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" systemColor="systemGray5Color"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dkh-pS-zyg">
-                                <rect key="frame" x="20" y="604" width="374" height="53"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" systemColor="systemGray5Color"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DJ8-LT-nrG">
-                                <rect key="frame" x="40" y="437" width="64" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="RBl-ae-Hd5"/>
-                                    <constraint firstAttribute="height" constant="64" id="qSh-DT-zIM"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kollektif House Levent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orv-xa-y3b">
-                                <rect key="frame" x="114" y="439" width="280" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Dzw-4V-I5c"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Esentepe Mah. Talatpaşa Cad. No: 5 (Harman Sok. Girişi) Şişli / İstanbul " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kY4-jP-nfb">
-                                <rect key="frame" x="114" y="460" width="280" height="41"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" systemColor="systemGrayColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nPk-Ze-i4F">
-                                <rect key="frame" x="20" y="657" width="374" height="53"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" systemColor="systemGray5Color"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gallery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfS-S6-0dm">
                                 <rect key="frame" x="20" y="44" width="60" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
@@ -126,9 +38,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Wur-A2-ppH">
-                                <rect key="frame" x="0.0" y="527" width="414" height="369"/>
+                                <rect key="frame" x="0.0" y="499" width="414" height="397"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="369" id="3Vn-S9-Cku"/>
+                                    <constraint firstAttribute="height" constant="397" id="3Vn-S9-Cku"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -136,38 +48,81 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fi-eA-v87" userLabel="ortaView">
+                                <rect key="frame" x="20" y="405" width="374" height="86"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DJ8-LT-nrG">
+                                        <rect key="frame" x="12" y="11" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="RBl-ae-Hd5"/>
+                                            <constraint firstAttribute="height" constant="64" id="qSh-DT-zIM"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kollektif House Levent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orv-xa-y3b">
+                                        <rect key="frame" x="86" y="13" width="280" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Dzw-4V-I5c"/>
+                                            <constraint firstAttribute="width" constant="280" id="y5D-RU-eRd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Esentepe Mah. Talatpaşa Cad. No: 5 (Harman Sok. Girişi) Şişli / İstanbul " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kY4-jP-nfb">
+                                        <rect key="frame" x="86" y="34" width="280" height="41"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="DJ8-LT-nrG" firstAttribute="leading" secondItem="9fi-eA-v87" secondAttribute="leading" constant="12" id="0MK-no-oxe"/>
+                                    <constraint firstItem="kY4-jP-nfb" firstAttribute="leading" secondItem="DJ8-LT-nrG" secondAttribute="trailing" constant="10" id="2ys-Mb-JXr"/>
+                                    <constraint firstItem="DJ8-LT-nrG" firstAttribute="top" secondItem="9fi-eA-v87" secondAttribute="top" constant="11" id="CJN-kg-Lqk"/>
+                                    <constraint firstItem="DJ8-LT-nrG" firstAttribute="centerY" secondItem="9fi-eA-v87" secondAttribute="centerY" id="F22-P5-OWz"/>
+                                    <constraint firstItem="orv-xa-y3b" firstAttribute="trailing" secondItem="kY4-jP-nfb" secondAttribute="trailing" id="KRQ-wM-dGO"/>
+                                    <constraint firstItem="orv-xa-y3b" firstAttribute="top" secondItem="9fi-eA-v87" secondAttribute="top" constant="13" id="LcB-ui-ptO"/>
+                                    <constraint firstItem="kY4-jP-nfb" firstAttribute="top" secondItem="orv-xa-y3b" secondAttribute="bottom" id="SsL-e3-MK3"/>
+                                    <constraint firstAttribute="trailing" secondItem="kY4-jP-nfb" secondAttribute="trailing" constant="8" id="afD-Oe-X06"/>
+                                    <constraint firstItem="orv-xa-y3b" firstAttribute="leading" secondItem="DJ8-LT-nrG" secondAttribute="trailing" constant="10" id="gu7-Mt-Nd0"/>
+                                    <constraint firstItem="DJ8-LT-nrG" firstAttribute="bottom" secondItem="kY4-jP-nfb" secondAttribute="bottom" id="xxZ-xz-RMO"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemGray5Color"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="9fi-eA-v87" firstAttribute="leading" secondItem="nPk-Ze-i4F" secondAttribute="leading" id="3vI-rR-7YF"/>
                             <constraint firstItem="Z7C-I4-Xph" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="9OZ-GQ-PCV"/>
-                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="orv-xa-y3b" secondAttribute="trailing" constant="20" id="9ho-0F-M1H"/>
-                            <constraint firstItem="9fi-eA-v87" firstAttribute="trailing" secondItem="kY4-jP-nfb" secondAttribute="trailing" id="D00-5Z-uKV"/>
-                            <constraint firstItem="9fi-eA-v87" firstAttribute="trailing" secondItem="2Nl-Zy-4ED" secondAttribute="trailing" id="Gbv-4v-wzz"/>
-                            <constraint firstItem="9fi-eA-v87" firstAttribute="trailing" secondItem="nPk-Ze-i4F" secondAttribute="trailing" id="JGK-SC-Awe"/>
                             <constraint firstItem="Wur-A2-ppH" firstAttribute="bottom" secondItem="acR-sl-ate" secondAttribute="bottom" constant="34" id="LJo-ot-HGN"/>
-                            <constraint firstItem="orv-xa-y3b" firstAttribute="leading" secondItem="DJ8-LT-nrG" secondAttribute="trailing" constant="10" id="LmU-TL-pjL"/>
-                            <constraint firstItem="Wur-A2-ppH" firstAttribute="top" secondItem="9fi-eA-v87" secondAttribute="bottom" constant="18" id="MFR-uH-sah"/>
+                            <constraint firstItem="Wur-A2-ppH" firstAttribute="top" secondItem="9fi-eA-v87" secondAttribute="bottom" constant="8" id="MFR-uH-sah"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="Wur-A2-ppH" secondAttribute="trailing" id="ML2-0H-HhY"/>
                             <constraint firstItem="Z7C-I4-Xph" firstAttribute="top" secondItem="qfS-S6-0dm" secondAttribute="bottom" id="MQw-JE-DH1"/>
-                            <constraint firstItem="orv-xa-y3b" firstAttribute="top" secondItem="Z7C-I4-Xph" secondAttribute="bottom" constant="31" id="MsP-WZ-DCi"/>
-                            <constraint firstItem="9fi-eA-v87" firstAttribute="trailing" secondItem="Dkh-pS-zyg" secondAttribute="trailing" id="NsF-4z-djI"/>
-                            <constraint firstItem="DJ8-LT-nrG" firstAttribute="centerY" secondItem="chM-je-gA4" secondAttribute="centerY" constant="21" id="THg-rE-Cj6"/>
                             <constraint firstItem="qfS-S6-0dm" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" id="Y7e-E8-m3c"/>
+                            <constraint firstItem="Z7C-I4-Xph" firstAttribute="top" secondItem="qfS-S6-0dm" secondAttribute="bottom" id="bgT-pQ-JPV"/>
                             <constraint firstItem="Wur-A2-ppH" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="d7g-96-KBb"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="Z7C-I4-Xph" secondAttribute="trailing" id="maJ-aM-vG5"/>
-                            <constraint firstItem="DJ8-LT-nrG" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="40" id="mkL-N3-IBt"/>
-                            <constraint firstItem="9fi-eA-v87" firstAttribute="leading" secondItem="Dkh-pS-zyg" secondAttribute="leading" id="nIJ-SW-uzw"/>
                             <constraint firstItem="9fi-eA-v87" firstAttribute="leading" secondItem="Wur-A2-ppH" secondAttribute="leading" constant="20" id="oI1-TQ-WOw"/>
-                            <constraint firstItem="9fi-eA-v87" firstAttribute="leading" secondItem="2Nl-Zy-4ED" secondAttribute="leading" id="qvo-KE-MSe"/>
-                            <constraint firstItem="DJ8-LT-nrG" firstAttribute="top" secondItem="Z7C-I4-Xph" secondAttribute="bottom" constant="29" id="tRq-FD-XPl"/>
                             <constraint firstItem="Wur-A2-ppH" firstAttribute="centerX" secondItem="chM-je-gA4" secondAttribute="centerX" id="tay-7I-a36"/>
-                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="kY4-jP-nfb" secondAttribute="trailing" constant="20" id="w3C-s0-EDI"/>
                             <constraint firstItem="qfS-S6-0dm" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="20" id="wPc-Yk-KxJ"/>
-                            <constraint firstItem="kY4-jP-nfb" firstAttribute="leading" secondItem="DJ8-LT-nrG" secondAttribute="trailing" constant="10" id="x5y-IF-F4z"/>
-                            <constraint firstItem="kY4-jP-nfb" firstAttribute="top" secondItem="orv-xa-y3b" secondAttribute="bottom" id="y3F-L3-H9U"/>
-                            <constraint firstItem="9fi-eA-v87" firstAttribute="top" secondItem="Z7C-I4-Xph" secondAttribute="bottom" constant="15" id="z2o-De-1P8"/>
+                            <constraint firstItem="9fi-eA-v87" firstAttribute="top" secondItem="Z7C-I4-Xph" secondAttribute="bottom" id="z2o-De-1P8"/>
                         </constraints>
                     </view>
                     <connections>

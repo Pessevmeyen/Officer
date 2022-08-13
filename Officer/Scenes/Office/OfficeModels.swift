@@ -25,19 +25,24 @@ enum Office {
             let officesListViewModel: [Office.Fetch.ViewModel.OfficeModel]
             
             struct OfficeModel {
-                let id: Int?
-                let image: String?
-                let images: [String]?
-                let name: String?
-                let address: String?
-                let capacity: String?
-                let rooms: String?
-                let space: String?
+                var id: String?
+                var image: String?
+                var images: [String]?
+                var name: String?
+                var address: String?
+                var capacity: String?
+                var rooms: String?
+                var space: String?
 
             }
         }
         
     }
     
+}
+
+struct FilterItems {
+    let first: String?
+    let second: [String]?
 }
 // swiftlint:enable nesting

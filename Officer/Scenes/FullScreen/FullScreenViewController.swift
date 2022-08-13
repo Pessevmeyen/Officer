@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 protocol FullScreenDisplayLogic: AnyObject {
     func displayFullScreenData(viewModel: FullScreen.Fetch.ViewModel)
@@ -55,8 +54,9 @@ final class FullScreenViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         // Scrolls the collection view contents until the specified item is visible.
+        collectionView.isPagingEnabled = false
         collectionView.scrollToItem(at: IndexPath(row: viewModel?.selectedIndex ?? 0, section: 0), at: .left, animated: true)
-        
+        collectionView.isPagingEnabled = true
         
     }
     
@@ -114,6 +114,8 @@ extension FullScreenViewController: UICollectionViewDelegate, UICollectionViewDa
             delegate?.fullScreenDidScroll(indexPath: visibleIndexPath)
         }
     }
+    
+    
 }
 
 

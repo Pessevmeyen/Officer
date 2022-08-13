@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SDWebImage
 import MapKit
 
 protocol DetailsDisplayLogic: AnyObject {
@@ -61,7 +60,8 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.register(UINib(nibName: Constants.detailsNibName, bundle: .main), forCellWithReuseIdentifier: Constants.detailsCellReuseIdentifier)
+        registerCollectionView()
+        
         collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
         
         navigationController?.navigationBar.topItem?.backButtonTitle = "Offices"
@@ -202,7 +202,7 @@ extension DetailsViewController: UICollectionViewDelegateFlowLayout {
 }
 
 
-//MARK: - Full Screen Ekranından gelen index'in delegesi
+//MARK: - Full Screen Ekranından gelen index'in delegesi, oradan gelen indexi buradaki collection view'a aktaracak.
 extension DetailsViewController: FullScreenDelegate {
     func fullScreenDidScroll(indexPath: IndexPath) {
         collectionView.scrollToItem(at: indexPath, at: .left, animated: true)

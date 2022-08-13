@@ -23,18 +23,13 @@ class OfficeCell: UITableViewCell {
     }
     
     func configureCell(viewModel: Office.Fetch.ViewModel.OfficeModel) {
-        nameLabel.text = viewModel.name
+        nameLabel.text = viewModel.name ?? "Not Found"
         addressLabel.text = viewModel.address
-        capacityLabel.text = "Capacity: \(viewModel.capacity ?? "")"
-        roomsLabel.text = "Rooms: \(viewModel.rooms ?? "")"
-        spaceLabel.text = "Space: \(viewModel.space ?? "")"
-        cellImageView.sd_setImage(with: URL(string: viewModel.image ?? ""))
+        capacityLabel.text = "Capacity: \(viewModel.capacity ?? "Not Found")"
+        roomsLabel.text = "Rooms: \(viewModel.rooms ?? "Not Found")"
+        spaceLabel.text = "Space: \(viewModel.space ?? "Not Found")"
+        cellImageView.sd_setImage(with: URL(string: viewModel.image ?? "Not Found"))
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
 }

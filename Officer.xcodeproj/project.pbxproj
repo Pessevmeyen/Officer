@@ -40,6 +40,9 @@
 		894D640C2898F403001CF252 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D64052898F403001CF252 /* RegisterRouter.swift */; };
 		896177E4288B43D90078E299 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896177E3288B43D90078E299 /* CustomTextField.swift */; };
 		896C5F8A28A2A690009C93F6 /* FullScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896C5F8928A2A690009C93F6 /* FullScreenCell.swift */; };
+		8987E22F28A7D4C8002E78DF /* File2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8987E22E28A7D4C8002E78DF /* File2.swift */; };
+		898BAA4D28A66893001990FC /* Officer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 898BAA4B28A66893001990FC /* Officer.xcdatamodeld */; };
+		898BAA4F28A69BDA001990FC /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898BAA4E28A69BDA001990FC /* File.swift */; };
 		8997ADF5288AD6A5003D642F /* CLTypingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */; };
 		8997ADF7288AD73E003D642F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF6288AD73E003D642F /* Constants.swift */; };
 		89BC654B289F150100AFEE36 /* FullScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89BC6544289F150100AFEE36 /* FullScreen.storyboard */; };
@@ -121,6 +124,9 @@
 		894D64052898F403001CF252 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
 		896177E3288B43D90078E299 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		896C5F8928A2A690009C93F6 /* FullScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenCell.swift; sourceTree = "<group>"; };
+		8987E22E28A7D4C8002E78DF /* File2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File2.swift; sourceTree = "<group>"; };
+		898BAA4C28A66893001990FC /* Officer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Officer.xcdatamodel; sourceTree = "<group>"; };
+		898BAA4E28A69BDA001990FC /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLTypingLabel.swift; sourceTree = "<group>"; };
 		8997ADF6288AD73E003D642F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		89BC6544289F150100AFEE36 /* FullScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullScreen.storyboard; sourceTree = "<group>"; };
@@ -177,6 +183,8 @@
 		8909FAD728735A0700F84927 = {
 			isa = PBXGroup;
 			children = (
+				8987E22E28A7D4C8002E78DF /* File2.swift */,
+				898BAA4E28A69BDA001990FC /* File.swift */,
 				89F40B802875F2790035C6F4 /* Configurations */,
 				8909FAE228735A0700F84927 /* Officer */,
 				8909FAF928735A0A00F84927 /* OfficerTests */,
@@ -205,6 +213,7 @@
 				894D640E28999ED0001CF252 /* CustomObjects */,
 				8909FAEE28735A0A00F84927 /* LaunchScreen.storyboard */,
 				8909FAF128735A0A00F84927 /* Info.plist */,
+				898BAA4B28A66893001990FC /* Officer.xcdatamodeld */,
 			);
 			path = Officer;
 			sourceTree = "<group>";
@@ -542,11 +551,13 @@
 				89BC654F289F150100AFEE36 /* FullScreenModels.swift in Sources */,
 				89FBB31A28983BE2001C5B95 /* OfficeInteractor.swift in Sources */,
 				89FBB32A28984604001C5B95 /* Request&ResponseModel.swift in Sources */,
+				8987E22F28A7D4C8002E78DF /* File2.swift in Sources */,
 				89FBB31828983BE2001C5B95 /* OfficeViewController.swift in Sources */,
 				8997ADF5288AD6A5003D642F /* CLTypingLabel.swift in Sources */,
 				894D64092898F403001CF252 /* RegisterInteractor.swift in Sources */,
 				894D63FA2898F3B3001CF252 /* LoginWorker.swift in Sources */,
 				89D13EFA289BF993008E2238 /* DetailsCell.swift in Sources */,
+				898BAA4F28A69BDA001990FC /* File.swift in Sources */,
 				8909FAE828735A0700F84927 /* WelcomeViewController.swift in Sources */,
 				8909FAE428735A0700F84927 /* AppDelegate.swift in Sources */,
 				89FBB31928983BE2001C5B95 /* OfficePresenter.swift in Sources */,
@@ -577,6 +588,7 @@
 				894D640A2898F403001CF252 /* RegisterModels.swift in Sources */,
 				894D63EC2898EFE1001CF252 /* DetailsRouter.swift in Sources */,
 				89BC654E289F150100AFEE36 /* FullScreenInteractor.swift in Sources */,
+				898BAA4D28A66893001990FC /* Officer.xcdatamodeld in Sources */,
 				894D63F62898F3B3001CF252 /* LoginViewController.swift in Sources */,
 				89BC6550289F150100AFEE36 /* FullScreenWorker.swift in Sources */,
 				894D63E72898EFE1001CF252 /* DetailsViewController.swift in Sources */,
@@ -1235,6 +1247,19 @@
 			productName = SDWebImageMapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		898BAA4B28A66893001990FC /* Officer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				898BAA4C28A66893001990FC /* Officer.xcdatamodel */,
+			);
+			currentVersion = 898BAA4C28A66893001990FC /* Officer.xcdatamodel */;
+			path = Officer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8909FAD828735A0700F84927 /* Project object */;
 }

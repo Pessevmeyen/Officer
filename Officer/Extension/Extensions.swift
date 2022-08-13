@@ -66,6 +66,20 @@ extension UITextField {
 
 
 
+//MARK: - Register Nibs
+//MARK: Table View
+extension OfficeViewController {
+    func registerTableView() {
+        tableView.register(UINib(nibName: Constants.officeNibName, bundle: .main), forCellReuseIdentifier: Constants.officeCellIdentifier)
+    }
+}
+//MARK: Detail Collection View
+extension DetailsViewController {
+    func registerCollectionView() {
+        collectionView.register(UINib(nibName: Constants.detailsNibName, bundle: .main), forCellWithReuseIdentifier: Constants.detailsCellReuseIdentifier)
+    }
+}
+
 
 
 //MARK: - Button Shadow and Border Attributes in StoryBoard
