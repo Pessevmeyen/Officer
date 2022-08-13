@@ -9,6 +9,7 @@ import Foundation
 
 protocol OfficeBusinessLogic: AnyObject {
     func fetchData(request: Office.Fetch.Request)
+    func fetchFilter(request: String)
 }
 
 protocol OfficeDataStore: AnyObject {
@@ -33,13 +34,37 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
             case .success(let response):
                 self?.offices = response //işlem kolaylığı açısından, office datalarını çektiğimiz için office diye isimlendirebiliriz bu datayı.
                 guard let offices = self?.offices else { return } //Optional gelen veriyi güvenli hale getiriyoruz.
-                self?.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: offices)) //Buradan presenter'a aktarılıyor.
+                self?.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: offices)) //Buradan presenter'a aktarılıyor. //getirdikten sonra presenter'a diyor ki, officeleri sun.
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
-        //presenter?.presentOffices(response: Office.Fetch.Response(officesList: offices)) //getirdikten sonra presenter'a diyor ki, officeleri sun.
+    }
+    
+    
+    func fetchFilter(request: String) {
+        let filteredData = offices?.filter { filter in
+            
+            //guard let filterData = self.offices else { return true }
+            
+//            switch filter {
+//            case filter == OfficeData
+//                return filter.capacity == request
+//            case 2 :
+//                return filter.space == request
+//            case 3 :
+//                return filter.rooms == request
+//            default:
+//                break
+//
+//            }
+            
+            return filter.capacity == request
         }
+        guard let filteredData = filteredData else { return }
+        self.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: (filteredData))) //Buradan presenter'a aktarılıyor.
+        print(filteredData)
+    }
     
 }
 

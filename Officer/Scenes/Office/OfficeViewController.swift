@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: Display Logic Protocol
 protocol OfficeDisplayLogic: AnyObject {
     func displayViewModelData(viewModel: Office.Fetch.ViewModel)
 }
@@ -18,15 +19,13 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     var viewModel: Office.Fetch.ViewModel?
     
     var firstPickerView = UIPickerView()
-    var secondPickerView = UIPickerView()
     
-    var shapeListVerilerinTutulduğuModelArray = [Office.Fetch.ViewModel.OfficeModel]()
-    var filteredVerilerinTutulduğuModelArray = [Office.Fetch.ViewModel.OfficeModel]()
-    
-    let firstItems: [String] = ["Date", "Capacity", "Rooms", "Space"]
-    let secondItems: [String] = ["0-5", "5-10", "10-15"]
+    //var shapeListVerilerinTutulduğuModelArray = [Office.Fetch.ViewModel.OfficeModel]()
+    //var filteredVerilerinTutulduğuModelArray = [Office.Fetch.ViewModel.OfficeModel]()
     
     var itemList = [FilterItems]()
+    
+    var bosOfficeArray = [Office.Fetch.ViewModel.OfficeModel]()
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -52,29 +51,14 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
 
         registerTableView()
         
-        navigationItem.setHidesBackButton(true, animated: true) //Back button'ı iptal ediyoruz ki giriş yaptıktan sonra tekrar giriş ekranına dönülmesin.
-        
-        //1
-        interactor?.fetchData(request: Office.Fetch.Request()) //View controller interactor'a diyor ki, office listesini çek.
-        
-        firstPickerView.delegate = self
-        firstPickerView.dataSource = self
-        
-        secondPickerView.delegate = self
-        secondPickerView.dataSource = self
-        
-        //Buradan sonra artık text Field'a dokunduğumuzda picker view gibi davranıcak
-        textField.inputView = firstPickerView
+        setHidesBackButton() // ?? çalışmazsa eski haline al.
         
         createToolbarForPickerView()
         
-        let capacityInterval: FilterItems = .init(first: "Capacity", second: ["0-5", "5-10", "10-15", "15-20"])
-        let roomsInterval: FilterItems = .init(first: "Rooms", second: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"])
-        let spaceInterval: FilterItems = .init(first: "Space", second: ["25m2", "50m2", "75m2", "100m2", "125m2", "150m2"])
+        createFilterItems() // çalışmazsa eski haline al
         
-        itemList.append(capacityInterval)
-        itemList.append(roomsInterval)
-        itemList.append(spaceInterval)
+        //1
+        interactor?.fetchData(request: Office.Fetch.Request()) //View controller interactor'a diyor ki, office listesini çek.
         
     }
     
@@ -108,6 +92,23 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     
     
     //MARK: Custom Functions
+    
+    private func createFilterItems() {
+        firstPickerView.delegate = self
+        firstPickerView.dataSource = self
+        
+        //Buradan sonra artık text Field'a dokunduğumuzda picker view gibi davranacak
+        textField.inputView = firstPickerView
+        
+        let capacityInterval: FilterItems = .init(first: "Capacity", second: ["0-5", "5-10", "10-15", "15-20", "20-25"])
+        let roomsInterval: FilterItems = .init(first: "Rooms", second: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"])
+        let spaceInterval: FilterItems = .init(first: "Space", second: ["25m2", "50m2", "75m2", "100m2", "125m2", "150m2"])
+        
+        itemList.append(capacityInterval)
+        itemList.append(roomsInterval)
+        itemList.append(spaceInterval)
+    }
+    
     private func createToolbarForPickerView() {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -120,6 +121,8 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    //MARK: @objc Functions
+    
     @objc func dismissButton() {
         view.endEditing(true)
     }
@@ -131,16 +134,12 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
 //MARK: - TableView Delegate & Datasource | Number Of Rows In Section, CellForRowAt, DidSelectRowAt
 extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return "OFFICES"
-//    }
-    
+    //MARK: Sectionda kaç tane row oluşacak
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return viewModel?.officesListViewModel.count ?? 0
-        
     }
     
+    //MARK: rowlar neyden oluşacak.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.officeCellIdentifier, for: indexPath) as? OfficeCell else {
             fatalError("An Error Occured while dequeuering reusable cell")
@@ -169,6 +168,7 @@ extension OfficeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     //MARK: Kaç tane component olacak
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
+        
     }
     
     //MARK: Componentlerde kaç tane row olacak.
@@ -194,6 +194,14 @@ extension OfficeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     //MARK: Row'u seçince ne olacak
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickerView.reloadComponent(1)
+        
+        //let selectedFirst = pickerView.selectedRow(inComponent: 0)
+        let selectedSecond = pickerView.selectedRow(inComponent: 0)
+        let selectedData = itemList[selectedSecond].second?[row]
+        
+        interactor?.fetchFilter(request: selectedData ?? "")
+    
+        textField.text = selectedData
     }
   
 }

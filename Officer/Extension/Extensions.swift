@@ -32,7 +32,17 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
+}
+
+
+
+
+
+//MARK: - Hides Back Button
+extension OfficeViewController {
+    func setHidesBackButton() {
+        navigationItem.setHidesBackButton(true, animated: true) //Back button'ı iptal ediyoruz ki giriş yaptıktan sonra tekrar giriş ekranına dönülmesin.
+    }
 }
 
 

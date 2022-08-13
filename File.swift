@@ -20,7 +20,7 @@
 //    var pickerView = UIPickerView()
 //    var pickerButton = UIBarButtonItem()
 //    let searchController = UISearchController(searchResultsController: nil)
-//    
+//
 //    var searching = false
 //    var scopeButtonPressed = false
 //

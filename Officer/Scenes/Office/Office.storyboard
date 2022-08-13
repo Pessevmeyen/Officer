@@ -30,8 +30,8 @@
                                 <color key="textColor" systemColor="systemBlueColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Offices by Filter" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j6W-ZS-hT8">
-                                <rect key="frame" x="60" y="80" width="354" height="45"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Offices by Filter" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j6W-ZS-hT8">
+                                <rect key="frame" x="60" y="80" width="344" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -54,7 +54,7 @@
                             <constraint firstItem="Ivu-85-p2v" firstAttribute="top" secondItem="H1G-4a-1dn" secondAttribute="bottom" constant="8" symbolic="YES" id="NiY-04-rDu"/>
                             <constraint firstItem="H1G-4a-1dn" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" id="V0z-JG-gba"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="fq5-rG-nhr" secondAttribute="trailing" id="V4N-e0-iXH"/>
-                            <constraint firstItem="j6W-ZS-hT8" firstAttribute="trailing" secondItem="fq5-rG-nhr" secondAttribute="trailing" id="X8g-gp-s30"/>
+                            <constraint firstItem="j6W-ZS-hT8" firstAttribute="trailing" secondItem="fq5-rG-nhr" secondAttribute="trailing" constant="-10" id="X8g-gp-s30"/>
                             <constraint firstItem="Ivu-85-p2v" firstAttribute="centerY" secondItem="j6W-ZS-hT8" secondAttribute="centerY" id="bmQ-rL-sho"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="bottom" secondItem="fq5-rG-nhr" secondAttribute="bottom" id="dZB-3x-y7P"/>
                             <constraint firstItem="fq5-rG-nhr" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="tIP-uK-fhK"/>
