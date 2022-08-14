@@ -31,34 +31,34 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Offices by Filter" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j6W-ZS-hT8">
-                                <rect key="frame" x="60" y="80" width="344" height="45"/>
+                                <rect key="frame" x="52" y="80" width="342" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ivu-85-p2v">
-                                <rect key="frame" x="20" y="88.5" width="32" height="27.5"/>
+                                <rect key="frame" x="20" y="88.5" width="24" height="27.5"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="gsg-6f-bUa"/>
+                                    <constraint firstAttribute="width" constant="24" id="gsg-6f-bUa"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fq5-rG-nhr" firstAttribute="top" secondItem="j6W-ZS-hT8" secondAttribute="bottom" constant="5" id="1f5-pu-eqG"/>
+                            <constraint firstItem="j6W-ZS-hT8" firstAttribute="top" secondItem="H1G-4a-1dn" secondAttribute="bottom" id="19W-bf-Q2J"/>
                             <constraint firstItem="Ivu-85-p2v" firstAttribute="leading" secondItem="H1G-4a-1dn" secondAttribute="leading" id="94a-sq-OcF"/>
-                            <constraint firstItem="j6W-ZS-hT8" firstAttribute="leading" secondItem="Ivu-85-p2v" secondAttribute="trailing" constant="8" symbolic="YES" id="Am8-K0-Yvg"/>
                             <constraint firstItem="H1G-4a-1dn" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="20" id="Cpq-St-HKB"/>
                             <constraint firstItem="fq5-rG-nhr" firstAttribute="top" secondItem="H1G-4a-1dn" secondAttribute="bottom" constant="50" id="H5s-HY-3xD"/>
                             <constraint firstItem="Ivu-85-p2v" firstAttribute="top" secondItem="H1G-4a-1dn" secondAttribute="bottom" constant="8" symbolic="YES" id="NiY-04-rDu"/>
                             <constraint firstItem="H1G-4a-1dn" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" id="V0z-JG-gba"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="fq5-rG-nhr" secondAttribute="trailing" id="V4N-e0-iXH"/>
-                            <constraint firstItem="j6W-ZS-hT8" firstAttribute="trailing" secondItem="fq5-rG-nhr" secondAttribute="trailing" constant="-10" id="X8g-gp-s30"/>
-                            <constraint firstItem="Ivu-85-p2v" firstAttribute="centerY" secondItem="j6W-ZS-hT8" secondAttribute="centerY" id="bmQ-rL-sho"/>
+                            <constraint firstItem="j6W-ZS-hT8" firstAttribute="leading" secondItem="Ivu-85-p2v" secondAttribute="trailing" constant="8" symbolic="YES" id="bPL-h2-aef"/>
+                            <constraint firstItem="j6W-ZS-hT8" firstAttribute="centerY" secondItem="Ivu-85-p2v" secondAttribute="centerY" id="cAH-jy-AVZ"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="bottom" secondItem="fq5-rG-nhr" secondAttribute="bottom" id="dZB-3x-y7P"/>
+                            <constraint firstItem="fq5-rG-nhr" firstAttribute="top" secondItem="j6W-ZS-hT8" secondAttribute="bottom" constant="5" id="h5i-uZ-jea"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="j6W-ZS-hT8" secondAttribute="trailing" constant="20" id="qKz-GL-KK0"/>
                             <constraint firstItem="fq5-rG-nhr" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="tIP-uK-fhK"/>
-                            <constraint firstItem="j6W-ZS-hT8" firstAttribute="top" secondItem="H1G-4a-1dn" secondAttribute="bottom" id="zqI-h3-i77"/>
                         </constraints>
                     </view>
                     <connections>

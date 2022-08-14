@@ -127,7 +127,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     
     @objc func dismissButton() {
         view.endEditing(true)
-        interactor?.fetchData(request: Office.Fetch.Request()) //Burası doğru bir yaklaşım mı?
+        interactor?.fetchDataAfterFetched()
         textField.text = ""
         print("done'a basıldı")
     }
@@ -198,6 +198,7 @@ extension OfficeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     //MARK: Row'u seçince ne olacak
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerView.reloadComponent(0)
         pickerView.reloadComponent(1)
         
         //let selectedFirst = pickerView.selectedRow(inComponent: 0)
