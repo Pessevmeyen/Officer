@@ -28,9 +28,15 @@ struct Constants {
     static let spaceArray = ["25m2", "50m2", "75m2", "100m2", "125m2", "150m2"]
     
     
+    
+    
+    
     //MARK: - Login Storyboard
     static let loginStoryboardIdentifier = "LoginViewController"
     static let loginStoryboardName = "Login"
+    
+    
+    
     
     
     //MARK: - Register Storyboard
@@ -38,9 +44,15 @@ struct Constants {
     static let registerStoryboardIdentifier = "RegisterViewController"
     
     
+    
+    
+    
     //MARK: - Office Storyboard
     static let officeStoryboardName = "Office"
     static let officeStoryboardIdentifier = "OfficeViewController"
+    
+    
+    
     
     
     //MARK: - Office Cell
@@ -48,18 +60,35 @@ struct Constants {
     static let officeNibName = "OfficeCell"
     
     
+    
+    
+    
     //MARK: - Details Storyboard
     static let detailsStoryboardIdentifier = "DetailsViewController"
     static let detailsStoryboardName = "Details"
+    
+    
+    
     
     
     //MARK: - Details Cell Storyboard
     static let detailsCellReuseIdentifier = "DetailsCell"
     static let detailsNibName = "DetailsCell"
     
+    
+    
+    
+    
     //MARK: - Full Screen Storyboard
     static let fullScreenStoryboardName = "FullScreen"
     static let fullScreenCell = "FullScreenCell"
     static let fullScreenIdentifier = "FullScreenViewController"
-
+    
+    
+    
+    
+    
+    //MARK: - Favorite Screen Storyboard
+    static let favoriteScreenCellIdentifier = "FavoriteScreenCell"
+    static let favoriteScreenNibName = "FavoriteScreenCell"
 }

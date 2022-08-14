@@ -24,9 +24,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     //var filteredVerilerinTutulduğuModelArray = [Office.Fetch.ViewModel.OfficeModel]()
     
     var itemList = [FilterItems]()
-    
-    var bosOfficeArray = [Office.Fetch.ViewModel.OfficeModel]()
-    
+
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
@@ -56,6 +54,8 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         createToolbarDoneButtonForPickerView()
         
         createFilterItems()
+        
+        setRightBarButtonItem()
         
         //1
         interactor?.fetchData(request: Office.Fetch.Request()) //View controller interactor'a diyor ki, office listesini çek.
@@ -92,7 +92,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     
     
     //MARK: Custom Functions
-    
+    //MARK: Creates Filter Items
     private func createFilterItems() {
         firstPickerView.delegate = self
         firstPickerView.dataSource = self
@@ -111,6 +111,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         itemList.append(spaceInterval)
     }
     
+    //MARK: Creates Toolbar Button
     private func createToolbarDoneButtonForPickerView() {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -123,6 +124,14 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    //MARK: Create Right Bar Button
+    func setRightBarButtonItem() {
+        let favoritesScreenButton = UIBarButtonItem.init(title: "Favorites", style: .done, target: self, action: #selector(goToFavoritesScreen))
+        favoritesScreenButton.tintColor = #colorLiteral(red: 0.5294117647, green: 0.1285524964, blue: 0.5745313764, alpha: 1)
+        navigationItem.rightBarButtonItems = [favoritesScreenButton]
+    }
+    
+    
     //MARK: @objc Functions
     
     @objc func dismissButton() {
@@ -130,6 +139,13 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         interactor?.fetchDataAfterFetched() // Done tuşuna basıldığında bütün ofisleri tekrar gösterecek.
         textField.text = ""
         print("done'a basıldı")
+    }
+    
+    @objc func goToFavoritesScreen() {
+        print("tapped")
+        let storyboard = UIStoryboard(name: "FavoriteScreen", bundle: nil)
+        let destVC: FavoriteScreenViewController = storyboard.instantiateViewController(identifier: "FavoriteScreenViewController")
+        present(destVC, animated: true) // Burada pop'up olarak açılacak ekran. kullanıcı açısından daha basit olur.
     }
     
 }
@@ -219,8 +235,8 @@ extension OfficeViewController: OfficeDisplayLogic {
         //Burada gelen office listesini gösteriyor.
         self.viewModel = viewModel
         print(viewModel)
-        DispatchQueue.main.async {
-            self.tableView.reloadData() //displaynews'a gelmeden reload
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData() //displaynews'a gelmeden reload
         }
     }
 }

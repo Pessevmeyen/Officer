@@ -14,7 +14,8 @@ protocol OfficeBusinessLogic: AnyObject {
 }
 
 protocol OfficeDataStore: AnyObject {
-    var offices: OfficeDataArray? { get set } //Daha sonra router ile veri aktarımı için verileri tutuyoruz burada. Request&Response modeli Array içinde tutuyoruz.
+    var offices: OfficeDataArray? { get set } //Daha sonra router ile veri aktarımı için verileri tutuyoruz burada.
+    var filteredOffices: OfficeDataArray? { get set } //Workerdan gelen response verisi buraya aktarılıyor.
 }
 
 final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
@@ -27,6 +28,7 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
     }
     
     var offices: OfficeDataArray? //Workerdan gelen response verisi buraya aktarılıyor.
+    var filteredOffices: OfficeDataArray? //Filtreden gelen verilerin officeleri
     
     //2
     func fetchData(request: Office.Fetch.Request) { //interactor da worker'a diyor, office listesini getir.
@@ -35,6 +37,7 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
             case .success(let response):
                 self?.offices = response //işlem kolaylığı açısından, office datalarını çektiğimiz için office diye isimlendirebiliriz bu datayı.
                 //guard let offices = self?.offices else { return } //Optional gelen veriyi güvenli hale getiriyoruz.
+                self?.filteredOffices = response
                 guard let offices = self?.offices else { return }
                 self?.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: offices)) //Buradan presenter'a
             case .failure(let error):
@@ -51,7 +54,7 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
     
     
     func fetchFilter(request: String) {
-        let filteredData = offices?.filter { filter in
+        let filteredData = filteredOffices?.filter { filter in
             
             return filter.space == request || filter.capacity == request || String(filter.rooms ?? 0) == request
             //Seçilmediyse nasıl hepsini göstericez?

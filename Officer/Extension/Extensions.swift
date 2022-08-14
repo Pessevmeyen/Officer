@@ -89,7 +89,12 @@ extension DetailsViewController {
         collectionView.register(UINib(nibName: Constants.detailsNibName, bundle: .main), forCellWithReuseIdentifier: Constants.detailsCellReuseIdentifier)
     }
 }
-
+//MARK: Favorite Screen Table View
+extension FavoriteScreenViewController {
+    func registerCollectionView() {
+        tableView.register(UINib(nibName: Constants.favoriteScreenNibName, bundle: .main), forCellReuseIdentifier: Constants.favoriteScreenCellIdentifier)
+    }
+}
 
 
 //MARK: - Button Shadow and Border Attributes in StoryBoard
