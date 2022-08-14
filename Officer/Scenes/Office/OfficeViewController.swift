@@ -51,11 +51,11 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
 
         registerTableView()
         
-        setHidesBackButton() // ?? çalışmazsa eski haline al.
+        setHidesBackBarButton()
         
-        createToolbarForPickerView()
+        createToolbarDoneButtonForPickerView()
         
-        createFilterItems() // çalışmazsa eski haline al
+        createFilterItems()
         
         //1
         interactor?.fetchData(request: Office.Fetch.Request()) //View controller interactor'a diyor ki, office listesini çek.
@@ -109,7 +109,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         itemList.append(spaceInterval)
     }
     
-    private func createToolbarForPickerView() {
+    private func createToolbarDoneButtonForPickerView() {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         toolBar.isUserInteractionEnabled = true
@@ -125,6 +125,8 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     
     @objc func dismissButton() {
         view.endEditing(true)
+        interactor?.fetchData(request: Office.Fetch.Request()) //Burası doğru bir yaklaşım mı?
+        print("done'a basıldı")
     }
     
 }
@@ -198,10 +200,8 @@ extension OfficeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         //let selectedFirst = pickerView.selectedRow(inComponent: 0)
         let selectedSecond = pickerView.selectedRow(inComponent: 0)
         let selectedData = itemList[selectedSecond].second?[row]
-        
-        interactor?.fetchFilter(request: selectedData ?? "")
-    
         textField.text = selectedData
+        interactor?.fetchFilter(request: selectedData ?? "")
     }
   
 }

@@ -60,6 +60,7 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
 //            }
             
             return filter.space == request || filter.capacity == request || String(filter.rooms ?? 0) == request
+            //Seçilmediyse nasıl hepsini göstericez?
         }
         guard let filteredData = filteredData else { return }
         self.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: (filteredData))) //Buradan presenter'a aktarılıyor.
