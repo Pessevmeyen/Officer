@@ -11,7 +11,7 @@ protocol LoginRoutingLogic: AnyObject {
     
 }
 
-protocol LoginDataPassing: class {
+protocol LoginDataPassing: AnyObject {
     var dataStore: LoginDataStore? { get }
 }
 

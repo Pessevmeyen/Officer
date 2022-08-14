@@ -25,9 +25,11 @@ final class DetailsViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var roomImageView: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
-
+    @IBOutlet weak var capacityLabel: UILabel!
+    @IBOutlet weak var roomLabel: UILabel!
+    @IBOutlet weak var spaceLabel: UILabel!
+    
     
     
     var detailsID: Int?
@@ -106,7 +108,9 @@ final class DetailsViewController: UIViewController {
         imageView.sd_setImage(with: URL(string: viewModel?.image ?? ""))
         nameLabel.text = viewModel?.name ?? "nil"
         addressLabel.text = viewModel?.address ?? "nil"
-        //roomImageView.image = UIImage(systemName: "door.left.hand.closed")
+        capacityLabel.text = "Capacity: \(viewModel?.capacity ?? "nil")"
+        spaceLabel.text = "Space: \(viewModel?.space ?? "nil")"
+        roomLabel.text = "Rooms: \(viewModel?.rooms ?? "nil")"
     }
     
     

@@ -12,7 +12,7 @@ protocol DetailsRoutingLogic: AnyObject {
     func routeToFullScreen(index: Int)
 }
 
-protocol DetailsDataPassing: class {
+protocol DetailsDataPassing: AnyObject {
     var dataStore: DetailsDataStore? { get }
 }
 

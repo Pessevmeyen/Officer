@@ -127,7 +127,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     
     @objc func dismissButton() {
         view.endEditing(true)
-        interactor?.fetchDataAfterFetched()
+        interactor?.fetchDataAfterFetched() // Done tuşuna basıldığında bütün ofisleri tekrar gösterecek.
         textField.text = ""
         print("done'a basıldı")
     }

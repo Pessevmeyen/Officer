@@ -39,7 +39,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ghd-FZ-B8g">
                         <rect key="frame" x="149" y="47" width="141.5" height="58"/>
                         <string key="text">Esentepe Mah. Talatpaşa Cad. No: 5 (Harman Sok. Girişi) Şişli / İstanbul Esentepe Mah. Talatpaşa Cad. No: 5 (Harman Sok. Girişi) Şişli / İstanbul</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -55,22 +55,22 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Pud-MA-Dc1">
-                        <rect key="frame" x="22" y="110" width="271.5" height="20"/>
+                        <rect key="frame" x="22" y="110" width="241.5" height="20"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="·Capacity 99-99" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2Np-Sq-vWr">
-                                <rect key="frame" x="0.0" y="0.0" width="90.5" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="80.5" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <color key="textColor" systemColor="systemBlueColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="·rooms 99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-WA-U9Y">
-                                <rect key="frame" x="90.5" y="0.0" width="90.5" height="20"/>
+                                <rect key="frame" x="80.5" y="0.0" width="80.5" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <color key="textColor" systemColor="systemBlueColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="·space: 999m2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ikg-Q6-pi8">
-                                <rect key="frame" x="181" y="0.0" width="90.5" height="20"/>
+                                <rect key="frame" x="161" y="0.0" width="80.5" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <color key="textColor" systemColor="systemBlueColor"/>
                                 <nil key="highlightedColor"/>
@@ -90,6 +90,18 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dc5-14-iz9">
+                        <rect key="frame" x="270" y="110" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="46b-5s-kDU"/>
+                        </constraints>
+                        <color key="tintColor" systemColor="systemRedColor"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                        <connections>
+                            <action selector="favoriteClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8iy-7c-eEi"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ghd-FZ-B8g" firstAttribute="top" secondItem="zsk-LU-5or" secondAttribute="bottom" constant="1" id="DYJ-l7-UcA"/>
@@ -99,19 +111,29 @@
                     <constraint firstItem="zsk-LU-5or" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="SZc-pn-LW1"/>
                     <constraint firstItem="UhW-hZ-Rbn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="19" id="Vq4-lZ-LI5"/>
                     <constraint firstItem="Pud-MA-Dc1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ghd-FZ-B8g" secondAttribute="bottom" constant="5" id="WGO-LO-NnB"/>
+                    <constraint firstItem="zsk-LU-5or" firstAttribute="top" secondItem="dc5-14-iz9" secondAttribute="bottom" constant="-108" id="b6r-eZ-pFN"/>
                     <constraint firstAttribute="trailing" secondItem="zsk-LU-5or" secondAttribute="trailing" constant="3" id="bv8-Zm-2bQ"/>
                     <constraint firstItem="Pud-MA-Dc1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="e2c-te-9Gy"/>
-                    <constraint firstAttribute="trailing" secondItem="Pud-MA-Dc1" secondAttribute="trailing" id="f8r-fd-CXP"/>
+                    <constraint firstAttribute="trailing" secondItem="Pud-MA-Dc1" secondAttribute="trailing" constant="30" id="f8r-fd-CXP"/>
+                    <constraint firstItem="dc5-14-iz9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="110" id="fW3-gr-atD"/>
                     <constraint firstItem="ghd-FZ-B8g" firstAttribute="leading" secondItem="UhW-hZ-Rbn" secondAttribute="trailing" constant="10" id="hFk-nQ-aCu"/>
                     <constraint firstItem="Pud-MA-Dc1" firstAttribute="top" secondItem="UhW-hZ-Rbn" secondAttribute="bottom" constant="5" id="kNa-No-I0W"/>
                     <constraint firstAttribute="trailing" secondItem="ghd-FZ-B8g" secondAttribute="trailing" constant="3" id="oTz-YE-OnM"/>
+                    <constraint firstAttribute="trailing" secondItem="dc5-14-iz9" secondAttribute="trailing" constant="3.5" id="zKu-WA-wl2"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="addressLabel" destination="ghd-FZ-B8g" id="ljh-N3-EjK"/>
                 <outlet property="capacityLabel" destination="2Np-Sq-vWr" id="fwp-dE-bfp"/>
                 <outlet property="cellImageView" destination="UhW-hZ-Rbn" id="1DP-rd-HTS"/>
+                <outlet property="favoriteButton" destination="dc5-14-iz9" id="f42-2Z-6Pk"/>
                 <outlet property="nameLabel" destination="zsk-LU-5or" id="NGE-VS-SXc"/>
                 <outlet property="roomsLabel" destination="UfM-WA-U9Y" id="oth-2I-Mrf"/>
                 <outlet property="spaceLabel" destination="ikg-Q6-pi8" id="O3e-1f-J7G"/>
@@ -120,15 +142,22 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="mainbackground" width="900" height="1600"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

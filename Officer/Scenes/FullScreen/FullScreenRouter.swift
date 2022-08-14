@@ -10,7 +10,7 @@ import Foundation
 protocol FullScreenRoutingLogic: AnyObject {
 }
 
-protocol FullScreenDataPassing: class {
+protocol FullScreenDataPassing: AnyObject {
     var dataStore: FullScreenDataStore? { get }
 }
 

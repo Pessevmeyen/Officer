@@ -12,7 +12,7 @@ protocol OfficeRoutingLogic: AnyObject {
     func routeToDetails(index: Int)
 }
 
-protocol OfficeDataPassing: class {
+protocol OfficeDataPassing: AnyObject {
     var dataStore: OfficeDataStore? { get }
 }
 

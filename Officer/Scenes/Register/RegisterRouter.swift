@@ -11,7 +11,7 @@ protocol RegisterRoutingLogic: AnyObject {
     
 }
 
-protocol RegisterDataPassing: class {
+protocol RegisterDataPassing: AnyObject {
     var dataStore: RegisterDataStore? { get }
 }
 
