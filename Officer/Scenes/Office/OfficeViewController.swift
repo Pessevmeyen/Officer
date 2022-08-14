@@ -100,10 +100,12 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         //Buradan sonra artık text Field'a dokunduğumuzda picker view gibi davranacak
         textField.inputView = firstPickerView
         
-        let capacityInterval: FilterItems = .init(first: "Capacity", second: ["0-5", "5-10", "10-15", "15-20", "20-25"])
-        let roomsInterval: FilterItems = .init(first: "Rooms", second: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"])
-        let spaceInterval: FilterItems = .init(first: "Space", second: ["25m2", "50m2", "75m2", "100m2", "125m2", "150m2"])
+        let dateInterval: FilterItems = .init(first: "Date", second: ["?"]) //dolacak
+        let capacityInterval: FilterItems = .init(first: "Capacity", second: Constants.capacityArray)
+        let roomsInterval: FilterItems = .init(first: "Rooms", second: Constants.roomsArray)
+        let spaceInterval: FilterItems = .init(first: "Space", second: Constants.spaceArray)
         
+        itemList.append(dateInterval)
         itemList.append(capacityInterval)
         itemList.append(roomsInterval)
         itemList.append(spaceInterval)
@@ -126,6 +128,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     @objc func dismissButton() {
         view.endEditing(true)
         interactor?.fetchData(request: Office.Fetch.Request()) //Burası doğru bir yaklaşım mı?
+        textField.text = ""
         print("done'a basıldı")
     }
     

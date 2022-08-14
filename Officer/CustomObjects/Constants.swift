@@ -21,6 +21,13 @@ struct Constants {
     
     static let listingLayoutImage = "listinglayoutimage"
     
+    static let capacityArray = ["0-5", "5-10", "10-15", "15-20", "20-25"]
+    
+    static let roomsArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+    
+    static let spaceArray = ["25m2", "50m2", "75m2", "100m2", "125m2", "150m2"]
+    
+    
     //MARK: - Login Storyboard
     static let loginStoryboardIdentifier = "LoginViewController"
     static let loginStoryboardName = "Login"
