@@ -15,8 +15,6 @@ protocol OfficeDisplayLogic: AnyObject {
 
 final class OfficeViewController: UIViewController, UITextFieldDelegate {
     
-    
-    
     var interactor: OfficeBusinessLogic?
     var router: (OfficeRoutingLogic & OfficeDataPassing)?
     var viewModel: Office.Fetch.ViewModel?
@@ -27,7 +25,6 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
-    
     
     // MARK: Object lifecycle
     
@@ -146,16 +143,18 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         router?.routeToFavorites()
     }
     
-    
-    
 }
 
 
 
-//MARK: - TableView Delegate & Datasource | Number Of Rows In Section, CellForRowAt, DidSelectRowAt
+//MARK: EXTENSIONS
+
+
+
+//MARK: - TableView Delegate & Datasource
 extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
     
-    //MARK: Sectionda kaç tane row oluşacak
+    // Sectionda kaç tane row oluşacak
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.officesListViewModel.count ?? 0
     }
@@ -177,6 +176,7 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    //MARK: What happen when select
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         router?.routeToDetails(index: indexPath.row) //Seçilen cell'e ne olacağını yazıyoruz. Burada önce seçilen cell'in datasını route'a gönderiyoruz. row? item?
     }
@@ -185,7 +185,6 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: - Picker View Delegate
 extension OfficeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
     
     //MARK: Kaç tane component olacak
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -227,7 +226,7 @@ extension OfficeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
   
 }
 
-//MARK: Office Cell Delegate
+//MARK: - Office Cell Delegate
 extension OfficeViewController: OfficeCellDelegate {
     
     //MARK: Added to Favorite
@@ -289,7 +288,6 @@ extension OfficeViewController: OfficeCellDelegate {
                             } catch {
                                 print("silinme save edilmedi")
                             }
-                            
                             break
                     }
                 }

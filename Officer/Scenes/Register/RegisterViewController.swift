@@ -56,10 +56,93 @@ final class RegisterViewController: UIViewController {
     }
     
     @IBAction func signInClicked(_ sender: UIButton) {
-        goToDestinationVC(storyboardName: Constants.officeStoryboardName, storyboardID: Constants.officeStoryboardIdentifier)
+        
+        if emailTextField.text != "" && passwordTextField.text != "" {
+            
+            do {
+                try KeychainManager.save(service: "mobven.com", account: emailTextField.text!, password: (passwordTextField.text?.data(using: .utf8))!)
+                print("saved")
+            } catch {
+                print(error)
+            }
+            
+            guard let data = KeychainManager.get(service: "mobven.com", account: emailTextField.text!) else {
+                print("Failed to read password")
+                return
+            }
+            
+            let password = String(decoding: data, as: UTF8.self)
+            print("Read password: \(password)")
+            
+            goToDestinationVC(storyboardName: Constants.officeStoryboardName, storyboardID: Constants.officeStoryboardIdentifier)
+            
+        } else {
+            signInButton.isUserInteractionEnabled = false
+        }
+        
     }
 }
 
+
+
+class KeychainManager {
+    enum KeychainError: Error {
+        case duplicateEntry
+        case unknown(OSStatus)
+    }
+    
+    
+    func getPassword() {
+    }
+    
+    
+    static func save(service: String, account: String, password: Data) throws {
+        
+        let query: [String: AnyObject] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service as AnyObject,
+            kSecAttrAccount as String: account as AnyObject,
+            kSecValueData as String: password as AnyObject,
+        ]
+        
+        let status = SecItemAdd(query as CFDictionary, nil)
+        
+        guard status != errSecDuplicateItem else {
+            throw KeychainError.duplicateEntry
+        }
+        
+        guard status == errSecSuccess else {
+            throw KeychainError.unknown(status)
+        }
+        
+        print("saved")
+        
+    }
+    
+    
+    static func get(service: String, account: String) -> Data? {
+        
+        let query: [String: AnyObject] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service as AnyObject,
+            kSecAttrAccount as String: account as AnyObject,
+            kSecReturnData as String: kCFBooleanTrue,
+            kSecMatchLimit as String: kSecMatchLimitOne
+        ]
+        
+        var result: AnyObject?
+        let status = SecItemCopyMatching(query as CFDictionary, &result)
+        
+        print("Read status: \(status)")
+        
+        return result as? Data
+        
+    }
+    
+}
+
+
+//MARK: Display Logic
 extension RegisterViewController: RegisterDisplayLogic {
     
 }
