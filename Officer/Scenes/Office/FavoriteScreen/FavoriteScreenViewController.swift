@@ -26,8 +26,6 @@ final class FavoriteScreenViewController: UIViewController {
     var roomsArray = [String]()
     var spaceArray = [String]()
     var imageArray = [String]()
-    var imagesArray = [String]()
-    
     
     
     
@@ -46,6 +44,7 @@ final class FavoriteScreenViewController: UIViewController {
         setup()
     }
     
+    //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,18 +54,11 @@ final class FavoriteScreenViewController: UIViewController {
         
     }
     
+    //MARK: View Will Appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         NotificationCenter.default.addObserver(self, selector: #selector(getDataFromCoreData), name: NSNotification.Name(rawValue: "veriGirildi"), object: nil)
-        
-        if choosedName != "" {
-            //Core data seçilen ofis bilgilerini göster
-            
-        } else {
-            
-        }
-        
     }
     
     // MARK: Setup
@@ -84,6 +76,7 @@ final class FavoriteScreenViewController: UIViewController {
         router.dataStore = interactor
     }
     
+    //MARK: Getting Data From Core Data
     @objc func getDataFromCoreData() {
         
         nameArray.removeAll(keepingCapacity: false)
@@ -99,39 +92,37 @@ final class FavoriteScreenViewController: UIViewController {
             let results = try context.fetch(fetchRequest)
             
             if results.count > 0 {
-                for result in results as! [NSManagedObject] {
+                for result in results as! [NSManagedObject] { //results Any olarak geliyor o yüzden tipini belirlememiz gerek.
                     
                     if let uuid = result.value(forKey: "uuid") as? UUID {
-                        uuidArray.append(uuid)
+                        self.uuidArray.append(uuid)
                     }
                     
                     if let name = result.value(forKey: "name") as? String {
-                        nameArray.append(name)
+                        self.nameArray.append(name)
                     }
                     
                     if let address = result.value(forKey: "address") as? String {
-                        addressArray.append(address)
+                        self.addressArray.append(address)
                     }
                     
                     if let capacity = result.value(forKey: "capacity") as? String {
-                        capacityArray.append(capacity)
+                        self.capacityArray.append(capacity)
                     }
                     
                     if let rooms = result.value(forKey: "rooms") as? String {
-                        roomsArray.append(rooms)
+                        self.roomsArray.append(rooms)
                     }
                     
                     if let space = result.value(forKey: "space") as? String {
-                        spaceArray.append(space)
-                    }
+                        self.spaceArray.append(space)
+                    } 
                     
                     if let image = result.value(forKey: "image") as? String {
-                        imageArray.append(image)
+                        self.imageArray.append(image)
                     }
-                    
-                    
                 }
-                tableView.reloadData()
+                self.tableView.reloadData()
             }
           
         } catch {
@@ -162,7 +153,7 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
         cell.capacityLabel.text = capacityArray[indexPath.row]
         cell.roomsLabel.text = roomsArray[indexPath.row]
         cell.spaceLabel.text = spaceArray[indexPath.row]
-        cell.cellImageView.sd_setImage(with: URL(string: imageArray[indexPath.row]))
+        //cell.cellImageView.sd_setImage(with: URL(string: imageArray[indexPath.row]))
         
         return cell
     }

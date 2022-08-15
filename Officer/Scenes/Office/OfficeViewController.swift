@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 //MARK: Display Logic Protocol
 protocol OfficeDisplayLogic: AnyObject {
@@ -14,17 +15,15 @@ protocol OfficeDisplayLogic: AnyObject {
 
 final class OfficeViewController: UIViewController, UITextFieldDelegate {
     
+    
+    
     var interactor: OfficeBusinessLogic?
     var router: (OfficeRoutingLogic & OfficeDataPassing)?
     var viewModel: Office.Fetch.ViewModel?
     
     var firstPickerView = UIPickerView()
     
-    //var shapeListVerilerinTutulduğuModelArray = [Office.Fetch.ViewModel.OfficeModel]()
-    //var filteredVerilerinTutulduğuModelArray = [Office.Fetch.ViewModel.OfficeModel]()
-    
     var itemList = [FilterItems]()
-
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
@@ -92,7 +91,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     
     
     //MARK: Custom Functions
-    //MARK: Creates Filter Items
+    // Creates Filter Items
     private func createFilterItems() {
         firstPickerView.delegate = self
         firstPickerView.dataSource = self
@@ -111,7 +110,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         itemList.append(spaceInterval)
     }
     
-    //MARK: Creates Toolbar Button
+    // Creates Toolbar Button
     private func createToolbarDoneButtonForPickerView() {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -141,12 +140,13 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         print("done'a basıldı")
     }
     
+    //MARK: Go To Router
     @objc func goToFavoritesScreen() {
-        print("tapped")
-        let storyboard = UIStoryboard(name: "FavoriteScreen", bundle: nil)
-        let destVC: FavoriteScreenViewController = storyboard.instantiateViewController(identifier: "FavoriteScreenViewController")
-        present(destVC, animated: true) // Burada pop'up olarak açılacak ekran. kullanıcı açısından daha basit olur.
+        print("favorites button tapped.")
+        router?.routeToFavorites()
     }
+    
+    
     
 }
 
@@ -160,7 +160,7 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
         return viewModel?.officesListViewModel.count ?? 0
     }
     
-    //MARK: rowlar neyden oluşacak.
+    //MARK: This rows occurs from what
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.officeCellIdentifier, for: indexPath) as? OfficeCell else {
             fatalError("An Error Occured while dequeuering reusable cell")
@@ -170,6 +170,8 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError("An Error Occured while dequeuering reusable cell")
         }
         
+        cell.delegate = self
+        
         cell.configureCell(viewModel: model)
         
         return cell
@@ -178,7 +180,6 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         router?.routeToDetails(index: indexPath.row) //Seçilen cell'e ne olacağını yazıyoruz. Burada önce seçilen cell'in datasını route'a gönderiyoruz. row? item?
     }
-    
 }
 
 
@@ -212,7 +213,7 @@ extension OfficeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
-    //MARK: Row'u seçince ne olacak
+    //MARK: Row'u seçince ne olacak + Go To Interactor
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickerView.reloadComponent(0)
         pickerView.reloadComponent(1)
@@ -224,6 +225,79 @@ extension OfficeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         interactor?.fetchFilter(request: selectedData ?? "")
     }
   
+}
+
+//MARK: Office Cell Delegate
+extension OfficeViewController: OfficeCellDelegate {
+    
+    //MARK: Added to Favorite
+    func favoriteAdded(model: Office.Fetch.ViewModel.OfficeModel) {
+        //MARK: Saving data to the Core Data
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        //Context'in içine ne koyacağımızı söylememiz lazım.
+        let offices = NSEntityDescription.insertNewObject(forEntityName: "Offices", into: context)
+        
+        //Burada Entity'nin Attribute'larını vericez.
+        offices.setValue(UUID(), forKey: "uuid")
+        offices.setValue(model.name, forKey: "name")
+        offices.setValue(model.address, forKey: "address")
+        offices.setValue(model.capacity, forKey: "capacity")
+        offices.setValue(model.rooms, forKey: "rooms")
+        offices.setValue(model.space, forKey: "space")
+        offices.setValue(model.image ?? "", forKey: "image")
+        
+        do {
+            try context.save()
+            print("saved")
+        } catch {
+            print("saving error!")
+        }
+        
+        //Favoriler sayfasona notify ediyoruz değişiklik geldi uygula diye.
+        NotificationCenter.default.post(name: NSNotification.Name("veriGirildi"), object: nil)
+    }
+    
+    //MARK: Deleted from Favorite
+    func favoriteDeleted(model: Office.Fetch.ViewModel.OfficeModel) {
+        //MARK: Deleting data from Core Data
+        // First we have to fetch data from core data
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
+        
+        let favoriteVC = FavoriteScreenViewController()
+        let stringUUIDArray = favoriteVC.uuidArray
+        let idString = stringUUIDArray.last?.uuidString
+        
+        //fetchRequest.predicate = NSPredicate(format: "id = %@", idString!)
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            if results.count > 0 {
+                for result in results as! [NSManagedObject] {
+                    if result.value(forKey: "uuid") is UUID {
+                        
+                            context.delete(result)
+                            
+                            //After deleting, we have to save deleting data
+                            do {
+                                try context.save()
+                            } catch {
+                                print("silinme save edilmedi")
+                            }
+                            
+                            break
+                    }
+                }
+            }
+        } catch {
+            print("hata")
+        }
+    }
 }
 
 

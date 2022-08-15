@@ -29,9 +29,6 @@ final class DetailsRouter: DetailsRoutingLogic, DetailsDataPassing {
         destinationVC.router?.dataStore?.officeImages = dataStore?.officeData //Buraya imageların array'i gelecek.
         destinationVC.router?.dataStore?.selectedIndex = index //Burada hangi index seçildiyde, o index'in datası aktarılıyor. Detailsdaki offices'e.
         
-        destinationVC.modalPresentationStyle = .popover
-        destinationVC.modalTransitionStyle = .coverVertical
-        
         destinationVC.delegate = viewController
         
         viewController?.present(destinationVC, animated: true) // Burada pop'up olarak açılacak ekran. kullanıcı açısından daha basit olur.

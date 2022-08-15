@@ -10,6 +10,7 @@ import UIKit
 
 protocol OfficeRoutingLogic: AnyObject {
     func routeToDetails(index: Int)
+    func routeToFavorites()
 }
 
 protocol OfficeDataPassing: AnyObject {
@@ -27,4 +28,15 @@ final class OfficeRouter: OfficeRoutingLogic, OfficeDataPassing {
         destVC.router?.dataStore?.officeData = dataStore?.filteredOffices?[index] //Burada hangi index seçildiyde, o index'in datası aktarılıyor. Detailsdaki offices'e. indexten aldığımız için array'i teklile düşürüyoruz. o yüzden sol taraf array değil.
         self.viewController?.navigationController?.pushViewController(destVC, animated: true)
     }
+    
+    func routeToFavorites() {
+        let storyboard = UIStoryboard(name: "FavoriteScreen", bundle: nil)
+        let destVC: FavoriteScreenViewController = storyboard.instantiateViewController(identifier: "FavoriteScreenViewController")
+
+        //OfficeCell().delegate = viewController
+        
+        self.viewController?.present(destVC, animated: true) // Burada pop'up olarak açılacak ekran. kullanıcı açısından daha basit olur.
+    }
+    
+    
 }
