@@ -25,7 +25,7 @@ enum Office {
             let officesListViewModel: [Office.Fetch.ViewModel.OfficeModel]
             
             struct OfficeModel {
-                var id: String?
+                var id: Int?
                 var image: String?
                 var images: [String]?
                 var name: String?

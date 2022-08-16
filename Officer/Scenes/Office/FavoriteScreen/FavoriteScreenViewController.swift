@@ -19,13 +19,15 @@ final class FavoriteScreenViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var uuidArray = [UUID]()
-    var nameArray = [String]()
-    var addressArray = [String]()
-    var capacityArray = [String]()
-    var roomsArray = [String]()
-    var spaceArray = [String]()
-    var imageArray = [String]()
+    //CoreDatadan çekilen veriler buraya aktarılacak.
+    var uuidArray: [UUID] = []
+    var idArray: [Int] = []
+    var nameArray: [String] = []
+    var addressArray: [String] = []
+    var capacityArray: [String] = []
+    var roomsArray: [String] = []
+    var spaceArray: [String] = []
+    var imageArray: [String] = []
     
     
     
@@ -95,40 +97,44 @@ final class FavoriteScreenViewController: UIViewController {
                 for result in results as! [NSManagedObject] { //results Any olarak geliyor o yüzden tipini belirlememiz gerek.
                     
                     if let uuid = result.value(forKey: "uuid") as? UUID {
-                        self.uuidArray.append(uuid)
-                    }
-                    
-                    if let name = result.value(forKey: "name") as? String {
-                        self.nameArray.append(name)
-                    }
-                    
-                    if let address = result.value(forKey: "address") as? String {
-                        self.addressArray.append(address)
-                    }
-                    
-                    if let capacity = result.value(forKey: "capacity") as? String {
-                        self.capacityArray.append(capacity)
-                    }
-                    
-                    if let rooms = result.value(forKey: "rooms") as? String {
-                        self.roomsArray.append(rooms)
-                    }
-                    
-                    if let space = result.value(forKey: "space") as? String {
-                        self.spaceArray.append(space)
-                    } 
-                    
-                    if let image = result.value(forKey: "image") as? String {
-                        self.imageArray.append(image)
+                        uuidArray.append(uuid)
+                        
+                        if let id = result.value(forKey: "id") as? Int {
+                            idArray.append(id)
+                            
+                            if let name = result.value(forKey: "name") as? String {
+                                nameArray.append(name)
+                                
+                                if let address = result.value(forKey: "address") as? String {
+                                    addressArray.append(address)
+                                    
+                                    if let capacity = result.value(forKey: "capacity") as? String {
+                                        capacityArray.append(capacity)
+                                        
+                                        if let rooms = result.value(forKey: "rooms") as? String {
+                                            roomsArray.append(rooms)
+                                            
+                                            if let space = result.value(forKey: "space") as? String {
+                                                spaceArray.append(space)
+                                                
+//                                                if let image = result.value(forKey: "image") as? String {
+//                                                    imageArray.append(image)
+//                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 self.tableView.reloadData()
             }
-          
+            
         } catch {
             print("fetch error")
         }
-            }
+    }
 }
 
 //MARK: - TableView Delegate & Datasource | Number Of Rows In Section, CellForRowAt, DidSelectRowAt
@@ -156,10 +162,6 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
         //cell.cellImageView.sd_setImage(with: URL(string: imageArray[indexPath.row]))
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
     
 }

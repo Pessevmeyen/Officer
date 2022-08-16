@@ -18,7 +18,6 @@ final class RegisterViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: CustomTextField!
     @IBOutlet weak var passwordTextField: CustomTextField!
-    @IBOutlet weak var signInButton: UIButton!
     
     // MARK: Object lifecycle
     
@@ -34,6 +33,8 @@ final class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = Constants.appName
         
         hideKeyboardWhenTappedAround()
         
@@ -57,8 +58,12 @@ final class RegisterViewController: UIViewController {
     
     @IBAction func signInClicked(_ sender: UIButton) {
         
+        let button = sender as UIButton
+        
+        //We did forced unwrap so we have to check whether textFields really exist.
         if emailTextField.text != "" && passwordTextField.text != "" {
             
+            //Save data to keychain
             do {
                 try KeychainManager.save(service: "mobven.com", account: emailTextField.text!, password: (passwordTextField.text?.data(using: .utf8))!)
                 print("saved")
@@ -66,18 +71,21 @@ final class RegisterViewController: UIViewController {
                 print(error)
             }
             
+            //Get Data from keychain
             guard let data = KeychainManager.get(service: "mobven.com", account: emailTextField.text!) else {
                 print("Failed to read password")
                 return
             }
             
+            //Get password from keychain
             let password = String(decoding: data, as: UTF8.self)
             print("Read password: \(password)")
             
             goToDestinationVC(storyboardName: Constants.officeStoryboardName, storyboardID: Constants.officeStoryboardIdentifier)
             
         } else {
-            signInButton.isUserInteractionEnabled = false
+            //button.isUserInteractionEnabled = false
+            getAlert(alertTitle: "Error", actionTitle: "Try Again", message: "E-mail and Password Must be Filled!")
         }
         
     }
@@ -86,6 +94,7 @@ final class RegisterViewController: UIViewController {
 
 
 class KeychainManager {
+    
     enum KeychainError: Error {
         case duplicateEntry
         case unknown(OSStatus)
@@ -137,6 +146,17 @@ class KeychainManager {
         
         return result as? Data
         
+    }
+    
+}
+
+extension RegisterViewController {
+    
+    func getAlert(alertTitle: String, actionTitle: String, message: String) {
+        let alert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: actionTitle, style: .cancel)
+        alert.addAction(action)
+        present(alert, animated: true)
     }
     
 }

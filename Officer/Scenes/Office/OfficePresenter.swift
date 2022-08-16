@@ -22,7 +22,7 @@ final class OfficePresenter: OfficePresentationLogic {
         //worker'ın çektiği veriler, interactor ile buraya gelecek. Gelen veriler burada formatlanacak, şekil verilecek.
         var offices: [Office.Fetch.ViewModel.OfficeModel] = []
         response.officeResponse.forEach { //Burada gelen array şeklinde veri parametrelerini, Model içindeki parametrelere aktarıyoruz.
-            offices.append(Office.Fetch.ViewModel.OfficeModel(id: String($0.id ?? 0),
+            offices.append(Office.Fetch.ViewModel.OfficeModel(id: $0.id,
                                                               image: $0.image,
                                                               images: $0.images,
                                                               name: $0.name,

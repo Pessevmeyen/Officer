@@ -22,8 +22,13 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     var firstPickerView = UIPickerView()
     
     var itemList = [FilterItems]()
+    var idCoreData: [Int] = []
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            registerTableView()
+        }
+    }
     @IBOutlet weak var textField: UITextField!
     
     // MARK: Object lifecycle
@@ -42,8 +47,6 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        registerTableView()
         
         setHidesBackBarButton()
         
@@ -236,16 +239,17 @@ extension OfficeViewController: OfficeCellDelegate {
         let context = appDelegate.persistentContainer.viewContext
         
         //Context'in içine ne koyacağımızı söylememiz lazım.
-        let offices = NSEntityDescription.insertNewObject(forEntityName: "Offices", into: context)
+        let savedOffice = NSEntityDescription.insertNewObject(forEntityName: "Offices", into: context)
         
         //Burada Entity'nin Attribute'larını vericez.
-        offices.setValue(UUID(), forKey: "uuid")
-        offices.setValue(model.name, forKey: "name")
-        offices.setValue(model.address, forKey: "address")
-        offices.setValue(model.capacity, forKey: "capacity")
-        offices.setValue(model.rooms, forKey: "rooms")
-        offices.setValue(model.space, forKey: "space")
-        offices.setValue(model.image ?? "", forKey: "image")
+        savedOffice.setValue(UUID(), forKey: "uuid")
+        savedOffice.setValue(model.id, forKey: "id")
+        savedOffice.setValue(model.name, forKey: "name")
+        savedOffice.setValue(model.address, forKey: "address")
+        savedOffice.setValue(model.capacity, forKey: "capacity")
+        savedOffice.setValue(model.rooms, forKey: "rooms")
+        savedOffice.setValue(model.space, forKey: "space")
+        //savedOffice.setValue(model.image ?? "", forKey: "image")
         
         do {
             try context.save()
@@ -267,19 +271,16 @@ extension OfficeViewController: OfficeCellDelegate {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
         
-        let favoriteVC = FavoriteScreenViewController()
-        let stringUUIDArray = favoriteVC.uuidArray
-        let idString = stringUUIDArray.last?.uuidString
-        
-        //fetchRequest.predicate = NSPredicate(format: "id = %@", idString!)
+        fetchRequest.predicate = NSPredicate(format: "id = %@", "\(model.id ?? 0)")
         fetchRequest.returnsObjectsAsFaults = false
         
         do {
             let results = try context.fetch(fetchRequest)
             if results.count > 0 {
                 for result in results as! [NSManagedObject] {
-                    if result.value(forKey: "uuid") is UUID {
-                        
+                    if let id = result.value(forKey: "id") as? Int {
+                        idCoreData.append(id)
+                        if id == model.id {
                             context.delete(result)
                             
                             //After deleting, we have to save deleting data
@@ -289,6 +290,7 @@ extension OfficeViewController: OfficeCellDelegate {
                                 print("silinme save edilmedi")
                             }
                             break
+                        }
                     }
                 }
             }
