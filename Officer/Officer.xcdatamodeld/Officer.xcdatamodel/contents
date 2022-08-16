@@ -8,9 +8,8 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="rooms" optional="YES" attributeType="String"/>
         <attribute name="space" optional="YES" attributeType="String"/>
-        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="Offices" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="Offices" positionX="-63" positionY="-18" width="128" height="134"/>
     </elements>
 </model>

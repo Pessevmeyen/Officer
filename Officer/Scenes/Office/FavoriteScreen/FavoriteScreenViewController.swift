@@ -28,11 +28,9 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
     var router: (FavoriteScreenRoutingLogic & FavoriteScreenDataPassing)?
     
     
-    
     @IBOutlet weak var tableView: UITableView!
     
     //CoreDatadan çekilen veriler buraya aktarılacak.
-    var uuidArray: [UUID] = []
     var idArray: [Int] = []
     var nameArray: [String] = []
     var addressArray: [String] = []
@@ -42,9 +40,6 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
     var imageArray: [String] = []
     
     var bool: Bool?
-    
-    var choosedName = ""
-    var choosedUUID: UUID?
     
     // MARK: Object lifecycle
     
@@ -94,7 +89,6 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
     @objc func getDataFromCoreData() {
         
         nameArray.removeAll(keepingCapacity: false)
-        uuidArray.removeAll(keepingCapacity: false)
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -107,9 +101,6 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
             
             if results.count > 0 {
                 for result in results as! [NSManagedObject] { //results Any olarak geliyor o yüzden tipini belirlememiz gerek.
-                    
-                    if let uuid = result.value(forKey: "uuid") as? UUID {
-                        uuidArray.append(uuid)
                         
                         if let id = result.value(forKey: "id") as? Int {
                             idArray.append(id)
@@ -143,11 +134,8 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
                         }
                     }
                 }
-                
-            }
-            
         } catch {
-            print("fetch error")
+            getAlert(alertTitle: "Error", actionTitle: "OK!", message: "An Error Occured When Fetching Data From Core Data")
         }
     }
 }
@@ -175,8 +163,6 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
         cell.roomsLabel.text = "Rooms: \(roomsArray[indexPath.row])"
         cell.spaceLabel.text = "Space: \(spaceArray[indexPath.row])"
         cell.cellImageView.sd_setImage(with: URL(string: imageArray[indexPath.row]))
-        
-        
         
         return cell
     }

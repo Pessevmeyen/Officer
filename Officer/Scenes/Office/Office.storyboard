@@ -29,7 +29,7 @@
                                     <outlet property="delegate" destination="nxe-uw-h5I" id="bhK-Jp-Lk6"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1G-4a-1dn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1G-4a-1dn" customClass="CLTypingLabel" customModule="Officer" customModuleProvider="target">
                                 <rect key="frame" x="20" y="44" width="93.5" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" systemColor="systemBlueColor"/>
@@ -67,6 +67,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="officesLabel" destination="H1G-4a-1dn" id="zMf-KE-U0O"/>
                         <outlet property="tableView" destination="fq5-rG-nhr" id="kV2-uq-JQi"/>
                         <outlet property="textField" destination="j6W-ZS-hT8" id="C1I-pb-f5b"/>
                     </connections>

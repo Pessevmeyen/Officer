@@ -13,7 +13,13 @@ protocol OfficeDisplayLogic: AnyObject {
     func displayViewModelData(viewModel: Office.Fetch.ViewModel)
 }
 
-final class OfficeViewController: UIViewController, UITextFieldDelegate {
+protocol AnimationDelegate: AnyObject {
+    func favoritingAnimation()
+}
+
+final class OfficeViewController: UIViewController, UITextFieldDelegate, AnimationDelegate {
+    
+    
     
     
     
@@ -26,6 +32,8 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     var itemList = [FilterItems]()
     var idCoreData: [Int] = []
     
+    weak var delegate: AnimationDelegate?
+    
     var bool: Bool?
     
     @IBOutlet weak var tableView: UITableView! {
@@ -34,6 +42,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         }
     }
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var officesLabel: CLTypingLabel!
     
     // MARK: Object lifecycle
     
@@ -52,6 +61,8 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        officesLabel.text = "Offices"
+        
         setHidesBackBarButton()
         
         createToolbarDoneButtonForPickerView()
@@ -62,8 +73,9 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         
         //1
         interactor?.fetchData(request: Office.Fetch.Request()) //View controller interactor'a diyor ki, office listesini çek.
-        
+         
     }
+    
     
 
     
@@ -94,6 +106,8 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    
+    
     //MARK: Custom Functions
     // Creates Filter Items
     private func createFilterItems() {
@@ -114,6 +128,13 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         itemList.append(spaceInterval)
     }
     
+    func favoritingAnimation() {
+        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(changeButton), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(setRightBarButtonItem), userInfo: nil, repeats: false)
+    }
+    
+    
+    
     // Creates Toolbar Button
     private func createToolbarDoneButtonForPickerView() {
         let toolBar = UIToolbar()
@@ -127,17 +148,22 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    //MARK: Create Right Bar Button
-    func setRightBarButtonItem() {
-        let favoritesScreenButton = UIBarButtonItem.init(title: "Favorites", style: .done, target: self, action: #selector(goToFavoritesScreen))
+    //MARK: @objc Functions
+    
+    //Create Right Bar Button
+    @objc private func setRightBarButtonItem() {
+        let favoritesScreenButton = UIBarButtonItem.init(image: UIImage(named: "faviconlarge"), style: .done, target: self, action: #selector(goToFavoritesScreen))
         favoritesScreenButton.tintColor = #colorLiteral(red: 0.5294117647, green: 0.1285524964, blue: 0.5745313764, alpha: 1)
         navigationItem.rightBarButtonItems = [favoritesScreenButton]
     }
     
+    @objc private func changeButton() {
+        let favoritesScreenButton = UIBarButtonItem.init(title: "Adding Office...", style: .done, target: self, action: nil)
+        favoritesScreenButton.tintColor = #colorLiteral(red: 0.5294117647, green: 0.1285524964, blue: 0.5745313764, alpha: 1)
+        navigationItem.rightBarButtonItems = [favoritesScreenButton]
+    }
     
-    //MARK: @objc Functions
-    
-    @objc func dismissButton() {
+    @objc private func dismissButton() {
         view.endEditing(true)
         interactor?.fetchDataAfterFetched() // Done tuşuna basıldığında bütün ofisleri tekrar gösterecek.
         textField.text = ""
@@ -154,7 +180,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
 
 
 
-//MARK: EXTENSIONS
+//MARK: EXTENSIONS ------------------------------------------
 
 
 
@@ -246,11 +272,18 @@ extension OfficeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
   
 }
 
-//MARK: - Office Cell Delegate
+
+
+//MARK: - Office Cell Delegate and Core Data ------------------------------------------
 extension OfficeViewController: OfficeCellDelegate {
     
     //MARK: Added to Favorite
     func favoriteAdded(model: Office.Fetch.ViewModel.OfficeModel) {
+        
+        delegate = self
+        
+        delegate?.favoritingAnimation()
+        
         //MARK: Saving data to the Core Data
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -259,7 +292,6 @@ extension OfficeViewController: OfficeCellDelegate {
         let savedOffice = NSEntityDescription.insertNewObject(forEntityName: "Offices", into: context)
         
         //Burada Entity'nin Attribute'larını vericez.
-        savedOffice.setValue(UUID(), forKey: "uuid")
         savedOffice.setValue(model.id, forKey: "id")
         savedOffice.setValue(model.name, forKey: "name")
         savedOffice.setValue(model.address, forKey: "address")
@@ -273,7 +305,7 @@ extension OfficeViewController: OfficeCellDelegate {
             try context.save()
             print("saved")
         } catch {
-            print("saving error!")
+            getAlert(alertTitle: "Error", actionTitle: "OK!", message: "An Error Occured When saving to Core Data")
         }
         
         //Favoriler sayfasona notify ediyoruz değişiklik geldi uygula diye.
@@ -306,7 +338,7 @@ extension OfficeViewController: OfficeCellDelegate {
                             do {
                                 try context.save()
                             } catch {
-                                print("silinme save edilmedi")
+                                getAlert(alertTitle: "Error", actionTitle: "OK!", message: "An Error Occured When Saving Deleted Data")
                             }
                             break
                         }
@@ -314,7 +346,7 @@ extension OfficeViewController: OfficeCellDelegate {
                 }
             }
         } catch {
-            print("hata")
+            getAlert(alertTitle: "Error", actionTitle: "OK!", message: "An Error Occured When Deleting Data From Core Data")
         }
     }
 }

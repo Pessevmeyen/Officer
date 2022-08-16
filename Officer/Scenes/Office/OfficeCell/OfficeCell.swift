@@ -18,7 +18,7 @@ class OfficeCell: UITableViewCell {
 
     //MARK: IBOutlets
     @IBOutlet weak var cellImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel: CLTypingLabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var capacityLabel: UILabel!
     @IBOutlet weak var roomsLabel: UILabel!

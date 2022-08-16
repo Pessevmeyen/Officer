@@ -150,16 +150,6 @@ class KeychainManager {
     
 }
 
-extension RegisterViewController {
-    
-    func getAlert(alertTitle: String, actionTitle: String, message: String) {
-        let alert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: actionTitle, style: .cancel)
-        alert.addAction(action)
-        present(alert, animated: true)
-    }
-    
-}
 
 
 //MARK: Display Logic
