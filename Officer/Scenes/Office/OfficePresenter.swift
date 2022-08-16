@@ -23,6 +23,7 @@ final class OfficePresenter: OfficePresentationLogic {
         var offices: [Office.Fetch.ViewModel.OfficeModel] = []
         response.officeResponse.forEach { //Burada gelen array şeklinde veri parametrelerini, Model içindeki parametrelere aktarıyoruz.
             offices.append(Office.Fetch.ViewModel.OfficeModel(id: $0.id,
+                                                              bool: $0.bool,
                                                               image: $0.image,
                                                               images: $0.images,
                                                               name: $0.name,

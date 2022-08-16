@@ -12,10 +12,22 @@ protocol FavoriteScreenDisplayLogic: AnyObject {
     
 }
 
-final class FavoriteScreenViewController: UIViewController {
+
+
+final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
+    func favoriteAdded(model: Office.Fetch.ViewModel.OfficeModel) {
+        
+    }
+    
+    func favoriteDeleted(model: Office.Fetch.ViewModel.OfficeModel) {
+        
+    }
+    
     
     var interactor: FavoriteScreenBusinessLogic?
     var router: (FavoriteScreenRoutingLogic & FavoriteScreenDataPassing)?
+    
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,7 +41,7 @@ final class FavoriteScreenViewController: UIViewController {
     var spaceArray: [String] = []
     var imageArray: [String] = []
     
-    
+    var bool: Bool?
     
     var choosedName = ""
     var choosedUUID: UUID?
@@ -117,9 +129,12 @@ final class FavoriteScreenViewController: UIViewController {
                                             if let space = result.value(forKey: "space") as? String {
                                                 spaceArray.append(space)
                                                 
-//                                                if let image = result.value(forKey: "image") as? String {
-//                                                    imageArray.append(image)
-//                                                }
+                                                if let image = result.value(forKey: "image") as? String {
+                                                    imageArray.append(image)
+
+                                                    self.tableView.reloadData()
+                                                }
+                                            //self.tableView.reloadData()
                                             }
                                         }
                                     }
@@ -128,7 +143,7 @@ final class FavoriteScreenViewController: UIViewController {
                         }
                     }
                 }
-                self.tableView.reloadData()
+                
             }
             
         } catch {
@@ -156,10 +171,12 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
         
         cell.nameLabel.text = nameArray[indexPath.row]
         cell.addressLabel.text = addressArray[indexPath.row]
-        cell.capacityLabel.text = capacityArray[indexPath.row]
-        cell.roomsLabel.text = roomsArray[indexPath.row]
-        cell.spaceLabel.text = spaceArray[indexPath.row]
-        //cell.cellImageView.sd_setImage(with: URL(string: imageArray[indexPath.row]))
+        cell.capacityLabel.text = "Capacity: \(capacityArray[indexPath.row])"
+        cell.roomsLabel.text = "Rooms: \(roomsArray[indexPath.row])"
+        cell.spaceLabel.text = "Space: \(spaceArray[indexPath.row])"
+        cell.cellImageView.sd_setImage(with: URL(string: imageArray[indexPath.row]))
+        
+        
         
         return cell
     }

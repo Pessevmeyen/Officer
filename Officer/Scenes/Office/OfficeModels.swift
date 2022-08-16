@@ -26,6 +26,7 @@ enum Office {
             
             struct OfficeModel {
                 var id: Int?
+                var bool: Bool?
                 var image: String?
                 var images: [String]?
                 var name: String?

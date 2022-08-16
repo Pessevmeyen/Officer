@@ -40,17 +40,17 @@ class OfficeCell: UITableViewCell {
     //MARK: TODO: İmage aktarılacak. Kullanıcı tekrar uygulamaya girdiğinde favoriye eklemişse buton yanıyor olacak, eklememişse yanmıyor olacak. Yoksa ilk uygulamaya girdiğinde hep buton kapalı gözükecek.
     @IBAction func favoriteClicked(_ sender: UIButton) {
         
-        let button = sender as UIButton
+        let favoriteButton = sender as UIButton
         
         if like {
-            button.setImage(UIImage(named: "custom.heart.fill"), for: .normal)
+            favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
             
             delegate?.favoriteAdded(model: cellModel)
             
             like = false
         } else {
             
-            button.setImage(UIImage(named: "custom.heart"), for: .normal)
+            favoriteButton.setImage(UIImage(named: "disfav"), for: .normal)
             
             delegate?.favoriteDeleted(model: cellModel)
             

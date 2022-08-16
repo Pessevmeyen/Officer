@@ -14,6 +14,7 @@ import Foundation
 struct OfficeData: Codable {
     let address, capacity: String?
     let id: Int?
+    let bool: Bool?
     let image: String?
     let images: [String]?
     let location: Location?

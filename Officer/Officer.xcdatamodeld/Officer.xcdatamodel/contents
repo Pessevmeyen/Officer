@@ -4,14 +4,13 @@
         <attribute name="address" optional="YES" attributeType="String"/>
         <attribute name="capacity" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="image" optional="YES" attributeType="Binary"/>
-        <attribute name="images" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="rooms" optional="YES" attributeType="String"/>
         <attribute name="space" optional="YES" attributeType="String"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="Offices" positionX="-63" positionY="-18" width="128" height="164"/>
+        <element name="Offices" positionX="-63" positionY="-18" width="128" height="149"/>
     </elements>
 </model>

@@ -15,6 +15,8 @@ protocol OfficeDisplayLogic: AnyObject {
 
 final class OfficeViewController: UIViewController, UITextFieldDelegate {
     
+    
+    
     var interactor: OfficeBusinessLogic?
     var router: (OfficeRoutingLogic & OfficeDataPassing)?
     var viewModel: Office.Fetch.ViewModel?
@@ -23,6 +25,8 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     
     var itemList = [FilterItems]()
     var idCoreData: [Int] = []
+    
+    var bool: Bool?
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -155,7 +159,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
 
 
 //MARK: - TableView Delegate & Datasource
-extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
+extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
     
     // Sectionda kaç tane row oluşacak
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -174,6 +178,19 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.delegate = self
         
+        func changeLike(bool: Bool) {
+            if bool {
+                cell.favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
+                cell.like = false
+            } else {
+                cell.favoriteButton.setImage(UIImage(named: "unfav"), for: .normal)
+                cell.like = true
+            }
+        }
+        
+        
+        cell.favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
+        cell.like = false
         cell.configureCell(viewModel: model)
         
         return cell
@@ -247,9 +264,10 @@ extension OfficeViewController: OfficeCellDelegate {
         savedOffice.setValue(model.name, forKey: "name")
         savedOffice.setValue(model.address, forKey: "address")
         savedOffice.setValue(model.capacity, forKey: "capacity")
+        savedOffice.setValue(model.image, forKey: "image")
         savedOffice.setValue(model.rooms, forKey: "rooms")
         savedOffice.setValue(model.space, forKey: "space")
-        //savedOffice.setValue(model.image ?? "", forKey: "image")
+        
         
         do {
             try context.save()
@@ -261,6 +279,7 @@ extension OfficeViewController: OfficeCellDelegate {
         //Favoriler sayfasona notify ediyoruz değişiklik geldi uygula diye.
         NotificationCenter.default.post(name: NSNotification.Name("veriGirildi"), object: nil)
     }
+    
     
     //MARK: Deleted from Favorite
     func favoriteDeleted(model: Office.Fetch.ViewModel.OfficeModel) {
