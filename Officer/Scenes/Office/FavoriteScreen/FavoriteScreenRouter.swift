@@ -11,7 +11,7 @@ protocol FavoriteScreenRoutingLogic: AnyObject {
     
 }
 
-protocol FavoriteScreenDataPassing: class {
+protocol FavoriteScreenDataPassing: AnyObject {
     var dataStore: FavoriteScreenDataStore? { get }
 }
 

@@ -59,6 +59,7 @@
 		89BC654F289F150100AFEE36 /* FullScreenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC6548289F150100AFEE36 /* FullScreenModels.swift */; };
 		89BC6550289F150100AFEE36 /* FullScreenWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC6549289F150100AFEE36 /* FullScreenWorker.swift */; };
 		89BC6551289F150100AFEE36 /* FullScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC654A289F150100AFEE36 /* FullScreenRouter.swift */; };
+		89BEED8B28AD72BB00B0BB2A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BEED8A28AD72BB00B0BB2A /* CoreDataManager.swift */; };
 		89D13EFA289BF993008E2238 /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D13EF8289BF993008E2238 /* DetailsCell.swift */; };
 		89D13EFB289BF993008E2238 /* DetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89D13EF9289BF993008E2238 /* DetailsCell.xib */; };
 		89D2FA2428A9512A00341C75 /* FavoriteScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D2FA2228A9512A00341C75 /* FavoriteScreenCell.swift */; };
@@ -152,6 +153,7 @@
 		89BC6548289F150100AFEE36 /* FullScreenModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenModels.swift; sourceTree = "<group>"; };
 		89BC6549289F150100AFEE36 /* FullScreenWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenWorker.swift; sourceTree = "<group>"; };
 		89BC654A289F150100AFEE36 /* FullScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenRouter.swift; sourceTree = "<group>"; };
+		89BEED8A28AD72BB00B0BB2A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		89D13EF8289BF993008E2238 /* DetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCell.swift; sourceTree = "<group>"; };
 		89D13EF9289BF993008E2238 /* DetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCell.xib; sourceTree = "<group>"; };
 		89D2FA2228A9512A00341C75 /* FavoriteScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteScreenCell.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			children = (
 				89FBB32428983C19001C5B95 /* Extension */,
 				89FBB32328983C11001C5B95 /* Networking */,
+				89BEED8728AD584200B0BB2A /* CoreData */,
 				89FBB2C428980B7F001C5B95 /* Scenes */,
 				8947863F289A6E9D00418A39 /* SupportingFiles */,
 				894D640E28999ED0001CF252 /* CustomObjects */,
@@ -377,6 +380,14 @@
 				89BC654A289F150100AFEE36 /* FullScreenRouter.swift */,
 			);
 			path = FullScreen;
+			sourceTree = "<group>";
+		};
+		89BEED8728AD584200B0BB2A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				89BEED8A28AD72BB00B0BB2A /* CoreDataManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		89D13EF7289BF961008E2238 /* DetailsCell */ = {
@@ -592,6 +603,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89BEED8B28AD72BB00B0BB2A /* CoreDataManager.swift in Sources */,
 				894D63EA2898EFE1001CF252 /* DetailsModels.swift in Sources */,
 				8990F14728A93E5B00A682B8 /* FavoriteScreenModels.swift in Sources */,
 				89BC654F289F150100AFEE36 /* FullScreenModels.swift in Sources */,

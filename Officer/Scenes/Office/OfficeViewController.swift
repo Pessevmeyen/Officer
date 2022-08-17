@@ -14,7 +14,8 @@ protocol OfficeDisplayLogic: AnyObject {
 }
 
 protocol AnimationDelegate: AnyObject {
-    func favoritingAnimation()
+    func addingFavoriteAnimation()
+    func removingFavoriteAnimation()
 }
 
 final class OfficeViewController: UIViewController, UITextFieldDelegate, AnimationDelegate {
@@ -73,11 +74,11 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
         
         //1
         interactor?.fetchData(request: Office.Fetch.Request()) //View controller interactor'a diyor ki, office listesini çek.
-         
+        
     }
     
     
-
+    
     
     //MARK: Life Cycles
     override func viewWillAppear(_ animated: Bool) {
@@ -128,8 +129,13 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
         itemList.append(spaceInterval)
     }
     
-    func favoritingAnimation() {
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(changeButton), userInfo: nil, repeats: false)
+    func addingFavoriteAnimation() {
+        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(addingOffice), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(setRightBarButtonItem), userInfo: nil, repeats: false)
+    }
+    
+    func removingFavoriteAnimation() {
+        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(removingOffice), userInfo: nil, repeats: false)
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(setRightBarButtonItem), userInfo: nil, repeats: false)
     }
     
@@ -159,8 +165,14 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
         navigationItem.rightBarButtonItems = [favoritesScreenButton]
     }
     
-    @objc private func changeButton() {
+    @objc private func addingOffice() {
         let favoritesScreenButton = UIBarButtonItem.init(title: "Adding Office...", style: .done, target: self, action: nil)
+        favoritesScreenButton.tintColor = #colorLiteral(red: 0.5294117647, green: 0.1285524964, blue: 0.5745313764, alpha: 1)
+        navigationItem.rightBarButtonItems = [favoritesScreenButton]
+    }
+    
+    @objc private func removingOffice() {
+        let favoritesScreenButton = UIBarButtonItem.init(title: "Removing Office...", style: .done, target: self, action: nil)
         favoritesScreenButton.tintColor = #colorLiteral(red: 0.5294117647, green: 0.1285524964, blue: 0.5745313764, alpha: 1)
         navigationItem.rightBarButtonItems = [favoritesScreenButton]
     }
@@ -205,22 +217,7 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
         }
         
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
-        
-        fetchRequest.returnsObjectsAsFaults = false
-        do {
-            let data = try context.fetch(fetchRequest)
-            for result in data as! [NSManagedObject] {
-                if let id = result.value(forKey: "id") as? Int{
-                    idCoreData.append(id)
-                }
-            }
-        }
-        catch {
-            
-        }
+        getDataFromCoreData()
         
         cell.configureCell(viewModel: model)
         cell.delegate = self
@@ -232,21 +229,6 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.like = false
             }
         }
-//
-//        func changeLike(bool: Bool) {
-//            if bool {
-//                cell.favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
-//                cell.like = false
-//            } else {
-//                cell.favoriteButton.setImage(UIImage(named: "unfav"), for: .normal)
-//                cell.like = true
-//            }
-//        }
-        
-        
-        //cell.favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
-        //cell.like = true
-        
         
         return cell
     }
@@ -298,7 +280,7 @@ extension OfficeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         textField.text = selectedData
         interactor?.fetchFilter(request: selectedData ?? "")
     }
-  
+    
 }
 
 
@@ -311,7 +293,7 @@ extension OfficeViewController: OfficeCellDelegate {
         
         delegate = self
         
-        delegate?.favoritingAnimation()
+        delegate?.addingFavoriteAnimation()
         
         //MARK: Saving data to the Core Data
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -345,6 +327,10 @@ extension OfficeViewController: OfficeCellDelegate {
     
     //MARK: Deleted from Favorite
     func favoriteDeleted(model: Office.Fetch.ViewModel.OfficeModel) {
+        
+        delegate = self
+        
+        delegate?.removingFavoriteAnimation()
         //MARK: Deleting data from Core Data
         // First we have to fetch data from core data
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -377,6 +363,28 @@ extension OfficeViewController: OfficeCellDelegate {
             }
         } catch {
             getAlert(alertTitle: "Error", actionTitle: "OK!", message: "An Error Occured When Deleting Data From Core Data")
+        }
+    }
+}
+
+extension OfficeViewController {
+    
+    func getDataFromCoreData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
+        
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let results = try context.fetch(fetchRequest)
+            for result in results as! [NSManagedObject] {
+                if let id = result.value(forKey: "id") as? Int{
+                    idCoreData.append(id)
+                }
+            }
+        }
+        catch {
+            
         }
     }
 }
