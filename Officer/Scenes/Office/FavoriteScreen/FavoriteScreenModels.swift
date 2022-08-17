@@ -22,6 +22,13 @@ enum FavoriteScreen {
         
         struct ViewModel {
             
+            var idArray: [Int]?
+            var nameArray: [String]?
+            var addressArray: [String]?
+            var capacityArray: [String]?
+            var roomsArray: [String]?
+            var spaceArray: [String]?
+            var imageArray: [String]?
         }
         
     }

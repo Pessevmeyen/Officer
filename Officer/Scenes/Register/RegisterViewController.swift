@@ -58,7 +58,7 @@ final class RegisterViewController: UIViewController {
     
     @IBAction func signInClicked(_ sender: UIButton) {
         
-        let button = sender as UIButton
+        _ = sender as UIButton
         
         //We did forced unwrap so we have to check whether textFields really exist.
         if emailTextField.text != "" && passwordTextField.text != "" {

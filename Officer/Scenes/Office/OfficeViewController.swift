@@ -37,7 +37,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
     var bool: Bool?
     
     @IBOutlet weak var tableView: UITableView! {
-        didSet {
+        didSet { //Burada tableview oluştuğunda kayıt edecek. WillSet ile yapsaydık çalışmazdı çünkü henüz tableView tanımlanmamış oluyor.
             registerTableView()
         }
     }
@@ -152,7 +152,9 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
     
     //Create Right Bar Button
     @objc private func setRightBarButtonItem() {
-        let favoritesScreenButton = UIBarButtonItem.init(image: UIImage(named: "faviconlarge"), style: .done, target: self, action: #selector(goToFavoritesScreen))
+        let biggerConfiguration = UIImage.SymbolConfiguration(scale: .large)
+        let biggerSymbolImage = UIImage(named: "custom.heart.text.square", in: .main, with: biggerConfiguration)
+        let favoritesScreenButton = UIBarButtonItem.init(image: biggerSymbolImage, style: .done, target: self, action: #selector(goToFavoritesScreen))
         favoritesScreenButton.tintColor = #colorLiteral(red: 0.5294117647, green: 0.1285524964, blue: 0.5745313764, alpha: 1)
         navigationItem.rightBarButtonItems = [favoritesScreenButton]
     }
@@ -202,22 +204,49 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
             fatalError("An Error Occured while dequeuering reusable cell")
         }
         
-        cell.delegate = self
         
-        func changeLike(bool: Bool) {
-            if bool {
-                cell.favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
-                cell.like = false
-            } else {
-                cell.favoriteButton.setImage(UIImage(named: "unfav"), for: .normal)
-                cell.like = true
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
+        
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let data = try context.fetch(fetchRequest)
+            for result in data as! [NSManagedObject] {
+                if let id = result.value(forKey: "id") as? Int{
+                    idCoreData.append(id)
+                }
             }
         }
+        catch {
+            
+        }
         
-        
-        cell.favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
-        cell.like = false
         cell.configureCell(viewModel: model)
+        cell.delegate = self
+        cell.like = true
+        cell.favoriteButton.setImage(UIImage(named: "disfav"), for: .normal)
+        for item in idCoreData {
+            if item == model.id {
+                cell.favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
+                cell.like = false
+            }
+        }
+//
+//        func changeLike(bool: Bool) {
+//            if bool {
+//                cell.favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
+//                cell.like = false
+//            } else {
+//                cell.favoriteButton.setImage(UIImage(named: "unfav"), for: .normal)
+//                cell.like = true
+//            }
+//        }
+        
+        
+        //cell.favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
+        //cell.like = true
+        
         
         return cell
     }
@@ -292,6 +321,7 @@ extension OfficeViewController: OfficeCellDelegate {
         let savedOffice = NSEntityDescription.insertNewObject(forEntityName: "Offices", into: context)
         
         //Burada Entity'nin Attribute'larını vericez.
+        
         savedOffice.setValue(model.id, forKey: "id")
         savedOffice.setValue(model.name, forKey: "name")
         savedOffice.setValue(model.address, forKey: "address")

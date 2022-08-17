@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FavoriteScreenBusinessLogic: AnyObject {
-    
+    func fetchData(request: FullScreen.Fetch.Request)
 }
 
 protocol FavoriteScreenDataStore: AnyObject {
@@ -19,5 +19,11 @@ final class FavoriteScreenInteractor: FavoriteScreenBusinessLogic, FavoriteScree
     
     var presenter: FavoriteScreenPresentationLogic?
     var worker: FavoriteScreenWorkingLogic = FavoriteScreenWorker()
+    
+    func fetchData(request: FullScreen.Fetch.Request) {
+        
+    }
+    
+    
     
 }

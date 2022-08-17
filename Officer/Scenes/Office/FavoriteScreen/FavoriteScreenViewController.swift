@@ -61,6 +61,8 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
         
         getDataFromCoreData()
         
+        interactor?.fetchData(request: FullScreen.Fetch.Request())
+        
     }
     
     //MARK: View Will Appear
@@ -105,6 +107,7 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
                         if let id = result.value(forKey: "id") as? Int {
                             idArray.append(id)
                             
+                            
                             if let name = result.value(forKey: "name") as? String {
                                 nameArray.append(name)
                                 
@@ -125,7 +128,6 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
 
                                                     self.tableView.reloadData()
                                                 }
-                                            //self.tableView.reloadData()
                                             }
                                         }
                                     }
@@ -153,16 +155,9 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.favoriteScreenCellIdentifier, for: indexPath) as? FavoriteScreenCell else {
             fatalError("An Error Occured while dequeuering reusable cell")
         }
-        //let model = nameArray[indexPath.row]
         
-        //cell.configureCell(viewModel: model)
         
-        cell.nameLabel.text = nameArray[indexPath.row]
-        cell.addressLabel.text = addressArray[indexPath.row]
-        cell.capacityLabel.text = "Capacity: \(capacityArray[indexPath.row])"
-        cell.roomsLabel.text = "Rooms: \(roomsArray[indexPath.row])"
-        cell.spaceLabel.text = "Space: \(spaceArray[indexPath.row])"
-        cell.cellImageView.sd_setImage(with: URL(string: imageArray[indexPath.row]))
+        cell.configureCell(name: nameArray[indexPath.row], address: addressArray[indexPath.row], image: imageArray[indexPath.row], capacity: capacityArray[indexPath.row], rooms: roomsArray[indexPath.row], space: spaceArray[indexPath.row])
         
         return cell
     }

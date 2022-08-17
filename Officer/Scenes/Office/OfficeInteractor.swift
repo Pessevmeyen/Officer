@@ -39,6 +39,9 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
                 //guard let offices = self?.offices else { return } //Optional gelen veriyi güvenli hale getiriyoruz.
                 self?.filteredOffices = response
                 guard let offices = self?.offices else { return }
+                
+                //Coredatayı kontrol et logic yaz isLike durumuna bak. aldıktan sonra presenter'a
+                
                 self?.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: offices)) //Buradan presenter'a
             case .failure(let error):
                 print(error.localizedDescription)
@@ -59,7 +62,10 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
             return filter.space == request || filter.capacity == request || String(filter.rooms ?? 0) == request
             //Seçilmediyse nasıl hepsini göstericez?
         }
+        
+        //itemlist gönderilecek
         guard let filteredData = filteredData else { return }
+        
         self.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: (filteredData))) //Buradan presenter'a aktarılıyor.
         //print(filteredData)
     }

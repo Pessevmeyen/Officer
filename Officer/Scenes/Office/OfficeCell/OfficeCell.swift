@@ -25,9 +25,13 @@ class OfficeCell: UITableViewCell {
     @IBOutlet weak var spaceLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     
-    var like = true
+    var like: Bool = true
     
     weak var delegate: OfficeCellDelegate?
+    
+    let defaults = UserDefaults.standard
+    
+    
     
     var cellModel = Office.Fetch.ViewModel.OfficeModel()
     
@@ -35,26 +39,44 @@ class OfficeCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        
+//        let savedBool = defaults.bool(forKey: "like") //var olabilir
+//        like = savedBool
+//
+//        if like! {
+//            favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
+//        } else {
+//            favoriteButton.setImage(UIImage(named: "disfav"), for: .normal)
+//        }
+//
+//
+        
     }
+    
+    
     
     //MARK: TODO: İmage aktarılacak. Kullanıcı tekrar uygulamaya girdiğinde favoriye eklemişse buton yanıyor olacak, eklememişse yanmıyor olacak. Yoksa ilk uygulamaya girdiğinde hep buton kapalı gözükecek.
     @IBAction func favoriteClicked(_ sender: UIButton) {
         
         let favoriteButton = sender as UIButton
         
-        if like {
-            favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
-            
-            delegate?.favoriteAdded(model: cellModel)
-            
-            like = false
-        } else {
+        if like == false { //! yaptık çünkü User Defaultsa kaydolmamış olsa bile her türlü default olarak false gelecek,
             
             favoriteButton.setImage(UIImage(named: "disfav"), for: .normal)
             
             delegate?.favoriteDeleted(model: cellModel)
             
             like = true
+            defaults.set(like, forKey: "like")
+            
+        } else {
+            
+            favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
+            
+            delegate?.favoriteAdded(model: cellModel)
+            
+            like = false
+            defaults.set(like, forKey: "like")
         }
     }
     

@@ -28,7 +28,12 @@ class FavoriteScreenCell: UITableViewCell {
 
 
     
-    func configureCell(viewModel: String) {
-        
+    func configureCell(name: String, address: String, image: String, capacity: String, rooms: String, space: String) {
+        nameLabel.text = name
+        addressLabel.text = address
+        capacityLabel.text = "Capacity: \(capacity)"
+        roomsLabel.text = "Rooms: \(rooms)"
+        spaceLabel.text = "Space: \(space)"
+        cellImageView.sd_setImage(with: URL(string: image))
     }
 }

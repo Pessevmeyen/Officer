@@ -38,7 +38,11 @@ final class DetailsViewController: UIViewController {
     var isGridLayout = false
     var isBigMap = false
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView! {
+        didSet {
+            registerCollectionView()
+        }
+    }
     
     // MARK: Object lifecycle
     
@@ -62,8 +66,6 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registerCollectionView()
-        
         collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
         
         navigationController?.navigationBar.topItem?.backButtonTitle = "Offices"
@@ -75,7 +77,6 @@ final class DetailsViewController: UIViewController {
         setInformation()
        
     }
-    
     
     
     // MARK: Setup
@@ -118,11 +119,13 @@ final class DetailsViewController: UIViewController {
     //MARK: The Action When Right Bar Button Tapped
     @objc func changeLayout() {
         print("tapped")
+        //collectionView.collectionViewLayout.invalidateLayout()
         if isGridLayout { // If user on Listing ViewConstants.gridLayoutImage
             collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
             setRightBarButtonItem(buttonImage: Constants.gridLayoutImage)
             title = viewModel?.name
             isGridLayout = false
+            
         } else { // If user on Grid View
             setRightBarButtonItem(buttonImage: Constants.listingLayoutImage)
             collectionView.setCollectionViewLayout(setGridLayout(), animated: true)
@@ -141,6 +144,7 @@ extension DetailsViewController {
     //MARK: Setting Custom Collection View
     func setCollectionView() -> UICollectionViewFlowLayout {
         let listLayout = UICollectionViewFlowLayout()
+        listLayout.collectionView?.layoutIfNeeded()
         listLayout.scrollDirection = .horizontal
         listLayout.itemSize = CGSize(width: (view.frame.size.width - 30), height: (view.frame.size.width / 2) + 50)
         listLayout.minimumInteritemSpacing = 5

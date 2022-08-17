@@ -39,6 +39,11 @@
                                 <rect key="frame" x="52" y="80" width="342" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ivu-85-p2v">
                                 <rect key="frame" x="20" y="88.5" width="24" height="27.5"/>
@@ -77,6 +82,11 @@
             <point key="canvasLocation" x="105.79710144927537" y="27.455357142857142"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="H1G-4a-1dn">
+            <size key="intrinsicContentSize" width="93.5" height="36"/>
+        </designable>
+    </designables>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="mainbackground" width="900" height="1600"/>

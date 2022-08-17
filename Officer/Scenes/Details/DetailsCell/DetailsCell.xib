@@ -39,6 +39,17 @@
                 <constraint firstItem="BDi-T3-fxj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xL9-lr-xEB"/>
             </constraints>
             <size key="customSize" width="163" height="144"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                    <real key="value" value="2"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                    <real key="value" value="2"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                    <size key="value" width="0.0" height="1"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="imageView" destination="BDi-T3-fxj" id="H0r-fC-IJE"/>
             </connections>

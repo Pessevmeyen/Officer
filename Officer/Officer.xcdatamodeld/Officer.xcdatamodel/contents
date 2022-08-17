@@ -5,11 +5,12 @@
         <attribute name="capacity" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="isLiked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="rooms" optional="YES" attributeType="String"/>
         <attribute name="space" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Offices" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="Offices" positionX="-63" positionY="-18" width="128" height="149"/>
     </elements>
 </model>
