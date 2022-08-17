@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,13 +11,16 @@
         <scene sceneID="D3m-6j-bBI">
             <objects>
                 <viewController storyboardIdentifier="FavoriteScreenViewController" id="nxe-uw-h5I" customClass="FavoriteScreenViewController" customModule="Officer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="chM-je-gA4">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="chM-je-gA4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SEC-vR-OVI">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favoritebackground" translatesAutoresizingMaskIntoConstraints="NO" id="pDB-kZ-Xmg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SEC-vR-OVI">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="nxe-uw-h5I" id="yuY-Ag-OZa"/>
                                     <outlet property="delegate" destination="nxe-uw-h5I" id="hd5-Xf-cZc"/>
@@ -26,11 +28,15 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="acR-sl-ate" firstAttribute="bottom" secondItem="SEC-vR-OVI" secondAttribute="bottom" id="DoJ-fs-ExT"/>
+                            <constraint firstItem="pDB-kZ-Xmg" firstAttribute="top" secondItem="chM-je-gA4" secondAttribute="top" id="T13-Ay-OSO"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="pDB-kZ-Xmg" secondAttribute="trailing" id="iG9-SA-MSs"/>
+                            <constraint firstAttribute="bottom" secondItem="pDB-kZ-Xmg" secondAttribute="bottom" id="jpd-ae-eWS"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="SEC-vR-OVI" secondAttribute="trailing" id="lQl-bQ-M8B"/>
                             <constraint firstItem="SEC-vR-OVI" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="uuI-cr-boE"/>
+                            <constraint firstItem="pDB-kZ-Xmg" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="wPN-2b-ZpP"/>
                             <constraint firstItem="SEC-vR-OVI" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" id="zdR-9p-JXp"/>
                         </constraints>
                     </view>
@@ -44,8 +50,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="favoritebackground" width="600" height="1064"/>
     </resources>
 </document>

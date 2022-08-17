@@ -24,17 +24,23 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="bCA-oU-Hmx">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="bCA-oU-Hmx" firstAttribute="centerY" secondItem="chM-je-gA4" secondAttribute="centerY" id="K3L-ue-HZE"/>
                             <constraint firstAttribute="bottom" secondItem="PWC-NJ-Fgx" secondAttribute="bottom" id="Tth-Li-6HI"/>
                             <constraint firstItem="PWC-NJ-Fgx" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" id="UXg-nR-IRs"/>
                             <constraint firstItem="PWC-NJ-Fgx" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="dEE-dQ-Jf2"/>
+                            <constraint firstItem="bCA-oU-Hmx" firstAttribute="centerX" secondItem="chM-je-gA4" secondAttribute="centerX" id="iAm-jy-5Ft"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="PWC-NJ-Fgx" secondAttribute="trailing" id="quG-Jm-soq"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="indicator" destination="bCA-oU-Hmx" id="WgI-kU-gZU"/>
                         <outlet property="webView" destination="PWC-NJ-Fgx" id="4cX-bj-hkA"/>
                     </connections>
                 </viewController>

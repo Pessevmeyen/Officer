@@ -18,7 +18,20 @@ final class WebKitViewController: UIViewController {
     var router: (WebKitRoutingLogic & WebKitDataPassing)?
     
     @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
     // MARK: Object lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        webView.navigationDelegate = self
+        
+        if let url = URL(string: "https://www.mobven.com") {
+            let urlRequest = URLRequest(url: url)
+            webView.load(urlRequest)
+        }
+    }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -43,6 +56,25 @@ final class WebKitViewController: UIViewController {
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
+    }
+    
+    func indicator(show: Bool) {
+        if show {
+            indicator.startAnimating()
+        } else {
+            indicator.stopAnimating()
+        }
+    }
+}
+
+extension WebKitViewController: WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        indicator(show: true)
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        indicator(show: false)
     }
 }
 
