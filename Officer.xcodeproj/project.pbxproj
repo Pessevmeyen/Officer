@@ -60,6 +60,13 @@
 		89BC6550289F150100AFEE36 /* FullScreenWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC6549289F150100AFEE36 /* FullScreenWorker.swift */; };
 		89BC6551289F150100AFEE36 /* FullScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC654A289F150100AFEE36 /* FullScreenRouter.swift */; };
 		89BEED8B28AD72BB00B0BB2A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BEED8A28AD72BB00B0BB2A /* CoreDataManager.swift */; };
+		89BEED9428AD73C800B0BB2A /* WebKit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89BEED8D28AD73C800B0BB2A /* WebKit.storyboard */; };
+		89BEED9528AD73C800B0BB2A /* WebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BEED8E28AD73C800B0BB2A /* WebKitViewController.swift */; };
+		89BEED9628AD73C800B0BB2A /* WebKitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BEED8F28AD73C800B0BB2A /* WebKitPresenter.swift */; };
+		89BEED9728AD73C800B0BB2A /* WebKitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BEED9028AD73C800B0BB2A /* WebKitInteractor.swift */; };
+		89BEED9828AD73C800B0BB2A /* WebKitModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BEED9128AD73C800B0BB2A /* WebKitModels.swift */; };
+		89BEED9928AD73C800B0BB2A /* WebKitWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BEED9228AD73C800B0BB2A /* WebKitWorker.swift */; };
+		89BEED9A28AD73C800B0BB2A /* WebKitRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BEED9328AD73C800B0BB2A /* WebKitRouter.swift */; };
 		89D13EFA289BF993008E2238 /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D13EF8289BF993008E2238 /* DetailsCell.swift */; };
 		89D13EFB289BF993008E2238 /* DetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89D13EF9289BF993008E2238 /* DetailsCell.xib */; };
 		89D2FA2428A9512A00341C75 /* FavoriteScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D2FA2228A9512A00341C75 /* FavoriteScreenCell.swift */; };
@@ -154,6 +161,13 @@
 		89BC6549289F150100AFEE36 /* FullScreenWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenWorker.swift; sourceTree = "<group>"; };
 		89BC654A289F150100AFEE36 /* FullScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenRouter.swift; sourceTree = "<group>"; };
 		89BEED8A28AD72BB00B0BB2A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		89BEED8D28AD73C800B0BB2A /* WebKit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebKit.storyboard; sourceTree = "<group>"; };
+		89BEED8E28AD73C800B0BB2A /* WebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitViewController.swift; sourceTree = "<group>"; };
+		89BEED8F28AD73C800B0BB2A /* WebKitPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitPresenter.swift; sourceTree = "<group>"; };
+		89BEED9028AD73C800B0BB2A /* WebKitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitInteractor.swift; sourceTree = "<group>"; };
+		89BEED9128AD73C800B0BB2A /* WebKitModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitModels.swift; sourceTree = "<group>"; };
+		89BEED9228AD73C800B0BB2A /* WebKitWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWorker.swift; sourceTree = "<group>"; };
+		89BEED9328AD73C800B0BB2A /* WebKitRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitRouter.swift; sourceTree = "<group>"; };
 		89D13EF8289BF993008E2238 /* DetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCell.swift; sourceTree = "<group>"; };
 		89D13EF9289BF993008E2238 /* DetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCell.xib; sourceTree = "<group>"; };
 		89D2FA2228A9512A00341C75 /* FavoriteScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteScreenCell.swift; sourceTree = "<group>"; };
@@ -269,6 +283,7 @@
 		894D63ED2898EFEA001CF252 /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				89BEED8C28AD739400B0BB2A /* WebKit */,
 				89D13EF7289BF961008E2238 /* DetailsCell */,
 				894D63DF2898EFE1001CF252 /* Details.storyboard */,
 				894D63E02898EFE1001CF252 /* DetailsViewController.swift */,
@@ -388,6 +403,20 @@
 				89BEED8A28AD72BB00B0BB2A /* CoreDataManager.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		89BEED8C28AD739400B0BB2A /* WebKit */ = {
+			isa = PBXGroup;
+			children = (
+				89BEED8D28AD73C800B0BB2A /* WebKit.storyboard */,
+				89BEED8E28AD73C800B0BB2A /* WebKitViewController.swift */,
+				89BEED8F28AD73C800B0BB2A /* WebKitPresenter.swift */,
+				89BEED9028AD73C800B0BB2A /* WebKitInteractor.swift */,
+				89BEED9128AD73C800B0BB2A /* WebKitModels.swift */,
+				89BEED9228AD73C800B0BB2A /* WebKitWorker.swift */,
+				89BEED9328AD73C800B0BB2A /* WebKitRouter.swift */,
+			);
+			path = WebKit;
 			sourceTree = "<group>";
 		};
 		89D13EF7289BF961008E2238 /* DetailsCell */ = {
@@ -571,6 +600,7 @@
 				89BC654B289F150100AFEE36 /* FullScreen.storyboard in Resources */,
 				894D63E62898EFE1001CF252 /* Details.storyboard in Resources */,
 				894D63F52898F3B3001CF252 /* Login.storyboard in Resources */,
+				89BEED9428AD73C800B0BB2A /* WebKit.storyboard in Resources */,
 				8909FAF028735A0A00F84927 /* LaunchScreen.storyboard in Resources */,
 				8909FAED28735A0A00F84927 /* Assets.xcassets in Resources */,
 				89FBB32228983C02001C5B95 /* OfficeCell.xib in Resources */,
@@ -605,9 +635,12 @@
 			files = (
 				89BEED8B28AD72BB00B0BB2A /* CoreDataManager.swift in Sources */,
 				894D63EA2898EFE1001CF252 /* DetailsModels.swift in Sources */,
+				89BEED9728AD73C800B0BB2A /* WebKitInteractor.swift in Sources */,
 				8990F14728A93E5B00A682B8 /* FavoriteScreenModels.swift in Sources */,
 				89BC654F289F150100AFEE36 /* FullScreenModels.swift in Sources */,
 				8990F14828A93E5B00A682B8 /* FavoriteScreenWorker.swift in Sources */,
+				89BEED9828AD73C800B0BB2A /* WebKitModels.swift in Sources */,
+				89BEED9628AD73C800B0BB2A /* WebKitPresenter.swift in Sources */,
 				8990F14428A93E5B00A682B8 /* FavoriteScreenViewController.swift in Sources */,
 				89FBB31A28983BE2001C5B95 /* OfficeInteractor.swift in Sources */,
 				89FBB32A28984604001C5B95 /* Request&ResponseModel.swift in Sources */,
@@ -617,6 +650,7 @@
 				894D64092898F403001CF252 /* RegisterInteractor.swift in Sources */,
 				894D63FA2898F3B3001CF252 /* LoginWorker.swift in Sources */,
 				89D13EFA289BF993008E2238 /* DetailsCell.swift in Sources */,
+				89BEED9928AD73C800B0BB2A /* WebKitWorker.swift in Sources */,
 				898BAA4F28A69BDA001990FC /* File.swift in Sources */,
 				8909FAE828735A0700F84927 /* WelcomeViewController.swift in Sources */,
 				8909FAE428735A0700F84927 /* AppDelegate.swift in Sources */,
@@ -647,10 +681,12 @@
 				89FBB326289845CE001C5B95 /* NetworkManager.swift in Sources */,
 				894D64072898F403001CF252 /* RegisterViewController.swift in Sources */,
 				894D63EB2898EFE1001CF252 /* DetailsWorker.swift in Sources */,
+				89BEED9528AD73C800B0BB2A /* WebKitViewController.swift in Sources */,
 				894D640A2898F403001CF252 /* RegisterModels.swift in Sources */,
 				894D63EC2898EFE1001CF252 /* DetailsRouter.swift in Sources */,
 				89BC654E289F150100AFEE36 /* FullScreenInteractor.swift in Sources */,
 				898BAA4D28A66893001990FC /* Officer.xcdatamodeld in Sources */,
+				89BEED9A28AD73C800B0BB2A /* WebKitRouter.swift in Sources */,
 				894D63F62898F3B3001CF252 /* LoginViewController.swift in Sources */,
 				89BC6550289F150100AFEE36 /* FullScreenWorker.swift in Sources */,
 				894D63E72898EFE1001CF252 /* DetailsViewController.swift in Sources */,

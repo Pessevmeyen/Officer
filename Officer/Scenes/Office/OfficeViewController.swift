@@ -20,10 +20,6 @@ protocol AnimationDelegate: AnyObject {
 
 final class OfficeViewController: UIViewController, UITextFieldDelegate, AnimationDelegate {
     
-    
-    
-    
-    
     var interactor: OfficeBusinessLogic?
     var router: (OfficeRoutingLogic & OfficeDataPassing)?
     var viewModel: Office.Fetch.ViewModel?

@@ -133,6 +133,10 @@ final class DetailsViewController: UIViewController {
             isGridLayout = true
         }
     }
+    @IBAction func websitePressed(_ sender: UIButton) {
+        router?.routeToWebKitScreen()
+    }
+    
 }
 
 

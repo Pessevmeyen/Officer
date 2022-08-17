@@ -31,25 +31,11 @@ class OfficeCell: UITableViewCell {
     
     let defaults = UserDefaults.standard
     
-    
-    
     var cellModel = Office.Fetch.ViewModel.OfficeModel()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        
-//        let savedBool = defaults.bool(forKey: "like") //var olabilir
-//        like = savedBool
-//
-//        if like! {
-//            favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
-//        } else {
-//            favoriteButton.setImage(UIImage(named: "disfav"), for: .normal)
-//        }
-//
-//
         
     }
     
@@ -91,6 +77,4 @@ class OfficeCell: UITableViewCell {
         cellImageView.sd_setImage(with: URL(string: viewModel.image ?? "Not Found"))
         
     }
-
-    
 }

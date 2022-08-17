@@ -6,8 +6,13 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
 
 class CoreDataManager {
+    
+    
+    
     
 }

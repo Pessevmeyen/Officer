@@ -10,6 +10,7 @@ import UIKit
 
 protocol DetailsRoutingLogic: AnyObject {
     func routeToFullScreen(index: Int)
+    func routeToWebKitScreen()
 }
 
 protocol DetailsDataPassing: AnyObject {
@@ -32,7 +33,12 @@ final class DetailsRouter: DetailsRoutingLogic, DetailsDataPassing {
         destinationVC.delegate = viewController
         
         viewController?.present(destinationVC, animated: true) // Burada pop'up olarak açılacak ekran. kullanıcı açısından daha basit olur.
-        
+    }
+    
+    
+    
+    func routeToWebKitScreen() {
+        viewController?.goToDestinationVCPopUp(storyboardName: "WebKit", storyboardID: "WebKitViewController")
     }
     
 }
