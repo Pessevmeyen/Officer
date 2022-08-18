@@ -16,6 +16,8 @@ final class WebKitViewController: UIViewController {
     
     var progressView: UIProgressView!
     
+    var links = ["mobven.com"]
+    
     // MARK: Object lifecycle
     
     override func viewDidLoad() {
@@ -37,7 +39,6 @@ final class WebKitViewController: UIViewController {
         
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         
-        
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -52,6 +53,7 @@ final class WebKitViewController: UIViewController {
         }
     }
     
+    //MARK: Custom Functions
     func setTabBarItems() {
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let backButton = UIBarButtonItem(image: UIImage(systemName: "lessthan"), style: .done, target: webView, action: #selector(webView.goBack))
@@ -81,6 +83,8 @@ final class WebKitViewController: UIViewController {
     }
 }
 
+
+//MARK: WebKit Delegates
 extension WebKitViewController: WKNavigationDelegate {
     
     //Her Web sitesi yüklenmeye başladığında indicator başlayacak.
@@ -91,5 +95,21 @@ extension WebKitViewController: WKNavigationDelegate {
     //Her Web sitesinin yüklenmesi bittiğinde indicator duracak.
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         isIndicatorAnimating(show: false)
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        let url = navigationAction.request.url
+        if let host = url?.host {
+            for link in links {
+                if host.contains(link) {
+                    decisionHandler(.allow)
+                    print("allow edildi")
+                    return
+                }
+            }
+        }
+        decisionHandler(.cancel)
+        getAlert(alertTitle: "Error!", actionTitle: "Terminate", message: "Access to Another Site Detected!")
+        print("cancel edildi")
     }
 }

@@ -160,11 +160,6 @@
             <point key="canvasLocation" x="131.8840579710145" y="165.06696428571428"/>
         </tableViewCell>
     </objects>
-    <designables>
-        <designable name="JvC-t0-lWE">
-            <size key="intrinsicContentSize" width="164" height="24"/>
-        </designable>
-    </designables>
     <resources>
         <image name="mainbackground" width="900" height="1600"/>
         <systemColor name="labelColor">

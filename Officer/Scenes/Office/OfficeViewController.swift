@@ -31,8 +31,6 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
     
     weak var delegate: AnimationDelegate?
     
-    var bool: Bool?
-    
     @IBOutlet weak var tableView: UITableView! {
         didSet { //Burada tableview oluştuğunda kayıt edecek. WillSet ile yapsaydık çalışmazdı çünkü henüz tableView tanımlanmamış oluyor.
             registerTableView()

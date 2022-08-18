@@ -29,8 +29,6 @@ class OfficeCell: UITableViewCell {
     
     weak var delegate: OfficeCellDelegate?
     
-    let defaults = UserDefaults.standard
-    
     var cellModel = Office.Fetch.ViewModel.OfficeModel()
     
     override func awakeFromNib() {
@@ -53,8 +51,6 @@ class OfficeCell: UITableViewCell {
             delegate?.favoriteDeleted(model: cellModel)
             
             like = true
-            defaults.set(like, forKey: "like")
-            
         } else {
             
             favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
@@ -62,7 +58,6 @@ class OfficeCell: UITableViewCell {
             delegate?.favoriteAdded(model: cellModel)
             
             like = false
-            defaults.set(like, forKey: "like")
         }
     }
     
