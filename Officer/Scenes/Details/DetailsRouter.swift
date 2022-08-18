@@ -38,8 +38,15 @@ final class DetailsRouter: DetailsRoutingLogic, DetailsDataPassing {
     
     
     func routeToWebKitScreen() {
-        viewController?.goToDestinationVCPopUp(storyboardName: "WebKit", storyboardID: "WebKitViewController")
+        
+        let storyboard = UIStoryboard(name: "WebKit", bundle: nil)
+        let destinationVC: WebKitViewController = storyboard.instantiateViewController(identifier: "WebKitViewController") as! WebKitViewController
+        let navigationController = UINavigationController(rootViewController: destinationVC)
+        navigationController.modalPresentationStyle = .popover
+        viewController?.present(navigationController, animated: true)
+        }
+    
     }
     
-}
+
 

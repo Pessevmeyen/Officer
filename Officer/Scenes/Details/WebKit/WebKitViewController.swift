@@ -8,17 +8,13 @@
 import UIKit
 import WebKit
 
-protocol WebKitDisplayLogic: AnyObject {
-    
-}
 
 final class WebKitViewController: UIViewController {
     
-    var interactor: WebKitBusinessLogic?
-    var router: (WebKitRoutingLogic & WebKitDataPassing)?
-    
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
+    var progressView: UIProgressView!
     
     // MARK: Object lifecycle
     
@@ -31,34 +27,52 @@ final class WebKitViewController: UIViewController {
             let urlRequest = URLRequest(url: url)
             webView.load(urlRequest)
         }
+        
+        // Ekranın sağından solundan kaydırarak ileri geri navigasyonları göster
+        webView.allowsBackForwardNavigationGestures = true
+        
+        setTabBarItems()
+        setRightBarButtonItem()
+        //Target: kim etkilenecek? webView'un kendi fonksiyonu olduğu için ekstra @objc func yazmamıza gerek kalmıyor.
+        
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
+        
+        
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress" {
+            progressView.progress = Float(webView.estimatedProgress)
+            
+            if progressView.progress == 1.0 {
+                progressView.isHidden = true
+            } else {
+                progressView.isHidden = false
+            }
+        }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+    func setTabBarItems() {
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "lessthan"), style: .done, target: webView, action: #selector(webView.goBack))
+        let forwardButton = UIBarButtonItem(image: UIImage(systemName: "greaterthan"), style: .done, target: webView, action: #selector(webView.goForward))
+        
+        progressView = UIProgressView(progressViewStyle: .default)
+        progressView.sizeToFit()
+        
+        let progressItem = UIBarButtonItem(customView: progressView )
+        
+        toolbarItems = [backButton, spacer, progressItem, spacer, forwardButton]
+        navigationController?.isToolbarHidden = false
     }
     
-    // MARK: Setup
-    
-    private func setup() {
-        let viewController = self
-        let interactor = WebKitInteractor()
-        let presenter = WebKitPresenter()
-        let router = WebKitRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
+    func setRightBarButtonItem() {
+        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
+        navigationItem.rightBarButtonItems = [refresh]
     }
     
-    func indicator(show: Bool) {
+    
+    func isIndicatorAnimating(show: Bool) {
         if show {
             indicator.startAnimating()
         } else {
@@ -69,15 +83,13 @@ final class WebKitViewController: UIViewController {
 
 extension WebKitViewController: WKNavigationDelegate {
     
+    //Her Web sitesi yüklenmeye başladığında indicator başlayacak.
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        indicator(show: true)
+        isIndicatorAnimating(show: true)
     }
     
+    //Her Web sitesinin yüklenmesi bittiğinde indicator duracak.
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        indicator(show: false)
+        isIndicatorAnimating(show: false)
     }
-}
-
-extension WebKitViewController: WebKitDisplayLogic {
-    
 }

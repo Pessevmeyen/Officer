@@ -16,9 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detailbackground" translatesAutoresizingMaskIntoConstraints="NO" id="MUf-WQ-8DU">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Z7C-I4-Xph">
                                 <rect key="frame" x="0.0" y="68" width="414" height="337"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Fts-P2-mzb">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -191,13 +194,17 @@
                             <constraint firstItem="Z7C-I4-Xph" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="9OZ-GQ-PCV"/>
                             <constraint firstItem="Z7C-I4-Xph" firstAttribute="top" secondItem="qfS-S6-0dm" secondAttribute="bottom" id="MQw-JE-DH1"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="oXS-UD-jIA" secondAttribute="trailing" constant="40" id="RJk-uo-LTz"/>
+                            <constraint firstItem="MUf-WQ-8DU" firstAttribute="top" secondItem="chM-je-gA4" secondAttribute="top" id="RO1-4u-Ppm"/>
+                            <constraint firstAttribute="bottom" secondItem="MUf-WQ-8DU" secondAttribute="bottom" id="RbF-mb-gff"/>
                             <constraint firstAttribute="bottom" secondItem="Wur-A2-ppH" secondAttribute="bottom" id="VlL-mK-JgW"/>
                             <constraint firstItem="oXS-UD-jIA" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="40" id="Wp1-sz-9Q9"/>
                             <constraint firstItem="qfS-S6-0dm" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" id="Y7e-E8-m3c"/>
                             <constraint firstItem="Z7C-I4-Xph" firstAttribute="top" secondItem="qfS-S6-0dm" secondAttribute="bottom" id="bgT-pQ-JPV"/>
                             <constraint firstItem="Wur-A2-ppH" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="d7g-96-KBb"/>
+                            <constraint firstItem="MUf-WQ-8DU" firstAttribute="trailing" secondItem="acR-sl-ate" secondAttribute="trailing" id="h6i-G9-lNC"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="Z7C-I4-Xph" secondAttribute="trailing" id="maJ-aM-vG5"/>
                             <constraint firstItem="9fi-eA-v87" firstAttribute="leading" secondItem="Wur-A2-ppH" secondAttribute="leading" constant="20" id="oI1-TQ-WOw"/>
+                            <constraint firstItem="MUf-WQ-8DU" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="tOS-Zj-5V5"/>
                             <constraint firstItem="Wur-A2-ppH" firstAttribute="centerX" secondItem="chM-je-gA4" secondAttribute="centerX" id="tay-7I-a36"/>
                             <constraint firstItem="Wur-A2-ppH" firstAttribute="top" secondItem="oXS-UD-jIA" secondAttribute="bottom" constant="8" id="vcI-7h-V2E"/>
                             <constraint firstItem="qfS-S6-0dm" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="20" id="wPc-Yk-KxJ"/>
@@ -222,6 +229,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="detailbackground" width="626" height="417"/>
         <image name="globe" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

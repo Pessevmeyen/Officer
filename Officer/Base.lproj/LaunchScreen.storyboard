@@ -26,16 +26,25 @@
                                     <constraint firstAttribute="height" constant="128" id="XQ7-Ec-oap"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="theoffice" translatesAutoresizingMaskIntoConstraints="NO" id="yTT-4c-ARG">
+                                <rect key="frame" x="20" y="734" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="6Mi-KW-Xjc"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0aC-PD-x7k" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Fwy-Wv-J5Q"/>
                             <constraint firstItem="UCl-4k-I1x" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="MRf-F9-Chx"/>
+                            <constraint firstItem="yTT-4c-ARG" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Wra-ci-66S"/>
                             <constraint firstItem="UCl-4k-I1x" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="YA3-gv-nJO"/>
                             <constraint firstItem="0aC-PD-x7k" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="amF-qx-YNh"/>
                             <constraint firstItem="UCl-4k-I1x" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="bL1-J4-eW3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yTT-4c-ARG" secondAttribute="trailing" constant="154" id="dvk-Rd-L6H"/>
                             <constraint firstItem="UCl-4k-I1x" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="gwx-5J-YC2"/>
+                            <constraint firstItem="yTT-4c-ARG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="zPO-Zf-C2Q"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -47,6 +56,7 @@
     <resources>
         <image name="mainbackground" width="900" height="1600"/>
         <image name="mobvenlogo" width="200" height="200"/>
+        <image name="theoffice" width="386" height="130"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

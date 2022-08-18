@@ -32,9 +32,6 @@ final class OfficeRouter: OfficeRoutingLogic, OfficeDataPassing {
     func routeToFavorites() {
         let storyboard = UIStoryboard(name: "FavoriteScreen", bundle: nil)
         let destVC: FavoriteScreenViewController = storyboard.instantiateViewController(identifier: "FavoriteScreenViewController")
-
-        //OfficeCell().delegate = viewController
-        
         self.viewController?.present(destVC, animated: true) // Burada pop'up olarak açılacak ekran. kullanıcı açısından daha basit olur.
     }
     
