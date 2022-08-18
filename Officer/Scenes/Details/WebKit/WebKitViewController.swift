@@ -11,31 +11,36 @@ import WebKit
 
 final class WebKitViewController: UIViewController {
     
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var webView: WKWebView! {
+        didSet {
+            if let url = URL(string: "https://www.mobven.com") {
+                let urlRequest = URLRequest(url: url)
+                DispatchQueue.main.async {
+                    self.webView.load(urlRequest)
+                }
+                // Ekranın sağından solundan kaydırarak ileri geri navigasyonları göster
+                webView.allowsBackForwardNavigationGestures = true
+                webView.navigationDelegate = self
+            }
+        }
+    }
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     var progressView: UIProgressView!
     
+    //Girdiğimiz site içerisinde olacağımız için ve tarayıcı barımız olmadığı için bir tane site yeter.
     var links = ["mobven.com"]
+    
+    
     
     // MARK: Object lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        webView.navigationDelegate = self
-        
-        if let url = URL(string: "https://www.mobven.com") {
-            let urlRequest = URLRequest(url: url)
-            webView.load(urlRequest)
-        }
-        
-        // Ekranın sağından solundan kaydırarak ileri geri navigasyonları göster
-        webView.allowsBackForwardNavigationGestures = true
-        
         setTabBarItems()
+        
         setRightBarButtonItem()
-        //Target: kim etkilenecek? webView'un kendi fonksiyonu olduğu için ekstra @objc func yazmamıza gerek kalmıyor.
         
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         
@@ -44,7 +49,6 @@ final class WebKitViewController: UIViewController {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
             progressView.progress = Float(webView.estimatedProgress)
-            
             if progressView.progress == 1.0 {
                 progressView.isHidden = true
             } else {
@@ -53,8 +57,12 @@ final class WebKitViewController: UIViewController {
         }
     }
     
+    
+    
+    
     //MARK: Custom Functions
     func setTabBarItems() {
+        //Target: kim etkilenecek? webView'un kendi fonksiyonu olduğu için ekstra @objc func yazmamıza gerek kalmıyor.
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let backButton = UIBarButtonItem(image: UIImage(systemName: "lessthan"), style: .done, target: webView, action: #selector(webView.goBack))
         let forwardButton = UIBarButtonItem(image: UIImage(systemName: "greaterthan"), style: .done, target: webView, action: #selector(webView.goForward))
@@ -72,7 +80,6 @@ final class WebKitViewController: UIViewController {
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
         navigationItem.rightBarButtonItems = [refresh]
     }
-    
     
     func isIndicatorAnimating(show: Bool) {
         if show {
@@ -103,13 +110,22 @@ extension WebKitViewController: WKNavigationDelegate {
             for link in links {
                 if host.contains(link) {
                     decisionHandler(.allow)
-                    print("allow edildi")
                     return
                 }
             }
         }
         decisionHandler(.cancel)
-        getAlert(alertTitle: "Error!", actionTitle: "Terminate", message: "Access to Another Site Detected!")
-        print("cancel edildi")
+        getAlert(alertTitle: "Error!", actionTitle: "Terminate", message: "Access to Another Site Detected! Please stay at \(links[0])!")
     }
+    
 }
+
+
+
+//links.forEach { link in
+//    if host.contains(link) {
+//        decisionHandler(.allow)
+//        return
+//    }
+//
+//}
