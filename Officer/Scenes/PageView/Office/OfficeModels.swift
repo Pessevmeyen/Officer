@@ -34,13 +34,23 @@ enum Office {
                 var capacity: String?
                 var rooms: String?
                 var space: String?
+                var location: Location?
+                
+            }
+            
+            // MARK: - Location
+            struct Location: Codable {
+                var latitude, longitude: Double?
+            }
+
+            
 
             }
         }
         
     }
-    
-}
+
+
 
 struct FilterItems {
     let first: String?

@@ -33,7 +33,7 @@ final class MapKitViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        mapView.delegate = self
         mapView.addAnnotation(Annotation(coordinate: .init(latitude: 40, longitude: 30), title: "pin"))
         
     }
@@ -62,6 +62,26 @@ class Annotation: NSObject, MKAnnotation {
         self.coordinate = coordinate
         self.title = title
     }
+}
+
+extension MapKitViewController: MKMapViewDelegate {
+    
+    func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
+        
+    }
+    
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        
+    }
+    
 }
 
 extension MapKitViewController: MapKitDisplayLogic {

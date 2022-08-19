@@ -123,8 +123,8 @@ extension FullScreenViewController: UICollectionViewDelegate, UICollectionViewDa
 extension FullScreenViewController: FullScreenDisplayLogic {
     func displayFullScreenData(viewModel: FullScreen.Fetch.ViewModel) {
         self.viewModel = viewModel
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
         }
     }
 }
