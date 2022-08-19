@@ -56,9 +56,10 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         officesLabel.text = "Offices"
         
-        setHidesBackBarButton()
+        //setHidesBackBarButton()
         
         createToolbarDoneButtonForPickerView()
         
@@ -74,6 +75,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         title = Constants.appName
+        
     }
     
     //MARK: View Will Disappear
@@ -151,7 +153,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
     @objc private func setRightBarButtonItem() {
         let biggerConfiguration = UIImage.SymbolConfiguration(scale: .large)
         let biggerSymbolImage = UIImage(named: "custom.heart.text.square", in: .main, with: biggerConfiguration)
-        let favoritesScreenButton = UIBarButtonItem.init(image: biggerSymbolImage, style: .done, target: self, action: #selector(goToFavoritesScreen))
+        let favoritesScreenButton = UIBarButtonItem.init(image: biggerSymbolImage, style: .done, target: PageViewController(), action: #selector(goToFavoritesScreen))
         favoritesScreenButton.tintColor = #colorLiteral(red: 0.5294117647, green: 0.1285524964, blue: 0.5745313764, alpha: 1)
         navigationItem.rightBarButtonItems = [favoritesScreenButton]
     }

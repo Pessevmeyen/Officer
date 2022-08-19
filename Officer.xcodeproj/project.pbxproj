@@ -51,6 +51,15 @@
 		8990F14728A93E5B00A682B8 /* FavoriteScreenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990F14028A93E5B00A682B8 /* FavoriteScreenModels.swift */; };
 		8990F14828A93E5B00A682B8 /* FavoriteScreenWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990F14128A93E5B00A682B8 /* FavoriteScreenWorker.swift */; };
 		8990F14928A93E5B00A682B8 /* FavoriteScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990F14228A93E5B00A682B8 /* FavoriteScreenRouter.swift */; };
+		8996D4E728AFBDCA00342590 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8996D4E528AFBDC900342590 /* PageViewController.swift */; };
+		8996D4E828AFBDCA00342590 /* PageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8996D4E628AFBDC900342590 /* PageViewController.xib */; };
+		8996D4F128AFBEBE00342590 /* MapKit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8996D4EA28AFBEBE00342590 /* MapKit.storyboard */; };
+		8996D4F228AFBEBE00342590 /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8996D4EB28AFBEBE00342590 /* MapKitViewController.swift */; };
+		8996D4F328AFBEBE00342590 /* MapKitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8996D4EC28AFBEBE00342590 /* MapKitPresenter.swift */; };
+		8996D4F428AFBEBE00342590 /* MapKitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8996D4ED28AFBEBE00342590 /* MapKitInteractor.swift */; };
+		8996D4F528AFBEBE00342590 /* MapKitModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8996D4EE28AFBEBE00342590 /* MapKitModels.swift */; };
+		8996D4F628AFBEBE00342590 /* MapKitWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8996D4EF28AFBEBE00342590 /* MapKitWorker.swift */; };
+		8996D4F728AFBEBE00342590 /* MapKitRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8996D4F028AFBEBE00342590 /* MapKitRouter.swift */; };
 		8997ADF5288AD6A5003D642F /* CLTypingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */; };
 		8997ADF7288AD73E003D642F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997ADF6288AD73E003D642F /* Constants.swift */; };
 		89BC654B289F150100AFEE36 /* FullScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89BC6544289F150100AFEE36 /* FullScreen.storyboard */; };
@@ -147,6 +156,15 @@
 		8990F14028A93E5B00A682B8 /* FavoriteScreenModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteScreenModels.swift; sourceTree = "<group>"; };
 		8990F14128A93E5B00A682B8 /* FavoriteScreenWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteScreenWorker.swift; sourceTree = "<group>"; };
 		8990F14228A93E5B00A682B8 /* FavoriteScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteScreenRouter.swift; sourceTree = "<group>"; };
+		8996D4E528AFBDC900342590 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		8996D4E628AFBDC900342590 /* PageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageViewController.xib; sourceTree = "<group>"; };
+		8996D4EA28AFBEBE00342590 /* MapKit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapKit.storyboard; sourceTree = "<group>"; };
+		8996D4EB28AFBEBE00342590 /* MapKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
+		8996D4EC28AFBEBE00342590 /* MapKitPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitPresenter.swift; sourceTree = "<group>"; };
+		8996D4ED28AFBEBE00342590 /* MapKitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitInteractor.swift; sourceTree = "<group>"; };
+		8996D4EE28AFBEBE00342590 /* MapKitModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitModels.swift; sourceTree = "<group>"; };
+		8996D4EF28AFBEBE00342590 /* MapKitWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitWorker.swift; sourceTree = "<group>"; };
+		8996D4F028AFBEBE00342590 /* MapKitRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitRouter.swift; sourceTree = "<group>"; };
 		8997ADF4288AD6A5003D642F /* CLTypingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLTypingLabel.swift; sourceTree = "<group>"; };
 		8997ADF6288AD73E003D642F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		89BC6544289F150100AFEE36 /* FullScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullScreen.storyboard; sourceTree = "<group>"; };
@@ -289,7 +307,6 @@
 		894D63FC2898F3C5001CF252 /* Office */ = {
 			isa = PBXGroup;
 			children = (
-				8990F13B28A93E2000A682B8 /* FavoriteScreen */,
 				89FBB31E28983BEE001C5B95 /* OfficeCell */,
 				89FBB31028983BE2001C5B95 /* Office.storyboard */,
 				89FBB31128983BE2001C5B95 /* OfficeViewController.swift */,
@@ -372,6 +389,32 @@
 			path = FavoriteScreen;
 			sourceTree = "<group>";
 		};
+		8996D4E428AFBD9E00342590 /* PageView */ = {
+			isa = PBXGroup;
+			children = (
+				8996D4E528AFBDC900342590 /* PageViewController.swift */,
+				8996D4E628AFBDC900342590 /* PageViewController.xib */,
+				8996D4E928AFBE8B00342590 /* MapKit */,
+				8990F13B28A93E2000A682B8 /* FavoriteScreen */,
+				894D63FC2898F3C5001CF252 /* Office */,
+			);
+			path = PageView;
+			sourceTree = "<group>";
+		};
+		8996D4E928AFBE8B00342590 /* MapKit */ = {
+			isa = PBXGroup;
+			children = (
+				8996D4EA28AFBEBE00342590 /* MapKit.storyboard */,
+				8996D4EB28AFBEBE00342590 /* MapKitViewController.swift */,
+				8996D4EC28AFBEBE00342590 /* MapKitPresenter.swift */,
+				8996D4ED28AFBEBE00342590 /* MapKitInteractor.swift */,
+				8996D4EE28AFBEBE00342590 /* MapKitModels.swift */,
+				8996D4EF28AFBEBE00342590 /* MapKitWorker.swift */,
+				8996D4F028AFBEBE00342590 /* MapKitRouter.swift */,
+			);
+			path = MapKit;
+			sourceTree = "<group>";
+		};
 		89BC6552289F151000AFEE36 /* FullScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,7 +479,7 @@
 			children = (
 				89BC6552289F151000AFEE36 /* FullScreen */,
 				894D63ED2898EFEA001CF252 /* Details */,
-				894D63FC2898F3C5001CF252 /* Office */,
+				8996D4E428AFBD9E00342590 /* PageView */,
 				894D63FE2898F3F2001CF252 /* Register */,
 				894D63FD2898F3E6001CF252 /* Login */,
 				894D640D289966FF001CF252 /* Welcome */,
@@ -590,6 +633,8 @@
 				8909FAED28735A0A00F84927 /* Assets.xcassets in Resources */,
 				89FBB32228983C02001C5B95 /* OfficeCell.xib in Resources */,
 				8909FAEB28735A0700F84927 /* Main.storyboard in Resources */,
+				8996D4E828AFBDCA00342590 /* PageViewController.xib in Resources */,
+				8996D4F128AFBEBE00342590 /* MapKit.storyboard in Resources */,
 				8990F14328A93E5B00A682B8 /* FavoriteScreen.storyboard in Resources */,
 				89D13EFB289BF993008E2238 /* DetailsCell.xib in Resources */,
 				894D64062898F403001CF252 /* Register.storyboard in Resources */,
@@ -620,7 +665,10 @@
 			files = (
 				89BEED8B28AD72BB00B0BB2A /* CoreDataManager.swift in Sources */,
 				894D63EA2898EFE1001CF252 /* DetailsModels.swift in Sources */,
+				8996D4F228AFBEBE00342590 /* MapKitViewController.swift in Sources */,
 				8990F14728A93E5B00A682B8 /* FavoriteScreenModels.swift in Sources */,
+				8996D4F428AFBEBE00342590 /* MapKitInteractor.swift in Sources */,
+				8996D4F628AFBEBE00342590 /* MapKitWorker.swift in Sources */,
 				89BC654F289F150100AFEE36 /* FullScreenModels.swift in Sources */,
 				8990F14828A93E5B00A682B8 /* FavoriteScreenWorker.swift in Sources */,
 				8990F14428A93E5B00A682B8 /* FavoriteScreenViewController.swift in Sources */,
@@ -630,6 +678,7 @@
 				89FBB31828983BE2001C5B95 /* OfficeViewController.swift in Sources */,
 				8997ADF5288AD6A5003D642F /* CLTypingLabel.swift in Sources */,
 				894D64092898F403001CF252 /* RegisterInteractor.swift in Sources */,
+				8996D4F328AFBEBE00342590 /* MapKitPresenter.swift in Sources */,
 				894D63FA2898F3B3001CF252 /* LoginWorker.swift in Sources */,
 				89D13EFA289BF993008E2238 /* DetailsCell.swift in Sources */,
 				898BAA4F28A69BDA001990FC /* File.swift in Sources */,
@@ -653,6 +702,7 @@
 				8990F14928A93E5B00A682B8 /* FavoriteScreenRouter.swift in Sources */,
 				89BC654C289F150100AFEE36 /* FullScreenViewController.swift in Sources */,
 				89FBB31C28983BE2001C5B95 /* OfficeWorker.swift in Sources */,
+				8996D4F528AFBEBE00342590 /* MapKitModels.swift in Sources */,
 				89FBB31B28983BE2001C5B95 /* OfficeModels.swift in Sources */,
 				894F331B28AE3EF00096B51D /* WebKitViewController.swift in Sources */,
 				894D63E82898EFE1001CF252 /* DetailsPresenter.swift in Sources */,
@@ -664,8 +714,10 @@
 				894D64072898F403001CF252 /* RegisterViewController.swift in Sources */,
 				894D63EB2898EFE1001CF252 /* DetailsWorker.swift in Sources */,
 				894D640A2898F403001CF252 /* RegisterModels.swift in Sources */,
+				8996D4E728AFBDCA00342590 /* PageViewController.swift in Sources */,
 				894D63EC2898EFE1001CF252 /* DetailsRouter.swift in Sources */,
 				89BC654E289F150100AFEE36 /* FullScreenInteractor.swift in Sources */,
+				8996D4F728AFBEBE00342590 /* MapKitRouter.swift in Sources */,
 				898BAA4D28A66893001990FC /* Officer.xcdatamodeld in Sources */,
 				894D63F62898F3B3001CF252 /* LoginViewController.swift in Sources */,
 				89BC6550289F150100AFEE36 /* FullScreenWorker.swift in Sources */,
