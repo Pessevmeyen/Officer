@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-
+//MARK: Class
 final class WebKitViewController: UIViewController {
     
     @IBOutlet weak var webView: WKWebView! {
@@ -24,6 +24,7 @@ final class WebKitViewController: UIViewController {
             }
         }
     }
+    
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     var progressView: UIProgressView!
@@ -40,11 +41,15 @@ final class WebKitViewController: UIViewController {
         
         setTabBarItems()
         
-        setRightBarButtonItem()
+        setBarButtonItems()
+        
+        dismissKeyboard()
         
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         
     }
+    
+    
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
@@ -52,6 +57,9 @@ final class WebKitViewController: UIViewController {
             if progressView.progress == 1.0 {
                 progressView.isHidden = true
             } else {
+                if webView.isLoading {
+                    indicator.isHidden = false
+                }
                 progressView.isHidden = false
             }
         }
@@ -71,23 +79,30 @@ final class WebKitViewController: UIViewController {
         progressView.sizeToFit()
         
         let progressItem = UIBarButtonItem(customView: progressView )
-        
+    
         toolbarItems = [backButton, spacer, progressItem, spacer, forwardButton]
         navigationController?.isToolbarHidden = false
     }
     
-    func setRightBarButtonItem() {
+    func setBarButtonItems() {
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
-        navigationItem.rightBarButtonItems = [refresh]
+        let stopLoading = UIBarButtonItem(barButtonSystemItem: .stop, target: webView, action: #selector(webView.stopLoading))
+        navigationItem.rightBarButtonItems = [refresh, stopLoading]
+    }
+    
+    @IBAction func stopLoadingButtonTapped(_ sender: UIBarButtonItem) {
+        var button = sender as UIBarButtonItem
+        button = UIBarButtonItem(barButtonSystemItem: .stop, target: webView, action: #selector(webView.stopLoading))
+        if button.isSelected {
+            indicator.isHidden = true
+        }
+        print("ibaction çalıştı")
     }
     
     func isIndicatorAnimating(show: Bool) {
-        if show {
-            indicator.startAnimating()
-        } else {
-            indicator.stopAnimating()
-        }
+        show ? indicator.startAnimating() : indicator.stopAnimating()
     }
+    
 }
 
 
@@ -102,6 +117,7 @@ extension WebKitViewController: WKNavigationDelegate {
     //Her Web sitesinin yüklenmesi bittiğinde indicator duracak.
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         isIndicatorAnimating(show: false)
+        title = webView.title
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
@@ -119,13 +135,3 @@ extension WebKitViewController: WKNavigationDelegate {
     }
     
 }
-
-
-
-//links.forEach { link in
-//    if host.contains(link) {
-//        decisionHandler(.allow)
-//        return
-//    }
-//
-//}

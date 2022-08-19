@@ -24,6 +24,7 @@ class DetailsCell: UICollectionViewCell {
         //}
         imageView.sd_setImage(with: URL(string: images))
         
+        
        
     }
     

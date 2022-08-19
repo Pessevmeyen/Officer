@@ -11,7 +11,7 @@ import Foundation
 
 //MARK: - Constants struct to avoid string errors.
 struct Constants {
-    static let appName = "The Office🌴"
+    static let appName = "officebnb🌴"
     
     static let borderColor = "bordercolor"
     

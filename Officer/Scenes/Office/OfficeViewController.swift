@@ -70,16 +70,13 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
         interactor?.fetchData(request: Office.Fetch.Request()) //View controller interactor'a diyor ki, office listesini çek.
         
     }
-    
-    
-    
-    
-    //MARK: Life Cycles
+    //MARK: View Will Appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         title = Constants.appName
     }
     
+    //MARK: View Will Disappear
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         title = ""
@@ -175,12 +172,10 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
         view.endEditing(true)
         interactor?.fetchDataAfterFetched() // Done tuşuna basıldığında bütün ofisleri tekrar gösterecek.
         textField.text = ""
-        print("done'a basıldı")
     }
     
     //MARK: Go To Router
     @objc func goToFavoritesScreen() {
-        print("favorites button tapped.")
         router?.routeToFavorites()
     }
     
@@ -240,7 +235,6 @@ extension OfficeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     //MARK: Kaç tane component olacak
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
-        
     }
     
     //MARK: Componentlerde kaç tane row olacak.
@@ -268,7 +262,6 @@ extension OfficeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         pickerView.reloadComponent(0)
         pickerView.reloadComponent(1)
         
-        //let selectedFirst = pickerView.selectedRow(inComponent: 0)
         let selectedSecond = pickerView.selectedRow(inComponent: 0)
         let selectedData = itemList[selectedSecond].second?[row]
         textField.text = selectedData
