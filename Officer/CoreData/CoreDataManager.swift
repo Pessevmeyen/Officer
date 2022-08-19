@@ -24,18 +24,15 @@ class CoreDataManager {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
         
-        fetchRequest.returnsObjectsAsFaults = false
+        let request = NSFetchRequest<Offices>(entityName: "Offices")
+        request.returnsObjectsAsFaults = false // büyük verilerde caching ayarlamak için
         
         do {
-            let results = try context.fetch(fetchRequest)
-            for result in results as! [NSManagedObject] {
-                break
-                
-                
-              
-            }
+            let results = try context.fetch(request)
+            for result in results { //results Any olarak geliyor o yüzden tipini belirlememiz gerek.
+                officesFromCoreData.append(.init(office: result))
+                }
             complation(.success(officesFromCoreData))
         } catch {
             complation(.failure(error))

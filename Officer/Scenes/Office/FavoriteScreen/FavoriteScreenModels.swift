@@ -25,29 +25,39 @@ enum FavoriteScreen {
             let coreDataOfficesViewModel: [FavoriteScreen.Fetch.ViewModel.CoreDataModels]
             
             struct CoreDataModels {
-                var idArray: [Int]?
-                var nameArray: [String]?
-                var addressArray: [String]?
-                var capacityArray: [String]?
-                var roomsArray: [String]?
-                var spaceArray: [String]?
-                var imageArray: [String]?
+                var id: Int16?
+                var name: String?
+                var address: String?
+                var capacity: String?
+                var rooms: String?
+                var space: String?
+                var image: String?
                 
-                init(idArray: [Int], nameArray: [String], addressArray: [String], capacityArray: [String], roomsArray: [String], spaceArray: [String], imageArray: [String]) {
-                    self.idArray = idArray
-                    self.nameArray = nameArray
-                    self.addressArray = addressArray
-                    self.capacityArray = capacityArray
-                    self.roomsArray = roomsArray
-                    self.spaceArray = spaceArray
-                    self.imageArray = imageArray
+                 init(id: Int16? = nil, name: String? = nil, address: String? = nil, capacity: String? = nil, rooms: String? = nil, space: String? = nil, image: String? = nil) {
+                    self.id = id
+                    self.name = name
+                    self.address = address
+                    self.capacity = capacity
+                    self.rooms = rooms
+                    self.space = space
+                    self.image = image
+                }
+                
+                init(office: Offices) {
+                    self.init(id: office.id,
+                              name: office.name,
+                              address: office.address,
+                              capacity: office.capacity,
+                              rooms: office.rooms,
+                              space: office.space,
+                              image: office.image)
+                }
                 
             }
+            
         }
         
     }
-    
-}
     
 }
 // swiftlint:enable nesting

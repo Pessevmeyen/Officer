@@ -23,8 +23,8 @@ final class FavoriteScreenInteractor: FavoriteScreenBusinessLogic, FavoriteScree
     func fetchCoreData() {
         worker.getCoreData { response in
             switch response {
-            case .success(let coreData):
-                self.presenter?.presentCoreData(officesId: coreData)
+            case .success(let coreDataOffices):
+                self.presenter?.presentCoreData(response: coreDataOffices)
             case .failure(let error):
                 print(error.localizedDescription)
             }

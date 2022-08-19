@@ -9,41 +9,22 @@ import UIKit
 import CoreData
 
 protocol FavoriteScreenDisplayLogic: AnyObject {
-    func displayCoreData(displayOfficeId: [FavoriteScreen.Fetch.ViewModel.CoreDataModels])
+    func displayCoreData(viewModel: [FavoriteScreen.Fetch.ViewModel.CoreDataModels])
 }
 
 
 
-final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
-    func favoriteAdded(model: Office.Fetch.ViewModel.OfficeModel) {
-        
-    }
-    
-    func favoriteDeleted(model: Office.Fetch.ViewModel.OfficeModel) {
-        
-    }
-    
+final class FavoriteScreenViewController: UIViewController {
     
     var interactor: FavoriteScreenBusinessLogic?
     var router: (FavoriteScreenRoutingLogic & FavoriteScreenDataPassing)?
-    
+    var viewModel: [FavoriteScreen.Fetch.ViewModel.CoreDataModels]?
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             registerFavoriteTableView()
         }
     }
-    
-    //CoreDatadan çekilen veriler buraya aktarılacak.
-    var idArray: [FavoriteScreen.Fetch.ViewModel.CoreDataModels] = []
-    var nameArray: [String] = []
-    var addressArray: [String] = []
-    var capacityArray: [String] = []
-    var roomsArray: [String] = []
-    var spaceArray: [String] = []
-    var imageArray: [String] = []
-    
-    var bool: Bool?
     
     // MARK: Object lifecycle
     
@@ -61,8 +42,6 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getDataFromCoreData()
-        
         interactor?.fetchCoreData()
         
     }
@@ -71,7 +50,6 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(getDataFromCoreData), name: NSNotification.Name(rawValue: "veriGirildi"), object: nil)
     }
     
     // MARK: Setup
@@ -89,66 +67,7 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
         router.dataStore = interactor
     }
     
-    //MARK: Getting Data From Core Data
-    @objc func getDataFromCoreData() {
-        
-        idArray.removeAll(keepingCapacity: false)
-        nameArray.removeAll(keepingCapacity: false)
-        addressArray.removeAll(keepingCapacity: false)
-        capacityArray.removeAll(keepingCapacity: false)
-        roomsArray.removeAll(keepingCapacity: false)
-        spaceArray.removeAll(keepingCapacity: false)
-        imageArray.removeAll(keepingCapacity: false)
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
-        fetchRequest.returnsObjectsAsFaults = false // büyük verilerde caching ayarlamak için
-        
-        do {
-            let results = try context.fetch(fetchRequest)
-            
-            if results.count > 0 {
-                for result in results as! [NSManagedObject] { //results Any olarak geliyor o yüzden tipini belirlememiz gerek.
-                    
-                    guard let id = result.value(forKey: "id") as? Int else { return }
-                    idArray.append(id)
-                    
-                    guard let name = result.value(forKey: "name") as? String else {
-                        return
-                    }
-                    nameArray.append(name)
-                    
-                    guard let address = result.value(forKey: "address") as? String else {
-                        return
-                    }
-                    addressArray.append(address)
-                    
-                    guard let capacity = result.value(forKey: "capacity") as? String else {
-                        return
-                    }
-                    capacityArray.append(capacity)
-                    
-                    guard let rooms = result.value(forKey: "rooms") as? String else { return }
-                    roomsArray.append(rooms)
-                                     
-                    guard let space = result.value(forKey: "space") as? String else {
-                        return
-                    }
-                    spaceArray.append(space)
-                    
-                    guard let image = result.value(forKey: "image") as? String else { return }
-                    imageArray.append(image)
-                    
-                    tableView.reloadData()
-                    
-                    }
-                }
-        } catch {
-            getAlert(alertTitle: "Error", actionTitle: "OK!", message: "An Error Occured When Fetching Data From Core Data")
-        }
-    }
+
 }
 
 //MARK: - TableView Delegate & Datasource | Number Of Rows In Section, CellForRowAt, DidSelectRowAt
@@ -156,7 +75,7 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
     
     //MARK: Sectionda kaç tane row oluşacak
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return nameArray.count
+        return viewModel?.count ?? 0
     }
     
     //MARK: rowlar neyden oluşacak.
@@ -165,8 +84,11 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
             fatalError("An Error Occured while dequeuering reusable cell")
         }
         
+        guard let model = viewModel?[indexPath.row] else {
+            fatalError("An Error Occured while dequeuering reusable cell")
+        }
         
-        cell.configureCell(name: nameArray[indexPath.row], address: addressArray[indexPath.row], image: imageArray[indexPath.row], capacity: capacityArray[indexPath.row], rooms: roomsArray[indexPath.row], space: spaceArray[indexPath.row])
+        cell.configureCell(viewModel: model)
         
         return cell
     }
@@ -174,9 +96,10 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
 }
 
 extension FavoriteScreenViewController: FavoriteScreenDisplayLogic {
-    func displayCoreData(displayOfficeId: [FavoriteScreen.Fetch.ViewModel.CoreDataModels]) {
-        idArray.removeAll()
-        idArray = displayOfficeId
-        print(idArray)
+    func displayCoreData(viewModel: [FavoriteScreen.Fetch.ViewModel.CoreDataModels]) {
+        self.viewModel = viewModel
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData() //displaynews'a gelmeden reload
+        }
     }
 }
