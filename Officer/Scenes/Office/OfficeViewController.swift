@@ -299,7 +299,6 @@ extension OfficeViewController: OfficeCellDelegate {
         savedOffice.setValue(model.rooms, forKey: "rooms")
         savedOffice.setValue(model.space, forKey: "space")
         
-        
         do {
             try context.save()
             print("saved")
@@ -389,4 +388,6 @@ extension OfficeViewController: OfficeDisplayLogic {
             self?.tableView.reloadData() //displaynews'a gelmeden reload
         }
     }
+    
+    
 }

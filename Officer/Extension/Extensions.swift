@@ -111,7 +111,7 @@ extension DetailsViewController {
 }
 //MARK: Favorite Screen Table View
 extension FavoriteScreenViewController {
-    func registerCollectionView() {
+    func registerFavoriteTableView() {
         tableView.register(UINib(nibName: Constants.favoriteScreenNibName, bundle: .main), forCellReuseIdentifier: Constants.favoriteScreenCellIdentifier)
     }
 }

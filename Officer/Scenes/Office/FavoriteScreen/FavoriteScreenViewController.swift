@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 protocol FavoriteScreenDisplayLogic: AnyObject {
-    
+    func displayCoreData(displayOfficeId: [Int])
 }
 
 
@@ -28,7 +28,11 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
     var router: (FavoriteScreenRoutingLogic & FavoriteScreenDataPassing)?
     
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            registerFavoriteTableView()
+        }
+    }
     
     //CoreDatadan çekilen veriler buraya aktarılacak.
     var idArray: [Int] = []
@@ -57,11 +61,9 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registerCollectionView()
-        
         getDataFromCoreData()
         
-        interactor?.fetchData(request: FullScreen.Fetch.Request())
+        interactor?.fetchCoreData()
         
     }
     
@@ -90,7 +92,13 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
     //MARK: Getting Data From Core Data
     @objc func getDataFromCoreData() {
         
+        idArray.removeAll(keepingCapacity: false)
         nameArray.removeAll(keepingCapacity: false)
+        addressArray.removeAll(keepingCapacity: false)
+        capacityArray.removeAll(keepingCapacity: false)
+        roomsArray.removeAll(keepingCapacity: false)
+        spaceArray.removeAll(keepingCapacity: false)
+        imageArray.removeAll(keepingCapacity: false)
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -103,37 +111,38 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
             
             if results.count > 0 {
                 for result in results as! [NSManagedObject] { //results Any olarak geliyor o yüzden tipini belirlememiz gerek.
-                        
-                        if let id = result.value(forKey: "id") as? Int {
-                            idArray.append(id)
-                            
-                            
-                            if let name = result.value(forKey: "name") as? String {
-                                nameArray.append(name)
-                                
-                                if let address = result.value(forKey: "address") as? String {
-                                    addressArray.append(address)
-                                    
-                                    if let capacity = result.value(forKey: "capacity") as? String {
-                                        capacityArray.append(capacity)
-                                        
-                                        if let rooms = result.value(forKey: "rooms") as? String {
-                                            roomsArray.append(rooms)
-                                            
-                                            if let space = result.value(forKey: "space") as? String {
-                                                spaceArray.append(space)
-                                                
-                                                if let image = result.value(forKey: "image") as? String {
-                                                    imageArray.append(image)
-
-                                                    self.tableView.reloadData()
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                    
+                    guard let id = result.value(forKey: "id") as? Int else { return }
+                    idArray.append(id)
+                    
+                    guard let name = result.value(forKey: "name") as? String else {
+                        return
+                    }
+                    nameArray.append(name)
+                    
+                    guard let address = result.value(forKey: "address") as? String else {
+                        return
+                    }
+                    addressArray.append(address)
+                    
+                    guard let capacity = result.value(forKey: "capacity") as? String else {
+                        return
+                    }
+                    capacityArray.append(capacity)
+                    
+                    guard let rooms = result.value(forKey: "rooms") as? String else { return }
+                    roomsArray.append(rooms)
+                                     
+                    guard let space = result.value(forKey: "space") as? String else {
+                        return
+                    }
+                    spaceArray.append(space)
+                    
+                    guard let image = result.value(forKey: "image") as? String else { return }
+                    imageArray.append(image)
+                    
+                    tableView.reloadData()
+                    
                     }
                 }
         } catch {
@@ -165,5 +174,9 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
 }
 
 extension FavoriteScreenViewController: FavoriteScreenDisplayLogic {
-    
+    func displayCoreData(displayOfficeId: [Int]) {
+        idArray.removeAll()
+        idArray = displayOfficeId
+        print(idArray)
+    }
 }

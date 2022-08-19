@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FavoriteScreenBusinessLogic: AnyObject {
-    func fetchData(request: FullScreen.Fetch.Request)
+    func fetchCoreData()
 }
 
 protocol FavoriteScreenDataStore: AnyObject {
@@ -20,8 +20,15 @@ final class FavoriteScreenInteractor: FavoriteScreenBusinessLogic, FavoriteScree
     var presenter: FavoriteScreenPresentationLogic?
     var worker: FavoriteScreenWorkingLogic = FavoriteScreenWorker()
     
-    func fetchData(request: FullScreen.Fetch.Request) {
-        
+    func fetchCoreData() {
+        worker.getCoreData { response in
+            switch response {
+            case .success(let coreData):
+                self.presenter?.presentCoreData(officesId: coreData)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     
