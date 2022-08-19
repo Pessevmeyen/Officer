@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 protocol FavoriteScreenDisplayLogic: AnyObject {
-    func displayCoreData(displayOfficeId: [Int])
+    func displayCoreData(displayOfficeId: [FavoriteScreen.Fetch.ViewModel.CoreDataModels])
 }
 
 
@@ -35,7 +35,7 @@ final class FavoriteScreenViewController: UIViewController, OfficeCellDelegate {
     }
     
     //CoreDatadan çekilen veriler buraya aktarılacak.
-    var idArray: [Int] = []
+    var idArray: [FavoriteScreen.Fetch.ViewModel.CoreDataModels] = []
     var nameArray: [String] = []
     var addressArray: [String] = []
     var capacityArray: [String] = []
@@ -174,7 +174,7 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
 }
 
 extension FavoriteScreenViewController: FavoriteScreenDisplayLogic {
-    func displayCoreData(displayOfficeId: [Int]) {
+    func displayCoreData(displayOfficeId: [FavoriteScreen.Fetch.ViewModel.CoreDataModels]) {
         idArray.removeAll()
         idArray = displayOfficeId
         print(idArray)

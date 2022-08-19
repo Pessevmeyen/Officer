@@ -8,14 +8,14 @@
 import Foundation
 
 protocol FavoriteScreenPresentationLogic: AnyObject {
-    func presentCoreData(officesId : [Int])
+    func presentCoreData(officesId : [FavoriteScreen.Fetch.ViewModel.CoreDataModels])
 }
 
 final class FavoriteScreenPresenter: FavoriteScreenPresentationLogic {
     
     weak var viewController: FavoriteScreenDisplayLogic?
     
-    func presentCoreData(officesId: [Int]) {
+    func presentCoreData(officesId: [FavoriteScreen.Fetch.ViewModel.CoreDataModels]) {
         
         //worker'ın çektiği veriler, interactor ile buraya gelecek. Gelen veriler burada formatlanacak, şekil verilecek.
 //        var offices: [Office.Fetch.ViewModel.OfficeModel] = []

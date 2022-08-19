@@ -10,7 +10,7 @@ import Foundation
 // swiftlint:disable nesting
 enum FavoriteScreen {
     
-    enum Case {
+    enum Fetch {
         
         struct Request {
             
@@ -22,16 +22,32 @@ enum FavoriteScreen {
         
         struct ViewModel {
             
-            var idArray: [Int]?
-            var nameArray: [String]?
-            var addressArray: [String]?
-            var capacityArray: [String]?
-            var roomsArray: [String]?
-            var spaceArray: [String]?
-            var imageArray: [String]?
+            let coreDataOfficesViewModel: [FavoriteScreen.Fetch.ViewModel.CoreDataModels]
+            
+            struct CoreDataModels {
+                var idArray: [Int]?
+                var nameArray: [String]?
+                var addressArray: [String]?
+                var capacityArray: [String]?
+                var roomsArray: [String]?
+                var spaceArray: [String]?
+                var imageArray: [String]?
+                
+                init(idArray: [Int], nameArray: [String], addressArray: [String], capacityArray: [String], roomsArray: [String], spaceArray: [String], imageArray: [String]) {
+                    self.idArray = idArray
+                    self.nameArray = nameArray
+                    self.addressArray = addressArray
+                    self.capacityArray = capacityArray
+                    self.roomsArray = roomsArray
+                    self.spaceArray = spaceArray
+                    self.imageArray = imageArray
+                
+            }
         }
         
     }
+    
+}
     
 }
 // swiftlint:enable nesting

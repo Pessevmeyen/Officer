@@ -18,9 +18,9 @@ protocol CoreDataManagerDelegate {
 
 class CoreDataManager {
     
-    func getFromCoreData(complation: @escaping ((Result<[Int], Error>) -> Void)) {
+    func getFromCoreData(complation: @escaping ((Result<[FavoriteScreen.Fetch.ViewModel.CoreDataModels], Error>) -> Void)) {
         
-        var officesIdFromCoreData : [Int] = []
+        var officesFromCoreData : [FavoriteScreen.Fetch.ViewModel.CoreDataModels] = []
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -31,11 +31,12 @@ class CoreDataManager {
         do {
             let results = try context.fetch(fetchRequest)
             for result in results as! [NSManagedObject] {
-                if let id = result.value(forKey: "id") as? Int {
-                    officesIdFromCoreData.append(id)
-                }
+                break
+                
+                
+              
             }
-            complation(.success(officesIdFromCoreData))
+            complation(.success(officesFromCoreData))
         } catch {
             complation(.failure(error))
         }
