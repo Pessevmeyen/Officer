@@ -41,15 +41,16 @@ class PageViewController: UIPageViewController {
         delegate = self
         dataSource = self
         
-        viewControllerArray = [officeDestination, mapKitDestination]
+        viewControllerArray.append(officeDestination)
+        viewControllerArray.append(mapKitDestination)
         
         var transitionStyle: UIPageViewController.TransitionStyle {
             return .scroll
         }
         
         
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationItem.setHidesBackButton(true, animated: true)
+        self.navigationController?.navigationBar.isHidden = true
+        //navigationItem.setHidesBackButton(true, animated: true)
         
         
         

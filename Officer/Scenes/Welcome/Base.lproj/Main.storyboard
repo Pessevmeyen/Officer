@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainbackground" translatesAutoresizingMaskIntoConstraints="NO" id="ny8-MC-2Ua">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detailbackground" translatesAutoresizingMaskIntoConstraints="NO" id="ny8-MC-2Ua">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="Klg-bx-0ku">
@@ -61,7 +61,7 @@
                                         <rect key="frame" x="0.0" y="572" width="414" height="250"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="m0G-rx-G3j">
-                                                <rect key="frame" x="20" y="37" width="374" height="176.5"/>
+                                                <rect key="frame" x="20" y="17" width="374" height="176.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't you have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3A5-mI-A3f">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -129,7 +129,7 @@
                                         <constraints>
                                             <constraint firstItem="m0G-rx-G3j" firstAttribute="centerX" secondItem="QVT-Pz-a9V" secondAttribute="centerX" id="2OW-VS-vUr"/>
                                             <constraint firstAttribute="trailing" secondItem="m0G-rx-G3j" secondAttribute="trailing" constant="20" id="9j5-nI-ZzZ"/>
-                                            <constraint firstItem="m0G-rx-G3j" firstAttribute="centerY" secondItem="QVT-Pz-a9V" secondAttribute="centerY" id="UU1-LZ-tBz"/>
+                                            <constraint firstItem="m0G-rx-G3j" firstAttribute="centerY" secondItem="QVT-Pz-a9V" secondAttribute="centerY" constant="-20" id="UU1-LZ-tBz"/>
                                             <constraint firstItem="m0G-rx-G3j" firstAttribute="leading" secondItem="QVT-Pz-a9V" secondAttribute="leading" constant="20" id="kdm-S9-rvW"/>
                                         </constraints>
                                     </view>
@@ -189,7 +189,7 @@
     </designables>
     <color key="tintColor" systemColor="labelColor"/>
     <resources>
-        <image name="mainbackground" width="900" height="1600"/>
+        <image name="detailbackground" width="626" height="417"/>
         <namedColor name="appnamecolor">
             <color red="0.96100002527236938" green="0.94099998474121094" blue="0.73299998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

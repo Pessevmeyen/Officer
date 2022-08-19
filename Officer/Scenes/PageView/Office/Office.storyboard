@@ -36,27 +36,40 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Offices by Filter" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j6W-ZS-hT8">
-                                <rect key="frame" x="52" y="80" width="342" height="45"/>
+                                <rect key="frame" x="52" y="96" width="342" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="18"/>
+                                        <real key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ivu-85-p2v">
-                                <rect key="frame" x="20" y="88.5" width="24" height="27.5"/>
+                                <rect key="frame" x="20" y="88.5" width="24" height="43.5"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="gsg-6f-bUa"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czo-g3-YDp">
+                                <rect key="frame" x="362" y="40" width="32" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="X0S-3L-PpK"/>
+                                    <constraint firstAttribute="width" constant="32" id="si6-zm-aRw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="custom.heart.text.square"/>
+                                <connections>
+                                    <action selector="favoriteButtonTapped:" destination="nxe-uw-h5I" eventType="touchUpInside" id="x5g-1y-9Fo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="j6W-ZS-hT8" firstAttribute="top" secondItem="H1G-4a-1dn" secondAttribute="bottom" id="19W-bf-Q2J"/>
+                            <constraint firstItem="j6W-ZS-hT8" firstAttribute="top" secondItem="H1G-4a-1dn" secondAttribute="bottom" constant="16" id="19W-bf-Q2J"/>
                             <constraint firstItem="Ivu-85-p2v" firstAttribute="leading" secondItem="H1G-4a-1dn" secondAttribute="leading" id="94a-sq-OcF"/>
                             <constraint firstItem="H1G-4a-1dn" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="20" id="Cpq-St-HKB"/>
                             <constraint firstItem="fq5-rG-nhr" firstAttribute="top" secondItem="H1G-4a-1dn" secondAttribute="bottom" constant="50" id="H5s-HY-3xD"/>
@@ -67,6 +80,8 @@
                             <constraint firstItem="j6W-ZS-hT8" firstAttribute="centerY" secondItem="Ivu-85-p2v" secondAttribute="centerY" id="cAH-jy-AVZ"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="bottom" secondItem="fq5-rG-nhr" secondAttribute="bottom" id="dZB-3x-y7P"/>
                             <constraint firstItem="fq5-rG-nhr" firstAttribute="top" secondItem="j6W-ZS-hT8" secondAttribute="bottom" constant="5" id="h5i-uZ-jea"/>
+                            <constraint firstItem="j6W-ZS-hT8" firstAttribute="top" secondItem="czo-g3-YDp" secondAttribute="bottom" constant="16" id="iS3-AU-QpT"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="czo-g3-YDp" secondAttribute="trailing" constant="20" id="lch-i2-ycq"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="j6W-ZS-hT8" secondAttribute="trailing" constant="20" id="qKz-GL-KK0"/>
                             <constraint firstItem="fq5-rG-nhr" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="tIP-uK-fhK"/>
                         </constraints>
@@ -88,6 +103,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="custom.heart.text.square" width="12" height="12"/>
         <image name="detailbackground" width="626" height="417"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="labelColor">

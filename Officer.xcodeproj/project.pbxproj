@@ -406,8 +406,8 @@
 			children = (
 				8996D4EA28AFBEBE00342590 /* MapKit.storyboard */,
 				8996D4EB28AFBEBE00342590 /* MapKitViewController.swift */,
-				8996D4EC28AFBEBE00342590 /* MapKitPresenter.swift */,
 				8996D4ED28AFBEBE00342590 /* MapKitInteractor.swift */,
+				8996D4EC28AFBEBE00342590 /* MapKitPresenter.swift */,
 				8996D4EE28AFBEBE00342590 /* MapKitModels.swift */,
 				8996D4EF28AFBEBE00342590 /* MapKitWorker.swift */,
 				8996D4F028AFBEBE00342590 /* MapKitRouter.swift */,

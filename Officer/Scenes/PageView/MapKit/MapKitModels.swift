@@ -10,18 +10,22 @@ import Foundation
 // swiftlint:disable nesting
 enum MapKit {
     
-    enum Case {
+    enum Fetch {
         
         struct Request {
             
         }
         
         struct Response {
-            
+            let officeMapKit: OfficeData?
         }
         
         struct ViewModel {
-            
+                var image: String?
+                var name: String?
+                var address: String?
+                var latitude: Double?
+                var longitude: Double?
         }
         
     }

@@ -16,17 +16,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reversedetailbackground" translatesAutoresizingMaskIntoConstraints="NO" id="nBV-Mp-pgv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GzG-42-7qV">
-                                <rect key="frame" x="10" y="44" width="394" height="852"/>
+                                <rect key="frame" x="30" y="100" width="354" height="762"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Your Office" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7o0-xl-hRi">
+                                <rect key="frame" x="30" y="54" width="213" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="GzG-42-7qV" secondAttribute="bottom" id="0iZ-6y-mnU"/>
-                            <constraint firstItem="GzG-42-7qV" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="10" id="79n-3m-Cec"/>
-                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="GzG-42-7qV" secondAttribute="trailing" constant="10" id="ReT-FA-cz1"/>
-                            <constraint firstItem="GzG-42-7qV" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" id="rzZ-5b-rek"/>
+                            <constraint firstAttribute="bottom" secondItem="GzG-42-7qV" secondAttribute="bottom" constant="34" id="0iZ-6y-mnU"/>
+                            <constraint firstAttribute="bottom" secondItem="nBV-Mp-pgv" secondAttribute="bottom" id="2jb-gx-Bf1"/>
+                            <constraint firstItem="nBV-Mp-pgv" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="6Wt-2B-AmP"/>
+                            <constraint firstItem="GzG-42-7qV" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="30" id="79n-3m-Cec"/>
+                            <constraint firstItem="7o0-xl-hRi" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="30" id="9Bb-wy-skf"/>
+                            <constraint firstItem="nBV-Mp-pgv" firstAttribute="trailing" secondItem="acR-sl-ate" secondAttribute="trailing" id="BGj-sD-frI"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="GzG-42-7qV" secondAttribute="trailing" constant="30" id="ReT-FA-cz1"/>
+                            <constraint firstItem="GzG-42-7qV" firstAttribute="top" secondItem="7o0-xl-hRi" secondAttribute="bottom" constant="10" id="eZq-Ll-eVp"/>
+                            <constraint firstItem="GzG-42-7qV" firstAttribute="top" secondItem="chM-je-gA4" secondAttribute="top" constant="100" id="rzZ-5b-rek"/>
+                            <constraint firstItem="nBV-Mp-pgv" firstAttribute="top" secondItem="chM-je-gA4" secondAttribute="top" id="tvI-oD-nab"/>
                         </constraints>
                     </view>
                     <connections>
@@ -35,10 +55,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZo-gs-e4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="107" y="28"/>
+            <point key="canvasLocation" x="105.79710144927537" y="27.455357142857142"/>
         </scene>
     </scenes>
     <resources>
+        <image name="reversedetailbackground" width="626" height="417"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

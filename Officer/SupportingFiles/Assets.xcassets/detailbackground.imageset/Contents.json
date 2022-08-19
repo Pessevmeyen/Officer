@@ -2,16 +2,27 @@
   "images" : [
     {
       "filename" : "new-soft-pastel-blur-gradient-background_92086-57.jpg",
-      "idiom" : "universal",
-      "scale" : "1x"
+      "idiom" : "universal"
     },
     {
-      "idiom" : "universal",
-      "scale" : "2x"
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "new-soft-pastel-blur-gradient-background_92086-58.jpg",
+      "idiom" : "universal"
     },
     {
-      "idiom" : "universal",
-      "scale" : "3x"
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "6553651-1.jpg",
+      "idiom" : "universal"
     }
   ],
   "info" : {

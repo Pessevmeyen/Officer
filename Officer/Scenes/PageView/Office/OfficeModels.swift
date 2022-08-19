@@ -26,7 +26,6 @@ enum Office {
             
             struct OfficeModel {
                 var id: Int?
-                var bool: Bool?
                 var image: String?
                 var images: [String]?
                 var name: String?
@@ -34,21 +33,22 @@ enum Office {
                 var capacity: String?
                 var rooms: String?
                 var space: String?
-                var location: Location?
+                var latitude: Double?
+                var longitude: Double?
                 
             }
             
-            // MARK: - Location
-            struct Location: Codable {
-                var latitude, longitude: Double?
-            }
-
+//            // MARK: - Location
+//            struct Location: Codable {
+//                var latitude, longitude: Double?
+//            }
             
-
-            }
+            
+            
         }
-        
     }
+    
+}
 
 
 

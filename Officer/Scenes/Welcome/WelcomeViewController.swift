@@ -68,7 +68,7 @@ class WelcomeViewController: UIViewController {
         //MARK: App Name Attributes.
         //Added with @IBInspectable but couldn't get neon like effect, so was wroten here.
         appNameLabel.layer.shadowOffset = CGSize(width: 0, height: 1)
-        appNameLabel.layer.shadowColor = UIColor.systemBackground.cgColor
+        appNameLabel.layer.shadowColor = UIColor.systemOrange.cgColor
         appNameLabel.layer.shadowRadius = 4
         appNameLabel.layer.shadowOpacity = 1
         appNameLabel.layer.masksToBounds = false

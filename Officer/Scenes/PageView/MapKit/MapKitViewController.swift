@@ -7,15 +7,18 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 protocol MapKitDisplayLogic: AnyObject {
-    
+    func displayLocation(viewModel: MapKit.Fetch.ViewModel)
 }
 
 final class MapKitViewController: UIViewController {
     
     var interactor: MapKitBusinessLogic?
     var router: (MapKitRoutingLogic & MapKitDataPassing)?
+    var viewModel: MapKit.Fetch.ViewModel?
+    var locationManager = CLLocationManager()
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -34,7 +37,17 @@ final class MapKitViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        mapView.addAnnotation(Annotation(coordinate: .init(latitude: 40, longitude: 30), title: "pin"))
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        interactor?.fetchData(result: MapKit.Fetch.Request())
+        
+        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), title: "Kollektif House Levent", subtitle: "çok güzel ofis"))
+        
+        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), title: "Kollektif House Maslak", subtitle: "çok güzel ofis"))
+        
         
     }
     
@@ -57,10 +70,12 @@ final class MapKitViewController: UIViewController {
 class Annotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var title: String?
+    var subtitle: String?
     
-    init(coordinate: CLLocationCoordinate2D, title: String) {
+    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
         self.coordinate = coordinate
         self.title = title
+        self.subtitle = subtitle
     }
 }
 
@@ -82,8 +97,24 @@ extension MapKitViewController: MKMapViewDelegate {
         
     }
     
+    
+    
+}
+
+extension MapKitViewController: CLLocationManagerDelegate {
+    
+    //CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locationManager.location?.coordinate
+        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        let region = MKCoordinateRegion(center: location!, span: span)
+        mapView.setRegion(region, animated: true)
+    }
+    
 }
 
 extension MapKitViewController: MapKitDisplayLogic {
-    
+    func displayLocation(viewModel: MapKit.Fetch.ViewModel) {
+        self.viewModel = viewModel
+    }
 }

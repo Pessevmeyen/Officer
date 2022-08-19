@@ -56,11 +56,7 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction func logInClicked(_ sender: UIButton) {
-        //goToDestinationVC(storyboardName: Constants.officeStoryboardName, storyboardID: Constants.officeStoryboardIdentifier)
-        
-        
-        
-        
+
         self.navigationController?.pushViewController(PageViewController(), animated: true)
         
         

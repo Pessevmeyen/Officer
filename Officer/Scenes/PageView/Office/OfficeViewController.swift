@@ -57,6 +57,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
         super.viewDidLoad()
         
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        
         officesLabel.text = "Offices"
         
         //setHidesBackBarButton()
@@ -64,8 +65,6 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
         createToolbarDoneButtonForPickerView()
         
         createFilterItems()
-        
-        setRightBarButtonItem()
         
         //1
         interactor?.fetchData(request: Office.Fetch.Request()) //View controller interactor'a diyor ki, office listesini çek.
@@ -124,12 +123,12 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
     
     func addingFavoriteAnimation() {
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(addingOffice), userInfo: nil, repeats: false)
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(setRightBarButtonItem), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(favoriteButtonTapped), userInfo: nil, repeats: false)
     }
     
     func removingFavoriteAnimation() {
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(removingOffice), userInfo: nil, repeats: false)
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(setRightBarButtonItem), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(favoriteButtonTapped), userInfo: nil, repeats: false)
     }
     
     
@@ -147,16 +146,13 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
         
     }
     
+    @IBAction @objc func favoriteButtonTapped(_ sender: UIButton) {
+        let button = sender as UIButton
+        
+        router?.routeToFavorites()
+    }
     //MARK: @objc Functions
     
-    //Create Right Bar Button
-    @objc private func setRightBarButtonItem() {
-        let biggerConfiguration = UIImage.SymbolConfiguration(scale: .large)
-        let biggerSymbolImage = UIImage(named: "custom.heart.text.square", in: .main, with: biggerConfiguration)
-        let favoritesScreenButton = UIBarButtonItem.init(image: biggerSymbolImage, style: .done, target: PageViewController(), action: #selector(goToFavoritesScreen))
-        favoritesScreenButton.tintColor = #colorLiteral(red: 0.5294117647, green: 0.1285524964, blue: 0.5745313764, alpha: 1)
-        navigationItem.rightBarButtonItems = [favoritesScreenButton]
-    }
     
     @objc private func addingOffice() {
         let favoritesScreenButton = UIBarButtonItem.init(title: "Adding Office...", style: .done, target: self, action: nil)
@@ -174,11 +170,6 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
         view.endEditing(true)
         interactor?.fetchDataAfterFetched() // Done tuşuna basıldığında bütün ofisleri tekrar gösterecek.
         textField.text = ""
-    }
-    
-    //MARK: Go To Router
-    @objc func goToFavoritesScreen() {
-        router?.routeToFavorites()
     }
     
 }
@@ -219,8 +210,8 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.like = false
             }
         }
-        
         return cell
+        router?.sendDatasToMapKit(index: indexPath.row)
     }
     
     //MARK: What happen when select
@@ -385,7 +376,6 @@ extension OfficeViewController: OfficeDisplayLogic {
     func displayViewModelData(viewModel: Office.Fetch.ViewModel) {
         //Burada gelen office listesini gösteriyor.
         self.viewModel = viewModel
-        print(viewModel)
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData() //displaynews'a gelmeden reload
         }

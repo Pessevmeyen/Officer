@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "image (2).png",
+      "filename" : "reversedetailbackground.jpg",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "light"
         }
       ],
-      "filename" : "image (2)-1.png",
+      "filename" : "reversedetailbackground-1.jpg",
       "idiom" : "universal"
     },
     {
@@ -21,7 +21,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "login (10).png",
+      "filename" : "6553651-1.jpg",
       "idiom" : "universal"
     }
   ],
