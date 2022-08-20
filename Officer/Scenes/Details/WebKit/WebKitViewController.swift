@@ -96,7 +96,6 @@ final class WebKitViewController: UIViewController {
         if button.isSelected {
             indicator.isHidden = true
         }
-        print("ibaction çalıştı")
     }
     
     func isIndicatorAnimating(show: Bool) {

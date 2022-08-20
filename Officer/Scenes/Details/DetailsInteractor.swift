@@ -13,7 +13,6 @@ protocol DetailsBusinessLogic: AnyObject {
 
 protocol DetailsDataStore: AnyObject {
     var officeData: OfficeData? { get set }
-    
 }
 
 final class DetailsInteractor: DetailsBusinessLogic, DetailsDataStore {
@@ -21,7 +20,6 @@ final class DetailsInteractor: DetailsBusinessLogic, DetailsDataStore {
     var presenter: DetailsPresentationLogic?
     var worker: DetailsWorkingLogic = DetailsWorker()
     var officeData: OfficeData? //Request&Response modeldeki Modelimizin kendisi.
-    
     
     func fetchDetails(request: Details.Fetch.Request) {
         self.presenter?.presentDetails(response: .init(officeDetail: officeData))

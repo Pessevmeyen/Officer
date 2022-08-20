@@ -59,6 +59,7 @@
                                     <constraint firstAttribute="width" constant="32" id="si6-zm-aRw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="tintColor" red="0.66274509800000003" green="0.062745098040000002" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="custom.heart.text.square"/>
                                 <connections>

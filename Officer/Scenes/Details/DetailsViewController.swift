@@ -66,6 +66,11 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationItem.hidesBackButton = false
+        
+        
+        
+        
         collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
         
         navigationController?.navigationBar.topItem?.backButtonTitle = "Offices"
@@ -105,7 +110,7 @@ final class DetailsViewController: UIViewController {
         navigationItem.rightBarButtonItems = [changeLayoutButton]
     }
     
-    func setInformation() {
+    private func setInformation() {
         imageView.sd_setImage(with: URL(string: viewModel?.image ?? ""))
         nameLabel.text = viewModel?.name ?? "nil"
         addressLabel.text = viewModel?.address ?? "nil"
@@ -118,7 +123,7 @@ final class DetailsViewController: UIViewController {
     //MARK: - @objc functions
     //MARK: The Action When Right Bar Button Tapped
     @objc func changeLayout() {
-        print("tapped")
+        
         //collectionView.collectionViewLayout.invalidateLayout()
         if isGridLayout { // If user on Listing ViewConstants.gridLayoutImage
             collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
@@ -146,7 +151,7 @@ final class DetailsViewController: UIViewController {
 extension DetailsViewController {
     
     //MARK: Setting Custom Collection View
-    func setCollectionView() -> UICollectionViewFlowLayout {
+    private func setCollectionView() -> UICollectionViewFlowLayout {
         let listLayout = UICollectionViewFlowLayout()
         listLayout.collectionView?.layoutIfNeeded()
         listLayout.scrollDirection = .horizontal
@@ -158,7 +163,7 @@ extension DetailsViewController {
     }
     
     //MARK: Setting Grid Layout
-    func setGridLayout() -> UICollectionViewFlowLayout { //İki farklı layout verdiğim için bunu böyle yaptım. Doğrusunu sor.
+    private func setGridLayout() -> UICollectionViewFlowLayout { //İki farklı layout verdiğim için bunu böyle yaptım. Doğrusunu sor.
         let gridLayout = UICollectionViewFlowLayout()
         gridLayout.scrollDirection = .vertical
         gridLayout.itemSize = CGSize(width: (view.frame.size.width / 4) - 5, height: (view.frame.size.width / 4) - 10)

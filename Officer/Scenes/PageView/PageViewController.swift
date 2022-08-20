@@ -9,9 +9,6 @@ import UIKit
 
 class PageViewController: UIPageViewController {
     
-    
-    
-    
     let officeViewController = OfficeViewController()
     let mapKitViewController = MapKitViewController()
     
@@ -23,7 +20,7 @@ class PageViewController: UIPageViewController {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        print("init(coder:) has not been implemented")
+        print("\(coder)) has not been implemented")
     }
         
 
@@ -32,14 +29,17 @@ class PageViewController: UIPageViewController {
 
         // Do any additional setup after loading the view.
         
+        self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = false
+        
         let officeStoryboard = UIStoryboard(name: Constants.officeStoryboardName, bundle: nil)
-        let officeDestination: OfficeViewController = officeStoryboard.instantiateViewController(identifier: Constants.officeStoryboardIdentifier)
+        let officeDestination: OfficeViewController = officeStoryboard.instantiateViewController(identifier: Constants.officeIdentifier)
         
         let mapKitStoryboard = UIStoryboard(name: "MapKit", bundle: nil)
         let mapKitDestination: MapKitViewController = mapKitStoryboard.instantiateViewController(identifier: "MapKitViewController")
         
         delegate = self
         dataSource = self
+        
         
         viewControllerArray.append(officeDestination)
         viewControllerArray.append(mapKitDestination)
@@ -48,16 +48,17 @@ class PageViewController: UIPageViewController {
             return .scroll
         }
         
-        
-        self.navigationController?.navigationBar.isHidden = true
         //navigationItem.setHidesBackButton(true, animated: true)
-        
-        
         
         if let firstViewController = viewControllerArray.first {
             setViewControllers([firstViewController], direction: .forward, animated: true)
         }
         
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         
     }

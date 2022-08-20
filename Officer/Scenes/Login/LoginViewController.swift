@@ -35,9 +35,13 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         title = Constants.appName
-        
         hideKeyboardWhenTappedAround()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: Setup

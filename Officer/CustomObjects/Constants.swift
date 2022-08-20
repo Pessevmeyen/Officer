@@ -32,7 +32,7 @@ struct Constants {
     
     
     //MARK: - Login Storyboard
-    static let loginStoryboardIdentifier = "LoginViewController"
+    static let loginIdentifier = "LoginViewController"
     static let loginStoryboardName = "Login"
     
     
@@ -41,7 +41,7 @@ struct Constants {
     
     //MARK: - Register Storyboard
     static let registerStoryboardName = "Register"
-    static let registerStoryboardIdentifier = "RegisterViewController"
+    static let registerIdentifier = "RegisterViewController"
     
     
     
@@ -49,7 +49,7 @@ struct Constants {
     
     //MARK: - Office Storyboard
     static let officeStoryboardName = "Office"
-    static let officeStoryboardIdentifier = "OfficeViewController"
+    static let officeIdentifier = "OfficeViewController"
     
     
     
@@ -64,7 +64,7 @@ struct Constants {
     
     
     //MARK: - Details Storyboard
-    static let detailsStoryboardIdentifier = "DetailsViewController"
+    static let detailsIdentifier = "DetailsViewController"
     static let detailsStoryboardName = "Details"
     
     
@@ -91,4 +91,14 @@ struct Constants {
     //MARK: - Favorite Screen Storyboard
     static let favoriteScreenCellIdentifier = "FavoriteScreenCell"
     static let favoriteScreenNibName = "FavoriteScreenCell"
+    static let favoriteStoryboardName = "FavoriteScreen"
+    static let favoriteIdentifier = "FavoriteScreenViewController"
+    
+    
+    
+    
+    
+    //MARK: - MapKit Screen Storyboard
+    static let mapKitStoryboardName = "MapKit"
+    static let mapKitIdentifier = "MapKitViewController"
 }

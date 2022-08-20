@@ -43,9 +43,10 @@
                             <constraint firstItem="GzG-42-7qV" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="30" id="79n-3m-Cec"/>
                             <constraint firstItem="7o0-xl-hRi" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="30" id="9Bb-wy-skf"/>
                             <constraint firstItem="nBV-Mp-pgv" firstAttribute="trailing" secondItem="acR-sl-ate" secondAttribute="trailing" id="BGj-sD-frI"/>
+                            <constraint firstItem="7o0-xl-hRi" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" constant="10" id="EaX-Y1-Gn8"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="GzG-42-7qV" secondAttribute="trailing" constant="30" id="ReT-FA-cz1"/>
                             <constraint firstItem="GzG-42-7qV" firstAttribute="top" secondItem="7o0-xl-hRi" secondAttribute="bottom" constant="10" id="eZq-Ll-eVp"/>
-                            <constraint firstItem="GzG-42-7qV" firstAttribute="top" secondItem="chM-je-gA4" secondAttribute="top" constant="100" id="rzZ-5b-rek"/>
+                            <constraint firstItem="GzG-42-7qV" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" constant="56" id="rzZ-5b-rek"/>
                             <constraint firstItem="nBV-Mp-pgv" firstAttribute="top" secondItem="chM-je-gA4" secondAttribute="top" id="tvI-oD-nab"/>
                         </constraints>
                     </view>

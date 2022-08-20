@@ -21,11 +21,12 @@ enum MapKit {
         }
         
         struct ViewModel {
-                var image: String?
-                var name: String?
-                var address: String?
-                var latitude: Double?
-                var longitude: Double?
+            var id: Int?
+            var image: String?
+            var name: String?
+            var address: String?
+            var latitude: Double?
+            var longitude: Double?
         }
         
     }

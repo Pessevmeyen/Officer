@@ -24,20 +24,22 @@ final class OfficeRouter: OfficeRoutingLogic, OfficeDataPassing {
     var dataStore: OfficeDataStore?
     
     func routeToDetails(index: Int) {
-        let storyboard = UIStoryboard(name: "Details", bundle: nil)
-        let destVC: DetailsViewController = storyboard.instantiateViewController(identifier: "DetailsViewController")
+        let storyboard = UIStoryboard(name: Constants.detailsStoryboardName, bundle: nil)
+        let destVC: DetailsViewController = storyboard.instantiateViewController(identifier: Constants.detailsIdentifier)
         destVC.router?.dataStore?.officeData = dataStore?.filteredOffices?[index] //Burada hangi index seçildiyde, o index'in datası aktarılıyor. Detailsdaki offices'e. indexten aldığımız için array'i teklile düşürüyoruz. o yüzden sol taraf array değil.
-        self.viewController?.navigationController?.pushViewController(destVC, animated: true)
+        viewController?.navigationController?.pushViewController(destVC, animated: true)
     }
     
     func sendDatasToMapKit(index: Int) {
-        MapKitViewController().router?.dataStore?.locationData = dataStore?.offices?[index]
-        print(MapKitViewController().router?.dataStore?.locationData)
+        
+        let storyboard = UIStoryboard(name: Constants.mapKitStoryboardName, bundle: nil)
+        let destVC: MapKitViewController = storyboard.instantiateViewController(identifier: Constants.mapKitIdentifier)
+        destVC.router?.dataStore?.locationData = dataStore?.offices?[index]
     }
     
     func routeToFavorites() {
-        let storyboard = UIStoryboard(name: "FavoriteScreen", bundle: nil)
-        let destVC: FavoriteScreenViewController = storyboard.instantiateViewController(identifier: "FavoriteScreenViewController")
+        let storyboard = UIStoryboard(name: Constants.favoriteStoryboardName, bundle: nil)
+        let destVC: FavoriteScreenViewController = storyboard.instantiateViewController(identifier: Constants.favoriteIdentifier)
         self.viewController?.present(destVC, animated: true) // Burada pop'up olarak açılacak ekran. kullanıcı açısından daha basit olur.
     }
     

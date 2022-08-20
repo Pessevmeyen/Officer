@@ -5,7 +5,6 @@
 //  Created by Furkan Eruçar on 25.07.2022.
 //
 
-import Foundation
 import UIKit
 
 

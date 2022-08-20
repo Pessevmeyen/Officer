@@ -68,8 +68,6 @@ class OfficeCell: UITableViewCell {
         roomsLabel.text = "Rooms: \(viewModel.rooms ?? "Not Found")"
         spaceLabel.text = "Space: \(viewModel.space ?? "Not Found")"
         cellImageView.sd_setImage(with: URL(string: viewModel.image ?? "Not Found"))
-        print(viewModel.latitude)
-        print(viewModel.longitude)
         
     }
 }

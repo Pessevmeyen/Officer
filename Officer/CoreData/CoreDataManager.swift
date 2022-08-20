@@ -63,19 +63,19 @@ class CoreDataManager {
     }
     
     
-    func deleteFromCoreData(officeId: Int) {
+    func deleteFromCoreData(officeID: Int) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
         
-        fetchRequest.predicate = NSPredicate(format: "id = %@", "\(officeId)")
+        fetchRequest.predicate = NSPredicate(format: "id = %@", "\(officeID)")
         
         do {
             let results = try context.fetch(fetchRequest)
             if results.count > 0 {
                 for result in results as! [NSManagedObject] {
                     if let id = result.value(forKey: "id") as? Int {
-                        if id == officeId {
+                        if id == officeID {
                             context.delete(result)
                             
                             do {

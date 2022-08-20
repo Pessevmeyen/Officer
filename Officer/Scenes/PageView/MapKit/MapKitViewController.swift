@@ -18,6 +18,7 @@ final class MapKitViewController: UIViewController {
     var interactor: MapKitBusinessLogic?
     var router: (MapKitRoutingLogic & MapKitDataPassing)?
     var viewModel: MapKit.Fetch.ViewModel?
+    
     var locationManager = CLLocationManager()
     
     @IBOutlet weak var mapView: MKMapView!
@@ -41,13 +42,15 @@ final class MapKitViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        mapView.showsUserLocation = true
         
-        interactor?.fetchData(result: MapKit.Fetch.Request())
+        interactor?.fetchData(request: MapKit.Fetch.Request())
         
-        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), title: "Kollektif House Levent", subtitle: "çok güzel ofis"))
+        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), title: "Kollektif House Levent", subtitle: "Esentepe Mah. Talatpaşa Cad. No: 5 (Harman Sok. Girişi) Levent / İstanbul"))
         
-        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), title: "Kollektif House Maslak", subtitle: "çok güzel ofis"))
-        
+        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 41.114104, longitude: viewModel?.longitude ?? 29.022484), title: "Kollektif House Maslak", subtitle: "42 Maslak, Maslak Mah., Ahi Evran Cd. No:6 D:3, 34398 Maslak/İstanbul"))
+        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 41.03104, longitude: viewModel?.longitude ??
+                                                           29.022484), title: "Kollektif House Maslak", subtitle: "42 Maslak, Maslak Mah., Ahi Evran Cd. No:6 D:3, 34398 Kadıköy/İstanbul"))
         
     }
     
@@ -79,6 +82,8 @@ class Annotation: NSObject, MKAnnotation {
     }
 }
 
+
+
 extension MapKitViewController: MKMapViewDelegate {
     
     func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
@@ -96,6 +101,30 @@ extension MapKitViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else { return nil }
+        
+        let annotationIdentifier = "identifier"
+        var annotationView: MKAnnotationView?
+        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
+            annotationView = dequeuedAnnotationView
+            annotationView?.annotation = annotation
+        }
+        else {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            annotationView?.rightCalloutAccessoryView = UIButton(type: .roundedRect)
+        }
+
+         if let annotationView = annotationView {
+
+            annotationView.canShowCallout = true
+            annotationView.image = UIImage(named: "fav")
+        }
+          return annotationView
+    }
+    
+    
     
     
     

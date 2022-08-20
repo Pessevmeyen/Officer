@@ -18,7 +18,6 @@ final class OfficePresenter: OfficePresentationLogic {
     
     //4
     func presentRespondedData(response: Office.Fetch.Response) {
-        print(response)
         //worker'ın çektiği veriler, interactor ile buraya gelecek. Gelen veriler burada formatlanacak, şekil verilecek.
         var offices: [Office.Fetch.ViewModel.OfficeModel] = []
         response.officeResponse.forEach { //Burada gelen array şeklinde veri parametrelerini, Model içindeki parametrelere aktarıyoruz.
@@ -34,6 +33,5 @@ final class OfficePresenter: OfficePresentationLogic {
                                                               longitude: $0.location?.longitude))
         }
         viewController?.displayViewModelData(viewModel: Office.Fetch.ViewModel(officesListViewModel: offices)) // Presenter da view controller'a diyor, veriler hazır, office listesini gösterebilirsin
-        print(offices)
     }
 }

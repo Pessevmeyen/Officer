@@ -45,12 +45,7 @@ final class FavoriteScreenViewController: UIViewController {
         interactor?.fetchCoreData()
         
     }
-    
-    //MARK: View Will Appear
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
+
     
     // MARK: Setup
     

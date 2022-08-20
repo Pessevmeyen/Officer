@@ -56,11 +56,9 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.isHidden = false
         
         officesLabel.text = "Offices"
-        
-        //setHidesBackBarButton()
         
         createToolbarDoneButtonForPickerView()
         
@@ -80,6 +78,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
     //MARK: View Will Disappear
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
+        
         title = ""
     }
     
@@ -146,6 +145,8 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
         
     }
     
+
+    
     @IBAction @objc func favoriteButtonTapped(_ sender: UIButton) {
         let button = sender as UIButton
         
@@ -155,6 +156,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
     
     
     @objc private func addingOffice() {
+        navigationController?.isNavigationBarHidden = false
         let favoritesScreenButton = UIBarButtonItem.init(title: "Adding Office...", style: .done, target: self, action: nil)
         favoritesScreenButton.tintColor = #colorLiteral(red: 0.5294117647, green: 0.1285524964, blue: 0.5745313764, alpha: 1)
         navigationItem.rightBarButtonItems = [favoritesScreenButton]
@@ -210,8 +212,9 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.like = false
             }
         }
-        return cell
         router?.sendDatasToMapKit(index: indexPath.row)
+        return cell
+        
     }
     
     //MARK: What happen when select

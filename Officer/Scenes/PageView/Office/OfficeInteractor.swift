@@ -70,5 +70,9 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
         //print(filteredData)
     }
     
+    func smt(id: Int, name: String, address: String, capacity: String, rooms: String, space: String, image: String) {
+        CoreDataManager().saveToCoreData(id: id, name: name, address: address, capacity: capacity, rooms: rooms, space: space, image: image)
+    }
+    
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MapKitBusinessLogic: AnyObject {
-    func fetchData(result: MapKit.Fetch.Request)
+    func fetchData(request: MapKit.Fetch.Request)
 }
 
 protocol MapKitDataStore: AnyObject {
@@ -21,8 +21,10 @@ final class MapKitInteractor: MapKitBusinessLogic, MapKitDataStore {
     var worker: MapKitWorkingLogic = MapKitWorker()
     var locationData: OfficeData?
     
-    func fetchData(result: MapKit.Fetch.Request) {
-        presenter?.presentMapKit(response: .init(officeMapKit: locationData))
+    
+    func fetchData(request: MapKit.Fetch.Request) {
+        self.presenter?.presentMapKit(response: .init(officeMapKit: locationData))
+        print(request)
     }
     
 }
