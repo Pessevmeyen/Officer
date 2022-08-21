@@ -14,6 +14,7 @@ protocol DetailsDisplayLogic: AnyObject {
 
 final class DetailsViewController: UIViewController {
     
+    var isGridLayout = false
     var interactor: DetailsBusinessLogic?
     var router: (DetailsRoutingLogic & DetailsDataPassing)?
     var viewModel: Details.Fetch.ViewModel? {
@@ -29,15 +30,6 @@ final class DetailsViewController: UIViewController {
     @IBOutlet weak var capacityLabel: UILabel!
     @IBOutlet weak var roomLabel: UILabel!
     @IBOutlet weak var spaceLabel: UILabel!
-    
-    
-    
-    var detailsID: Int?
-    
-    
-    var isGridLayout = false
-    var isBigMap = false
-    
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             registerCollectionView()
@@ -56,20 +48,11 @@ final class DetailsViewController: UIViewController {
         setup()
     }
     
-    init(detailsID: Int) {
-        super.init(nibName: nil, bundle: nil)
-        self.detailsID = detailsID
-        setup()
-    }
-    
     //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationItem.hidesBackButton = false
-        
-        
-        
         
         collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
         

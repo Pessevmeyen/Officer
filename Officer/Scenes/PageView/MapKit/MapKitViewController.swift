@@ -15,7 +15,11 @@ protocol MapKitDisplayLogic: AnyObject {
 
 final class MapKitViewController: UIViewController {
     
-    var interactor: MapKitBusinessLogic?
+    var interactor: MapKitBusinessLogic? {
+        didSet {
+            interactor?.fetchData(request: MapKit.Fetch.Request())
+        }
+    }
     var router: (MapKitRoutingLogic & MapKitDataPassing)?
     var viewModel: MapKit.Fetch.ViewModel?
     
@@ -44,13 +48,14 @@ final class MapKitViewController: UIViewController {
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
         
-        interactor?.fetchData(request: MapKit.Fetch.Request())
+        //interactor?.fetchData(request: MapKit.Fetch.Request())
         
         mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), title: "Kollektif House Levent", subtitle: "Esentepe Mah. Talatpaşa Cad. No: 5 (Harman Sok. Girişi) Levent / İstanbul"))
         
         mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 41.114104, longitude: viewModel?.longitude ?? 29.022484), title: "Kollektif House Maslak", subtitle: "42 Maslak, Maslak Mah., Ahi Evran Cd. No:6 D:3, 34398 Maslak/İstanbul"))
+        
         mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 41.03104, longitude: viewModel?.longitude ??
-                                                           29.022484), title: "Kollektif House Maslak", subtitle: "42 Maslak, Maslak Mah., Ahi Evran Cd. No:6 D:3, 34398 Kadıköy/İstanbul"))
+                                                           29.022484), title: "Kollektif House Kadıköy", subtitle: "42 Maslak, Maslak Mah., Ahi Evran Cd. No:6 D:3, 34398 Kadıköy/İstanbul"))
         
     }
     

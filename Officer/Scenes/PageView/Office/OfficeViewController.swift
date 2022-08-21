@@ -18,8 +18,8 @@ protocol AnimationDelegate: AnyObject {
     func removingFavoriteAnimation()
 }
 
-final class OfficeViewController: UIViewController, UITextFieldDelegate, AnimationDelegate {
-    
+final class OfficeViewController: UIViewController, UITextFieldDelegate {
+
     var interactor: OfficeBusinessLogic?
     var router: (OfficeRoutingLogic & OfficeDataPassing)?
     var viewModel: Office.Fetch.ViewModel?
@@ -68,19 +68,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
         interactor?.fetchData(request: Office.Fetch.Request()) //View controller interactor'a diyor ki, office listesini çek.
         
     }
-    //MARK: View Will Appear
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        title = Constants.appName
-        
-    }
     
-    //MARK: View Will Disappear
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        
-        title = ""
-    }
     
     // MARK: Setup
     
@@ -120,18 +108,6 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
         itemList.append(spaceInterval)
     }
     
-    func addingFavoriteAnimation() {
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(addingOffice), userInfo: nil, repeats: false)
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(favoriteButtonTapped), userInfo: nil, repeats: false)
-    }
-    
-    func removingFavoriteAnimation() {
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(removingOffice), userInfo: nil, repeats: false)
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(favoriteButtonTapped), userInfo: nil, repeats: false)
-    }
-    
-    
-    
     // Creates Toolbar Button
     private func createToolbarDoneButtonForPickerView() {
         let toolBar = UIToolbar()
@@ -145,28 +121,10 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
         
     }
     
-
-    
-    @IBAction @objc func favoriteButtonTapped(_ sender: UIButton) {
-        let button = sender as UIButton
-        
-        router?.routeToFavorites()
-    }
     //MARK: @objc Functions
-    
-    
-    @objc private func addingOffice() {
-        navigationController?.isNavigationBarHidden = false
-        let favoritesScreenButton = UIBarButtonItem.init(title: "Adding Office...", style: .done, target: self, action: nil)
-        favoritesScreenButton.tintColor = #colorLiteral(red: 0.5294117647, green: 0.1285524964, blue: 0.5745313764, alpha: 1)
-        navigationItem.rightBarButtonItems = [favoritesScreenButton]
-    }
-    
-    @objc private func removingOffice() {
-        let favoritesScreenButton = UIBarButtonItem.init(title: "Removing Office...", style: .done, target: self, action: nil)
-        favoritesScreenButton.tintColor = #colorLiteral(red: 0.5294117647, green: 0.1285524964, blue: 0.5745313764, alpha: 1)
-        navigationItem.rightBarButtonItems = [favoritesScreenButton]
-    }
+    @objc func goToFavoritesScreen() {
+            router?.routeToFavorites()
+        }
     
     @objc private func dismissButton() {
         view.endEditing(true)
@@ -182,7 +140,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate, Animati
 
 
 
-//MARK: - TableView Delegate & Datasource
+//MARK: TableView Delegate & Datasource
 extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
     
     // Sectionda kaç tane row oluşacak
@@ -274,7 +232,7 @@ extension OfficeViewController: OfficeCellDelegate {
     //MARK: Added to Favorite
     func favoriteAdded(model: Office.Fetch.ViewModel.OfficeModel) {
         
-        delegate = self
+        //delegate = self
         
         delegate?.addingFavoriteAnimation()
         
@@ -310,7 +268,7 @@ extension OfficeViewController: OfficeCellDelegate {
     //MARK: Deleted from Favorite
     func favoriteDeleted(model: Office.Fetch.ViewModel.OfficeModel) {
         
-        delegate = self
+        //delegate = self
         
         delegate?.removingFavoriteAnimation()
         //MARK: Deleting data from Core Data

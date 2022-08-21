@@ -33,6 +33,7 @@ class CoreDataManager {
             for result in results { //results Any olarak geliyor o yüzden tipini belirlememiz gerek.
                 officesFromCoreData.append(.init(office: result))
                 }
+            
             complation(.success(officesFromCoreData))
         } catch {
             complation(.failure(error))

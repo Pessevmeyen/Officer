@@ -29,7 +29,7 @@
                                     <outlet property="delegate" destination="nxe-uw-h5I" id="bhK-Jp-Lk6"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1G-4a-1dn" customClass="CLTypingLabel" customModule="Officer" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Offices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="H1G-4a-1dn" customClass="CLTypingLabel" customModule="Officer" customModuleProvider="target">
                                 <rect key="frame" x="20" y="44" width="93.5" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" systemColor="systemBlueColor"/>
@@ -52,20 +52,14 @@
                                     <constraint firstAttribute="width" constant="24" id="gsg-6f-bUa"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czo-g3-YDp">
-                                <rect key="frame" x="362" y="40" width="32" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slide to Map -&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="z0c-sv-RJw">
+                                <rect key="frame" x="291" y="53" width="113" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="X0S-3L-PpK"/>
-                                    <constraint firstAttribute="width" constant="32" id="si6-zm-aRw"/>
+                                    <constraint firstAttribute="height" constant="20" id="jv5-ZC-Iib"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="tintColor" red="0.66274509800000003" green="0.062745098040000002" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="custom.heart.text.square"/>
-                                <connections>
-                                    <action selector="favoriteButtonTapped:" destination="nxe-uw-h5I" eventType="touchUpInside" id="x5g-1y-9Fo"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -77,14 +71,14 @@
                             <constraint firstItem="Ivu-85-p2v" firstAttribute="top" secondItem="H1G-4a-1dn" secondAttribute="bottom" constant="8" symbolic="YES" id="NiY-04-rDu"/>
                             <constraint firstItem="H1G-4a-1dn" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" id="V0z-JG-gba"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="fq5-rG-nhr" secondAttribute="trailing" id="V4N-e0-iXH"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="z0c-sv-RJw" secondAttribute="trailing" constant="10" id="VxP-hh-tSj"/>
                             <constraint firstItem="j6W-ZS-hT8" firstAttribute="leading" secondItem="Ivu-85-p2v" secondAttribute="trailing" constant="8" symbolic="YES" id="bPL-h2-aef"/>
                             <constraint firstItem="j6W-ZS-hT8" firstAttribute="centerY" secondItem="Ivu-85-p2v" secondAttribute="centerY" id="cAH-jy-AVZ"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="bottom" secondItem="fq5-rG-nhr" secondAttribute="bottom" id="dZB-3x-y7P"/>
                             <constraint firstItem="fq5-rG-nhr" firstAttribute="top" secondItem="j6W-ZS-hT8" secondAttribute="bottom" constant="5" id="h5i-uZ-jea"/>
-                            <constraint firstItem="j6W-ZS-hT8" firstAttribute="top" secondItem="czo-g3-YDp" secondAttribute="bottom" constant="16" id="iS3-AU-QpT"/>
-                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="czo-g3-YDp" secondAttribute="trailing" constant="20" id="lch-i2-ycq"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="j6W-ZS-hT8" secondAttribute="trailing" constant="20" id="qKz-GL-KK0"/>
                             <constraint firstItem="fq5-rG-nhr" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="tIP-uK-fhK"/>
+                            <constraint firstItem="j6W-ZS-hT8" firstAttribute="top" secondItem="z0c-sv-RJw" secondAttribute="bottom" constant="23" id="xiO-5g-j8O"/>
                         </constraints>
                     </view>
                     <connections>
@@ -104,7 +98,6 @@
         </designable>
     </designables>
     <resources>
-        <image name="custom.heart.text.square" width="12" height="12"/>
         <image name="detailbackground" width="626" height="417"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="labelColor">
