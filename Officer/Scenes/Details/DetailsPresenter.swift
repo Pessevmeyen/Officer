@@ -24,7 +24,9 @@ final class DetailsPresenter: DetailsPresentationLogic {
                                                                               address: office?.address,
                                                                               capacity: office?.capacity,
                                                                               rooms: String(office?.rooms ?? 1),
-                                                                              space: office?.space))
+                                                                              space: office?.space,
+                                                                              latitude: office?.location?.latitude,
+                                                                              longitude: office?.location?.longitude))
     }
     
 }

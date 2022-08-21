@@ -30,6 +30,8 @@ enum Details {
             let capacity: String?
             let rooms: String?
             let space: String?
+            var latitude: Double?
+            var longitude: Double?
             
         }
     }

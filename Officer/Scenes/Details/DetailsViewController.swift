@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 protocol DetailsDisplayLogic: AnyObject {
     func displayDetailsList(viewModel: Details.Fetch.ViewModel)
@@ -22,6 +23,7 @@ final class DetailsViewController: UIViewController {
             self.title = viewModel?.name ?? ""
         }
     }
+    var locationManager = CLLocationManager()
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -52,6 +54,13 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.delegate = self
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        mapView.showsUserLocation = true
+        
         navigationController?.navigationItem.hidesBackButton = false
         
         collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
@@ -63,6 +72,8 @@ final class DetailsViewController: UIViewController {
         interactor?.fetchDetails(request: Details.Fetch.Request())
         
         setInformation()
+        
+        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), title: viewModel?.name ?? "", subtitle: viewModel?.address ?? ""))
        
     }
     
@@ -210,6 +221,32 @@ extension DetailsViewController: FullScreenDelegate {
             self.collectionView.reloadData()
         }
     }
+}
+
+
+//MARK: Map Kit Delegates
+extension DetailsViewController: MKMapViewDelegate {
+    
+    func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
+        
+    }
+    
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+        
+    }
+    
+}
+
+//MARK: - Core Location Delegate
+extension DetailsViewController: CLLocationManagerDelegate {
+    
+    //CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let span = MKCoordinateSpan(latitudeDelta: 0.10, longitudeDelta: 0.10)
+        let region = MKCoordinateRegion(center: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), span: span)
+        mapView.setRegion(region, animated: true)
+    }
+    
 }
 
 
