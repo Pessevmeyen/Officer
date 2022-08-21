@@ -48,15 +48,7 @@ final class MapKitViewController: UIViewController {
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
         
-        print("mapkit view did load")
-        
-        
         setPins()
-        
-//        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 41.114104, longitude: viewModel?.longitude ?? 29.022484), title: "Kollektif House Maslak", subtitle: "42 Maslak, Maslak Mah., Ahi Evran Cd. No:6 D:3, 34398 Maslak/İstanbul"))
-//
-//        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 41.03104, longitude: viewModel?.longitude ??
-//                                                           29.022484), title: "Kollektif House Kadıköy", subtitle: "42 Maslak, Maslak Mah., Ahi Evran Cd. No:6 D:3, 34398 Kadıköy/İstanbul"))
         
     }
     
@@ -84,26 +76,14 @@ final class MapKitViewController: UIViewController {
         
         viewModel?.officesListViewModel.forEach { model in
             mapView.addAnnotation(Annotation(coordinate: .init(latitude: model.latitude ?? 0.0,
-                                                               longitude: model.longitude ?? 0.0),
-                                             title: model.name ?? "",
-                                             subtitle: model.address ?? ""))
+                                                        longitude: model.longitude ?? 0.0),
+                                        title: model.name ?? "",
+                                        subtitle: model.address ?? ""))
             
             
             
         }
 
-        
-        
-//        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.officesListViewModel[1].latitude ?? 0.0,
-//                                                           longitude: viewModel?.officesListViewModel[1].longitude ?? 0.0),
-//                                         title: "Kollektif House Maslak",
-//                                         subtitle: "42 Maslak, Maslak Mah., Ahi Evran Cd. No:6 D:3, 34398 Maslak/İstanbul"))
-//
-//        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.officesListViewModel[2].latitude ?? 0.0,
-//                                                           longitude: viewModel?.officesListViewModel[2].longitude ??
-//                                                           0.0),
-//                                         title: "Kollektif House Kadıköy",
-//                                         subtitle: "42 Maslak, Maslak Mah., Ahi Evran Cd. No:6 D:3, 34398 Kadıköy/İstanbul"))
     }
 }
 
