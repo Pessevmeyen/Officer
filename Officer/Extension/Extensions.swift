@@ -39,7 +39,7 @@ extension UIViewController {
 
 //MARK: - Hides Back Button
 extension UIViewController {
-    func setHidesBackBarButton() {
+    func hideBackBarButton() {
         navigationItem.setHidesBackButton(true, animated: true) //Back button'ı iptal ediyoruz ki giriş yaptıktan sonra tekrar giriş ekranına dönülmesin.
     }
 }

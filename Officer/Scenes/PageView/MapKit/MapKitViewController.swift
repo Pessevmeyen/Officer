@@ -48,14 +48,20 @@ final class MapKitViewController: UIViewController {
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
         
-        //interactor?.fetchData(request: MapKit.Fetch.Request())
+        print("mapkit view did load")
         
-        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), title: "Kollektif House Levent", subtitle: "Esentepe Mah. Talatpaşa Cad. No: 5 (Harman Sok. Girişi) Levent / İstanbul"))
         
-        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 41.114104, longitude: viewModel?.longitude ?? 29.022484), title: "Kollektif House Maslak", subtitle: "42 Maslak, Maslak Mah., Ahi Evran Cd. No:6 D:3, 34398 Maslak/İstanbul"))
+        setPins()
         
-        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 41.03104, longitude: viewModel?.longitude ??
-                                                           29.022484), title: "Kollektif House Kadıköy", subtitle: "42 Maslak, Maslak Mah., Ahi Evran Cd. No:6 D:3, 34398 Kadıköy/İstanbul"))
+//        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 41.114104, longitude: viewModel?.longitude ?? 29.022484), title: "Kollektif House Maslak", subtitle: "42 Maslak, Maslak Mah., Ahi Evran Cd. No:6 D:3, 34398 Maslak/İstanbul"))
+//
+//        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 41.03104, longitude: viewModel?.longitude ??
+//                                                           29.022484), title: "Kollektif House Kadıköy", subtitle: "42 Maslak, Maslak Mah., Ahi Evran Cd. No:6 D:3, 34398 Kadıköy/İstanbul"))
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
     
@@ -72,6 +78,32 @@ final class MapKitViewController: UIViewController {
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
+    }
+    
+    func setPins() {
+        
+        viewModel?.officesListViewModel.forEach { model in
+            mapView.addAnnotation(Annotation(coordinate: .init(latitude: model.latitude ?? 0.0,
+                                                               longitude: model.longitude ?? 0.0),
+                                             title: model.name ?? "",
+                                             subtitle: model.address ?? ""))
+            
+            
+            
+        }
+
+        
+        
+//        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.officesListViewModel[1].latitude ?? 0.0,
+//                                                           longitude: viewModel?.officesListViewModel[1].longitude ?? 0.0),
+//                                         title: "Kollektif House Maslak",
+//                                         subtitle: "42 Maslak, Maslak Mah., Ahi Evran Cd. No:6 D:3, 34398 Maslak/İstanbul"))
+//
+//        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.officesListViewModel[2].latitude ?? 0.0,
+//                                                           longitude: viewModel?.officesListViewModel[2].longitude ??
+//                                                           0.0),
+//                                         title: "Kollektif House Kadıköy",
+//                                         subtitle: "42 Maslak, Maslak Mah., Ahi Evran Cd. No:6 D:3, 34398 Kadıköy/İstanbul"))
     }
 }
 
@@ -124,7 +156,8 @@ extension MapKitViewController: MKMapViewDelegate {
          if let annotationView = annotationView {
 
             annotationView.canShowCallout = true
-            annotationView.image = UIImage(named: "fav")
+            annotationView.image = UIImage(named: "building")
+            
         }
           return annotationView
     }
@@ -140,7 +173,7 @@ extension MapKitViewController: CLLocationManagerDelegate {
     //CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locationManager.location?.coordinate
-        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        let span = MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
         let region = MKCoordinateRegion(center: location!, span: span)
         mapView.setRegion(region, animated: true)
     }

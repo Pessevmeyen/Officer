@@ -31,7 +31,6 @@ final class OfficeRouter: OfficeRoutingLogic, OfficeDataPassing {
     }
     
     func sendDatasToMapKit(index: Int) {
-        
         let storyboard = UIStoryboard(name: Constants.mapKitStoryboardName, bundle: nil)
         let destVC: MapKitViewController = storyboard.instantiateViewController(identifier: Constants.mapKitIdentifier)
         destVC.router?.dataStore?.locationData = dataStore?.offices?[index]

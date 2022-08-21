@@ -37,17 +37,8 @@ enum Office {
                 var longitude: Double?
                 
             }
-            
-//            // MARK: - Location
-//            struct Location: Codable {
-//                var latitude, longitude: Double?
-//            }
-            
-            
-            
         }
     }
-    
 }
 
 

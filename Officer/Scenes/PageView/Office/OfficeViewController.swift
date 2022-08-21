@@ -69,6 +69,11 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("view will disappear")
+    }
+    
     
     // MARK: Setup
     

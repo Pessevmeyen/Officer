@@ -14,8 +14,6 @@ class PageViewController: UIPageViewController, AnimationDelegate {
     
     var viewControllerArray = [UIViewController]()
     
-
-        
     //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +27,7 @@ class PageViewController: UIPageViewController, AnimationDelegate {
         
         instantiateViewControllers()
         
-        setHidesBackBarButton()
+        hideBackBarButton()
         
         setRightBarButtonItem()
         
@@ -65,13 +63,12 @@ class PageViewController: UIPageViewController, AnimationDelegate {
     
     //MARK: @objc Functions
     @objc private func setRightBarButtonItem() {
-        let biggerConfiguration = UIImage.SymbolConfiguration(scale: .large)
-        let biggerSymbolImage = UIImage(named: "custom.heart.text.square", in: .main, with: biggerConfiguration)
-        let favoritesScreenButton = UIBarButtonItem.init(image: biggerSymbolImage, style: .done, target: self, action: #selector(goToFavoritesScreen))
+        let favoritesScreenButton = UIBarButtonItem.init(image: UIImage(named: "custom.heart.text.square"), style: .done, target: self, action: #selector(goToFavoritesScreen))
         favoritesScreenButton.tintColor = #colorLiteral(red: 0.5294117647, green: 0.1285524964, blue: 0.5745313764, alpha: 1)
         navigationItem.rightBarButtonItems = [favoritesScreenButton]
     }
     
+    // When user click favorite button, right bar button turns the string to notify user
     @objc private func addingOffice() {
         navigationController?.isNavigationBarHidden = false
         let favoritesScreenButton = UIBarButtonItem.init(title: "Adding Office...", style: .done, target: self, action: nil)
@@ -79,6 +76,7 @@ class PageViewController: UIPageViewController, AnimationDelegate {
         navigationItem.rightBarButtonItems = [favoritesScreenButton]
     }
     
+    // When user click favorite button again, right bar button turns the string to notify user
     @objc private func removingOffice() {
         let favoritesScreenButton = UIBarButtonItem.init(title: "Removing Office...", style: .done, target: self, action: nil)
         favoritesScreenButton.tintColor = #colorLiteral(red: 0.5294117647, green: 0.1285524964, blue: 0.5745313764, alpha: 1)
