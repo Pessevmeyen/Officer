@@ -15,8 +15,8 @@ final class WebKitViewController: UIViewController {
         didSet {
             if let url = URL(string: "https://www.mobven.com") {
                 let urlRequest = URLRequest(url: url)
-                DispatchQueue.main.async {
-                    self.webView.load(urlRequest)
+                DispatchQueue.main.async { [weak self] in
+                    self?.webView.load(urlRequest)
                 }
                 // Ekranın sağından solundan kaydırarak ileri geri navigasyonları göster
                 webView.allowsBackForwardNavigationGestures = true

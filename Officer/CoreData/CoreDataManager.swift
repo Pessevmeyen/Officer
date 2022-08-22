@@ -5,7 +5,6 @@
 //  Created by Furkan Eruçar on 17.08.2022.
 //
 
-import Foundation
 import UIKit
 import CoreData
 
@@ -42,6 +41,8 @@ class CoreDataManager {
         NotificationCenter.default.post(name: NSNotification.Name("veriGirildi"), object: nil)
     }
     
+    
+    
     //MARK: Getting Data From Core Data
     func getDataFromCoreData(complation: @escaping ((Result<[FavoriteScreen.Fetch.ViewModel.CoreDataModels], Error>) -> Void)) {
         
@@ -65,6 +66,8 @@ class CoreDataManager {
         }
         
     }
+    
+    
     
     //MARK: Getting Data From Core Data
     func getFromCoreData(completion: @escaping ((Result<[Int], Error>) -> Void)) {
@@ -90,6 +93,7 @@ class CoreDataManager {
             completion(.failure(error))
         }
     }
+    
     
     
     //MARK: Deleting data from Core Data

@@ -25,7 +25,11 @@ final class MapKitViewController: UIViewController {
     
     var locationManager = CLLocationManager()
     
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: MKMapView! {
+        didSet {
+            mapView.mapType = .standard
+        }
+    }
     
     // MARK: Object lifecycle
     
@@ -84,6 +88,14 @@ final class MapKitViewController: UIViewController {
                                                         longitude: model.longitude ?? 0.0),
                                         title: model.name ?? "",
                                         subtitle: model.address ?? ""))
+        }
+    }
+    @IBAction func changeMapViewTapped(_ sender: UIButton) {
+        
+        if mapView.mapType == .standard {
+            mapView.mapType = .hybrid
+        } else {
+            mapView.mapType = .standard
         }
     }
     

@@ -28,7 +28,11 @@ final class DetailsViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: MKMapView! {
+        didSet {
+            mapView.mapType = .standard
+        }
+    }
     @IBOutlet weak var capacityLabel: UILabel!
     @IBOutlet weak var roomLabel: UILabel!
     @IBOutlet weak var spaceLabel: UILabel!
@@ -138,8 +142,17 @@ final class DetailsViewController: UIViewController {
             isGridLayout = true
         }
     }
+    
+    //MARK: - @IBActions
     @IBAction func websitePressed(_ sender: UIButton) {
         router?.routeToWebKitScreen()
+    }
+    @IBAction func changeMapViewTapped(_ sender: UIButton) {
+        if mapView.mapType == .standard {
+            mapView.mapType = .hybrid
+        } else {
+            mapView.mapType = .standard
+        }
     }
     
 }

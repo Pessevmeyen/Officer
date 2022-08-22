@@ -187,10 +187,25 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIJ-qd-soq">
+                                <rect key="frame" x="362" y="535" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="1a3-mp-ODn"/>
+                                    <constraint firstAttribute="height" constant="32" id="Tax-4g-ZDH"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="changemap">
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="changeMapViewTapped:" destination="nxe-uw-h5I" eventType="touchUpInside" id="DzJ-yw-SWO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="yIJ-qd-soq" firstAttribute="top" secondItem="oXS-UD-jIA" secondAttribute="bottom" constant="30" id="1J9-fk-kDP"/>
                             <constraint firstItem="Z7C-I4-Xph" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="9OZ-GQ-PCV"/>
                             <constraint firstItem="Z7C-I4-Xph" firstAttribute="top" secondItem="qfS-S6-0dm" secondAttribute="bottom" id="MQw-JE-DH1"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="oXS-UD-jIA" secondAttribute="trailing" constant="40" id="RJk-uo-LTz"/>
@@ -210,6 +225,7 @@
                             <constraint firstItem="qfS-S6-0dm" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="20" id="wPc-Yk-KxJ"/>
                             <constraint firstItem="9fi-eA-v87" firstAttribute="centerY" secondItem="chM-je-gA4" secondAttribute="centerY" id="x1j-P2-y20"/>
                             <constraint firstItem="9fi-eA-v87" firstAttribute="top" secondItem="Z7C-I4-Xph" secondAttribute="bottom" id="z2o-De-1P8"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="yIJ-qd-soq" secondAttribute="trailing" constant="20" id="zZw-Tp-bD2"/>
                         </constraints>
                     </view>
                     <connections>
@@ -229,6 +245,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="changemap" width="11" height="10"/>
         <image name="detailbackground" width="626" height="417"/>
         <image name="globe" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
