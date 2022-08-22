@@ -14,6 +14,7 @@ protocol OfficeBusinessLogic: AnyObject {
     func fetchDataAfterFetched()
     func fetchFilter(request: String)
     func fetchDataFromCoreData(reqeust: [Int])
+    func saveDataToCoreData(model: Office.Fetch.ViewModel.OfficeModel)
     func deleteFromCoreData(modelID: Int)
 }
 
@@ -80,6 +81,11 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
         
         self.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: (filteredData))) //Buradan presenter'a aktarılıyor.
         //print(filteredData)
+    }
+    
+    
+    func saveDataToCoreData(model: Office.Fetch.ViewModel.OfficeModel) {
+        worker.saveToCoreData(model: model)
     }
     
     

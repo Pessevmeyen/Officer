@@ -105,22 +105,6 @@ class Annotation: NSObject, MKAnnotation {
 
 extension MapKitViewController: MKMapViewDelegate {
     
-    func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
-        
-    }
-    
-    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-        
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-    }
-    
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        
-    }
-    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else {
             return nil
@@ -143,9 +127,6 @@ extension MapKitViewController: MKMapViewDelegate {
         }
           return annotationView
     }
-    
-    
-    
     
     
 }

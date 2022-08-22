@@ -12,7 +12,6 @@ protocol MapKitBusinessLogic: AnyObject {
 }
 
 protocol MapKitDataStore: AnyObject {
-    var locationData: OfficeData? { get set }
     var officeArray: OfficeDataArray? { get set }
 }
 
@@ -20,9 +19,7 @@ final class MapKitInteractor: MapKitBusinessLogic, MapKitDataStore {
     
     var presenter: MapKitPresentationLogic?
     var worker: MapKitWorkingLogic = MapKitWorker()
-    var locationData: OfficeData?
     var officeArray: OfficeDataArray?
-    
     
     func fetchData(request: MapKit.Fetch.Request) {
         //self.presenter?.presentMapKit(response: .init(officeMapKit: locationData))

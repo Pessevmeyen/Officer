@@ -9,8 +9,9 @@ import UIKit
 import CoreData
 
 protocol OfficeWorkingLogic: AnyObject {
-    func getRequestedData(_ completion: @escaping ((Result<OfficeDataArray, Error>) -> Void)) //Workerda çağırmamız gereken func bu, parametresiyle birlikte.
+    func getRequestedData(_ completion: @escaping ((Result<OfficeDataArray, Error>) -> Void)) //Workerda bunu çağırıcaz, parametresiyle birlikte.
     func getDataFromCoreData(_ completion: @escaping ((Result<[Int], Error>) -> Void))
+    func saveToCoreData(model: Office.Fetch.ViewModel.OfficeModel)
     func deleteDatasFromCoreData(modelID: Int)
 }
 
@@ -42,6 +43,13 @@ final class OfficeWorker: OfficeWorkingLogic {
             }
         }
     }
+    
+    
+    
+    func saveToCoreData(model: Office.Fetch.ViewModel.OfficeModel) {
+        CoreDataManager().saveToCoreData(model: model)
+    }
+    
     
     func deleteDatasFromCoreData(modelID: Int) {
         CoreDataManager().deleteFromCoreData(officeID: modelID)

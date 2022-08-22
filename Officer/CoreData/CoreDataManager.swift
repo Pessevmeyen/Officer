@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol CoreDataManagerDelegate {
-    func saveToCoreData(id: Int, name: String, address: String, capacity: String, rooms: String, space: String, image: String)
+    func saveToCoreData(model: Office.Fetch.ViewModel.OfficeModel)
     func getDataFromCoreData(complation: @escaping ((Result<[FavoriteScreen.Fetch.ViewModel.CoreDataModels], Error>) -> Void))
     func getFromCoreData(completion: @escaping ((Result<[Int], Error>) -> Void))
     func deleteFromCoreData(officeId: Int)
@@ -20,18 +20,18 @@ protocol CoreDataManagerDelegate {
 class CoreDataManager {
     
     //MARK: Saving To Core Data
-    func saveToCoreData(id: Int, name: String, address: String, capacity: String, rooms: String, space: String, image: String) {
+    func saveToCoreData(model: Office.Fetch.ViewModel.OfficeModel) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let savedOffice = NSEntityDescription.insertNewObject(forEntityName: "Offices", into: context)
         
-        savedOffice.setValue(id, forKey: "id")
-        savedOffice.setValue(name, forKey: "name")
-        savedOffice.setValue(address, forKey: "address")
-        savedOffice.setValue(capacity, forKey: "capacity")
-        savedOffice.setValue(rooms, forKey: "rooms")
-        savedOffice.setValue(space, forKey: "space")
-        savedOffice.setValue(image, forKey: "image")
+        savedOffice.setValue(model.id, forKey: "id")
+        savedOffice.setValue(model.name, forKey: "name")
+        savedOffice.setValue(model.address, forKey: "address")
+        savedOffice.setValue(model.capacity, forKey: "capacity")
+        savedOffice.setValue(model.rooms, forKey: "rooms")
+        savedOffice.setValue(model.space, forKey: "space")
+        savedOffice.setValue(model.image, forKey: "image")
         
         do {
             try context.save()

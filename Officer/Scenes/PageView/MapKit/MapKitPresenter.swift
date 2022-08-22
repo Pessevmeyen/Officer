@@ -26,9 +26,6 @@ final class MapKitPresenter: MapKitPresentationLogic {
                                                               longitude: $0.location?.longitude))
         }
         viewController?.displayLocation(viewModel: .init(officesListViewModel: offices))
-//        let office = response.officeMapKit
-//        viewController?.displayLocation(viewModel: MapKit.Fetch.ViewModel.init(id: office?.id, image: office?.image, name: office?.name, address: office?.address, latitude: office?.location?.latitude, longitude: office?.location?.longitude))
-//        print(office)
     }
     
     

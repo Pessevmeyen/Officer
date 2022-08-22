@@ -170,7 +170,6 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.like = false
             }
         }
-        router?.sendDatasToMapKit(index: indexPath.row)
         return cell
         
     }
@@ -232,42 +231,19 @@ extension OfficeViewController: OfficeCellDelegate {
     //MARK: Added to Favorite
     func favoriteAdded(model: Office.Fetch.ViewModel.OfficeModel) {
         
-        //delegate = self
-        
         delegate?.addingFavoriteAnimation()
         
-        //MARK: Saving data to the Core Data
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+        // Saving data to the Core Data
+        interactor?.saveDataToCoreData(model: model)
         
-        //Context'in içine ne koyacağımızı söylememiz lazım.
-        let savedOffice = NSEntityDescription.insertNewObject(forEntityName: "Offices", into: context)
-        
-        //Burada Entity'nin Attribute'larını vericez.
-        
-        savedOffice.setValue(model.id, forKey: "id")
-        savedOffice.setValue(model.name, forKey: "name")
-        savedOffice.setValue(model.address, forKey: "address")
-        savedOffice.setValue(model.capacity, forKey: "capacity")
-        savedOffice.setValue(model.image, forKey: "image")
-        savedOffice.setValue(model.rooms, forKey: "rooms")
-        savedOffice.setValue(model.space, forKey: "space")
-        
-        do {
-            try context.save()
-            print("saved")
-        } catch {
-            getAlert(alertTitle: "Error", actionTitle: "OK!", message: "An Error Occured When saving to Core Data")
-        }
-        
-        //Favoriler sayfasona notify ediyoruz değişiklik geldi uygula diye.
-        NotificationCenter.default.post(name: NSNotification.Name("veriGirildi"), object: nil)
     }
     
     //MARK: Deleted from Favorite
     func favoriteDeleted(model: Office.Fetch.ViewModel.OfficeModel) {
         
         delegate?.removingFavoriteAnimation()
+        
+        //Deleting Data From Core Data
         interactor?.deleteFromCoreData(modelID: model.id ?? 0)
     }
 }

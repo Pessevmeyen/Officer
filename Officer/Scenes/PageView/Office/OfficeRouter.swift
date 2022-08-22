@@ -11,7 +11,6 @@ import UIKit
 protocol OfficeRoutingLogic: AnyObject {
     func routeToDetails(index: Int)
     func routeToFavorites()
-    func sendDatasToMapKit(index: Int)
 }
 
 protocol OfficeDataPassing: AnyObject {
@@ -28,13 +27,6 @@ final class OfficeRouter: OfficeRoutingLogic, OfficeDataPassing {
         let destVC: DetailsViewController = storyboard.instantiateViewController(identifier: Constants.detailsIdentifier)
         destVC.router?.dataStore?.officeData = dataStore?.filteredOffices?[index] //Burada hangi index seçildiyde, o index'in datası aktarılıyor. Detailsdaki offices'e. indexten aldığımız için array'i teklile düşürüyoruz. o yüzden sol taraf array değil.
         viewController?.navigationController?.pushViewController(destVC, animated: true)
-    }
-    
-    func sendDatasToMapKit(index: Int) {
-        let storyboard = UIStoryboard(name: Constants.mapKitStoryboardName, bundle: nil)
-        let destVC: MapKitViewController = storyboard.instantiateViewController(identifier: Constants.mapKitIdentifier)
-        destVC.router?.dataStore?.locationData = dataStore?.offices?[index]
-        //viewController?.navigationController?.pushViewController(destVC, animated: true)
     }
     
     func routeToFavorites() {
