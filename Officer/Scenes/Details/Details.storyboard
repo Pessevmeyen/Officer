@@ -66,11 +66,11 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kollektif House Levent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orv-xa-y3b">
-                                        <rect key="frame" x="86" y="13" width="280" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kollektif House Levent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="orv-xa-y3b">
+                                        <rect key="frame" x="86" y="13" width="227" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Dzw-4V-I5c"/>
-                                            <constraint firstAttribute="width" constant="280" id="y5D-RU-eRd"/>
+                                            <constraint firstAttribute="width" constant="227" id="y5D-RU-eRd"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <nil key="textColor"/>
@@ -111,7 +111,7 @@
                                     <constraint firstAttribute="trailing" secondItem="jXI-vP-XQb" secondAttribute="trailing" constant="8" id="3Rf-Zm-ORq"/>
                                     <constraint firstItem="DJ8-LT-nrG" firstAttribute="top" secondItem="9fi-eA-v87" secondAttribute="top" constant="11" id="CJN-kg-Lqk"/>
                                     <constraint firstItem="DJ8-LT-nrG" firstAttribute="centerY" secondItem="9fi-eA-v87" secondAttribute="centerY" id="F22-P5-OWz"/>
-                                    <constraint firstItem="orv-xa-y3b" firstAttribute="trailing" secondItem="kY4-jP-nfb" secondAttribute="trailing" id="KRQ-wM-dGO"/>
+                                    <constraint firstItem="orv-xa-y3b" firstAttribute="trailing" secondItem="kY4-jP-nfb" secondAttribute="trailing" constant="-53" id="KRQ-wM-dGO"/>
                                     <constraint firstItem="orv-xa-y3b" firstAttribute="top" secondItem="9fi-eA-v87" secondAttribute="top" constant="13" id="LcB-ui-ptO"/>
                                     <constraint firstItem="kY4-jP-nfb" firstAttribute="top" secondItem="orv-xa-y3b" secondAttribute="bottom" id="SsL-e3-MK3"/>
                                     <constraint firstAttribute="trailing" secondItem="kY4-jP-nfb" secondAttribute="trailing" constant="8" id="afD-Oe-X06"/>

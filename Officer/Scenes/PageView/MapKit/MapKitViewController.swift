@@ -41,12 +41,10 @@ final class MapKitViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         mapView.delegate = self
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        mapView.showsUserLocation = true
+        
+        locationManagerSetup()
         
         setPins()
         
@@ -71,20 +69,24 @@ final class MapKitViewController: UIViewController {
         router.viewController = viewController
         router.dataStore = interactor
     }
+    private func locationManagerSetup() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        mapView.showsUserLocation = true
+    }
     
-    func setPins() {
+    private func setPins() {
         
         viewModel?.officesListViewModel.forEach { model in
             mapView.addAnnotation(Annotation(coordinate: .init(latitude: model.latitude ?? 0.0,
                                                         longitude: model.longitude ?? 0.0),
                                         title: model.name ?? "",
                                         subtitle: model.address ?? ""))
-            
-            
-            
         }
-
     }
+    
 }
 
 class Annotation: NSObject, MKAnnotation {
@@ -120,7 +122,9 @@ extension MapKitViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !(annotation is MKUserLocation) else { return nil }
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
         
         let annotationIdentifier = "identifier"
         var annotationView: MKAnnotationView?
@@ -134,10 +138,8 @@ extension MapKitViewController: MKMapViewDelegate {
         }
 
          if let annotationView = annotationView {
-
             annotationView.canShowCallout = true
             annotationView.image = UIImage(named: "building")
-            
         }
           return annotationView
     }

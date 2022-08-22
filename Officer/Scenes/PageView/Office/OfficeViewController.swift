@@ -24,7 +24,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     var router: (OfficeRoutingLogic & OfficeDataPassing)?
     var viewModel: Office.Fetch.ViewModel?
     
-    var firstPickerView = UIPickerView()
+    var pickerView = UIPickerView()
     
     var itemList = [FilterItems]()
     var idCoreData: [Int] = []
@@ -69,12 +69,6 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print("view will disappear")
-    }
-    
-    
     // MARK: Setup
     
     private func setup() {
@@ -96,11 +90,11 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     //MARK: Custom Functions
     // Creates Filter Items
     private func createFilterItems() {
-        firstPickerView.delegate = self
-        firstPickerView.dataSource = self
+        pickerView.delegate = self
+        pickerView.dataSource = self
         
         //Buradan sonra artık text Field'a dokunduğumuzda picker view gibi davranacak
-        textField.inputView = firstPickerView
+        textField.inputView = pickerView
         
         let dateInterval: FilterItems = .init(first: "Date", second: ["?"]) //dolacak
         let capacityInterval: FilterItems = .init(first: "Capacity", second: Constants.capacityArray)
@@ -163,7 +157,8 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
             fatalError("An Error Occured while dequeuering reusable cell")
         }
         
-        getDataFromCoreData()
+        //getDataFromCoreData()
+        interactor?.getDataFromCoreData(idCoreData: idCoreData)
         
         cell.configureCell(viewModel: model)
         cell.delegate = self
@@ -320,6 +315,7 @@ extension OfficeViewController {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
         
         fetchRequest.returnsObjectsAsFaults = false
+        
         do {
             let results = try context.fetch(fetchRequest)
             for result in results as! [NSManagedObject] {

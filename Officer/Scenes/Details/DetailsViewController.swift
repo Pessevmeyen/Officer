@@ -53,15 +53,8 @@ final class DetailsViewController: UIViewController {
     //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mapView.delegate = self
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        mapView.showsUserLocation = true
-        
-        navigationController?.navigationItem.hidesBackButton = false
+
+        locationManagerSetup()
         
         collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
         
@@ -73,7 +66,7 @@ final class DetailsViewController: UIViewController {
         
         setInformation()
         
-        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), title: viewModel?.name ?? "", subtitle: viewModel?.address ?? ""))
+        setOfficeAnnotation()
        
     }
     
@@ -96,8 +89,17 @@ final class DetailsViewController: UIViewController {
     
     
     //MARK: - Custom Functions
-    //MARK: Right Bar Button
-    func setRightBarButtonItem(buttonImage: String) {
+    
+    private func locationManagerSetup() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        mapView.showsUserLocation = true
+    }
+    
+    // Right Bar Button
+    private func setRightBarButtonItem(buttonImage: String) {
         //navigationItem.rightBarButtonItem = UIBarButtonItem(title: "All Photos", style: .plain, target: self, action: #selector(changeLayout)) //????
         let changeLayoutButton = UIBarButtonItem.init(image: UIImage(named: buttonImage), style: .done, target: self, action: #selector(changeLayout))
         changeLayoutButton.customView?.borderWidth = 1
@@ -111,6 +113,10 @@ final class DetailsViewController: UIViewController {
         capacityLabel.text = "Capacity: \(viewModel?.capacity ?? "nil")"
         spaceLabel.text = "Space: \(viewModel?.space ?? "nil")"
         roomLabel.text = "Rooms: \(viewModel?.rooms ?? "nil")"
+    }
+    
+    private func setOfficeAnnotation() {
+        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), title: viewModel?.name ?? "", subtitle: viewModel?.address ?? ""))
     }
     
     
@@ -144,7 +150,7 @@ final class DetailsViewController: UIViewController {
 //MARK: - Setting Flow Layout and Grid Layout
 extension DetailsViewController {
     
-    //MARK: Setting Custom Collection View
+    // Setting Custom Collection View
     private func setCollectionView() -> UICollectionViewFlowLayout {
         let listLayout = UICollectionViewFlowLayout()
         listLayout.collectionView?.layoutIfNeeded()
@@ -156,7 +162,7 @@ extension DetailsViewController {
         return listLayout
     }
     
-    //MARK: Setting Grid Layout
+    // Setting Grid Layout
     private func setGridLayout() -> UICollectionViewFlowLayout { //İki farklı layout verdiğim için bunu böyle yaptım. Doğrusunu sor.
         let gridLayout = UICollectionViewFlowLayout()
         gridLayout.scrollDirection = .vertical
@@ -170,20 +176,20 @@ extension DetailsViewController {
 
 
 
-//MARK: - Collection View Delegate and Data Source | Section Number, Number of Items, Cell for Item, Did Select Item
+//MARK: - Collection View Delegate and Data Source
 extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    //MARK: How much section will occure
+    // How much section will occure
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    //MARK: How much item will occure in one section
+    // How much item will occure in one section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.images?.count ?? 0
     }
     
-    //MARK: This items occurs from what
+    // This items occurs from what
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.detailsCellReuseIdentifier, for: indexPath) as? DetailsCell else {
             fatalError("An Error Occured While Reusable Cell")
@@ -196,7 +202,7 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
-    //MARK: What happen when a cell tapped
+    // What happen when a cell tapped
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         router?.routeToFullScreen(index: indexPath.row) //????? row? item?
     }
@@ -217,36 +223,20 @@ extension DetailsViewController: UICollectionViewDelegateFlowLayout {
 extension DetailsViewController: FullScreenDelegate {
     func fullScreenDidScroll(indexPath: IndexPath) {
         collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
         }
     }
 }
 
 
-//MARK: Map Kit Delegates
-extension DetailsViewController: MKMapViewDelegate {
-    
-    func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
-        
-    }
-    
-    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-        
-    }
-    
-}
-
 //MARK: - Core Location Delegate
 extension DetailsViewController: CLLocationManagerDelegate {
-    
-    //CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let span = MKCoordinateSpan(latitudeDelta: 0.10, longitudeDelta: 0.10)
         let region = MKCoordinateRegion(center: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), span: span)
         mapView.setRegion(region, animated: true)
     }
-    
 }
 
 

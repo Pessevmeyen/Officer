@@ -5,12 +5,15 @@
 //  Created by Furkan Eruçar on 1.08.2022.
 //
 
-import Foundation
+
+import UIKit
+import CoreData
 
 protocol OfficeBusinessLogic: AnyObject {
     func fetchData(request: Office.Fetch.Request)
     func fetchDataAfterFetched()
     func fetchFilter(request: String)
+    func getDataFromCoreData(idCoreData: [Int])
 }
 
 protocol OfficeDataStore: AnyObject {
@@ -72,6 +75,29 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
     
     func smt(id: Int, name: String, address: String, capacity: String, rooms: String, space: String, image: String) {
         CoreDataManager().saveToCoreData(id: id, name: name, address: address, capacity: capacity, rooms: rooms, space: space, image: image)
+    }
+    
+    func getDataFromCoreData(idCoreData: [Int] = []) {
+        
+        var idCoreData: [Int] = []
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
+        
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            for result in results as! [NSManagedObject] {
+                if let id = result.value(forKey: "id") as? Int{
+                    idCoreData.append(id)
+                }
+            }
+        }
+        catch {
+            
+        }
     }
     
 }

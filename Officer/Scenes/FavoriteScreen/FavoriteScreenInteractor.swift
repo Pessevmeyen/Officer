@@ -21,10 +21,10 @@ final class FavoriteScreenInteractor: FavoriteScreenBusinessLogic, FavoriteScree
     var worker: FavoriteScreenWorkingLogic = FavoriteScreenWorker()
     
     func fetchCoreData() {
-        worker.getCoreData { response in
+        worker.getCoreData { [weak self] response in
             switch response {
             case .success(let coreDataOffices):
-                self.presenter?.presentCoreData(response: coreDataOffices)
+                self?.presenter?.presentCoreData(response: coreDataOffices)
             case .failure(let error):
                 print(error.localizedDescription)
             }
