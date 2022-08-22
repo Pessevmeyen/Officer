@@ -11,6 +11,7 @@ import CoreData
 protocol OfficeWorkingLogic: AnyObject {
     func getRequestedData(_ completion: @escaping ((Result<OfficeDataArray, Error>) -> Void)) //Workerda çağırmamız gereken func bu, parametresiyle birlikte.
     func getDataFromCoreData(_ completion: @escaping ((Result<[Int], Error>) -> Void))
+    func deleteDatasFromCoreData(modelID: Int)
 }
 
 final class OfficeWorker: OfficeWorkingLogic {
@@ -40,6 +41,10 @@ final class OfficeWorker: OfficeWorkingLogic {
                 completion(.failure(error))
             }
         }
+    }
+    
+    func deleteDatasFromCoreData(modelID: Int) {
+        CoreDataManager().deleteFromCoreData(officeID: modelID)
     }
     
 }

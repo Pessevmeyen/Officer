@@ -99,36 +99,7 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
     
     
     func deleteFromCoreData(modelID: Int) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
-        
-        fetchRequest.predicate = NSPredicate(format: "id = %@", "\(modelID)")
-        fetchRequest.returnsObjectsAsFaults = false
-        
-        do {
-            let results = try context.fetch(fetchRequest)
-            if results.count > 0 {
-                for result in results as! [NSManagedObject] {
-                    if let id = result.value(forKey: "id") as? Int {
-                        if id == modelID {
-                            context.delete(result)
-                            
-                            //After deleting, we have to save deleting data
-                            do {
-                                try context.save()
-                            } catch {
-                                print("değişiklik save edilmedi")
-                            }
-                            break
-                        }
-                    }
-                }
-            }
-        } catch {
-            print("silinmedi")
-        }
+        worker.deleteDatasFromCoreData(modelID: modelID)
     }
     
 }
