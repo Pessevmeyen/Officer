@@ -136,6 +136,7 @@ extension MapKitViewController: MKMapViewDelegate {
          if let annotationView = annotationView {
             annotationView.canShowCallout = true
             annotationView.image = UIImage(named: "building")
+            annotationView.backgroundColor = .white
         }
           return annotationView
     }

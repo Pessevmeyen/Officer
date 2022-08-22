@@ -56,12 +56,12 @@ class WelcomeViewController: UIViewController {
         appNameLabel.text = Constants.appName
         
         //MARK: Register Button Attributes
-        registerButton.layer.cornerRadius = 35
+        registerButton.layer.cornerRadius = 24
         registerButton.layer.borderWidth = CGFloat(2)
         
         
         //MARK: Login Button Attributes
-        loginButton.layer.cornerRadius = 35
+        loginButton.layer.cornerRadius = 24
         loginButton.layer.borderWidth = CGFloat(2)
         
         

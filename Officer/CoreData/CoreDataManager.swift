@@ -58,13 +58,11 @@ class CoreDataManager {
             let results = try context.fetch(request)
             for result in results { //results Any olarak geliyor o yüzden tipini belirlememiz gerek.
                 officesFromCoreData.append(.init(office: result))
-                }
-            
+            }
             complation(.success(officesFromCoreData))
         } catch {
             complation(.failure(error))
         }
-        
     }
     
     

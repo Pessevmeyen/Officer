@@ -28,7 +28,7 @@
                                 </userDefinedRuntimeAttributes>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;- Slide to List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IJl-7F-sqk">
-                                <rect key="frame" x="10" y="52" width="106" height="20"/>
+                                <rect key="frame" x="10" y="53" width="106" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="TGU-Iu-Tmn"/>
                                 </constraints>
@@ -42,7 +42,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MKI-N6-UkL">
-                                <rect key="frame" x="332" y="134" width="32" height="32"/>
+                                <rect key="frame" x="336" y="134" width="32" height="32"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="9uU-cL-aLm"/>
                                     <constraint firstAttribute="width" constant="32" id="pcd-QN-DOV"/>
@@ -51,6 +52,11 @@
                                 <buttonConfiguration key="configuration" style="plain" image="changemap">
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="changeMapViewTapped:" destination="nxe-uw-h5I" eventType="touchUpInside" id="ZLS-GZ-xko"/>
                                 </connections>
@@ -67,12 +73,12 @@
                             <constraint firstItem="nBV-Mp-pgv" firstAttribute="trailing" secondItem="acR-sl-ate" secondAttribute="trailing" id="BGj-sD-frI"/>
                             <constraint firstItem="7o0-xl-hRi" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" constant="32" id="EaX-Y1-Gn8"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="GzG-42-7qV" secondAttribute="trailing" constant="30" id="ReT-FA-cz1"/>
-                            <constraint firstItem="7o0-xl-hRi" firstAttribute="top" secondItem="IJl-7F-sqk" secondAttribute="bottom" constant="4" id="c9o-1e-lMr"/>
+                            <constraint firstItem="7o0-xl-hRi" firstAttribute="top" secondItem="IJl-7F-sqk" secondAttribute="bottom" constant="3" id="c9o-1e-lMr"/>
                             <constraint firstItem="7o0-xl-hRi" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="30" id="qwQ-6Z-6Nj"/>
                             <constraint firstItem="GzG-42-7qV" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" constant="76" id="rzZ-5b-rek"/>
                             <constraint firstItem="nBV-Mp-pgv" firstAttribute="top" secondItem="chM-je-gA4" secondAttribute="top" id="tvI-oD-nab"/>
                             <constraint firstItem="MKI-N6-UkL" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" constant="90" id="xAC-t9-oRT"/>
-                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="MKI-N6-UkL" secondAttribute="trailing" constant="50" id="yB1-2o-PDo"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="MKI-N6-UkL" secondAttribute="trailing" constant="46" id="yB1-2o-PDo"/>
                         </constraints>
                     </view>
                     <connections>

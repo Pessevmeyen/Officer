@@ -87,15 +87,12 @@ class PageViewController: UIPageViewController, AnimationDelegate {
     @objc func goToFavoritesScreen() {
         
         let storyboard = UIStoryboard(name: Constants.favoriteStoryboardName, bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "FavoriteScreenViewController")
-        let transitioningDelegate = HandyTransitioningDelegate(from: self, to: controller, contentMode: .fullScreen)
+        let controller = storyboard.instantiateViewController(withIdentifier: Constants.favoriteIdentifier)
+        let transitioningDelegate = HandyTransitioningDelegate(from: self, to: controller)
         controller.modalPresentationStyle = .custom
         controller.transitioningDelegate = transitioningDelegate
-        viewControllers?[0].present(controller, animated: true)
+        present(controller, animated: true)
         
-//        let storyboard = UIStoryboard(name: Constants.favoriteStoryboardName, bundle: nil)
-//        let destVC: FavoriteScreenViewController = storyboard.instantiateViewController(identifier: Constants.favoriteIdentifier)
-//        viewControllers?[0].present(destVC, animated: true) // Burada pop'up olarak açılacak ekran. kullanıcı açısından daha basit olur.
     }
 
 }

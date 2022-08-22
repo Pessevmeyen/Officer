@@ -30,8 +30,9 @@ public extension Bundle {
     }
 }
 
-struct NetworkManager { //Class mı Struct mı olacak?
+struct NetworkManager {
     
+    //Singleton olduğu için en dışarda oluşturduk.
     static let shared = NetworkManager()
     let session = URLSession.shared
     let decoder = JSONDecoder()
@@ -63,7 +64,6 @@ struct NetworkManager { //Class mı Struct mı olacak?
                     }
                 } catch {
                     completion(.failure(error))
-                    print(error.localizedDescription)
                 }
             } else {
                 print("Status code: \((response as! HTTPURLResponse).statusCode)")

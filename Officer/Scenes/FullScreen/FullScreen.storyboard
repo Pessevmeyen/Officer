@@ -77,7 +77,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kah-E5-M9S" firstAttribute="leading" secondItem="chM-je-gA4" secondAttribute="leading" id="1SM-ow-eZv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kah-E5-M9S" secondAttribute="trailing" constant="-22" id="FQy-uw-d7N"/>

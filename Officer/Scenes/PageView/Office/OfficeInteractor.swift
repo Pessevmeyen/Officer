@@ -59,7 +59,7 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
     
     
     
-    //Filtreleme bittikten sonra tekrar bütün dataları çağırıyoruz.
+    //Filtreleme bittikten sonra api'a tekrar gitmeden bütün dataları çağırıyoruz.
     func fetchDataAfterFetched() {
         guard let offices = self.offices else { return }
         self.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: offices)) //Buradan presenter'a
@@ -71,14 +71,12 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
     //filter ettikten sonra göstereceğimiz dataları çağırıyoruz.
     func fetchFilter(request: String) {
         let filteredData = filteredOffices?.filter { filter in
-            
             return filter.space == request || filter.capacity == request || String(filter.rooms ?? 0) == request
-            //Seçilmediyse nasıl hepsini göstericez?
         }
-        
         //itemlist gönderilecek
-        guard let filteredData = filteredData else { return }
-        
+        guard let filteredData = filteredData else {
+            return
+        }
         self.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: (filteredData))) //Buradan presenter'a aktarılıyor.
         //print(filteredData)
     }
