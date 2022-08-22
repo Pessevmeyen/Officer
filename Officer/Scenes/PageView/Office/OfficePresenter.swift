@@ -10,6 +10,7 @@ import UIKit
 
 protocol OfficePresentationLogic: AnyObject {
     func presentRespondedData(response: Office.Fetch.Response)
+    func presentCoreData(response: [Int])
 }
 
 final class OfficePresenter: OfficePresentationLogic {
@@ -34,4 +35,9 @@ final class OfficePresenter: OfficePresentationLogic {
         }
         viewController?.displayViewModelData(viewModel: Office.Fetch.ViewModel(officesListViewModel: offices)) // Presenter da view controller'a diyor, veriler hazır, office listesini gösterebilirsin
     }
+    
+    func presentCoreData(response: [Int]) {
+        viewController?.displayID(idModel: response)
+    }
+    
 }

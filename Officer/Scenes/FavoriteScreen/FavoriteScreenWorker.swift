@@ -14,7 +14,7 @@ protocol FavoriteScreenWorkingLogic: AnyObject {
 final class FavoriteScreenWorker: FavoriteScreenWorkingLogic {
     
     func getCoreData(complation: @escaping ((Result<[FavoriteScreen.Fetch.ViewModel.CoreDataModels], Error>) -> Void)) {
-        CoreDataManager().getFromCoreData { result in
+        CoreDataManager().getDataFromCoreData { result in
             switch result {
             case .success(let response):
                 complation(.success(response))

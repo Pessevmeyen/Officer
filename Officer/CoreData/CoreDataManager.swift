@@ -11,6 +11,7 @@ import CoreData
 
 protocol CoreDataManagerDelegate {
     func saveToCoreData(id: Int, name: String, address: String, capacity: String, rooms: String, space: String, image: String)
+    func getDataFromCoreData(complation: @escaping ((Result<[FavoriteScreen.Fetch.ViewModel.CoreDataModels], Error>) -> Void))
     func getFromCoreData(completion: @escaping ((Result<[Int], Error>) -> Void))
     func deleteFromCoreData(officeId: Int)
 }
@@ -18,52 +19,7 @@ protocol CoreDataManagerDelegate {
 
 class CoreDataManager {
     
-    func getFromCoreData(complation: @escaping ((Result<[FavoriteScreen.Fetch.ViewModel.CoreDataModels], Error>) -> Void)) {
-        
-        var officesFromCoreData : [FavoriteScreen.Fetch.ViewModel.CoreDataModels] = []
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let request = NSFetchRequest<Offices>(entityName: "Offices")
-        request.returnsObjectsAsFaults = false // büyük verilerde caching ayarlamak için
-        
-        do {
-            let results = try context.fetch(request)
-            for result in results { //results Any olarak geliyor o yüzden tipini belirlememiz gerek.
-                officesFromCoreData.append(.init(office: result))
-                }
-            
-            complation(.success(officesFromCoreData))
-        } catch {
-            complation(.failure(error))
-        }
-        
-    }
-    
-    func getDataFromCoreData(idCoreData: [Int] = []) {
-        
-        var idCoreData: [Int] = []
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
-        
-        fetchRequest.returnsObjectsAsFaults = false
-        
-        do {
-            let results = try context.fetch(fetchRequest)
-            for result in results as! [NSManagedObject] {
-                if let id = result.value(forKey: "id") as? Int{
-                    idCoreData.append(id)
-                }
-            }
-        }
-        catch {
-            
-        }
-    }
-    
+    //MARK: Saving To Core Data
     func saveToCoreData(id: Int, name: String, address: String, capacity: String, rooms: String, space: String, image: String) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -86,7 +42,57 @@ class CoreDataManager {
         NotificationCenter.default.post(name: NSNotification.Name("veriGirildi"), object: nil)
     }
     
+    //MARK: Getting Data From Core Data
+    func getDataFromCoreData(complation: @escaping ((Result<[FavoriteScreen.Fetch.ViewModel.CoreDataModels], Error>) -> Void)) {
+        
+        var officesFromCoreData : [FavoriteScreen.Fetch.ViewModel.CoreDataModels] = []
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<Offices>(entityName: "Offices")
+        request.returnsObjectsAsFaults = false // büyük verilerde caching ayarlamak için
+        
+        do {
+            let results = try context.fetch(request)
+            for result in results { //results Any olarak geliyor o yüzden tipini belirlememiz gerek.
+                officesFromCoreData.append(.init(office: result))
+                }
+            
+            complation(.success(officesFromCoreData))
+        } catch {
+            complation(.failure(error))
+        }
+        
+    }
     
+    //MARK: Getting Data From Core Data
+    func getFromCoreData(completion: @escaping ((Result<[Int], Error>) -> Void)) {
+        
+        var idCoreData: [Int] = []
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
+        
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            for result in results as! [NSManagedObject] {
+                if let id = result.value(forKey: "id") as? Int{
+                    idCoreData.append(id)
+                }
+            }
+            completion(.success(idCoreData))
+        }
+        catch {
+            completion(.failure(error))
+        }
+    }
+    
+    
+    //MARK: Deleting data from Core Data
     func deleteFromCoreData(officeID: Int) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext

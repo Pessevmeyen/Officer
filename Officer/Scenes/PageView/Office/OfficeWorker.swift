@@ -32,25 +32,13 @@ final class OfficeWorker: OfficeWorkingLogic {
     }
     
     func getDataFromCoreData(_ completion: @escaping ((Result<[Int], Error>) -> Void)) {
-        var idCoreData: [Int] = []
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
-        
-        fetchRequest.returnsObjectsAsFaults = false
-        
-        do {
-            let results = try context.fetch(fetchRequest)
-            for result in results as! [NSManagedObject] {
-                if let id = result.value(forKey: "id") as? Int{
-                    idCoreData.append(id)
-                }
-                completion(.success(idCoreData))
+        CoreDataManager().getFromCoreData { result in
+            switch result {
+            case .success(let response):
+                completion(.success(response))
+            case .failure(let error):
+                completion(.failure(error))
             }
-        }
-        catch {
-            completion(.failure(error))
         }
     }
     

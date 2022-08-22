@@ -11,6 +11,7 @@ import CoreData
 //MARK: Display Logic Protocol
 protocol OfficeDisplayLogic: AnyObject {
     func displayViewModelData(viewModel: Office.Fetch.ViewModel)
+    func displayID(idModel: [Int])
 }
 
 protocol AnimationDelegate: AnyObject {
@@ -157,14 +158,7 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
             fatalError("An Error Occured while dequeuering reusable cell")
         }
         
-        interactor?.fetchDataFromCoreData({ [weak self] result in
-            switch result {
-            case .success(let id):
-                self?.idCoreData = id
-            case .failure(let error):
-                self?.getAlert(alertTitle: "Error!", actionTitle: "Terminate", message: "\(error.localizedDescription)")
-            }
-        })
+        interactor?.fetchDataFromCoreData(reqeust: idCoreData)
         
         cell.configureCell(viewModel: model)
         cell.delegate = self
@@ -270,46 +264,11 @@ extension OfficeViewController: OfficeCellDelegate {
         NotificationCenter.default.post(name: NSNotification.Name("veriGirildi"), object: nil)
     }
     
-    
     //MARK: Deleted from Favorite
     func favoriteDeleted(model: Office.Fetch.ViewModel.OfficeModel) {
         
-        //delegate = self
-        
         delegate?.removingFavoriteAnimation()
-        //MARK: Deleting data from Core Data
-        // First we have to fetch data from core data
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
-        
-        fetchRequest.predicate = NSPredicate(format: "id = %@", "\(model.id ?? 0)")
-        fetchRequest.returnsObjectsAsFaults = false
-        
-        do {
-            let results = try context.fetch(fetchRequest)
-            if results.count > 0 {
-                for result in results as! [NSManagedObject] {
-                    if let id = result.value(forKey: "id") as? Int {
-                        idCoreData.append(id)
-                        if id == model.id {
-                            context.delete(result)
-                            
-                            //After deleting, we have to save deleting data
-                            do {
-                                try context.save()
-                            } catch {
-                                getAlert(alertTitle: "Error", actionTitle: "OK!", message: "An Error Occured When Saving Deleted Data")
-                            }
-                            break
-                        }
-                    }
-                }
-            }
-        } catch {
-            getAlert(alertTitle: "Error", actionTitle: "OK!", message: "An Error Occured When Deleting Data From Core Data")
-        }
+        interactor?.deleteFromCoreData(modelID: model.id ?? 0)
     }
 }
 
@@ -324,6 +283,10 @@ extension OfficeViewController: OfficeDisplayLogic {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData() //displaynews'a gelmeden reload
         }
+    }
+    
+    func displayID(idModel: [Int]) {
+        idCoreData = idModel
     }
     
     
