@@ -43,6 +43,7 @@
 		896C5F8A28A2A690009C93F6 /* FullScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896C5F8928A2A690009C93F6 /* FullScreenCell.swift */; };
 		8982880928B259E100CC51EA /* PageView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8982880828B259E100CC51EA /* PageView.storyboard */; };
 		898BAA4D28A66893001990FC /* Officer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 898BAA4B28A66893001990FC /* Officer.xcdatamodeld */; };
+		89909D9128B3B092001D549E /* HandyViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 89909D9028B3B092001D549E /* HandyViewController */; };
 		8990F14328A93E5B00A682B8 /* FavoriteScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8990F13C28A93E5B00A682B8 /* FavoriteScreen.storyboard */; };
 		8990F14428A93E5B00A682B8 /* FavoriteScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990F13D28A93E5B00A682B8 /* FavoriteScreenViewController.swift */; };
 		8990F14528A93E5B00A682B8 /* FavoriteScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990F13E28A93E5B00A682B8 /* FavoriteScreenPresenter.swift */; };
@@ -199,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89DF91AC289BD2C20053B86B /* SDWebImageMapKit in Frameworks */,
+				89909D9128B3B092001D549E /* HandyViewController in Frameworks */,
 				89DF91AA289BD2C20053B86B /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,6 +531,7 @@
 			packageProductDependencies = (
 				89DF91A9289BD2C20053B86B /* SDWebImage */,
 				89DF91AB289BD2C20053B86B /* SDWebImageMapKit */,
+				89909D9028B3B092001D549E /* HandyViewController */,
 			);
 			productName = Officer;
 			productReference = 8909FAE028735A0700F84927 /* Officer.app */;
@@ -604,6 +607,7 @@
 			mainGroup = 8909FAD728735A0700F84927;
 			packageReferences = (
 				89DF91A8289BD2C20053B86B /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				89909D8F28B3B092001D549E /* XCRemoteSwiftPackageReference "HandyViewController" */,
 			);
 			productRefGroup = 8909FAE128735A0700F84927 /* Products */;
 			projectDirPath = "";
@@ -1353,6 +1357,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		89909D8F28B3B092001D549E /* XCRemoteSwiftPackageReference "HandyViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mobven/HandyViewController.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.1.0;
+			};
+		};
 		89DF91A8289BD2C20053B86B /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -1364,6 +1376,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		89909D9028B3B092001D549E /* HandyViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89909D8F28B3B092001D549E /* XCRemoteSwiftPackageReference "HandyViewController" */;
+			productName = HandyViewController;
+		};
 		89DF91A9289BD2C20053B86B /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 89DF91A8289BD2C20053B86B /* XCRemoteSwiftPackageReference "SDWebImage" */;

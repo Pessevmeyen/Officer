@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "handyviewcontroller",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mobven/HandyViewController.git",
+      "state" : {
+        "revision" : "c733c4447af4523e281cb8c96a1bc0abd5c85dd2",
+        "version" : "1.1.0"
+      }
+    },
+    {
       "identity" : "sdwebimage",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SDWebImage/SDWebImage",

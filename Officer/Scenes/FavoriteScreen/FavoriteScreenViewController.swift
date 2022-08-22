@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import HandyViewController
 
 protocol FavoriteScreenDisplayLogic: AnyObject {
     func displayCoreData(viewModel: [FavoriteScreen.Fetch.ViewModel.CoreDataModels])
@@ -23,6 +24,7 @@ final class FavoriteScreenViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             registerFavoriteTableView()
+            registerHandyScrollView(tableView)
         }
     }
     
@@ -88,6 +90,18 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+}
+
+extension FavoriteScreenViewController: UIScrollViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        handyScrollViewDidScroll(scrollView)
+    }
+
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint,
+                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        handyScrollViewWillEndDragging(scrollView, withVelocity: velocity)
+    }
 }
 
 extension FavoriteScreenViewController: FavoriteScreenDisplayLogic {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import HandyViewController
 
 class PageViewController: UIPageViewController, AnimationDelegate {
     
@@ -84,9 +85,17 @@ class PageViewController: UIPageViewController, AnimationDelegate {
     }
     
     @objc func goToFavoritesScreen() {
+        
         let storyboard = UIStoryboard(name: Constants.favoriteStoryboardName, bundle: nil)
-        let destVC: FavoriteScreenViewController = storyboard.instantiateViewController(identifier: Constants.favoriteIdentifier)
-        viewControllers?[0].present(destVC, animated: true) // Burada pop'up olarak açılacak ekran. kullanıcı açısından daha basit olur.
+        let controller = storyboard.instantiateViewController(withIdentifier: "FavoriteScreenViewController")
+        let transitioningDelegate = HandyTransitioningDelegate(from: self, to: controller, contentMode: .fullScreen)
+        controller.modalPresentationStyle = .custom
+        controller.transitioningDelegate = transitioningDelegate
+        viewControllers?[0].present(controller, animated: true)
+        
+//        let storyboard = UIStoryboard(name: Constants.favoriteStoryboardName, bundle: nil)
+//        let destVC: FavoriteScreenViewController = storyboard.instantiateViewController(identifier: Constants.favoriteIdentifier)
+//        viewControllers?[0].present(destVC, animated: true) // Burada pop'up olarak açılacak ekran. kullanıcı açısından daha basit olur.
     }
 
 }
