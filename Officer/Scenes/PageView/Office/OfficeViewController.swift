@@ -157,8 +157,14 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
             fatalError("An Error Occured while dequeuering reusable cell")
         }
         
-        //getDataFromCoreData()
-        interactor?.getDataFromCoreData(idCoreData: idCoreData)
+        interactor?.fetchDataFromCoreData({ [weak self] result in
+            switch result {
+            case .success(let id):
+                self?.idCoreData = id
+            case .failure(let error):
+                self?.getAlert(alertTitle: "Error!", actionTitle: "Terminate", message: "\(error.localizedDescription)")
+            }
+        })
         
         cell.configureCell(viewModel: model)
         cell.delegate = self
@@ -303,29 +309,6 @@ extension OfficeViewController: OfficeCellDelegate {
             }
         } catch {
             getAlert(alertTitle: "Error", actionTitle: "OK!", message: "An Error Occured When Deleting Data From Core Data")
-        }
-    }
-}
-
-extension OfficeViewController {
-    
-    func getDataFromCoreData() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
-        
-        fetchRequest.returnsObjectsAsFaults = false
-        
-        do {
-            let results = try context.fetch(fetchRequest)
-            for result in results as! [NSManagedObject] {
-                if let id = result.value(forKey: "id") as? Int{
-                    idCoreData.append(id)
-                }
-            }
-        }
-        catch {
-            
         }
     }
 }

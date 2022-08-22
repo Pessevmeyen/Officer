@@ -13,7 +13,7 @@ protocol OfficeBusinessLogic: AnyObject {
     func fetchData(request: Office.Fetch.Request)
     func fetchDataAfterFetched()
     func fetchFilter(request: String)
-    func getDataFromCoreData(idCoreData: [Int])
+    func fetchDataFromCoreData(_ completion: @escaping ((Result<[Int], Error>) -> Void))
 }
 
 protocol OfficeDataStore: AnyObject {
@@ -32,6 +32,8 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
     
     var offices: OfficeDataArray? //Workerdan gelen response verisi buraya aktarılıyor.
     var filteredOffices: OfficeDataArray? //Filtreden gelen verilerin officeleri
+    
+    
     
     //2
     func fetchData(request: Office.Fetch.Request) { //interactor da worker'a diyor, office listesini getir.
@@ -52,13 +54,14 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
         }
     }
     
+    //Filtreleme bittikten sonra tekrar bütün dataları çağırıyoruz.
     func fetchDataAfterFetched() {
         guard let offices = self.offices else { return }
         self.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: offices)) //Buradan presenter'a
         print(offices)
     }
     
-    
+    //filter ettikten sonra göstereceğimiz dataları çağırıyoruz.
     func fetchFilter(request: String) {
         let filteredData = filteredOffices?.filter { filter in
             
@@ -73,32 +76,16 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
         //print(filteredData)
     }
     
-    func smt(id: Int, name: String, address: String, capacity: String, rooms: String, space: String, image: String) {
-        CoreDataManager().saveToCoreData(id: id, name: name, address: address, capacity: capacity, rooms: rooms, space: space, image: image)
-    }
-    
-    func getDataFromCoreData(idCoreData: [Int] = []) {
-        
-        var idCoreData: [Int] = []
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
-        
-        fetchRequest.returnsObjectsAsFaults = false
-        
-        do {
-            let results = try context.fetch(fetchRequest)
-            for result in results as! [NSManagedObject] {
-                if let id = result.value(forKey: "id") as? Int{
-                    idCoreData.append(id)
-                }
+    //Cellde göstereceğimiz dataları çağırıyoruz.
+    func fetchDataFromCoreData(_ completion: @escaping ((Result<[Int], Error>) -> Void)) {
+        worker.getDataFromCoreData { result in
+            switch result {
+            case .success(let id):
+                completion(.success(id))
+            case .failure(let error):
+                completion(.failure(error))
             }
-        }
-        catch {
-            
         }
     }
     
 }
-

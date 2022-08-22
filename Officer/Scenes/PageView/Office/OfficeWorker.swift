@@ -5,10 +5,12 @@
 //  Created by Furkan Eruçar on 1.08.2022.
 //
 
-import Foundation
+import UIKit
+import CoreData
 
 protocol OfficeWorkingLogic: AnyObject {
     func getRequestedData(_ completion: @escaping ((Result<OfficeDataArray, Error>) -> Void)) //Workerda çağırmamız gereken func bu, parametresiyle birlikte.
+    func getDataFromCoreData(_ completion: @escaping ((Result<[Int], Error>) -> Void))
 }
 
 final class OfficeWorker: OfficeWorkingLogic {
@@ -27,6 +29,29 @@ final class OfficeWorker: OfficeWorkingLogic {
             }
         }
         
+    }
+    
+    func getDataFromCoreData(_ completion: @escaping ((Result<[Int], Error>) -> Void)) {
+        var idCoreData: [Int] = []
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
+        
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            for result in results as! [NSManagedObject] {
+                if let id = result.value(forKey: "id") as? Int{
+                    idCoreData.append(id)
+                }
+                completion(.success(idCoreData))
+            }
+        }
+        catch {
+            completion(.failure(error))
+        }
     }
     
 }

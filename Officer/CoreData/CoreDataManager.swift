@@ -41,6 +41,29 @@ class CoreDataManager {
         
     }
     
+    func getDataFromCoreData(idCoreData: [Int] = []) {
+        
+        var idCoreData: [Int] = []
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Offices")
+        
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            for result in results as! [NSManagedObject] {
+                if let id = result.value(forKey: "id") as? Int{
+                    idCoreData.append(id)
+                }
+            }
+        }
+        catch {
+            
+        }
+    }
+    
     func saveToCoreData(id: Int, name: String, address: String, capacity: String, rooms: String, space: String, image: String) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
