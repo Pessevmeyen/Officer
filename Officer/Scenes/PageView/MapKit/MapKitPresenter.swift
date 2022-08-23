@@ -19,7 +19,8 @@ final class MapKitPresenter: MapKitPresentationLogic {
         
         var offices: [MapKit.Fetch.ViewModel.OfficeModel] = []
         response.officeResponse.forEach { //Burada gelen array şeklinde veri parametrelerini, Model içindeki parametrelere aktarıyoruz.
-            offices.append(MapKit.Fetch.ViewModel.OfficeModel(image: $0.image,
+            offices.append(MapKit.Fetch.ViewModel.OfficeModel(id: $0.id,
+                                                              image: $0.image,
                                                               name: $0.name,
                                                               address: $0.address,
                                                               latitude: $0.location?.latitude,

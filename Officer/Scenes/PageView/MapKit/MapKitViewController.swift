@@ -25,6 +25,8 @@ final class MapKitViewController: UIViewController {
     
     var locationManager = CLLocationManager()
     
+    var annotationIndex: Int?
+    
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
             mapView.mapType = .standard
@@ -54,10 +56,6 @@ final class MapKitViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
     
     // MARK: Setup
     
@@ -73,23 +71,29 @@ final class MapKitViewController: UIViewController {
         router.viewController = viewController
         router.dataStore = interactor
     }
+    
+    //MARK: Custom Functions
     private func locationManagerSetup() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
+        mapView.showsScale = true
     }
     
     private func setPins() {
         
         viewModel?.officesListViewModel.forEach { model in
+            annotationIndex = model.id
             mapView.addAnnotation(Annotation(coordinate: .init(latitude: model.latitude ?? 0.0,
-                                                        longitude: model.longitude ?? 0.0),
-                                        title: model.name ?? "",
-                                        subtitle: model.address ?? ""))
+                                                               longitude: model.longitude ?? 0.0),
+                                             title: model.name ?? "",
+                                             subtitle: model.address ?? ""))
         }
     }
+    
+    //MARK: IBActions
     @IBAction func changeMapViewTapped(_ sender: UIButton) {
         
         if mapView.mapType == .standard {
@@ -101,39 +105,35 @@ final class MapKitViewController: UIViewController {
     
 }
 
-class Annotation: NSObject, MKAnnotation {
-    var coordinate: CLLocationCoordinate2D
-    var title: String?
-    var subtitle: String?
-    
-    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
-        self.coordinate = coordinate
-        self.title = title
-        self.subtitle = subtitle
-    }
-}
-
-
-
+//MARK: - MapKit Delegates
 extension MapKitViewController: MKMapViewDelegate {
     
+    
+    //MARK: Setting annotation and annotation items
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else {
             return nil
         }
         
-        let annotationIdentifier = "identifier"
+        let annotationIdentifier = "\(annotationIndex ?? 0)"
         var annotationView: MKAnnotationView?
         if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
             annotationView = dequeuedAnnotationView
             annotationView?.annotation = annotation
-        }
-        else {
+        } else {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
-            annotationView?.rightCalloutAccessoryView = UIButton(type: .roundedRect)
+            
+            let navigationButton = UIButton(type: .detailDisclosure)
+            navigationButton.setImage(UIImage(named: "golocation"), for: .normal)
+            annotationView?.rightCalloutAccessoryView = navigationButton
+            
+            let closeButton = UIButton(type: .detailDisclosure)
+            closeButton.setImage(UIImage(named: "info"), for: .focused)
+            closeButton.tag = 1
+            annotationView?.leftCalloutAccessoryView = closeButton
         }
 
-         if let annotationView = annotationView {
+        if let annotationView = annotationView {
             annotationView.canShowCallout = true
             annotationView.image = UIImage(named: "building")
             annotationView.backgroundColor = .white
@@ -141,12 +141,49 @@ extension MapKitViewController: MKMapViewDelegate {
           return annotationView
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    }
+    
+    //MARK: Setting annotation buttons
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        //Birden fazla buton ve tek fonksiyon olduğu için tag'ladık.
+        if control.tag == 0 {
+            guard let selectedAnnotation = view.annotation else {
+                return
+            }
+
+            let requestLocation = CLLocation(latitude: selectedAnnotation.coordinate.latitude, longitude: selectedAnnotation.coordinate.longitude)
+            
+            CLGeocoder().reverseGeocodeLocation(requestLocation) { placemark, error in
+                
+                if let placemarks = placemark {
+                    if placemarks.count > 0 {
+                        let newPlacemark = MKPlacemark(placemark: placemarks[0])
+                        let item = MKMapItem(placemark: newPlacemark)
+                        
+                        item.name = selectedAnnotation.title ?? ""
+                        
+                        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                        item.openInMaps(launchOptions: launchOptions)
+                    }
+                }
+            }
+        } else {
+            if let routeID = Int(view.reuseIdentifier ?? "") {
+                router?.routeToDetails(indexID: routeID)
+            }
+            
+        }
+        
+    }
+    
     
 }
 
+//MARK: - Core Location Delegates
 extension MapKitViewController: CLLocationManagerDelegate {
     
-    //CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locationManager.location?.coordinate
         let span = MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
@@ -156,6 +193,8 @@ extension MapKitViewController: CLLocationManagerDelegate {
     
 }
 
+
+//MARK: - Display Logic
 extension MapKitViewController: MapKitDisplayLogic {
     func displayLocation(viewModel: MapKit.Fetch.ViewModel) {
         self.viewModel = viewModel

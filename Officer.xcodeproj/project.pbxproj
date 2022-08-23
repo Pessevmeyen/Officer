@@ -75,6 +75,7 @@
 		89D13EFB289BF993008E2238 /* DetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89D13EF9289BF993008E2238 /* DetailsCell.xib */; };
 		89D2FA2428A9512A00341C75 /* FavoriteScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D2FA2228A9512A00341C75 /* FavoriteScreenCell.swift */; };
 		89D2FA2528A9512A00341C75 /* FavoriteScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89D2FA2328A9512A00341C75 /* FavoriteScreenCell.xib */; };
+		89DD3CCA28B42845005EDB56 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DD3CC928B42845005EDB56 /* Annotation.swift */; };
 		89DF91AA289BD2C20053B86B /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 89DF91A9289BD2C20053B86B /* SDWebImage */; };
 		89DF91AC289BD2C20053B86B /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 89DF91AB289BD2C20053B86B /* SDWebImageMapKit */; };
 		89FBB31728983BE2001C5B95 /* Office.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89FBB31028983BE2001C5B95 /* Office.storyboard */; };
@@ -179,6 +180,7 @@
 		89D13EF9289BF993008E2238 /* DetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCell.xib; sourceTree = "<group>"; };
 		89D2FA2228A9512A00341C75 /* FavoriteScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteScreenCell.swift; sourceTree = "<group>"; };
 		89D2FA2328A9512A00341C75 /* FavoriteScreenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteScreenCell.xib; sourceTree = "<group>"; };
+		89DD3CC928B42845005EDB56 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		89F40B812875F2960035C6F4 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		89F40B822875F2F70035C6F4 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		89FBB31028983BE2001C5B95 /* Office.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Office.storyboard; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				8996D4EA28AFBEBE00342590 /* MapKit.storyboard */,
+				89DD3CC928B42845005EDB56 /* Annotation.swift */,
 				8996D4EB28AFBEBE00342590 /* MapKitViewController.swift */,
 				8996D4ED28AFBEBE00342590 /* MapKitInteractor.swift */,
 				8996D4EC28AFBEBE00342590 /* MapKitPresenter.swift */,
@@ -711,6 +714,7 @@
 				894D64082898F403001CF252 /* RegisterPresenter.swift in Sources */,
 				8990F14628A93E5B00A682B8 /* FavoriteScreenInteractor.swift in Sources */,
 				89FBB326289845CE001C5B95 /* NetworkManager.swift in Sources */,
+				89DD3CCA28B42845005EDB56 /* Annotation.swift in Sources */,
 				894D64072898F403001CF252 /* RegisterViewController.swift in Sources */,
 				894D63EB2898EFE1001CF252 /* DetailsWorker.swift in Sources */,
 				894D640A2898F403001CF252 /* RegisterModels.swift in Sources */,

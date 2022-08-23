@@ -25,6 +25,7 @@ enum MapKit {
             let officesListViewModel: [MapKit.Fetch.ViewModel.OfficeModel]
             
             struct OfficeModel {
+                var id: Int?
                 var image: String?
                 var name: String?
                 var address: String?

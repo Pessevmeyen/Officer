@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MapKitRoutingLogic: AnyObject {
-    
+    func routeToDetails(indexID: Int)
 }
 
 protocol MapKitDataPassing: AnyObject {
@@ -17,7 +17,12 @@ protocol MapKitDataPassing: AnyObject {
 
 final class MapKitRouter: MapKitRoutingLogic, MapKitDataPassing {
     
+    weak var officeViewController: OfficeViewController?
     weak var viewController: MapKitViewController?
     var dataStore: MapKitDataStore?
+    
+    func routeToDetails(indexID: Int) {
+        officeViewController?.router?.routeToDetails(index: indexID)
+    }
     
 }
