@@ -48,6 +48,7 @@ final class MapKitViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        locationManager.delegate = self
         mapView.delegate = self
         
         locationManagerSetup()
@@ -103,6 +104,7 @@ final class MapKitViewController: UIViewController {
         }
     }
     
+    
 }
 
 //MARK: - MapKit Delegates
@@ -128,7 +130,7 @@ extension MapKitViewController: MKMapViewDelegate {
             annotationView?.rightCalloutAccessoryView = navigationButton
             
             let closeButton = UIButton(type: .detailDisclosure)
-            closeButton.setImage(UIImage(named: "info"), for: .focused)
+            closeButton.setImage(UIImage(named: "info"), for: .highlighted)
             closeButton.tag = 1
             annotationView?.leftCalloutAccessoryView = closeButton
         }
@@ -183,14 +185,14 @@ extension MapKitViewController: MKMapViewDelegate {
 
 //MARK: - Core Location Delegates
 extension MapKitViewController: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locationManager.location?.coordinate
+    @objc func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locationManager.location?.coordinate else {
+            return
+        }
         let span = MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
-        let region = MKCoordinateRegion(center: location!, span: span)
+        let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
     }
-    
 }
 
 

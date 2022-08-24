@@ -249,8 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				89FBB32428983C19001C5B95 /* Extension */,
-				89FBB32328983C11001C5B95 /* Networking */,
-				89BEED8728AD584200B0BB2A /* CoreData */,
+				891526C728B581B500AE7E83 /* Data */,
 				89FBB2C428980B7F001C5B95 /* Scenes */,
 				8947863F289A6E9D00418A39 /* SupportingFiles */,
 				894D640E28999ED0001CF252 /* CustomObjects */,
@@ -276,6 +275,15 @@
 				8909FB0628735A0B00F84927 /* OfficerUITestsLaunchTests.swift */,
 			);
 			path = OfficerUITests;
+			sourceTree = "<group>";
+		};
+		891526C728B581B500AE7E83 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				89FBB32328983C11001C5B95 /* Networking */,
+				89BEED8728AD584200B0BB2A /* CoreData */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		8947863F289A6E9D00418A39 /* SupportingFiles */ = {

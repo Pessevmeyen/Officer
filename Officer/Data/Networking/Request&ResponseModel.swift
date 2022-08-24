@@ -12,11 +12,10 @@ import Foundation
 
 // MARK: - Office
 struct OfficeData: Codable {
-    public init(address: String?, capacity: String?, id: Int?, bool: Bool?, image: String?, images: [String]?, location: Location?, name: String?, rooms: Int?, space: String?) {
+    public init(address: String?, capacity: String?, id: Int?, image: String?, images: [String]?, location: Location?, name: String?, rooms: Int?, space: String?) {
         self.address = address
         self.capacity = capacity
         self.id = id
-        self.bool = bool
         self.image = image
         self.images = images
         self.location = location
@@ -27,7 +26,6 @@ struct OfficeData: Codable {
     
     let address, capacity: String?
     let id: Int?
-    let bool: Bool?
     let image: String?
     let images: [String]?
     let location: Location?

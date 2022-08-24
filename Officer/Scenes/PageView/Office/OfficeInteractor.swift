@@ -52,7 +52,7 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
                 
                 self?.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: offices)) //Buradan presenter'a
             case .failure(let error):
-                print(error.localizedDescription)
+                fatalError("\(error)")
             }
         }
     }
@@ -75,7 +75,7 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
         }
         //itemlist gönderilecek
         guard let filteredData = filteredData else {
-            return
+            fatalError()
         }
         self.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: (filteredData))) //Buradan presenter'a aktarılıyor.
         //print(filteredData)
@@ -95,7 +95,7 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
             case .success(let response):
                 self?.presenter?.presentCoreData(response: response)
             case .failure(let error):
-                print(error)
+                fatalError("\(error)")
             }
         }
     }

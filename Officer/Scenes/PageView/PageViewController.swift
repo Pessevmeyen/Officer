@@ -35,7 +35,7 @@ class PageViewController: UIPageViewController, AnimationDelegate {
     }
     
     //MARK: Custom Functions
-    func instantiateViewControllers() {
+    private func instantiateViewControllers() {
         let officeStoryboard = UIStoryboard(name: Constants.officeStoryboardName, bundle: nil)
         let officeDestination: OfficeViewController = officeStoryboard.instantiateViewController(identifier: Constants.officeIdentifier)
         

@@ -113,18 +113,18 @@ class CoreDataManager {
                             do {
                                 try context.save()
                             } catch {
-                                print("An Error Occured When Saving Deleted Data")
+                                fatalError()
                             }
                             break
                         }
                     }
                 }
             } else {
-                print("There nothing")
+                fatalError()
             }
             
         } catch {
-            print("An Error Occured When Deleting Data From Core Data")
+            fatalError()
         }
     }
     
