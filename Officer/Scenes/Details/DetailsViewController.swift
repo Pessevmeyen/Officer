@@ -8,6 +8,8 @@
 import UIKit
 import MapKit
 import CoreLocation
+import AVFoundation
+import AVKit
 
 protocol DetailsDisplayLogic: AnyObject {
     func displayDetailsList(viewModel: Details.Fetch.ViewModel)
@@ -24,6 +26,8 @@ final class DetailsViewController: UIViewController {
         }
     }
     var locationManager = CLLocationManager()
+    var videoPlayer: AVPlayer!
+    var bool = true
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -33,6 +37,9 @@ final class DetailsViewController: UIViewController {
             mapView.mapType = .standard
         }
     }
+    @IBOutlet weak var fullScreenButton: UIButton!
+    @IBOutlet weak var playPauseButton: UIButton!
+    @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var capacityLabel: UILabel!
     @IBOutlet weak var roomLabel: UILabel!
     @IBOutlet weak var spaceLabel: UILabel!
@@ -41,6 +48,7 @@ final class DetailsViewController: UIViewController {
             registerCollectionView()
         }
     }
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: Object lifecycle
     
@@ -71,7 +79,17 @@ final class DetailsViewController: UIViewController {
         setInformation()
         
         setOfficeAnnotation()
+        
+        configureVideoPlayer()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
     }
     
     
@@ -93,6 +111,33 @@ final class DetailsViewController: UIViewController {
     
     
     //MARK: - Custom Functions
+    
+    private func configureVideoPlayer() {
+        guard let path = Bundle.main.path(forResource: "video", ofType: "mp4") else {
+            debugPrint("video not found")
+            return
+        }
+        videoPlayer = AVPlayer(url: URL(fileURLWithPath: path))
+        let playerLayer = AVPlayerLayer(player: videoPlayer)
+        playerLayer.frame = videoView.bounds
+        
+        playerLayer.player?.addPeriodicTimeObserver(forInterval: CMTimeMake(value: 1, timescale: 600), queue: DispatchQueue.main) {
+            [weak self] time in
+            if playerLayer.player?.currentItem?.status == AVPlayerItem.Status.readyToPlay {
+                self?.activityIndicator.stopAnimating()
+            }
+        }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerLayer.player?.currentItem, queue: .main) { (_) in
+            if (playerLayer.player?.currentItem) != nil {
+                playerLayer.player?.seek(to: .zero)
+                playerLayer.player?.play()
+            }
+        }
+        
+        videoView.layer.addSublayer(playerLayer)
+        videoView.addSubview(playPauseButton)
+        videoView.addSubview(fullScreenButton)
+    }
     
     private func locationManagerSetup() {
         locationManager.delegate = self
@@ -121,6 +166,28 @@ final class DetailsViewController: UIViewController {
     
     private func setOfficeAnnotation() {
         mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), title: viewModel?.name ?? "", subtitle: viewModel?.address ?? ""))
+    }
+    
+    func playPause() {
+        
+        
+        
+        switch videoPlayer.timeControlStatus {
+        case .playing:
+            pause()
+        case .paused:
+            play()
+        default:
+            break
+        }
+    }
+    
+    func play() {
+        videoPlayer.play()
+    }
+    
+    func pause() {
+        videoPlayer.pause()
     }
     
     
@@ -155,6 +222,38 @@ final class DetailsViewController: UIViewController {
         }
     }
     
+    @IBAction func playPauseClicked(_ sender: UIButton) {
+        if bool {
+            playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
+            playPauseButton.alpha = 0.4
+            playPause()
+            bool = false
+        } else {
+            playPauseButton.setImage(UIImage(named: "play"), for: .normal)
+            playPauseButton.alpha = 1.0
+            playPause()
+            bool = true
+        }
+        
+    }
+    
+    @IBAction func playFullScreen(_ sender: UIButton) {
+        guard let path = Bundle.main.path(forResource: "video", ofType: "mp4") else {
+            return
+        }
+        
+        
+        pause()
+        
+        let playerController = AVPlayerViewController()
+        let player = AVPlayer(url: URL(fileURLWithPath: path))
+        playerController.player = player
+        present(playerController, animated: true) {
+            player.play()
+        }
+        
+    }
+    
 }
 
 
@@ -168,7 +267,7 @@ extension DetailsViewController {
         let listLayout = UICollectionViewFlowLayout()
         listLayout.collectionView?.layoutIfNeeded()
         listLayout.scrollDirection = .horizontal
-        listLayout.itemSize = CGSize(width: (view.frame.size.width - 30), height: (view.frame.size.width / 2) + 50)
+        listLayout.itemSize = CGSize(width: (view.frame.size.width - 30), height: (collectionView.frame.size.width - 135))
         listLayout.minimumInteritemSpacing = 5
         listLayout.minimumLineSpacing = 5
         collectionView.setCollectionViewLayout(listLayout, animated: true)
