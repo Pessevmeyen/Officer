@@ -11,7 +11,7 @@
 		8909FAE628735A0700F84927 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909FAE528735A0700F84927 /* SceneDelegate.swift */; };
 		8909FAE828735A0700F84927 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909FAE728735A0700F84927 /* WelcomeViewController.swift */; };
 		8909FAEB28735A0700F84927 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8909FAE928735A0700F84927 /* Main.storyboard */; };
-		8909FAED28735A0A00F84927 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8909FAEC28735A0A00F84927 /* Assets.xcassets */; };
+		8909FAED28735A0A00F84927 /* ImageLiterals.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8909FAEC28735A0A00F84927 /* ImageLiterals.xcassets */; };
 		8909FAF028735A0A00F84927 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8909FAEE28735A0A00F84927 /* LaunchScreen.storyboard */; };
 		8909FAFB28735A0A00F84927 /* OfficerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909FAFA28735A0A00F84927 /* OfficerTests.swift */; };
 		8909FB0528735A0B00F84927 /* OfficerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909FB0428735A0B00F84927 /* OfficerUITests.swift */; };
@@ -40,6 +40,7 @@
 		894D640C2898F403001CF252 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D64052898F403001CF252 /* RegisterRouter.swift */; };
 		894F331B28AE3EF00096B51D /* WebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894F331A28AE3EF00096B51D /* WebKitViewController.swift */; };
 		896177E4288B43D90078E299 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896177E3288B43D90078E299 /* CustomTextField.swift */; };
+		89637C0C28B6BD00002055F6 /* ColorLiterals.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89637C0B28B6BD00002055F6 /* ColorLiterals.xcassets */; };
 		896C5F8A28A2A690009C93F6 /* FullScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896C5F8928A2A690009C93F6 /* FullScreenCell.swift */; };
 		8982880928B259E100CC51EA /* PageView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8982880828B259E100CC51EA /* PageView.storyboard */; };
 		89890FDF28B6568A004170B6 /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 89890FDE28B6568A004170B6 /* video.mp4 */; };
@@ -115,7 +116,7 @@
 		8909FAE528735A0700F84927 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8909FAE728735A0700F84927 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8909FAEA28735A0700F84927 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8909FAEC28735A0A00F84927 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Officer/SupportingFiles/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		8909FAEC28735A0A00F84927 /* ImageLiterals.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = ImageLiterals.xcassets; path = Officer/SupportingFiles/ImageLiterals.xcassets; sourceTree = SOURCE_ROOT; };
 		8909FAEF28735A0A00F84927 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8909FAF128735A0A00F84927 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8909FAF628735A0A00F84927 /* OfficerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OfficerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +148,7 @@
 		894D64052898F403001CF252 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
 		894F331A28AE3EF00096B51D /* WebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitViewController.swift; sourceTree = "<group>"; };
 		896177E3288B43D90078E299 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		89637C0B28B6BD00002055F6 /* ColorLiterals.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorLiterals.xcassets; sourceTree = "<group>"; };
 		896C5F8928A2A690009C93F6 /* FullScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenCell.swift; sourceTree = "<group>"; };
 		8982880828B259E100CC51EA /* PageView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PageView.storyboard; sourceTree = "<group>"; };
 		89890FDE28B6568A004170B6 /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
@@ -293,7 +295,8 @@
 			children = (
 				8909FAE328735A0700F84927 /* AppDelegate.swift */,
 				8909FAE528735A0700F84927 /* SceneDelegate.swift */,
-				8909FAEC28735A0A00F84927 /* Assets.xcassets */,
+				8909FAEC28735A0A00F84927 /* ImageLiterals.xcassets */,
+				89637C0B28B6BD00002055F6 /* ColorLiterals.xcassets */,
 				89890FDE28B6568A004170B6 /* video.mp4 */,
 			);
 			path = SupportingFiles;
@@ -654,10 +657,11 @@
 				894D63F52898F3B3001CF252 /* Login.storyboard in Resources */,
 				89BEED9428AD73C800B0BB2A /* WebKit.storyboard in Resources */,
 				8909FAF028735A0A00F84927 /* LaunchScreen.storyboard in Resources */,
-				8909FAED28735A0A00F84927 /* Assets.xcassets in Resources */,
+				8909FAED28735A0A00F84927 /* ImageLiterals.xcassets in Resources */,
 				89FBB32228983C02001C5B95 /* OfficeCell.xib in Resources */,
 				8909FAEB28735A0700F84927 /* Main.storyboard in Resources */,
 				8996D4E828AFBDCA00342590 /* PageViewController.xib in Resources */,
+				89637C0C28B6BD00002055F6 /* ColorLiterals.xcassets in Resources */,
 				8996D4F128AFBEBE00342590 /* MapKit.storyboard in Resources */,
 				8990F14328A93E5B00A682B8 /* FavoriteScreen.storyboard in Resources */,
 				89D13EFB289BF993008E2238 /* DetailsCell.xib in Resources */,

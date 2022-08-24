@@ -75,10 +75,6 @@
                                                             <action selector="playFullScreen:" destination="nxe-uw-h5I" eventType="touchUpInside" id="diM-Uf-UCc"/>
                                                         </connections>
                                                     </button>
-                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="dUc-rm-EWg">
-                                                        <rect key="frame" x="177" y="73" width="20" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    </activityIndicatorView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -310,7 +306,6 @@
                     </view>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="dUc-rm-EWg" id="zRC-q0-Mhe"/>
                         <outlet property="addressLabel" destination="kY4-jP-nfb" id="1OR-pe-ejF"/>
                         <outlet property="capacityLabel" destination="545-do-7t3" id="pd5-uc-mFJ"/>
                         <outlet property="collectionView" destination="Z7C-I4-Xph" id="Rop-cK-vX0"/>
@@ -327,49 +322,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZo-gs-e4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="105.79710144927537" y="27.455357142857142"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="3rU-ky-5at">
-            <objects>
-                <viewController id="aVV-HE-Icj" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WqX-rt-gLh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PtP-wM-fuN">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNw-jP-Qib" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="QNw-jP-Qib" firstAttribute="top" secondItem="PtP-wM-fuN" secondAttribute="top" id="Eju-OE-bcB"/>
-                                    <constraint firstItem="QNw-jP-Qib" firstAttribute="width" secondItem="PtP-wM-fuN" secondAttribute="width" id="Q1M-nS-Flw"/>
-                                    <constraint firstAttribute="bottom" secondItem="QNw-jP-Qib" secondAttribute="bottom" id="Qpq-qg-8io"/>
-                                    <constraint firstItem="QNw-jP-Qib" firstAttribute="height" secondItem="PtP-wM-fuN" secondAttribute="height" priority="250" id="R40-Lz-pid"/>
-                                    <constraint firstAttribute="trailing" secondItem="QNw-jP-Qib" secondAttribute="trailing" id="W8d-r9-TVe"/>
-                                    <constraint firstItem="QNw-jP-Qib" firstAttribute="leading" secondItem="PtP-wM-fuN" secondAttribute="leading" id="ehT-u9-hIe"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="qk2-9L-bSI"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="tqj-dN-1S8"/>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="X3P-Ec-4wx"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="X3P-Ec-4wx" firstAttribute="trailing" secondItem="PtP-wM-fuN" secondAttribute="trailing" id="3gK-Xa-JmC"/>
-                            <constraint firstItem="PtP-wM-fuN" firstAttribute="bottom" secondItem="X3P-Ec-4wx" secondAttribute="bottom" constant="34" id="Fwk-xE-aZb"/>
-                            <constraint firstItem="X3P-Ec-4wx" firstAttribute="top" secondItem="PtP-wM-fuN" secondAttribute="top" constant="44" id="c0p-90-q71"/>
-                            <constraint firstItem="PtP-wM-fuN" firstAttribute="leading" secondItem="X3P-Ec-4wx" secondAttribute="leading" id="vG1-Yk-hnr"/>
-                        </constraints>
-                    </view>
-                    <size key="freeformSize" width="414" height="1100"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S3m-yy-i4w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1008.6956521739131" y="28.794642857142854"/>
         </scene>
     </scenes>
     <resources>

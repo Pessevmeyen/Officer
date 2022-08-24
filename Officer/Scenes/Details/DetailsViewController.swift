@@ -17,6 +17,7 @@ protocol DetailsDisplayLogic: AnyObject {
 
 final class DetailsViewController: UIViewController {
     
+    //MARK: Variables and Constants
     var isGridLayout = false
     var interactor: DetailsBusinessLogic?
     var router: (DetailsRoutingLogic & DetailsDataPassing)?
@@ -29,9 +30,13 @@ final class DetailsViewController: UIViewController {
     var videoPlayer: AVPlayer!
     var bool = true
     
-    @IBOutlet weak var imageView: UIImageView!
+    //MARK: @IBOutlets
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var capacityLabel: UILabel!
+    @IBOutlet weak var roomLabel: UILabel!
+    @IBOutlet weak var spaceLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
             mapView.mapType = .standard
@@ -40,15 +45,11 @@ final class DetailsViewController: UIViewController {
     @IBOutlet weak var fullScreenButton: UIButton!
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var videoView: UIView!
-    @IBOutlet weak var capacityLabel: UILabel!
-    @IBOutlet weak var roomLabel: UILabel!
-    @IBOutlet weak var spaceLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             registerCollectionView()
         }
     }
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: Object lifecycle
     
@@ -65,12 +66,11 @@ final class DetailsViewController: UIViewController {
     //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        locationManagerSetup()
         
-        collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
-        
+        navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.topItem?.backButtonTitle = "Offices"
+
+        collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
         
         setRightBarButtonItem(buttonImage: "gridlayoutimage") //Navigation bar'daki buttonu oluşturacak.
         
@@ -80,17 +80,17 @@ final class DetailsViewController: UIViewController {
         
         setOfficeAnnotation()
         
+        locationManagerSetup()
+        
         configureVideoPlayer()
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        let value = UIInterfaceOrientation.portrait.rawValue
+//        UIDevice.current.setValue(value, forKey: "orientation")
+//    }
     
     
     // MARK: Setup
@@ -111,34 +111,6 @@ final class DetailsViewController: UIViewController {
     
     
     //MARK: - Custom Functions
-    
-    private func configureVideoPlayer() {
-        guard let path = Bundle.main.path(forResource: "video", ofType: "mp4") else {
-            debugPrint("video not found")
-            return
-        }
-        videoPlayer = AVPlayer(url: URL(fileURLWithPath: path))
-        let playerLayer = AVPlayerLayer(player: videoPlayer)
-        playerLayer.frame = videoView.bounds
-        
-        playerLayer.player?.addPeriodicTimeObserver(forInterval: CMTimeMake(value: 1, timescale: 600), queue: DispatchQueue.main) {
-            [weak self] time in
-            if playerLayer.player?.currentItem?.status == AVPlayerItem.Status.readyToPlay {
-                self?.activityIndicator.stopAnimating()
-            }
-        }
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerLayer.player?.currentItem, queue: .main) { (_) in
-            if (playerLayer.player?.currentItem) != nil {
-                playerLayer.player?.seek(to: .zero)
-                playerLayer.player?.play()
-            }
-        }
-        
-        videoView.layer.addSublayer(playerLayer)
-        videoView.addSubview(playPauseButton)
-        videoView.addSubview(fullScreenButton)
-    }
-    
     private func locationManagerSetup() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -168,10 +140,46 @@ final class DetailsViewController: UIViewController {
         mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), title: viewModel?.name ?? "", subtitle: viewModel?.address ?? ""))
     }
     
-    func playPause() {
+    private func configureVideoPlayer() {
+        guard let path = Bundle.main.path(forResource: "video", ofType: "mp4") else {
+            debugPrint("video not found")
+            return
+        }
         
+        videoPlayer = AVPlayer(url: URL(fileURLWithPath: path))
         
+        let playerLayer = AVPlayerLayer(player: videoPlayer)
+        playerLayer.frame = videoView.bounds
+        playerLayer.borderWidth = 1
         
+        videoView.layer.addSublayer(playerLayer)
+        videoView.addSubview(playPauseButton)
+        videoView.addSubview(fullScreenButton)
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
+                                               object: playerLayer.player?.currentItem,
+                                               queue: OperationQueue.main) { [weak self] _ in
+            if (playerLayer.player?.currentItem) != nil {
+                playerLayer.player?.seek(to: .zero)
+                playerLayer.player?.pause()
+                self?.setPlayButtonToDefault()
+            }
+        }
+    }
+    
+    private func setPlayButtonToDefault() {
+        playPauseButton.setImage(UIImage(named: "play"), for: .normal)
+        playPauseButton.alpha = 1.0
+        bool = true
+    }
+    
+    private func setPauseButtonToDefault() {
+        playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
+        playPauseButton.alpha = 0.4
+        bool = false
+    }
+    
+    private func playPause() {
         switch videoPlayer.timeControlStatus {
         case .playing:
             pause()
@@ -182,11 +190,11 @@ final class DetailsViewController: UIViewController {
         }
     }
     
-    func play() {
+    private func play() {
         videoPlayer.play()
     }
     
-    func pause() {
+    private func pause() {
         videoPlayer.pause()
     }
     
@@ -210,10 +218,12 @@ final class DetailsViewController: UIViewController {
         }
     }
     
+    
     //MARK: - @IBActions
     @IBAction func websitePressed(_ sender: UIButton) {
         router?.routeToWebKitScreen()
     }
+    
     @IBAction func changeMapViewTapped(_ sender: UIButton) {
         if mapView.mapType == .standard {
             mapView.mapType = .hybrid
@@ -224,24 +234,18 @@ final class DetailsViewController: UIViewController {
     
     @IBAction func playPauseClicked(_ sender: UIButton) {
         if bool {
-            playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
-            playPauseButton.alpha = 0.4
+            setPauseButtonToDefault()
             playPause()
-            bool = false
         } else {
-            playPauseButton.setImage(UIImage(named: "play"), for: .normal)
-            playPauseButton.alpha = 1.0
+            setPlayButtonToDefault()
             playPause()
-            bool = true
         }
-        
     }
     
     @IBAction func playFullScreen(_ sender: UIButton) {
         guard let path = Bundle.main.path(forResource: "video", ofType: "mp4") else {
             return
         }
-        
         
         pause()
         
@@ -251,9 +255,8 @@ final class DetailsViewController: UIViewController {
         present(playerController, animated: true) {
             player.play()
         }
-        
+        setPlayButtonToDefault()
     }
-    
 }
 
 
@@ -350,8 +353,6 @@ extension DetailsViewController: CLLocationManagerDelegate {
         mapView.setRegion(region, animated: true)
     }
 }
-
-
 
 
 //MARK: - Display Logic
