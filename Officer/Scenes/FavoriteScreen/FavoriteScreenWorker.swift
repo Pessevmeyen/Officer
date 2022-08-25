@@ -9,6 +9,7 @@ import Foundation
 
 protocol FavoriteScreenWorkingLogic: AnyObject {
     func getCoreData(complation: @escaping ((Result<[FavoriteScreen.Fetch.ViewModel.CoreDataModels], Error>) -> Void))
+    func deleteDataFromCoreData(id: Int)
 }
 
 final class FavoriteScreenWorker: FavoriteScreenWorkingLogic {
@@ -22,6 +23,10 @@ final class FavoriteScreenWorker: FavoriteScreenWorkingLogic {
                 complation(.failure(error))
             }
         }
+    }
+    
+    func deleteDataFromCoreData(id: Int) {
+        CoreDataManager().deleteFromCoreData(officeID: id)
     }
     
 }

@@ -9,6 +9,7 @@ import Foundation
 
 protocol FavoriteScreenBusinessLogic: AnyObject {
     func fetchCoreData()
+    func deleteFromCoreData(id: Int)
 }
 
 protocol FavoriteScreenDataStore: AnyObject {
@@ -31,6 +32,8 @@ final class FavoriteScreenInteractor: FavoriteScreenBusinessLogic, FavoriteScree
         }
     }
     
-    
+    func deleteFromCoreData(id: Int) {
+        worker.deleteDataFromCoreData(id: id)
+    }
     
 }

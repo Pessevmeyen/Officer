@@ -70,6 +70,16 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("office view did appear")
+    }
+    
     // MARK: Setup
     
     private func setup() {
@@ -159,7 +169,7 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
         }
         
         interactor?.fetchDataFromCoreData(reqeust: idCoreData)
-        
+
         cell.configureCell(viewModel: model)
         cell.delegate = self
         cell.like = true

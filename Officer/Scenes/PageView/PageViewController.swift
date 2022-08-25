@@ -89,9 +89,10 @@ class PageViewController: UIPageViewController, AnimationDelegate {
         let storyboard = UIStoryboard(name: Constants.favoriteStoryboardName, bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: Constants.favoriteIdentifier)
         let transitioningDelegate = HandyTransitioningDelegate(from: self, to: controller)
-        controller.modalPresentationStyle = .custom
+        controller.modalPresentationStyle = .popover
         controller.transitioningDelegate = transitioningDelegate
-        present(controller, animated: true)
+        navigationController?.pushViewController(controller, animated: true)
+        //present(controller, animated: true)
         
     }
 

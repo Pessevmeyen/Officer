@@ -13,13 +13,22 @@ protocol FavoriteScreenDisplayLogic: AnyObject {
     func displayCoreData(viewModel: [FavoriteScreen.Fetch.ViewModel.CoreDataModels])
 }
 
+protocol FavoriteScreenDelegate {
+    func detectDeletingFromCell()
+}
+
 
 
 final class FavoriteScreenViewController: UIViewController {
+    func favoriteAdded(model: Office.Fetch.ViewModel.OfficeModel) {
+        
+    }
     
     var interactor: FavoriteScreenBusinessLogic?
     var router: (FavoriteScreenRoutingLogic & FavoriteScreenDataPassing)?
     var viewModel: [FavoriteScreen.Fetch.ViewModel.CoreDataModels]?
+    
+    var delegate: FavoriteScreenDelegate?
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -47,6 +56,11 @@ final class FavoriteScreenViewController: UIViewController {
         interactor?.fetchCoreData()
         
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("view will disappear")
+    }
 
     
     // MARK: Setup
@@ -70,6 +84,10 @@ final class FavoriteScreenViewController: UIViewController {
 //MARK: - TableView Delegate & Datasource | Number Of Rows In Section, CellForRowAt, DidSelectRowAt
 extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSource {
     
+    
+    
+    
+    
     //MARK: Sectionda kaç tane row oluşacak
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.count ?? 0
@@ -90,7 +108,18 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            interactor?.deleteFromCoreData(id: Int(viewModel?[indexPath.row].id ?? 0))
+            viewModel?.remove(at: indexPath.row)
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
+    }
 }
+    
+
 
 extension FavoriteScreenViewController: UIScrollViewDelegate {
 
