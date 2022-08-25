@@ -60,12 +60,7 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction func logInClicked(_ sender: UIButton) {
-
-        self.navigationController?.pushViewController(PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal), animated: true)
-        
-        
-        
-        //navigationController?.pushViewController(PageViewController(), animated: true)
+        router?.routeToOfficePage()
     }
 }
 

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>After, you can see the office on map with your location</string>
 	<key>BACKEND_URL</key>
 	<string>$(BACKEND_URL)</string>
 	<key>SHOW_VERSION</key>

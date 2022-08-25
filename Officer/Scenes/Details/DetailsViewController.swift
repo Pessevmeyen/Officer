@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreLocationUI
 import AVFoundation
 import AVKit
 
@@ -51,6 +52,8 @@ final class DetailsViewController: UIViewController {
         }
     }
     
+    
+    
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -83,6 +86,7 @@ final class DetailsViewController: UIViewController {
         locationManagerSetup()
         
         configureVideoPlayer()
+        
        
     }
     
@@ -170,12 +174,14 @@ final class DetailsViewController: UIViewController {
     private func setPlayButtonToDefault() {
         playPauseButton.setImage(UIImage(named: "play"), for: .normal)
         playPauseButton.alpha = 1.0
+        fullScreenButton.alpha = 1.0
         bool = true
     }
     
     private func setPauseButtonToDefault() {
         playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
         playPauseButton.alpha = 0.4
+        fullScreenButton.alpha = 0.4
         bool = false
     }
     

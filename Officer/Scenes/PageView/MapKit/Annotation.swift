@@ -20,3 +20,4 @@ class Annotation: NSObject, MKAnnotation {
         self.subtitle = subtitle
     }
 }
+

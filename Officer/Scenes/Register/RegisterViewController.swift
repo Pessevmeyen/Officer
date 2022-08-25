@@ -81,9 +81,7 @@ final class RegisterViewController: UIViewController {
             let password = String(decoding: data, as: UTF8.self)
             print("Read password: \(password)")
             
-            self.navigationController?.pushViewController(PageViewController(), animated: true)
-            //goToDestinationVC(storyboardName: Constants.officeStoryboardName, storyboardID: Constants.officeStoryboardIdentifier)
-            
+            router?.routeToOfficePage()
             
         } else {
             //button.isUserInteractionEnabled = false

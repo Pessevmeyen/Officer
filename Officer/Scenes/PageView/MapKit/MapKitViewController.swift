@@ -101,6 +101,7 @@ final class MapKitViewController: UIViewController {
             mapView.mapType = .hybrid
         } else {
             mapView.mapType = .standard
+            mapView.tintColor = .systemGray6
         }
     }
     

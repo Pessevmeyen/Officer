@@ -305,7 +305,6 @@
 		894D63ED2898EFEA001CF252 /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				89890FDA28B63C48004170B6 /* VideoPlayer */,
 				89BEED8C28AD739400B0BB2A /* WebKit */,
 				89D13EF7289BF961008E2238 /* DetailsCell */,
 				894D63DF2898EFE1001CF252 /* Details.storyboard */,
@@ -387,13 +386,6 @@
 				896C5F8928A2A690009C93F6 /* FullScreenCell.swift */,
 			);
 			path = FullScreenCell;
-			sourceTree = "<group>";
-		};
-		89890FDA28B63C48004170B6 /* VideoPlayer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = VideoPlayer;
 			sourceTree = "<group>";
 		};
 		8990F13B28A93E2000A682B8 /* FavoriteScreen */ = {

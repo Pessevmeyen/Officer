@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LoginRoutingLogic: AnyObject {
-    
+    func routeToOfficePage()
 }
 
 protocol LoginDataPassing: AnyObject {
@@ -19,5 +19,9 @@ final class LoginRouter: LoginRoutingLogic, LoginDataPassing {
     
     weak var viewController: LoginViewController?
     var dataStore: LoginDataStore?
+    
+    func routeToOfficePage() {
+        self.viewController?.navigationController?.pushViewController(PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal), animated: true)
+    }
     
 }

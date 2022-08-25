@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RegisterRoutingLogic: AnyObject {
-    
+    func routeToOfficePage()
 }
 
 protocol RegisterDataPassing: AnyObject {
@@ -19,5 +19,9 @@ final class RegisterRouter: RegisterRoutingLogic, RegisterDataPassing {
     
     weak var viewController: RegisterViewController?
     var dataStore: RegisterDataStore?
+    
+    func routeToOfficePage() {
+        self.viewController?.navigationController?.pushViewController(PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal), animated: true)
+    }
     
 }
