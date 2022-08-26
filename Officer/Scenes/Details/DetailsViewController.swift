@@ -70,6 +70,8 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.topItem?.backButtonTitle = "Offices"
 
@@ -112,7 +114,10 @@ final class DetailsViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        mapView.delegate = self
         mapView.showsUserLocation = true
+        mapView.showsScale = true
     }
     
     // Right Bar Button
@@ -148,8 +153,6 @@ final class DetailsViewController: UIViewController {
         playerLayer.frame.size.height = videoView.frame.size.height
         playerLayer.frame.size.width = videoView.frame.size.width
         playerLayer.borderWidth = 1
-        
-        
         
         videoView.layer.addSublayer(playerLayer)
         videoView.addSubview(playPauseButton)
@@ -345,6 +348,61 @@ extension DetailsViewController: FullScreenDelegate {
     }
 }
 
+
+//MARK: - MapView Delegate
+extension DetailsViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
+        
+        let annotationIdentifier = "annotationId"
+        var annotationView: MKAnnotationView?
+        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
+            annotationView = dequeuedAnnotationView
+            annotationView?.annotation = annotation
+        } else {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            
+            let navigationButton = UIButton(type: .detailDisclosure)
+            navigationButton.setImage(UIImage(named: "golocation"), for: .normal)
+            annotationView?.rightCalloutAccessoryView = navigationButton
+        }
+
+        if let annotationView = annotationView {
+            annotationView.canShowCallout = true
+            annotationView.image = UIImage(named: "building")
+            annotationView.backgroundColor = .white
+        }
+          return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        //Birden fazla buton ve tek fonksiyon olduğu için tag'ladık.
+            guard let selectedAnnotation = view.annotation else {
+                return
+            }
+
+            let requestLocation = CLLocation(latitude: selectedAnnotation.coordinate.latitude, longitude: selectedAnnotation.coordinate.longitude)
+            
+            CLGeocoder().reverseGeocodeLocation(requestLocation) { placemark, error in
+                
+                if let placemarks = placemark {
+                    if placemarks.count > 0 {
+                        let newPlacemark = MKPlacemark(placemark: placemarks[0])
+                        let item = MKMapItem(placemark: newPlacemark)
+                        
+                        item.name = selectedAnnotation.title ?? ""
+                        
+                        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                        item.openInMaps(launchOptions: launchOptions)
+                    }
+                }
+            }
+    }
+}
 
 //MARK: - Core Location Delegate
 extension DetailsViewController: CLLocationManagerDelegate {

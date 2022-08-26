@@ -47,7 +47,7 @@ final class MapKitViewController: UIViewController {
         super.viewDidLoad()
         
         locationManager.delegate = self
-        mapView.delegate = self
+        
         
         locationManagerSetup()
         
@@ -77,6 +77,7 @@ final class MapKitViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.showsScale = true
     }
