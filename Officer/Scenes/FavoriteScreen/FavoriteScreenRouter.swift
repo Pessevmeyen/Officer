@@ -25,7 +25,16 @@ final class FavoriteScreenRouter: FavoriteScreenRoutingLogic, FavoriteScreenData
         
         let item = dataStore?.dataStore?[index]
         selected = item.map {
-            OfficeData(address: $0.address, capacity: $0.capacity, id: Int($0.id ?? 0), image: $0.image, images: $0.images ?? [], location: Location.init(latitude: $0.latitude, longitude: $0.longitude), name: $0.name, rooms: Int($0.rooms ?? ""), space: $0.space)
+            OfficeData(address: $0.address,
+                       capacity: $0.capacity,
+                       id: Int($0.id ?? 0),
+                       image: $0.image,
+                       images: $0.images ?? [],
+                       location: Location.init(latitude: $0.latitude,
+                                               longitude: $0.longitude),
+                       name: $0.name,
+                       rooms: Int($0.rooms ?? ""),
+                       space: $0.space)
             }
 
         let storyboard = UIStoryboard(name: Constants.detailsStoryboardName, bundle: nil)

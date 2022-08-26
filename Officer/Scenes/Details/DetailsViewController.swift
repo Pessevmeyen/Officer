@@ -86,17 +86,8 @@ final class DetailsViewController: UIViewController {
         locationManagerSetup()
         
         configureVideoPlayer()
-        
        
     }
-    
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        let value = UIInterfaceOrientation.portrait.rawValue
-//        UIDevice.current.setValue(value, forKey: "orientation")
-//    }
-    
     
     // MARK: Setup
     
@@ -154,8 +145,11 @@ final class DetailsViewController: UIViewController {
         videoPlayer = AVPlayer(url: URL(fileURLWithPath: path))
         
         let playerLayer = AVPlayerLayer(player: videoPlayer)
-        playerLayer.frame = videoView.bounds
+        playerLayer.frame.size.height = videoView.frame.size.height
+        playerLayer.frame.size.width = videoView.frame.size.width
         playerLayer.borderWidth = 1
+        
+        
         
         videoView.layer.addSublayer(playerLayer)
         videoView.addSubview(playPauseButton)

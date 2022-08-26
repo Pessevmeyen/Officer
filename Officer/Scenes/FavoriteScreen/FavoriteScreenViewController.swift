@@ -113,7 +113,7 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         router?.routeToDetails(index: indexPath.row)
     }
 }
