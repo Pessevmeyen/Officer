@@ -13,18 +13,21 @@ protocol FavoriteScreenBusinessLogic: AnyObject {
 }
 
 protocol FavoriteScreenDataStore: AnyObject {
+    var dataStore: [FavoriteScreen.Fetch.ViewModel.CoreDataModels]? { get set }
 }
 
 final class FavoriteScreenInteractor: FavoriteScreenBusinessLogic, FavoriteScreenDataStore {
     
     var presenter: FavoriteScreenPresentationLogic?
     var worker: FavoriteScreenWorkingLogic = FavoriteScreenWorker()
+    var dataStore: [FavoriteScreen.Fetch.ViewModel.CoreDataModels]?
     
     func fetchCoreData() {
         worker.getCoreData { [weak self] response in
             switch response {
             case .success(let coreDataOffices):
                 self?.presenter?.presentCoreData(response: coreDataOffices)
+                self?.dataStore = coreDataOffices
             case .failure(let error):
                 print(error.localizedDescription)
             }

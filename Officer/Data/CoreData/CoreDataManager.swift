@@ -31,6 +31,9 @@ class CoreDataManager {
         savedOffice.setValue(model.rooms, forKey: "rooms")
         savedOffice.setValue(model.space, forKey: "space")
         savedOffice.setValue(model.image, forKey: "image")
+        savedOffice.setValue(model.latitude, forKey: "latitude")
+        savedOffice.setValue(model.longitude, forKey: "longitude")
+        savedOffice.setValue(model.images, forKey: "images")
         
         do {
             try context.save()

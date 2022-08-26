@@ -32,8 +32,12 @@ enum FavoriteScreen {
                 var rooms: String?
                 var space: String?
                 var image: String?
+                var images: [String]?
+                var latitude: Double?
+                var longitude: Double?
                 
-                 init(id: Int16? = nil, name: String? = nil, address: String? = nil, capacity: String? = nil, rooms: String? = nil, space: String? = nil, image: String? = nil) {
+                
+                init(id: Int16? = nil, name: String? = nil, address: String? = nil, capacity: String? = nil, rooms: String? = nil, space: String? = nil, image: String? = nil, images: [String]? = nil, latitude: Double? = nil, longitude: Double? = nil) {
                     self.id = id
                     self.name = name
                     self.address = address
@@ -41,6 +45,9 @@ enum FavoriteScreen {
                     self.rooms = rooms
                     self.space = space
                     self.image = image
+                    self.images = images
+                    self.latitude = latitude
+                    self.longitude = longitude
                 }
                 
                 init(office: Offices) {
@@ -50,7 +57,10 @@ enum FavoriteScreen {
                               capacity: office.capacity,
                               rooms: office.rooms,
                               space: office.space,
-                              image: office.image)
+                              image: office.image,
+                              images: office.images as? [String],
+                              latitude: office.latitude,
+                              longitude: office.longitude)
                 }
                 
             }
