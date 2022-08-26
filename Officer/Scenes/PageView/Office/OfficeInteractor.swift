@@ -92,9 +92,7 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
     
     
     func saveDataToCoreData(model: Office.Fetch.ViewModel.OfficeModel) {
-        worker.getFilterConstans { [weak self] result in
-            self?.presenter?.presentFilterConstants(filterConstants: result)
-        }
+        worker.saveToCoreData(model: model)
     }
     
     

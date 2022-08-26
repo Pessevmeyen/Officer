@@ -105,8 +105,10 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            
             interactor?.deleteFromCoreData(id: Int(viewModel?[indexPath.row].id ?? 0))
             viewModel?.remove(at: indexPath.row)
+            
             DispatchQueue.main.async { [weak self] in
                 self?.tableView.reloadData()
             }
