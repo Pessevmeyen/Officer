@@ -54,12 +54,7 @@ final class FavoriteScreenViewController: UIViewController {
         super.viewDidLoad()
         
         interactor?.fetchCoreData()
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print("view will disappear")
+        title = "Favorites"
     }
 
     

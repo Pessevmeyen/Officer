@@ -5,7 +5,7 @@
 //  Created by Furkan Eruçar on 19.08.2022.
 //
 
-import Foundation
+import UIKit
 
 protocol MapKitRoutingLogic: AnyObject {
     func routeToDetails(indexID: Int)
@@ -22,7 +22,13 @@ final class MapKitRouter: MapKitRoutingLogic, MapKitDataPassing {
     var dataStore: MapKitDataStore?
     
     func routeToDetails(indexID: Int) {
-        officeViewController?.router?.routeToDetails(index: indexID)
+        
+        let storyboard = UIStoryboard(name: Constants.detailsStoryboardName, bundle: nil)
+        let destVC: DetailsViewController = storyboard.instantiateViewController(identifier: Constants.detailsIdentifier)
+        destVC.router?.dataStore?.officeData = dataStore?.officeArray?[indexID] //Burada hangi index seçildiyde, o index'in datası aktarılıyor. Detailsdaki offices'e. indexten aldığımız için array'i teklile düşürüyoruz. o yüzden sol taraf array değil.
+        viewController?.navigationController?.pushViewController(destVC, animated: true)
+        
+        //officeViewController?.router?.routeToDetails(index: indexID)
     }
     
 }

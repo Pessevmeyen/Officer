@@ -89,7 +89,7 @@ class PageViewController: UIPageViewController, AnimationDelegate {
         let storyboard = UIStoryboard(name: Constants.favoriteStoryboardName, bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: Constants.favoriteIdentifier)
         let transitioningDelegate = HandyTransitioningDelegate(from: self, to: controller)
-        controller.modalPresentationStyle = .popover
+        controller.modalPresentationStyle = .overFullScreen
         controller.transitioningDelegate = transitioningDelegate
         navigationController?.pushViewController(controller, animated: true)
         //present(controller, animated: true)

@@ -13,7 +13,6 @@ protocol FavoriteScreenBusinessLogic: AnyObject {
 }
 
 protocol FavoriteScreenDataStore: AnyObject {
-    
 }
 
 final class FavoriteScreenInteractor: FavoriteScreenBusinessLogic, FavoriteScreenDataStore {

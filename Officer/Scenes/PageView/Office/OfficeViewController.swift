@@ -75,10 +75,6 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         tableView.reloadData()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("office view did appear")
-    }
     
     // MARK: Setup
     

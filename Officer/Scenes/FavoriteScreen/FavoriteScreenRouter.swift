@@ -5,10 +5,9 @@
 //  Created by Furkan Eruçar on 14.08.2022.
 //
 
-import Foundation
+import UIKit
 
 protocol FavoriteScreenRoutingLogic: AnyObject {
-    
 }
 
 protocol FavoriteScreenDataPassing: AnyObject {
@@ -19,5 +18,7 @@ final class FavoriteScreenRouter: FavoriteScreenRoutingLogic, FavoriteScreenData
     
     weak var viewController: FavoriteScreenViewController?
     var dataStore: FavoriteScreenDataStore?
+    
+
     
 }

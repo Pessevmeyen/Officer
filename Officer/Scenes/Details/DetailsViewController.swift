@@ -90,6 +90,7 @@ final class DetailsViewController: UIViewController {
        
     }
     
+    
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
 //        let value = UIInterfaceOrientation.portrait.rawValue
@@ -141,7 +142,7 @@ final class DetailsViewController: UIViewController {
     }
     
     private func setOfficeAnnotation() {
-        mapView.addAnnotation(Annotation(coordinate: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), title: viewModel?.name ?? "", subtitle: viewModel?.address ?? ""))
+        mapView.addAnnotation(Annotation(id: viewModel?.id ?? 0, coordinate: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), title: viewModel?.name ?? "", subtitle: viewModel?.address ?? ""))
     }
     
     private func configureVideoPlayer() {
@@ -180,8 +181,8 @@ final class DetailsViewController: UIViewController {
     
     private func setPauseButtonToDefault() {
         playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
-        playPauseButton.alpha = 0.4
-        fullScreenButton.alpha = 0.4
+        playPauseButton.alpha = 0.3
+        fullScreenButton.alpha = 0.3
         bool = false
     }
     
@@ -196,6 +197,7 @@ final class DetailsViewController: UIViewController {
         }
     }
     
+    //play()'ler farklı, biri func ismi diğeri AVPlayerın fonksiyonu
     private func play() {
         videoPlayer.play()
     }
@@ -332,7 +334,6 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
 
 //MARK: - Collection View Flow Layout
 extension DetailsViewController: UICollectionViewDelegateFlowLayout {
-    
     // Her bir sectionda sağdan soldan yukarıdan aşağıdan ne kadar boşluk istediği.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 1, left: 5, bottom: 1, right: 1)

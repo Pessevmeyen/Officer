@@ -25,8 +25,6 @@ final class MapKitViewController: UIViewController {
     
     var locationManager = CLLocationManager()
     
-    var annotationIndex: Int?
-    
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
             mapView.mapType = .standard
@@ -84,10 +82,9 @@ final class MapKitViewController: UIViewController {
     }
     
     private func setPins() {
-        
         viewModel?.officesListViewModel.forEach { model in
-            annotationIndex = model.id
-            mapView.addAnnotation(Annotation(coordinate: .init(latitude: model.latitude ?? 0.0,
+            mapView.addAnnotation(Annotation(id: model.id ?? 0,
+                                             coordinate: .init(latitude: model.latitude ?? 0.0,
                                                                longitude: model.longitude ?? 0.0),
                                              title: model.name ?? "",
                                              subtitle: model.address ?? ""))
@@ -111,14 +108,13 @@ final class MapKitViewController: UIViewController {
 //MARK: - MapKit Delegates
 extension MapKitViewController: MKMapViewDelegate {
     
-    
     //MARK: Setting annotation and annotation items
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else {
             return nil
         }
         
-        let annotationIdentifier = "\(annotationIndex ?? 0)"
+        let annotationIdentifier = "annotationIdentifier"
         var annotationView: MKAnnotationView?
         if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
             annotationView = dequeuedAnnotationView
@@ -144,8 +140,6 @@ extension MapKitViewController: MKMapViewDelegate {
           return annotationView
     }
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    }
     
     //MARK: Setting annotation buttons
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -173,15 +167,10 @@ extension MapKitViewController: MKMapViewDelegate {
                 }
             }
         } else {
-            if let routeID = Int(view.reuseIdentifier ?? "") {
-                router?.routeToDetails(indexID: routeID)
-            }
-            
+            let routeID = (view.annotation as! Annotation).id
+            router?.routeToDetails(indexID: routeID)
         }
-        
     }
-    
-    
 }
 
 //MARK: - Core Location Delegates
