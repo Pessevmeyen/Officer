@@ -12,6 +12,7 @@ import CoreData
 protocol OfficeDisplayLogic: AnyObject {
     func displayViewModelData(viewModel: Office.Fetch.ViewModel)
     func displayID(idModel: [Int])
+    func displayFilterConstants(filterConstants: [FilterItems])
 }
 
 protocol AnimationDelegate: AnyObject {
@@ -103,15 +104,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         //Buradan sonra artık text Field'a dokunduğumuzda picker view gibi davranacak
         textField.inputView = pickerView
         
-        let dateInterval: FilterItems = .init(first: "Date", second: ["?"]) //dolacak
-        let capacityInterval: FilterItems = .init(first: "Capacity", second: Constants.capacityArray)
-        let roomsInterval: FilterItems = .init(first: "Rooms", second: Constants.roomsArray)
-        let spaceInterval: FilterItems = .init(first: "Space", second: Constants.spaceArray)
-        
-        itemList.append(dateInterval)
-        itemList.append(capacityInterval)
-        itemList.append(roomsInterval)
-        itemList.append(spaceInterval)
+        interactor?.fetchFilterConstants(filterConstants: itemList)
     }
     
     // Creates Toolbar Button
@@ -269,6 +262,10 @@ extension OfficeViewController: OfficeDisplayLogic {
     
     func displayID(idModel: [Int]) {
         idCoreData = idModel
+    }
+    
+    func displayFilterConstants(filterConstants: [FilterItems]) {
+        itemList = filterConstants
     }
     
     

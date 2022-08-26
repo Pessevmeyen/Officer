@@ -16,6 +16,7 @@ protocol OfficeBusinessLogic: AnyObject {
     func fetchDataFromCoreData(reqeust: [Int])
     func saveDataToCoreData(model: Office.Fetch.ViewModel.OfficeModel)
     func deleteFromCoreData(modelID: Int)
+    func fetchFilterConstants(filterConstants: [FilterItems])
 }
 
 protocol OfficeDataStore: AnyObject {
@@ -24,10 +25,10 @@ protocol OfficeDataStore: AnyObject {
 }
 
 final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
-
+    
     var presenter: OfficePresentationLogic?
     var worker: OfficeWorkingLogic = OfficeWorker()
-    
+
     
     init(worker: OfficeWorkingLogic) {
         self.worker = worker
@@ -81,9 +82,19 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
         //print(filteredData)
     }
     
+    func fetchFilterConstants(filterConstants: [FilterItems]) {
+        worker.getFilterConstans { [weak self] result in
+            self?.presenter?.presentFilterConstants(filterConstants: result)
+        }
+    }
+    
+    
+    
     
     func saveDataToCoreData(model: Office.Fetch.ViewModel.OfficeModel) {
-        worker.saveToCoreData(model: model)
+        worker.getFilterConstans { [weak self] result in
+            self?.presenter?.presentFilterConstants(filterConstants: result)
+        }
     }
     
     

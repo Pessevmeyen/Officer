@@ -11,6 +11,7 @@ import UIKit
 protocol OfficePresentationLogic: AnyObject {
     func presentRespondedData(response: Office.Fetch.Response)
     func presentCoreData(response: [Int])
+    func presentFilterConstants(filterConstants: [FilterItems])
 }
 
 final class OfficePresenter: OfficePresentationLogic {
@@ -34,6 +35,10 @@ final class OfficePresenter: OfficePresentationLogic {
                                                               longitude: $0.location?.longitude))
         }
         viewController?.displayViewModelData(viewModel: Office.Fetch.ViewModel(officesListViewModel: offices)) // Presenter da view controller'a diyor, veriler hazır, office listesini gösterebilirsin
+    }
+    
+    func presentFilterConstants(filterConstants: [FilterItems]) {
+        viewController?.displayFilterConstants(filterConstants: filterConstants)
     }
     
     func presentCoreData(response: [Int]) {
