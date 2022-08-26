@@ -295,6 +295,7 @@
 			children = (
 				8909FAE328735A0700F84927 /* AppDelegate.swift */,
 				8909FAE528735A0700F84927 /* SceneDelegate.swift */,
+				89DD3CC928B42845005EDB56 /* Annotation.swift */,
 				8909FAEC28735A0A00F84927 /* ImageLiterals.xcassets */,
 				89637C0B28B6BD00002055F6 /* ColorLiterals.xcassets */,
 				89890FDE28B6568A004170B6 /* video.mp4 */,
@@ -419,7 +420,6 @@
 			isa = PBXGroup;
 			children = (
 				8996D4EA28AFBEBE00342590 /* MapKit.storyboard */,
-				89DD3CC928B42845005EDB56 /* Annotation.swift */,
 				8996D4EB28AFBEBE00342590 /* MapKitViewController.swift */,
 				8996D4ED28AFBEBE00342590 /* MapKitInteractor.swift */,
 				8996D4EC28AFBEBE00342590 /* MapKitPresenter.swift */,
