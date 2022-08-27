@@ -31,6 +31,7 @@ class PageViewController: UIPageViewController, AnimationDelegate {
         hideBackBarButton()
         
         setRightBarButtonItem()
+        setLeftBarButtonItem()
         
     }
     
@@ -62,11 +63,23 @@ class PageViewController: UIPageViewController, AnimationDelegate {
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(setRightBarButtonItem), userInfo: nil, repeats: false)
     }
     
+    private func setLeftBarButtonItem() {
+        let logOutButton = UIBarButtonItem.init(title: "Log Out", style: UIBarButtonItem.Style.done, target: self, action: #selector(logOut))
+        navigationItem.leftBarButtonItems = [logOutButton]
+    }
+    
     //MARK: @objc Functions
     @objc private func setRightBarButtonItem() {
         let favoritesScreenButton = UIBarButtonItem.init(image: UIImage(named: "custom.heart.text.square"), style: .done, target: self, action: #selector(goToFavoritesScreen))
         favoritesScreenButton.tintColor = #colorLiteral(red: 0.5294117647, green: 0.1285524964, blue: 0.5745313764, alpha: 1)
         navigationItem.rightBarButtonItems = [favoritesScreenButton]
+    }
+    
+    @objc private func logOut() {
+        let storyboard = UIStoryboard(name: Constants.welcomeStoryboardName, bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: Constants.welcomeIdentifier)
+        controller.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     // When user click favorite button, right bar button turns the string to notify user

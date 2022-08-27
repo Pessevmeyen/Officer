@@ -10,14 +10,17 @@ import Foundation
 // swiftlint:disable nesting
 enum Register {
     
-    enum Case {
+    enum Fetch {
         
         struct Request {
-            
+            let email: String?
+            let password: String?
         }
         
         struct Response {
-            
+            let alertTitle: String?
+            let alertMessage: String?
+            let actionTitle: String?
         }
         
         struct ViewModel {

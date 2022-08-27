@@ -26,12 +26,13 @@ class WelcomeViewController: UIViewController {
             // hide
         }
         
+        navigationItem.hidesBackButton = true
+        
         setupUI()
         
         buttonsBorderColors()
         
     }
-    
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection) // super ekledik sorun çıkarıcak mı bak?

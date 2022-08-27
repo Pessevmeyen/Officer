@@ -31,6 +31,14 @@ struct Constants {
     
     
     
+    
+    //MARK: - Welcome Storyboard
+    static let welcomeStoryboardName = "Main"
+    static let welcomeIdentifier = "WelcomeViewController"
+    
+    
+    
+    
     //MARK: - Login Storyboard
     static let loginIdentifier = "LoginViewController"
     static let loginStoryboardName = "Login"

@@ -12,7 +12,8 @@
 //
 //   let offices = try? newJSONDecoder().decode(Offices.self, from: jsonData)
 
-import Foundation
+
+import UIKit
 
 public extension Bundle {
     /// Returns String value for the specified key from bundle dictionary.
@@ -71,6 +72,7 @@ struct NetworkManager {
         }.resume()
     }
 }
+
 
 
 
