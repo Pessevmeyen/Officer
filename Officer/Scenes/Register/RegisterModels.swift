@@ -14,7 +14,7 @@ enum Register {
         
         struct Request {
             let email: String?
-            let password: String?
+            var password: String?
         }
         
         struct Response {

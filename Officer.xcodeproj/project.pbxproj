@@ -342,8 +342,8 @@
 			children = (
 				894D63EE2898F3B3001CF252 /* Login.storyboard */,
 				894D63EF2898F3B3001CF252 /* LoginViewController.swift */,
-				894D63F02898F3B3001CF252 /* LoginPresenter.swift */,
 				894D63F12898F3B3001CF252 /* LoginInteractor.swift */,
+				894D63F02898F3B3001CF252 /* LoginPresenter.swift */,
 				894D63F22898F3B3001CF252 /* LoginModels.swift */,
 				894D63F32898F3B3001CF252 /* LoginWorker.swift */,
 				894D63F42898F3B3001CF252 /* LoginRouter.swift */,

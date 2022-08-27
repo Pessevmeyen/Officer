@@ -38,16 +38,6 @@ final class RegisterInteractor: RegisterBusinessLogic, RegisterDataStore {
             print(error)
         }
         
-        //Get Data from keychain
-        guard let data = KeychainManager.get(service: "mobven.com", account: email) else {
-            print("Failed to read password")
-            return
-        }
-        
-        //Get password from keychain
-        let returnedPassword = String(decoding: data, as: UTF8.self)
-        print("Read password: \(returnedPassword)")
-        
         presenter?.presentOfficePage()
         
     }

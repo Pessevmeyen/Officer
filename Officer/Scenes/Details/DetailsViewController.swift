@@ -70,8 +70,6 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.topItem?.backButtonTitle = "Offices"
 

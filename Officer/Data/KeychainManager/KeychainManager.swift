@@ -15,11 +15,6 @@ class KeychainManager {
         case unknown(OSStatus)
     }
     
-    
-    func getPassword() {
-    }
-    
-    
     static func save(service: String, account: String, password: Data) throws {
         
         let query: [String: AnyObject] = [
@@ -42,7 +37,7 @@ class KeychainManager {
         print("saved")
         
     }
-    
+    //service: String
     
     static func get(service: String, account: String) -> Data? {
         

@@ -10,18 +10,19 @@ import Foundation
 // swiftlint:disable nesting
 enum Login {
     
-    enum Case {
+    enum Fetch {
         
         struct Request {
-            
+            let email: String?
+            var password: String?
         }
         
         struct Response {
-            
+            let password: String?
         }
         
         struct ViewModel {
-            
+            let password: String?
         }
         
     }

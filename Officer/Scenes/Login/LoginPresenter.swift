@@ -8,11 +8,15 @@
 import Foundation
 
 protocol LoginPresentationLogic: AnyObject {
-    
+    func presentPassword(response: Login.Fetch.Response)
 }
 
 final class LoginPresenter: LoginPresentationLogic {
     
     weak var viewController: LoginDisplayLogic?
+    
+    func presentPassword(response: Login.Fetch.Response) {
+        viewController?.displayPassword(password: response.password ?? "")
+    }
     
 }

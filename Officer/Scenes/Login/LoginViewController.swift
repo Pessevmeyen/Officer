@@ -8,6 +8,7 @@
 import UIKit
 
 protocol LoginDisplayLogic: AnyObject {
+    func displayPassword(password: String)
 }
 
 final class LoginViewController: UIViewController {
@@ -33,6 +34,9 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         
         title = Constants.appName
         hideKeyboardWhenTappedAround()
@@ -64,6 +68,14 @@ final class LoginViewController: UIViewController {
     }
 }
 
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        interactor?.fetchPassword(request: .init(email: emailTextField.text, password: passwordTextField.text))
+    }
+}
+
 extension LoginViewController: LoginDisplayLogic {
-    
+    func displayPassword(password: String) {
+        passwordTextField.text = password
+    }
 }
