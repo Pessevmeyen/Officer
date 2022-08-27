@@ -44,14 +44,11 @@
                                                     <outlet property="delegate" destination="nxe-uw-h5I" id="JtX-zI-u11"/>
                                                 </connections>
                                             </collectionView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AKD-d8-tKj">
+                                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="AKD-d8-tKj">
                                                 <rect key="frame" x="20" y="288" width="374" height="232"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" highlighted="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="Rrp-F1-LXl">
-                                                        <rect key="frame" x="161" y="101" width="52" height="30"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="quz-xA-7Jg"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="0.0" y="32" width="374" height="168"/>
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" imagePlacement="top">
@@ -63,31 +60,18 @@
                                                             <action selector="playPauseClicked:" destination="nxe-uw-h5I" eventType="touchUpInside" id="0Hs-av-bhk"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsJ-MG-jW9" userLabel="full screen button">
-                                                        <rect key="frame" x="334" y="184" width="36" height="23.5"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain">
-                                                            <imageReference key="image" image="fullscreen" symbolScale="large"/>
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
-                                                            <color key="baseForegroundColor" systemColor="systemGray2Color"/>
-                                                        </buttonConfiguration>
-                                                        <connections>
-                                                            <action selector="playFullScreen:" destination="nxe-uw-h5I" eventType="touchUpInside" id="diM-Uf-UCc"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="232" id="D1y-tG-dqa"/>
-                                                    <constraint firstAttribute="trailing" secondItem="dsJ-MG-jW9" secondAttribute="trailing" constant="4" id="Pxf-jE-eCh"/>
+                                                    <constraint firstItem="Rrp-F1-LXl" firstAttribute="leading" secondItem="AKD-d8-tKj" secondAttribute="leading" id="giF-Lz-LB8"/>
                                                     <constraint firstItem="Rrp-F1-LXl" firstAttribute="centerX" secondItem="AKD-d8-tKj" secondAttribute="centerX" id="lJT-Bo-3nE"/>
                                                     <constraint firstItem="Rrp-F1-LXl" firstAttribute="centerY" secondItem="AKD-d8-tKj" secondAttribute="centerY" id="qmE-uw-5Cg"/>
-                                                    <constraint firstItem="dsJ-MG-jW9" firstAttribute="top" secondItem="AKD-d8-tKj" secondAttribute="top" constant="184" id="t8n-Mo-JoD"/>
-                                                    <constraint firstItem="Rrp-F1-LXl" firstAttribute="top" secondItem="AKD-d8-tKj" secondAttribute="top" constant="101" id="tju-rY-vbM"/>
+                                                    <constraint firstItem="Rrp-F1-LXl" firstAttribute="top" secondItem="AKD-d8-tKj" secondAttribute="top" constant="32" id="tju-rY-vbM"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="0.0"/>
+                                                        <real key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="20"/>
@@ -312,7 +296,6 @@
                         <outlet property="addressLabel" destination="kY4-jP-nfb" id="1OR-pe-ejF"/>
                         <outlet property="capacityLabel" destination="545-do-7t3" id="pd5-uc-mFJ"/>
                         <outlet property="collectionView" destination="Z7C-I4-Xph" id="Rop-cK-vX0"/>
-                        <outlet property="fullScreenButton" destination="dsJ-MG-jW9" id="6Fh-n7-y78"/>
                         <outlet property="imageView" destination="DJ8-LT-nrG" id="Ndh-9s-fPZ"/>
                         <outlet property="mapView" destination="Wur-A2-ppH" id="KS7-ob-3Jd"/>
                         <outlet property="nameLabel" destination="orv-xa-y3b" id="wv6-6W-8pO"/>
@@ -329,7 +312,6 @@
     </scenes>
     <resources>
         <image name="changemap" width="11" height="10"/>
-        <image name="fullscreen" width="12" height="10"/>
         <image name="globe" catalog="system" width="128" height="121"/>
         <image name="play" width="11" height="11"/>
         <image name="reversedetailbackground" width="626" height="417"/>

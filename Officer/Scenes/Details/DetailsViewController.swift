@@ -29,6 +29,7 @@ final class DetailsViewController: UIViewController {
     }
     var locationManager = CLLocationManager()
     var videoPlayer: AVPlayer!
+    let playerController = AVPlayerViewController()
     var bool = true
     
     //MARK: @IBOutlets
@@ -43,8 +44,11 @@ final class DetailsViewController: UIViewController {
             mapView.mapType = .standard
         }
     }
-    @IBOutlet weak var fullScreenButton: UIButton!
-    @IBOutlet weak var playPauseButton: UIButton!
+    @IBOutlet weak var playPauseButton: UIButton! {
+        didSet {
+            playPauseButton.alpha = 0.05
+        }
+    }
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -146,40 +150,25 @@ final class DetailsViewController: UIViewController {
         }
         
         videoPlayer = AVPlayer(url: URL(fileURLWithPath: path))
-        
-        let playerLayer = AVPlayerLayer(player: videoPlayer)
-        playerLayer.frame.size.height = videoView.frame.size.height
-        playerLayer.frame.size.width = videoView.frame.size.width
-        playerLayer.borderWidth = 1
-        
-        videoView.layer.addSublayer(playerLayer)
+        playerController.player = videoPlayer
+        playerController.view.frame.size.height = videoView.frame.size.height
+        playerController.view.frame.size.width = videoView.frame.size.width
+        playerController.videoGravity = .resizeAspectFill
+        videoView.addSubview(playerController.view)
         videoView.addSubview(playPauseButton)
-        videoView.addSubview(fullScreenButton)
+        
+
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
-                                               object: playerLayer.player?.currentItem,
+                                               object: playerController.player?.currentItem,
                                                queue: OperationQueue.main) { [weak self] _ in
-            if (playerLayer.player?.currentItem) != nil {
-                playerLayer.player?.seek(to: .zero)
-                playerLayer.player?.pause()
-                self?.setPlayButtonToDefault()
+            if (self?.playerController.player?.currentItem) != nil {
+                self?.playerController.player?.seek(to: .zero)
+                self?.playerController.player?.pause()
             }
         }
     }
     
-    private func setPlayButtonToDefault() {
-        playPauseButton.setImage(UIImage(named: "play"), for: .normal)
-        playPauseButton.alpha = 1.0
-        fullScreenButton.alpha = 1.0
-        bool = true
-    }
-    
-    private func setPauseButtonToDefault() {
-        playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
-        playPauseButton.alpha = 0.3
-        fullScreenButton.alpha = 0.3
-        bool = false
-    }
     
     private func playPause() {
         switch videoPlayer.timeControlStatus {
@@ -206,7 +195,6 @@ final class DetailsViewController: UIViewController {
     //MARK: The Action When Right Bar Button Tapped
     @objc func changeLayout() {
         
-        //collectionView.collectionViewLayout.invalidateLayout()
         if isGridLayout { // If user on Listing ViewConstants.gridLayoutImage
             collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
             setRightBarButtonItem(buttonImage: Constants.gridLayoutImage)
@@ -236,30 +224,9 @@ final class DetailsViewController: UIViewController {
     }
     
     @IBAction func playPauseClicked(_ sender: UIButton) {
-        if bool {
-            setPauseButtonToDefault()
-            playPause()
-        } else {
-            setPlayButtonToDefault()
-            playPause()
-        }
+        playPause()
     }
     
-    @IBAction func playFullScreen(_ sender: UIButton) {
-        guard let path = Bundle.main.path(forResource: "video", ofType: "mp4") else {
-            return
-        }
-        
-        pause()
-        
-        let playerController = AVPlayerViewController()
-        let player = AVPlayer(url: URL(fileURLWithPath: path))
-        playerController.player = player
-        present(playerController, animated: true) {
-            player.play()
-        }
-        setPlayButtonToDefault()
-    }
 }
 
 

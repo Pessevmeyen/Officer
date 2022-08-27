@@ -46,6 +46,7 @@ final class WebKitViewController: UIViewController {
         dismissKeyboard()
         
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.isLoading), options: .new, context: nil)
         
     }
     
@@ -61,6 +62,10 @@ final class WebKitViewController: UIViewController {
                     indicator.isHidden = false
                 }
                 progressView.isHidden = false
+            }
+        } else if keyPath == "isLoading" {
+            if webView.isLoading == false {
+                indicator.isHidden = true
             }
         }
     }
@@ -88,14 +93,6 @@ final class WebKitViewController: UIViewController {
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
         let stopLoading = UIBarButtonItem(barButtonSystemItem: .stop, target: webView, action: #selector(webView.stopLoading))
         navigationItem.rightBarButtonItems = [refresh, stopLoading]
-    }
-    
-    @IBAction func stopLoadingButtonTapped(_ sender: UIBarButtonItem) {
-        var button = sender as UIBarButtonItem
-        button = UIBarButtonItem(barButtonSystemItem: .stop, target: webView, action: #selector(webView.stopLoading))
-        if button.isSelected {
-            indicator.isHidden = true
-        }
     }
     
     func isIndicatorAnimating(show: Bool) {
