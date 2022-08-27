@@ -21,10 +21,10 @@ final class LoginRouter: LoginRoutingLogic, LoginDataPassing {
     var dataStore: LoginDataStore?
     
     func routeToOfficePage() {
-        //self.viewController?.navigationController?.pushViewController(PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal), animated: true)
-        let storyboard = UIStoryboard(name: Constants.detailsStoryboardName, bundle: nil)
-        let destVC: DetailsViewController = storyboard.instantiateViewController(identifier: Constants.detailsIdentifier)
-        viewController?.navigationController?.pushViewController(destVC, animated: true)
+        self.viewController?.navigationController?.pushViewController(PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal), animated: true)
+//        let storyboard = UIStoryboard(name: Constants.detailsStoryboardName, bundle: nil)
+//        let destVC: DetailsViewController = storyboard.instantiateViewController(identifier: Constants.detailsIdentifier)
+//        viewController?.navigationController?.pushViewController(destVC, animated: true)
     }
     
     
