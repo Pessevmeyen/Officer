@@ -38,7 +38,7 @@ final class RegisterInteractor: RegisterBusinessLogic, RegisterDataStore {
             print(error)
         }
         
-        presenter?.presentOfficePage()
+        presenter?.presentOfficePage(response: .init(alertTitle: "Successfully Registered", alertMessage: "You have Redirected to Login Page, Log in with Your Brand New Account", actionTitle: "OK"))
         
     }
     

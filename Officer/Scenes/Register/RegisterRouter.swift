@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol RegisterRoutingLogic: AnyObject {
     func routeToOfficePage()
@@ -21,7 +22,9 @@ final class RegisterRouter: RegisterRoutingLogic, RegisterDataPassing {
     var dataStore: RegisterDataStore?
     
     func routeToOfficePage() {
-        self.viewController?.navigationController?.pushViewController(PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal), animated: true)
+        let storyboard = UIStoryboard(name: Constants.loginStoryboardName, bundle: nil)
+        let destVC: LoginViewController = storyboard.instantiateViewController(identifier: Constants.loginIdentifier)
+        viewController?.navigationController?.pushViewController(destVC, animated: true)
     }
     
 }

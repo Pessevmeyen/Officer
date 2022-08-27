@@ -9,7 +9,7 @@ import UIKit
 
 protocol RegisterDisplayLogic: AnyObject {
     func displayAlert(alertTitle: String, actionTitle: String, message: String)
-    func displayOfficePage()
+    func displayOfficePage(alertTitle: String, actionTitle: String, message: String)
 }
 
 final class RegisterViewController: UIViewController {
@@ -58,6 +58,7 @@ final class RegisterViewController: UIViewController {
     }
     
     @IBAction func signInClicked(_ sender: UIButton) {
+        
         interactor?.registerKeychain(request: .init(email: emailTextField.text, password: emailTextField.text))
     }
 }
@@ -69,7 +70,9 @@ extension RegisterViewController: RegisterDisplayLogic {
     func displayAlert(alertTitle: String, actionTitle: String, message: String) {
         getAlert(alertTitle: alertTitle, actionTitle: actionTitle, message: message)
     }
-    func displayOfficePage() {
+    func displayOfficePage(alertTitle: String, actionTitle: String, message: String) {
+        
         router?.routeToOfficePage()
+        getAlert(alertTitle: alertTitle, actionTitle: actionTitle, message: message)
     }
 }

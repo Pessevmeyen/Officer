@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RegisterPresentationLogic: AnyObject {
-    func presentOfficePage()
+    func presentOfficePage(response: Register.Fetch.Response)
     func presentAlert(response: Register.Fetch.Response)
     
 }
@@ -23,8 +23,10 @@ final class RegisterPresenter: RegisterPresentationLogic {
                                      message: response.alertMessage ?? "")
     }
     
-    func presentOfficePage() {
-        viewController?.displayOfficePage()
+    func presentOfficePage(response: Register.Fetch.Response) {
+        viewController?.displayOfficePage(alertTitle: response.alertTitle ?? "",
+                                          actionTitle: response.actionTitle ?? "",
+                                          message: response.alertMessage ?? "")
     }
     
 }
