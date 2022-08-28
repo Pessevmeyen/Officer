@@ -127,7 +127,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     
     private func refreshTableView() {
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
     }
     
