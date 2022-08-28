@@ -123,7 +123,7 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
     }
     
     func getAlert() {
-        presenter?.presentAlert(response: .init(alertTitle: "Error", alertMessage: "An error occured when occuring cells. Application will be terminated!", actionTitle: "OK"))
+        presenter?.presentAlert(response: .init(alertTitle: "Error", alertMessage: "An error occured when occuring cells. Please Pull to Refresh or Try Again Later", actionTitle: "OK"))
     }
     
 }

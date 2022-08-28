@@ -28,6 +28,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     var viewModel: Office.Fetch.ViewModel?
     
     var pickerView = UIPickerView()
+    let refreshControl = UIRefreshControl()
     
     var itemList = [FilterItems]()
     var idCoreData: [Int] = []
@@ -69,6 +70,9 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         
         //1
         interactor?.fetchData(request: Office.Fetch.Request()) //View controller interactor'a diyor ki, office listesini çek.
+        
+        refreshTableView()
+        
         
     }
     
@@ -121,6 +125,12 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    private func refreshTableView() {
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
     //MARK: @objc Functions
     @objc func goToFavoritesScreen() {
             router?.routeToFavorites()
@@ -131,6 +141,15 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
         interactor?.fetchDataAfterFetched() // Done tuşuna basıldığında bütün ofisleri tekrar gösterecek.
         textField.text = ""
+    }
+    
+    @objc func refresh() {
+        interactor?.fetchData(request: Office.Fetch.Request())
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+        refreshControl.endRefreshing()
+        
     }
     
 }
@@ -158,7 +177,8 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
         
         guard let model = viewModel?.officesListViewModel[indexPath.row] else {
             interactor?.getAlert()
-            fatalError("An Error Occured while dequeuering reusable cell")
+            //fatalError("An Error Occured while dequeuering reusable cell")
+            return UITableViewCell()
         }
         
         //
@@ -182,6 +202,7 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         router?.routeToDetails(index: indexPath.row) //Seçilen cell'e ne olacağını yazıyoruz. Burada önce seçilen cell'in datasını route'a gönderiyoruz. row? item?
     }
+    
     
 }
 
