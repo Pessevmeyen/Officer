@@ -9,6 +9,7 @@ import UIKit
 
 protocol LoginDisplayLogic: AnyObject {
     func displayPassword(password: String)
+    func displayAlert(alertTitle: String, actionTitle: String, message: String)
 }
 
 final class LoginViewController: UIViewController {
@@ -78,4 +79,10 @@ extension LoginViewController: LoginDisplayLogic {
     func displayPassword(password: String) {
         passwordTextField.text = password
     }
+    
+    func displayAlert(alertTitle: String, actionTitle: String, message: String) {
+        getAlert(alertTitle: alertTitle, actionTitle: actionTitle, message: message)
+    }
+    
+
 }

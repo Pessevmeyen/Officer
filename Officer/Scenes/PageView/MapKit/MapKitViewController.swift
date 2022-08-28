@@ -11,6 +11,7 @@ import CoreLocation
 
 protocol MapKitDisplayLogic: AnyObject {
     func displayLocation(viewModel: MapKit.Fetch.ViewModel)
+    func displayAlert(alertTitle: String, actionTitle: String, message: String)
 }
 
 final class MapKitViewController: UIViewController {
@@ -191,5 +192,9 @@ extension MapKitViewController: CLLocationManagerDelegate {
 extension MapKitViewController: MapKitDisplayLogic {
     func displayLocation(viewModel: MapKit.Fetch.ViewModel) {
         self.viewModel = viewModel
+    }
+    
+    func displayAlert(alertTitle: String, actionTitle: String, message: String) {
+        getAlert(alertTitle: alertTitle, actionTitle: actionTitle, message: message)
     }
 }

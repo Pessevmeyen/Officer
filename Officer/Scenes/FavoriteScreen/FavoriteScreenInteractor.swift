@@ -29,6 +29,7 @@ final class FavoriteScreenInteractor: FavoriteScreenBusinessLogic, FavoriteScree
                 self?.presenter?.presentCoreData(response: coreDataOffices)
                 self?.dataStore = coreDataOffices
             case .failure(let error):
+                self?.presenter?.presentAlert(response: .init(alertTitle: "Error", alertMessage: error.localizedDescription, actionTitle: "OK"))
                 print(error.localizedDescription)
             }
         }

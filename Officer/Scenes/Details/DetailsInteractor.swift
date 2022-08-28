@@ -9,6 +9,7 @@ import Foundation
 
 protocol DetailsBusinessLogic: AnyObject {
     func fetchDetails(request: Details.Fetch.Request)
+    func getAlert(request: Alert.Fetch.Request)
 }
 
 protocol DetailsDataStore: AnyObject {
@@ -25,7 +26,9 @@ final class DetailsInteractor: DetailsBusinessLogic, DetailsDataStore {
         self.presenter?.presentDetails(response: .init(officeDetail: officeData))
     }
     
-    
+    func getAlert(request: Alert.Fetch.Request) {
+        presenter?.presentAlert(response: .init(alertTitle: request.alertTitle, alertMessage: request.alertMessage, actionTitle: request.alertMessage))
+    }
     
     
 }

@@ -11,6 +11,7 @@ import HandyViewController
 
 protocol FavoriteScreenDisplayLogic: AnyObject {
     func displayCoreData(viewModel: [FavoriteScreen.Fetch.ViewModel.CoreDataModels])
+    func displayAlert(alertTitle: String, actionTitle: String, message: String)
 }
 
 protocol FavoriteScreenDelegate {
@@ -140,5 +141,9 @@ extension FavoriteScreenViewController: FavoriteScreenDisplayLogic {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData() //displaynews'a gelmeden reload
         }
+    }
+    
+    func displayAlert(alertTitle: String, actionTitle: String, message: String) {
+        getAlert(alertTitle: alertTitle, actionTitle: actionTitle, message: message)
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 
 protocol MapKitPresentationLogic: AnyObject {
     func presentMapKit(response: MapKit.Fetch.Response)
+    func presentAlert(response: Alert.Fetch.Response)
 }
 
 final class MapKitPresenter: MapKitPresentationLogic {
@@ -27,6 +28,12 @@ final class MapKitPresenter: MapKitPresentationLogic {
                                                               longitude: $0.location?.longitude))
         }
         viewController?.displayLocation(viewModel: .init(officesListViewModel: offices))
+    }
+    
+    func presentAlert(response: Alert.Fetch.Response) {
+        viewController?.displayAlert(alertTitle: response.alertTitle ?? "Error",
+                                     actionTitle: response.actionTitle ?? "OK",
+                                     message: response.alertMessage ?? "Error")
     }
     
     

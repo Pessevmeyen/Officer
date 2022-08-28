@@ -13,6 +13,7 @@ protocol OfficeDisplayLogic: AnyObject {
     func displayViewModelData(viewModel: Office.Fetch.ViewModel)
     func displayID(idModel: [Int])
     func displayFilterConstants(filterConstants: [FilterItems])
+    func displayAlert(alertTitle: String, actionTitle: String, message: String)
 }
 
 protocol AnimationDelegate: AnyObject {
@@ -125,6 +126,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
             router?.routeToFavorites()
         }
     
+    //dismiss olacak sadece
     @objc private func dismissButton() {
         view.endEditing(true)
         interactor?.fetchDataAfterFetched() // Done tuşuna basıldığında bütün ofisleri tekrar gösterecek.
@@ -150,23 +152,26 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
     //MARK: This rows occurs from what
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.officeCellIdentifier, for: indexPath) as? OfficeCell else {
+            interactor?.getAlert()
             fatalError("An Error Occured while dequeuering reusable cell")
         }
         
         guard let model = viewModel?.officesListViewModel[indexPath.row] else {
+            interactor?.getAlert()
             fatalError("An Error Occured while dequeuering reusable cell")
         }
         
+        //
         interactor?.fetchDataFromCoreData(reqeust: idCoreData)
 
         cell.configureCell(viewModel: model)
         cell.delegate = self
-        cell.like = true
+        cell.isFavorited = true
         cell.favoriteButton.setImage(UIImage(named: "disfav"), for: .normal)
         for item in idCoreData {
             if item == model.id {
                 cell.favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
-                cell.like = false
+                cell.isFavorited = false
             }
         }
         return cell
@@ -266,6 +271,10 @@ extension OfficeViewController: OfficeDisplayLogic {
     
     func displayFilterConstants(filterConstants: [FilterItems]) {
         itemList = filterConstants
+    }
+    
+    func displayAlert(alertTitle: String, actionTitle: String, message: String) {
+        getAlert(alertTitle: alertTitle, actionTitle: actionTitle, message: message)
     }
     
     

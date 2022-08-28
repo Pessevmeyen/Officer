@@ -25,7 +25,7 @@ class OfficeCell: UITableViewCell {
     @IBOutlet weak var spaceLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     
-    var like: Bool = true
+    var isFavorited: Bool = true
     
     weak var delegate: OfficeCellDelegate?
     
@@ -41,23 +41,31 @@ class OfficeCell: UITableViewCell {
         
         let favoriteButton = sender as UIButton
         
-        if like == false { //! yaptık çünkü User Defaultsa kaydolmamış olsa bile her türlü default olarak false gelecek,
+        if isFavorited == false { //! yaptık çünkü User Defaultsa kaydolmamış olsa bile her türlü default olarak false gelecek,
             
             favoriteButton.setImage(UIImage(named: "disfav"), for: .normal)
             
             delegate?.favoriteDeleted(model: cellModel)
             
-            like = true
+            isFavorited = true
         } else {
             
             favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
             
             delegate?.favoriteAdded(model: cellModel)
             
-            like = false
+            isFavorited = false
         }
     }
     
+//    cell.isFavorited = true
+//    cell.favoriteButton.setImage(UIImage(named: "disfav"), for: .normal)
+//    for item in idCoreData {
+//        if item == model.id {
+//            cell.favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
+//            cell.like = false
+//        }
+//    }
     
     //MARK: What cell Show
     func configureCell(viewModel: Office.Fetch.ViewModel.OfficeModel) {

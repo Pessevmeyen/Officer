@@ -14,6 +14,7 @@ import AVKit
 
 protocol DetailsDisplayLogic: AnyObject {
     func displayDetailsList(viewModel: Details.Fetch.ViewModel)
+    func displayAlert(alertTitle: String, actionTitle: String, message: String)
 }
 
 final class DetailsViewController: UIViewController {
@@ -152,6 +153,7 @@ final class DetailsViewController: UIViewController {
     
     private func configureVideoPlayer() {
         guard let path = Bundle.main.path(forResource: "video", ofType: "mp4") else {
+            interactor?.getAlert(request: .init(alertTitle: "Error", alertMessage: "Video Not Found! Please try again later", actionTitle: "OK"))
             debugPrint("video not found")
             return
         }
@@ -284,6 +286,7 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     // This items occurs from what
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.detailsCellReuseIdentifier, for: indexPath) as? DetailsCell else {
+            interactor?.getAlert(request: .init(alertTitle: "Error", alertMessage: "An error occured when occuring cells. Application will be terminated!", actionTitle: "OK"))
             fatalError("An Error Occured While Reusable Cell")
         }
         guard let model = self.viewModel else {
@@ -393,5 +396,9 @@ extension DetailsViewController: DetailsDisplayLogic {
         DispatchQueue.main.async { [weak self] in
             self?.collectionView.reloadData()
         }
+    }
+    
+    func displayAlert(alertTitle: String, actionTitle: String, message: String) {
+        getAlert(alertTitle: alertTitle, actionTitle: actionTitle, message: message)
     }
 }

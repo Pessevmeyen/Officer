@@ -9,6 +9,7 @@ import Foundation
 
 protocol LoginPresentationLogic: AnyObject {
     func presentPassword(response: Login.Fetch.Response)
+    func presentAlert(response: Alert.Fetch.Response)
 }
 
 final class LoginPresenter: LoginPresentationLogic {
@@ -17,6 +18,12 @@ final class LoginPresenter: LoginPresentationLogic {
     
     func presentPassword(response: Login.Fetch.Response) {
         viewController?.displayPassword(password: response.password ?? "")
+    }
+    
+    func presentAlert(response: Alert.Fetch.Response) {
+        viewController?.displayAlert(alertTitle: response.alertTitle ?? "Error",
+                                     actionTitle: response.actionTitle ?? "OK",
+                                     message: response.alertMessage ?? "Error")
     }
     
 }

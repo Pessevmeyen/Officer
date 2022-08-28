@@ -33,7 +33,7 @@ final class MapKitInteractor: MapKitBusinessLogic, MapKitDataStore {
                 }
                 self?.presenter?.presentMapKit(response: .init(officeResponse: officeArray))
             case .failure(let error):
-                print(error.localizedDescription)
+                self?.presenter?.presentAlert(response: .init(alertTitle: "Error", alertMessage: error.localizedDescription, actionTitle: "OK"))
             }
         }
     }

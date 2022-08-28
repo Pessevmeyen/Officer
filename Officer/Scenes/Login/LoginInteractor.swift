@@ -26,9 +26,14 @@ final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             return
         }
         
-        worker.getPassword(email: email) { [weak self] password in
+        worker.getPassword(email: email) { [weak self] result in
+            switch result {
+            case .success(let password):
                 self?.presenter?.presentPassword(response: .init(password: password))
+            case .failure(let error):
+                self?.presenter?.presentAlert(response: .init(alertTitle: "Error", alertMessage: error.localizedDescription, actionTitle: "OK"))
             }
         }
+    }
 }
 

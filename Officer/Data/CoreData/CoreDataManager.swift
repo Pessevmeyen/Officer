@@ -15,8 +15,9 @@ protocol CoreDataManagerDelegate {
     func deleteFromCoreData(officeId: Int)
 }
 
-
-class CoreDataManager {
+final class CoreDataManager {
+//    private init() {}
+//    static let shared = CoreDataManager()
     
     //MARK: Saving To Core Data
     func saveToCoreData(model: Office.Fetch.ViewModel.OfficeModel) {

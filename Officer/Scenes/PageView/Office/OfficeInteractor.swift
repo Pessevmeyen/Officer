@@ -17,6 +17,7 @@ protocol OfficeBusinessLogic: AnyObject {
     func saveDataToCoreData(model: Office.Fetch.ViewModel.OfficeModel)
     func deleteFromCoreData(modelID: Int)
     func fetchFilterConstants(filterConstants: [FilterItems])
+    func getAlert()
 }
 
 protocol OfficeDataStore: AnyObject {
@@ -50,10 +51,19 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
                 guard let offices = self?.offices else { return }
                 
                 //Coredatayı kontrol et logic yaz isLike durumuna bak. aldıktan sonra presenter'a
+//                CoreDataManager.shared.getFromCoreData { result in
+//                    switch result {
+//                    case .success(let officeIds):
+//                        break
+//                    case .failure(let error):
+//                        //bi öncepresenter.presentError(message: error.localizedDescription)
+//                    }
+//                }
                 
                 self?.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: offices)) //Buradan presenter'a
             case .failure(let error):
-                fatalError("\(error)")
+                self?.presenter?.presentAlert(response: .init(alertTitle: "Error", alertMessage: error.localizedDescription, actionTitle: "OK"))
+                
             }
         }
     }
@@ -76,6 +86,7 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
         }
         //itemlist gönderilecek
         guard let filteredData = filteredData else {
+            presenter?.presentAlert(response: .init(alertTitle: "Error", alertMessage: "An error occured when filtering. Please try again later", actionTitle: "OK"))
             fatalError()
         }
         self.presenter?.presentRespondedData(response: Office.Fetch.Response(officeResponse: (filteredData))) //Buradan presenter'a aktarılıyor.
@@ -102,13 +113,17 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
             case .success(let response):
                 self?.presenter?.presentCoreData(response: response)
             case .failure(let error):
-                fatalError("\(error)")
+                self?.presenter?.presentAlert(response: .init(alertTitle: "Error", alertMessage: error.localizedDescription, actionTitle: "OK"))
             }
         }
     }
     
     func deleteFromCoreData(modelID: Int) {
         worker.deleteDatasFromCoreData(modelID: modelID)
+    }
+    
+    func getAlert() {
+        presenter?.presentAlert(response: .init(alertTitle: "Error", alertMessage: "An error occured when occuring cells. Application will be terminated!", actionTitle: "OK"))
     }
     
 }

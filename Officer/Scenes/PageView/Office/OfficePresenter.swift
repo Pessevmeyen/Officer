@@ -12,6 +12,7 @@ protocol OfficePresentationLogic: AnyObject {
     func presentRespondedData(response: Office.Fetch.Response)
     func presentCoreData(response: [Int])
     func presentFilterConstants(filterConstants: [FilterItems])
+    func presentAlert(response: Alert.Fetch.Response)
 }
 
 final class OfficePresenter: OfficePresentationLogic {
@@ -43,6 +44,12 @@ final class OfficePresenter: OfficePresentationLogic {
     
     func presentCoreData(response: [Int]) {
         viewController?.displayID(idModel: response)
+    }
+    
+    func presentAlert(response: Alert.Fetch.Response) {
+        viewController?.displayAlert(alertTitle: response.alertTitle ?? "Error",
+                                     actionTitle: response.actionTitle ?? "Error",
+                                     message: response.alertMessage ?? "Error")
     }
     
 }

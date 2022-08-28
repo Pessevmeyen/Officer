@@ -9,6 +9,7 @@ import Foundation
 
 protocol DetailsPresentationLogic: AnyObject {
     func presentDetails(response: Details.Fetch.Response)
+    func presentAlert(response: Alert.Fetch.Response)
 }
 
 final class DetailsPresenter: DetailsPresentationLogic {
@@ -27,6 +28,12 @@ final class DetailsPresenter: DetailsPresentationLogic {
                                                                               space: office?.space,
                                                                               latitude: office?.location?.latitude,
                                                                               longitude: office?.location?.longitude))
+    }
+    
+    func presentAlert(response: Alert.Fetch.Response) {
+        viewController?.displayAlert(alertTitle: response.alertTitle ?? "Error",
+                                     actionTitle: response.actionTitle ?? "OK",
+                                     message: response.alertMessage ?? "Error")
     }
     
 }

@@ -9,6 +9,7 @@ import Foundation
 
 protocol FavoriteScreenPresentationLogic: AnyObject {
     func presentCoreData(response: [FavoriteScreen.Fetch.ViewModel.CoreDataModels])
+    func presentAlert(response: Alert.Fetch.Response)
 }
 
 final class FavoriteScreenPresenter: FavoriteScreenPresentationLogic {
@@ -17,6 +18,12 @@ final class FavoriteScreenPresenter: FavoriteScreenPresentationLogic {
     
     func presentCoreData(response: [FavoriteScreen.Fetch.ViewModel.CoreDataModels]) {
         viewController?.displayCoreData(viewModel: response)
+    }
+    
+    func presentAlert(response: Alert.Fetch.Response) {
+        viewController?.displayAlert(alertTitle: response.alertTitle ?? "Error",
+                                     actionTitle: response.actionTitle ?? "OK",
+                                     message: response.alertMessage ?? "Error")
     }
 
 }

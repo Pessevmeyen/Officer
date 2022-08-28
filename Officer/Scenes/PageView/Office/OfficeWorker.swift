@@ -30,6 +30,7 @@ final class OfficeWorker: OfficeWorkingLogic {
             case .failure(let error):
                 completion(.failure(error))
             }
+            
         }
         
     }
