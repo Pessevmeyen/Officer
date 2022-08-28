@@ -38,7 +38,7 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
     var filteredOffices: OfficeDataArray? //Filtreden gelen verilerin officeleri
     
     
-    
+    //MARK: Fetching Data Process
     //2
     func fetchData(request: Office.Fetch.Request) { //interactor da worker'a diyor, office listesini getir.
         worker.getRequestedData { [weak self] result in
@@ -90,12 +90,10 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
     
     
     
-    
+    //MARK: Core Data Process
     func saveDataToCoreData(model: Office.Fetch.ViewModel.OfficeModel) {
         worker.saveToCoreData(model: model)
     }
-    
-    
     
     //Cellde göstereceğimiz dataları çağırıyoruz.
     func fetchDataFromCoreData(reqeust: [Int]) {
@@ -108,8 +106,6 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
             }
         }
     }
-    
-    
     
     func deleteFromCoreData(modelID: Int) {
         worker.deleteDatasFromCoreData(modelID: modelID)

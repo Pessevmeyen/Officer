@@ -93,6 +93,13 @@ final class DetailsViewController: UIViewController {
        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+    }
+    
     // MARK: Setup
     
     private func setup() {

@@ -25,7 +25,6 @@ final class RegisterInteractor: RegisterBusinessLogic, RegisterDataStore {
         guard let email = request.email,
               let password = request.password,
               !email.isEmpty, !password.isEmpty else {
-            
             presenter?.presentAlert(response: .init(alertTitle: "Error", alertMessage: "E-mail and Password Must be Filled!", actionTitle: "Try Again"))
             return
         }
@@ -35,7 +34,7 @@ final class RegisterInteractor: RegisterBusinessLogic, RegisterDataStore {
             try KeychainManager.save(service: "mobven.com", account: email, password: (password.data(using: .utf8))!)
             print("saved")
         } catch {
-            print(error)
+            fatalError("\(error)")
         }
         
         presenter?.presentOfficePage(response: .init(alertTitle: "Successfully Registered", alertMessage: "You have Redirected to Login Page, Log in with Your Brand New Account", actionTitle: "OK"))
