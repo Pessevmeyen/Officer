@@ -126,7 +126,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func refreshTableView() {
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull Down to Refresh")
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
     }
@@ -143,7 +143,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         textField.text = ""
     }
     
-    @objc func refresh() {
+    @objc private func refresh() {
         interactor?.fetchData(request: Office.Fetch.Request())
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
