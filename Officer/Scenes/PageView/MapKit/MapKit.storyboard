@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GzG-42-7qV">
-                                <rect key="frame" x="30" y="120" width="354" height="724"/>
+                                <rect key="frame" x="30" y="120" width="354" height="748"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="25"/>
@@ -65,7 +65,7 @@
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="GzG-42-7qV" secondAttribute="bottom" constant="52" id="0iZ-6y-mnU"/>
+                            <constraint firstAttribute="bottom" secondItem="GzG-42-7qV" secondAttribute="bottom" constant="28" id="0iZ-6y-mnU"/>
                             <constraint firstAttribute="bottom" secondItem="nBV-Mp-pgv" secondAttribute="bottom" id="2jb-gx-Bf1"/>
                             <constraint firstItem="IJl-7F-sqk" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="10" id="593-wy-YDq"/>
                             <constraint firstItem="nBV-Mp-pgv" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="6Wt-2B-AmP"/>

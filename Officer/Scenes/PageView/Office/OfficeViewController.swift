@@ -150,11 +150,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
             self?.tableView.reloadData()
         }
     }
-    
 }
-
-
-
 //MARK: EXTENSIONS ------------------------------------------
 
 
