@@ -39,13 +39,11 @@ class KeychainManager {
     }
     //service: String
     
-    static func get(service: String, account: String, password: Data) -> Data? {
+    static func get(account: String) -> Data? {
         
         let query: [String: AnyObject] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: service as AnyObject,
             kSecAttrAccount as String: account as AnyObject,
-            kSecValueData as String: password as AnyObject,
             kSecReturnData as String: kCFBooleanTrue,
             kSecMatchLimit as String: kSecMatchLimitOne
         ]

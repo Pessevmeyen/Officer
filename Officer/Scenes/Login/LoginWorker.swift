@@ -8,17 +8,16 @@
 import Foundation
 
 protocol LoginWorkingLogic: AnyObject {
-    func getPassword(account: String, password: Data, completion: @escaping ((Result<String, Error>) -> Void))
+    func getPassword(account: String, completion: @escaping ((Result<String, Error>) -> Void))
 }
 
 final class LoginWorker: LoginWorkingLogic {
     
-    func getPassword(account: String, password: Data, completion: @escaping ((Result<String, Error>) -> Void)) {
+    func getPassword(account: String, completion: @escaping ((Result<String, Error>) -> Void)) {
         
         //Get Data from keychain
-        guard let data = KeychainManager.get(service: "mobven.com", account: account, password: password) else {
-            completion(.failure(Error.self as! Error))
-            print("Failed to read password")
+        guard let data = KeychainManager.get(account: account) else {
+            print("There is No Registered Account")
             return
         }
         
