@@ -173,9 +173,6 @@ final class DetailsViewController: UIViewController {
             mapView.mapType = .standard
         }
     }
-    
-
-    
 }
 
 

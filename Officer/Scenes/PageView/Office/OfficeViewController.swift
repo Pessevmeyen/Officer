@@ -145,8 +145,8 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func refresh() {
         interactor?.fetchData(request: Office.Fetch.Request())
-        refreshControl.endRefreshing()
         DispatchQueue.main.async { [weak self] in
+            self?.refreshControl.endRefreshing()
             self?.tableView.reloadData()
         }
     }
@@ -185,14 +185,7 @@ extension OfficeViewController: UITableViewDelegate, UITableViewDataSource{
 
         cell.configureCell(viewModel: model)
         cell.delegate = self
-        cell.isFavorited = true
-        cell.favoriteButton.setImage(UIImage(named: "disfav"), for: .normal)
-        for item in idCoreData {
-            if item == model.id {
-                cell.favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
-                cell.isFavorited = false
-            }
-        }
+        cell.favorites(ids: idCoreData)
         return cell
         
     }

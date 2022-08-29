@@ -58,14 +58,17 @@ class OfficeCell: UITableViewCell {
         }
     }
     
-//    cell.isFavorited = true
-//    cell.favoriteButton.setImage(UIImage(named: "disfav"), for: .normal)
-//    for item in idCoreData {
-//        if item == model.id {
-//            cell.favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
-//            cell.like = false
-//        }
-//    }
+    func favorites(ids: [Int]) {
+        
+        isFavorited = true
+        favoriteButton.setImage(UIImage(named: "disfav"), for: .normal)
+        for item in ids {
+            if item == cellModel.id {
+                favoriteButton.setImage(UIImage(named: "fav"), for: .normal)
+                isFavorited = false
+            }
+        }
+    }
     
     //MARK: What cell Show
     func configureCell(viewModel: Office.Fetch.ViewModel.OfficeModel) {

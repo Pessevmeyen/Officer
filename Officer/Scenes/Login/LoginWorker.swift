@@ -23,7 +23,6 @@ final class LoginWorker: LoginWorkingLogic {
         
         //Get password from keychain
         let returnedPassword = String(decoding: data, as: UTF8.self)
-        print(returnedPassword)
         completion(.success(returnedPassword))
     }
     
