@@ -78,7 +78,13 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        print("full screnden donuldu")
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("dismiss"), object: nil, queue: OperationQueue.main) { [weak self] _ in
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("dismiss"), object: nil)
     }
     
     

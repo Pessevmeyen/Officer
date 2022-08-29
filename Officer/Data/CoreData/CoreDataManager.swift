@@ -126,11 +126,8 @@ final class CoreDataManager {
             } else {
                 fatalError()
             }
-            
         } catch {
             fatalError()
         }
     }
-    
-    
 }

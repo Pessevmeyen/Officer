@@ -10,14 +10,11 @@
         <!--Favorite Screen View Controller-->
         <scene sceneID="D3m-6j-bBI">
             <objects>
-                <viewController storyboardIdentifier="FavoriteScreenViewController" id="nxe-uw-h5I" customClass="FavoriteScreenViewController" customModule="Officer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="chM-je-gA4">
+                <viewController storyboardIdentifier="FavoriteScreenViewController" modalPresentationStyle="pageSheet" id="nxe-uw-h5I" customClass="FavoriteScreenViewController" customModule="Officer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="chM-je-gA4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favoritebackground" translatesAutoresizingMaskIntoConstraints="NO" id="pDB-kZ-Xmg">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SEC-vR-OVI">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -31,14 +28,21 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="acR-sl-ate" firstAttribute="bottom" secondItem="SEC-vR-OVI" secondAttribute="bottom" id="DoJ-fs-ExT"/>
-                            <constraint firstItem="pDB-kZ-Xmg" firstAttribute="top" secondItem="chM-je-gA4" secondAttribute="top" id="T13-Ay-OSO"/>
-                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="pDB-kZ-Xmg" secondAttribute="trailing" id="iG9-SA-MSs"/>
-                            <constraint firstAttribute="bottom" secondItem="pDB-kZ-Xmg" secondAttribute="bottom" id="jpd-ae-eWS"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="SEC-vR-OVI" secondAttribute="trailing" id="lQl-bQ-M8B"/>
                             <constraint firstItem="SEC-vR-OVI" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="uuI-cr-boE"/>
-                            <constraint firstItem="pDB-kZ-Xmg" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="wPN-2b-ZpP"/>
                             <constraint firstItem="SEC-vR-OVI" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" id="zdR-9p-JXp"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" systemColor="systemGray2Color"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="SEC-vR-OVI" id="3EE-oq-yHa"/>
@@ -50,6 +54,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="favoritebackground" width="600" height="1064"/>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

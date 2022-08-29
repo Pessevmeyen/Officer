@@ -59,7 +59,6 @@ class OfficeCell: UITableViewCell {
     }
     
     func favorites(ids: [Int]) {
-        
         isFavorited = true
         favoriteButton.setImage(UIImage(named: "disfav"), for: .normal)
         for item in ids {

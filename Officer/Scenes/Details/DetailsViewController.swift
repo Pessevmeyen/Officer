@@ -186,7 +186,7 @@ extension DetailsViewController {
         let listLayout = UICollectionViewFlowLayout()
         listLayout.collectionView?.layoutIfNeeded()
         listLayout.scrollDirection = .horizontal
-        listLayout.itemSize = CGSize(width: (view.frame.size.width - 30), height: (collectionView.frame.size.width - 135))
+        listLayout.itemSize = CGSize(width: (view.frame.size.width - 30), height: (collectionView.frame.size.width - 150))
         listLayout.minimumInteritemSpacing = 5
         listLayout.minimumLineSpacing = 5
         collectionView.setCollectionViewLayout(listLayout, animated: true)

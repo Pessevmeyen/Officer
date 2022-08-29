@@ -96,11 +96,8 @@ class PageViewController: UIPageViewController, AnimationDelegate {
     @objc func goToFavoritesScreen() {
         let storyboard = UIStoryboard(name: Constants.favoriteStoryboardName, bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: Constants.favoriteIdentifier)
-//        let transitioningDelegate = HandyTransitioningDelegate(from: self, to: controller)
-//        controller.modalPresentationStyle = .custom
-//        controller.transitioningDelegate = transitioningDelegate
-        //navigationController?.pushViewController(controller, animated: true)
         presentAsSheet(controller: controller)
+
     }
 }
 
@@ -128,21 +125,21 @@ extension PageViewController: UIPageViewControllerDelegate, UIPageViewController
     }
 }
 
-public extension UIViewController {
-    func presentAsSheet(
-        controller: UIViewController?,
-        contentMode: ContentMode = .contentSize,
-        syncViewHeightWithKeyboard: Bool = true
-    ) {
-        guard let controller = controller else { return }
-        controller.modalPresentationStyle = .custom
-        let delegate = HandyTransitioningDelegate(
-            from: self,
-            to: controller,
-            contentMode: contentMode,
-            syncViewHeightWithKeyboard: syncViewHeightWithKeyboard
-        )
-        controller.transitioningDelegate = delegate
-        present(controller, animated: true, completion: nil)
-    }
-}
+//public extension UIViewController {
+//    func presentAsSheet(
+//        controller: UIViewController?,
+//        contentMode: ContentMode = .contentSize,
+//        syncViewHeightWithKeyboard: Bool = true
+//    ) {
+//        guard let controller = controller else { return }
+//        controller.modalPresentationStyle = .custom
+//        let delegate = HandyTransitioningDelegate(
+//            from: self,
+//            to: controller,
+//            contentMode: contentMode,
+//            syncViewHeightWithKeyboard: syncViewHeightWithKeyboard
+//        )
+//        controller.transitioningDelegate = delegate
+//        present(controller, animated: true, completion: nil)
+//    }
+//}

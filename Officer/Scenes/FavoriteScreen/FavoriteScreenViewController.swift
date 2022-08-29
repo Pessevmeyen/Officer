@@ -53,9 +53,14 @@ final class FavoriteScreenViewController: UIViewController {
     //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         interactor?.fetchCoreData()
         title = "Favorites"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.post(name: NSNotification.Name("dismiss"), object: nil)
+        print("favori ekranı gidiyorrrrr")
     }
 
     
@@ -79,9 +84,6 @@ final class FavoriteScreenViewController: UIViewController {
 
 //MARK: - TableView Delegate & Datasource | Number Of Rows In Section, CellForRowAt, DidSelectRowAt
 extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    
-    
     
     
     //MARK: Sectionda kaç tane row oluşacak
@@ -120,20 +122,6 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
         router?.routeToDetails(index: indexPath.row)
     }
 }
-    
-
-
-extension FavoriteScreenViewController: UIScrollViewDelegate {
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        handyScrollViewDidScroll(scrollView)
-    }
-
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint,
-                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        handyScrollViewWillEndDragging(scrollView, withVelocity: velocity)
-    }
-}
 
 extension FavoriteScreenViewController: FavoriteScreenDisplayLogic {
     func displayCoreData(viewModel: [FavoriteScreen.Fetch.ViewModel.CoreDataModels]) {
@@ -146,4 +134,6 @@ extension FavoriteScreenViewController: FavoriteScreenDisplayLogic {
     func displayAlert(alertTitle: String, actionTitle: String, message: String) {
         getAlert(alertTitle: alertTitle, actionTitle: actionTitle, message: message)
     }
+    
+    
 }

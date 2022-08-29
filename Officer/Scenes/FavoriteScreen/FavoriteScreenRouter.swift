@@ -39,8 +39,11 @@ final class FavoriteScreenRouter: FavoriteScreenRoutingLogic, FavoriteScreenData
 
         let storyboard = UIStoryboard(name: Constants.detailsStoryboardName, bundle: nil)
         let destVC: DetailsViewController = storyboard.instantiateViewController(identifier: Constants.detailsIdentifier)
+//        destVC.modalTransitionStyle = .coverVertical
+//        destVC.modalPresentationStyle = .fullScreen
         destVC.router?.dataStore?.officeData = selected
-        viewController?.navigationController?.pushViewController(destVC, animated: true)
+        self.viewController?.presentAsSheet(controller: destVC)
+        
     }
     
 }
