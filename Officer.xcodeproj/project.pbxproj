@@ -17,6 +17,7 @@
 		8909FB0528735A0B00F84927 /* OfficerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909FB0428735A0B00F84927 /* OfficerUITests.swift */; };
 		8909FB0728735A0B00F84927 /* OfficerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909FB0628735A0B00F84927 /* OfficerUITestsLaunchTests.swift */; };
 		89102EA928BC03130012A2D1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89102EA828BC03130012A2D1 /* Alert.swift */; };
+		89102EAB28BCAAF90012A2D1 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89102EAA28BCAAF80012A2D1 /* PlayerViewController.swift */; };
 		891632D8288EAD5A0048644A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891632D7288EAD5A0048644A /* Extensions.swift */; };
 		894D63E62898EFE1001CF252 /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D63DF2898EFE1001CF252 /* Details.storyboard */; };
 		894D63E72898EFE1001CF252 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D63E02898EFE1001CF252 /* DetailsViewController.swift */; };
@@ -127,6 +128,7 @@
 		8909FB0428735A0B00F84927 /* OfficerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficerUITests.swift; sourceTree = "<group>"; };
 		8909FB0628735A0B00F84927 /* OfficerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		89102EA828BC03130012A2D1 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		89102EAA28BCAAF80012A2D1 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		891632D7288EAD5A0048644A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		894D63DF2898EFE1001CF252 /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		894D63E02898EFE1001CF252 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				8909FAE528735A0700F84927 /* SceneDelegate.swift */,
 				89DD3CC928B42845005EDB56 /* Annotation.swift */,
 				89102EA828BC03130012A2D1 /* Alert.swift */,
+				89102EAA28BCAAF80012A2D1 /* PlayerViewController.swift */,
 				8909FAEC28735A0A00F84927 /* ImageLiterals.xcassets */,
 				89637C0B28B6BD00002055F6 /* ColorLiterals.xcassets */,
 				89890FDE28B6568A004170B6 /* video.mp4 */,
@@ -757,6 +760,7 @@
 				898BAA4D28A66893001990FC /* Officer.xcdatamodeld in Sources */,
 				894D63F62898F3B3001CF252 /* LoginViewController.swift in Sources */,
 				89BC6550289F150100AFEE36 /* FullScreenWorker.swift in Sources */,
+				89102EAB28BCAAF90012A2D1 /* PlayerViewController.swift in Sources */,
 				894D63E72898EFE1001CF252 /* DetailsViewController.swift in Sources */,
 				8990F14528A93E5B00A682B8 /* FavoriteScreenPresenter.swift in Sources */,
 				89D2FA2428A9512A00341C75 /* FavoriteScreenCell.swift in Sources */,

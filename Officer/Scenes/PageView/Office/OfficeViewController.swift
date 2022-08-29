@@ -145,11 +145,10 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func refresh() {
         interactor?.fetchData(request: Office.Fetch.Request())
+        refreshControl.endRefreshing()
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }
-        refreshControl.endRefreshing()
-        
     }
     
 }

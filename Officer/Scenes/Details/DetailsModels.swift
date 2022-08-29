@@ -18,6 +18,7 @@ enum Details {
         
         struct Response {
             let officeDetail: OfficeData?
+            let videoURL: URL?
         }
         
         struct ViewModel {
@@ -32,6 +33,7 @@ enum Details {
             let space: String?
             var latitude: Double?
             var longitude: Double?
+            let videoURL: URL?
             
         }
     }

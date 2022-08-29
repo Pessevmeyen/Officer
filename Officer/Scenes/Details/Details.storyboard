@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -46,28 +45,9 @@
                                             </collectionView>
                                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="AKD-d8-tKj">
                                                 <rect key="frame" x="20" y="288" width="374" height="232"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" highlighted="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="Rrp-F1-LXl">
-                                                        <rect key="frame" x="0.0" y="32" width="374" height="168"/>
-                                                        <color key="tintColor" systemColor="labelColor"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" imagePlacement="top">
-                                                            <imageReference key="image" image="play" symbolScale="large"/>
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
-                                                            <color key="baseForegroundColor" systemColor="systemGray2Color"/>
-                                                        </buttonConfiguration>
-                                                        <connections>
-                                                            <action selector="playPauseClicked:" destination="nxe-uw-h5I" eventType="touchUpInside" id="0Hs-av-bhk"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="232" id="D1y-tG-dqa"/>
-                                                    <constraint firstItem="Rrp-F1-LXl" firstAttribute="leading" secondItem="AKD-d8-tKj" secondAttribute="leading" id="giF-Lz-LB8"/>
-                                                    <constraint firstItem="Rrp-F1-LXl" firstAttribute="centerX" secondItem="AKD-d8-tKj" secondAttribute="centerX" id="lJT-Bo-3nE"/>
-                                                    <constraint firstItem="Rrp-F1-LXl" firstAttribute="centerY" secondItem="AKD-d8-tKj" secondAttribute="centerY" id="qmE-uw-5Cg"/>
-                                                    <constraint firstItem="Rrp-F1-LXl" firstAttribute="top" secondItem="AKD-d8-tKj" secondAttribute="top" constant="32" id="tju-rY-vbM"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -299,7 +279,6 @@
                         <outlet property="imageView" destination="DJ8-LT-nrG" id="Ndh-9s-fPZ"/>
                         <outlet property="mapView" destination="Wur-A2-ppH" id="KS7-ob-3Jd"/>
                         <outlet property="nameLabel" destination="orv-xa-y3b" id="wv6-6W-8pO"/>
-                        <outlet property="playPauseButton" destination="Rrp-F1-LXl" id="Oq7-he-tDn"/>
                         <outlet property="roomLabel" destination="28O-SB-wLl" id="oza-06-Hfp"/>
                         <outlet property="spaceLabel" destination="n25-7V-XDw" id="LN5-Yf-v2N"/>
                         <outlet property="videoView" destination="AKD-d8-tKj" id="dM5-3q-Wm3"/>
@@ -313,7 +292,6 @@
     <resources>
         <image name="changemap" width="11" height="10"/>
         <image name="globe" catalog="system" width="128" height="121"/>
-        <image name="play" width="11" height="11"/>
         <image name="reversedetailbackground" width="626" height="417"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -323,9 +301,6 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

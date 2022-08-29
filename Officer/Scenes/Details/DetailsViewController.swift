@@ -29,8 +29,6 @@ final class DetailsViewController: UIViewController {
         }
     }
     var locationManager = CLLocationManager()
-    var videoPlayer: AVPlayer!
-    let playerController = AVPlayerViewController()
     var bool = true
     
     //MARK: @IBOutlets
@@ -45,19 +43,12 @@ final class DetailsViewController: UIViewController {
             mapView.mapType = .standard
         }
     }
-    @IBOutlet weak var playPauseButton: UIButton! {
-        didSet {
-            playPauseButton.alpha = 0.05
-        }
-    }
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             registerCollectionView()
         }
     }
-    
-    
     
     // MARK: Object lifecycle
     
@@ -74,29 +65,19 @@ final class DetailsViewController: UIViewController {
     //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.topItem?.backButtonTitle = "Offices"
-
         collectionView.setCollectionViewLayout(setCollectionView(), animated: true)
-        
         setRightBarButtonItem(buttonImage: "gridlayoutimage") //Navigation bar'daki buttonu oluşturacak.
-        
         interactor?.fetchDetails(request: Details.Fetch.Request())
-        
         setInformation()
-        
         setOfficeAnnotation()
-        
         locationManagerSetup()
-        
         configureVideoPlayer()
-       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
     }
@@ -114,7 +95,6 @@ final class DetailsViewController: UIViewController {
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
-        
     }
     
     
@@ -124,7 +104,6 @@ final class DetailsViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.showsScale = true
@@ -132,7 +111,6 @@ final class DetailsViewController: UIViewController {
     
     // Right Bar Button
     private func setRightBarButtonItem(buttonImage: String) {
-        //navigationItem.rightBarButtonItem = UIBarButtonItem(title: "All Photos", style: .plain, target: self, action: #selector(changeLayout)) //????
         let changeLayoutButton = UIBarButtonItem.init(image: UIImage(named: buttonImage), style: .done, target: self, action: #selector(changeLayout))
         changeLayoutButton.customView?.borderWidth = 1
         navigationItem.rightBarButtonItems = [changeLayoutButton]
@@ -151,52 +129,16 @@ final class DetailsViewController: UIViewController {
         mapView.addAnnotation(Annotation(id: viewModel?.id ?? 0, coordinate: .init(latitude: viewModel?.latitude ?? 0.0, longitude: viewModel?.longitude ?? 0.0), title: viewModel?.name ?? "", subtitle: viewModel?.address ?? ""))
     }
     
+    //presenterda yap
     private func configureVideoPlayer() {
-        guard let path = Bundle.main.path(forResource: "video", ofType: "mp4") else {
-            interactor?.getAlert(request: .init(alertTitle: "Error", alertMessage: "Video Not Found! Please try again later", actionTitle: "OK"))
-            debugPrint("video not found")
-            return
-        }
-        
-        videoPlayer = AVPlayer(url: URL(fileURLWithPath: path))
-        playerController.player = videoPlayer
-        playerController.view.frame.size.height = videoView.frame.size.height
-        playerController.view.frame.size.width = videoView.frame.size.width
-        playerController.videoGravity = .resizeAspectFill
-        videoView.addSubview(playerController.view)
-        videoView.addSubview(playPauseButton)
-        
-
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
-                                               object: playerController.player?.currentItem,
-                                               queue: OperationQueue.main) { [weak self] _ in
-            if (self?.playerController.player?.currentItem) != nil {
-                self?.playerController.player?.seek(to: .zero)
-                self?.playerController.player?.pause()
-            }
-        }
-    }
+        guard let url = viewModel?.videoURL else { return }
+        let playerViewController = PlayerViewController(videoPlayer: AVPlayer(url: url))
+        addChild(playerViewController)
+        videoView.addSubview(playerViewController.view)
     
-    
-    private func playPause() {
-        switch videoPlayer.timeControlStatus {
-        case .playing:
-            pause()
-        case .paused:
-            play()
-        default:
-            break
-        }
-    }
-    
-    //play()'ler farklı, biri func ismi diğeri AVPlayerın fonksiyonu
-    private func play() {
-        videoPlayer.play()
-    }
-    
-    private func pause() {
-        videoPlayer.pause()
+        playerViewController.view.frame.size.height = videoView.frame.size.height
+        playerViewController.view.frame.size.width = videoView.frame.size.width
+  
     }
     
     
@@ -232,9 +174,7 @@ final class DetailsViewController: UIViewController {
         }
     }
     
-    @IBAction func playPauseClicked(_ sender: UIButton) {
-        playPause()
-    }
+
     
 }
 
@@ -350,7 +290,7 @@ extension DetailsViewController: MKMapViewDelegate {
             annotationView.image = UIImage(named: "building")
             annotationView.backgroundColor = .white
         }
-          return annotationView
+        return annotationView
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {

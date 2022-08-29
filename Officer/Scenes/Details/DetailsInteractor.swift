@@ -14,6 +14,7 @@ protocol DetailsBusinessLogic: AnyObject {
 
 protocol DetailsDataStore: AnyObject {
     var officeData: OfficeData? { get set }
+    var videoURL: URL? { get set }
 }
 
 final class DetailsInteractor: DetailsBusinessLogic, DetailsDataStore {
@@ -21,9 +22,19 @@ final class DetailsInteractor: DetailsBusinessLogic, DetailsDataStore {
     var presenter: DetailsPresentationLogic?
     var worker: DetailsWorkingLogic = DetailsWorker()
     var officeData: OfficeData? //Request&Response modeldeki Modelimizin kendisi.
+    var videoURL: URL?
     
     func fetchDetails(request: Details.Fetch.Request) {
-        self.presenter?.presentDetails(response: .init(officeDetail: officeData))
+        
+        guard let path = Bundle.main.path(forResource: "video", ofType: "mp4") else {
+            //interactor?.getAlert(request: .init(alertTitle: "Error", alertMessage: "Video Not Found! Please try again later", actionTitle: "OK"))
+            debugPrint("video not found")
+            return
+        }
+        
+        videoURL = URL(fileURLWithPath: path)
+        
+        self.presenter?.presentDetails(response: .init(officeDetail: officeData, videoURL: videoURL))
     }
     
     func getAlert(request: Alert.Fetch.Request) {

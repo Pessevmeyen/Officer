@@ -38,7 +38,6 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
     var offices: OfficeDataArray? //Workerdan gelen response verisi buraya aktarılıyor.
     var filteredOffices: OfficeDataArray? //Filtreden gelen verilerin officeleri
     
-    
     //MARK: Fetching Data Process
     //2
     func fetchData(request: Office.Fetch.Request) { //interactor da worker'a diyor, office listesini getir.
@@ -66,6 +65,8 @@ final class OfficeInteractor: OfficeBusinessLogic, OfficeDataStore {
                 
             }
         }
+        
+        
     }
     
     

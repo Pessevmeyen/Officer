@@ -27,7 +27,8 @@ final class DetailsPresenter: DetailsPresentationLogic {
                                                                               rooms: String(office?.rooms ?? 1),
                                                                               space: office?.space,
                                                                               latitude: office?.location?.latitude,
-                                                                              longitude: office?.location?.longitude))
+                                                                              longitude: office?.location?.longitude,
+                                                                              videoURL: response.videoURL ?? URL(string: "") ))
     }
     
     func presentAlert(response: Alert.Fetch.Response) {

@@ -22,11 +22,12 @@ final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
     func fetchPassword(request: Login.Fetch.Request) {
         
-        guard let email = request.email else {
+        guard let password = request.password,
+              let email = request.email else {
             return
         }
         
-        worker.getPassword(email: email) { [weak self] result in
+        worker.getPassword(account: email, password: Data(password.utf8)) { [weak self] result in
             switch result {
             case .success(let password):
                 self?.presenter?.presentPassword(response: .init(password: password))
