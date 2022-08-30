@@ -129,20 +129,6 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
         router?.routeToDetails(index: indexPath.row)
     }
 }
-    
-
-
-extension FavoriteScreenViewController: UIScrollViewDelegate {
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        handyScrollViewDidScroll(scrollView)
-    }
-
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint,
-                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        handyScrollViewWillEndDragging(scrollView, withVelocity: velocity)
-    }
-}
 
 extension FavoriteScreenViewController: FavoriteScreenDisplayLogic {
     func displayCoreData(viewModel: [FavoriteScreen.Fetch.ViewModel.CoreDataModels]) {

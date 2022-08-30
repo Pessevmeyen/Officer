@@ -78,6 +78,7 @@ extension LoginViewController: UITextFieldDelegate {
 extension LoginViewController: LoginDisplayLogic {
     func displayPassword(password: String) {
         passwordTextField.text = password
+        print(password)
     }
     
     func displayAlert(alertTitle: String, actionTitle: String, message: String) {

@@ -114,8 +114,6 @@ extension FullScreenViewController: UICollectionViewDelegate, UICollectionViewDa
             delegate?.fullScreenDidScroll(indexPath: visibleIndexPath)
         }
     }
-    
-    
 }
 
 

@@ -24,6 +24,7 @@ final class RegisterRouter: RegisterRoutingLogic, RegisterDataPassing {
     func routeToOfficePage() {
         let storyboard = UIStoryboard(name: Constants.loginStoryboardName, bundle: nil)
         let destVC: LoginViewController = storyboard.instantiateViewController(identifier: Constants.loginIdentifier)
+        destVC.modalPresentationStyle = .overFullScreen
         viewController?.navigationController?.pushViewController(destVC, animated: true)
     }
     

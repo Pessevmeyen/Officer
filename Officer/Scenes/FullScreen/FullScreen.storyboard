@@ -35,7 +35,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="earth" translatesAutoresizingMaskIntoConstraints="NO" id="Vjg-mx-EL5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="415" height="210.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="415" height="210"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="250" id="6NQ-Uh-Ptt"/>
                                                         <constraint firstAttribute="width" constant="415" id="KOl-O7-xzV"/>
@@ -59,6 +59,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="Vjg-mx-EL5" secondAttribute="trailing" id="JKy-Px-XrH"/>
                                                 <constraint firstItem="Vjg-mx-EL5" firstAttribute="leading" secondItem="fF4-Ex-TVS" secondAttribute="leading" id="K44-Of-ttG"/>
                                                 <constraint firstItem="Vjg-mx-EL5" firstAttribute="width" secondItem="fF4-Ex-TVS" secondAttribute="width" id="Pkh-QL-auj"/>
+                                                <constraint firstItem="Vjg-mx-EL5" firstAttribute="width" secondItem="fF4-Ex-TVS" secondAttribute="height" multiplier="83:42" id="Scf-8N-XAn"/>
                                                 <constraint firstItem="Vjg-mx-EL5" firstAttribute="height" secondItem="fF4-Ex-TVS" secondAttribute="height" id="au9-pN-Uw2"/>
                                                 <constraint firstAttribute="bottom" secondItem="Vjg-mx-EL5" secondAttribute="bottom" id="vY0-ar-DxJ"/>
                                                 <constraint firstItem="Vjg-mx-EL5" firstAttribute="top" secondItem="fF4-Ex-TVS" secondAttribute="top" id="wU9-IU-lOY"/>
