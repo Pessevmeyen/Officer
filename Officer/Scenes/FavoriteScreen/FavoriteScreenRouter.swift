@@ -42,7 +42,9 @@ final class FavoriteScreenRouter: FavoriteScreenRoutingLogic, FavoriteScreenData
 //        destVC.modalTransitionStyle = .coverVertical
 //        destVC.modalPresentationStyle = .fullScreen
         destVC.router?.dataStore?.officeData = selected
-        self.viewController?.presentAsSheet(controller: destVC)
+        viewController?.presentAsSheet(controller: destVC, contentMode: .fullScreen , syncViewHeightWithKeyboard: false)
+        //viewController?.dismiss(animated: true)
+        
         
     }
     
