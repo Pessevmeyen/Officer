@@ -40,7 +40,7 @@ final class FavoriteScreenRouter: FavoriteScreenRoutingLogic, FavoriteScreenData
         let storyboard = UIStoryboard(name: Constants.detailsStoryboardName, bundle: nil)
         let destVC: DetailsViewController = storyboard.instantiateViewController(identifier: Constants.detailsIdentifier)
         destVC.router?.dataStore?.officeData = selected
-        viewController?.navigationController?.pushViewController(destVC, animated: true)
+        viewController?.presentAsSheet(controller: destVC, contentMode: .fullScreen, syncViewHeightWithKeyboard: false)
     }
     
 }

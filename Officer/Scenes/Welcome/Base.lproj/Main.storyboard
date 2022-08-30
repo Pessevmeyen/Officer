@@ -60,7 +60,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QVT-Pz-a9V" userLabel="bottomView">
                                         <rect key="frame" x="0.0" y="376" width="320" height="152"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="m0G-rx-G3j">
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="m0G-rx-G3j">
                                                 <rect key="frame" x="20" y="-28.5" width="280" height="140.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't you have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3A5-mI-A3f">
@@ -126,11 +126,9 @@
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="m0G-rx-G3j" secondAttribute="bottom" constant="40" id="0Vl-Rl-8s4"/>
-                                            <constraint firstItem="m0G-rx-G3j" firstAttribute="centerX" secondItem="QVT-Pz-a9V" secondAttribute="centerX" id="2OW-VS-vUr"/>
-                                            <constraint firstAttribute="trailing" secondItem="m0G-rx-G3j" secondAttribute="trailing" constant="20" id="9j5-nI-ZzZ"/>
-                                            <constraint firstItem="m0G-rx-G3j" firstAttribute="centerY" secondItem="QVT-Pz-a9V" secondAttribute="centerY" constant="-20" id="UU1-LZ-tBz"/>
-                                            <constraint firstItem="m0G-rx-G3j" firstAttribute="leading" secondItem="QVT-Pz-a9V" secondAttribute="leading" constant="20" id="kdm-S9-rvW"/>
+                                            <constraint firstItem="m0G-rx-G3j" firstAttribute="leading" secondItem="QVT-Pz-a9V" secondAttribute="leading" constant="20" id="7aD-24-nbd"/>
+                                            <constraint firstItem="m0G-rx-G3j" firstAttribute="top" secondItem="QVT-Pz-a9V" secondAttribute="top" constant="-28.5" id="DCd-Fe-fOt"/>
+                                            <constraint firstItem="m0G-rx-G3j" firstAttribute="centerX" secondItem="QVT-Pz-a9V" secondAttribute="centerX" id="x0n-7P-0Nn"/>
                                         </constraints>
                                     </view>
                                 </subviews>

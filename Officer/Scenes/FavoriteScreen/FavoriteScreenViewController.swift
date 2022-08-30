@@ -57,6 +57,11 @@ final class FavoriteScreenViewController: UIViewController {
         interactor?.fetchCoreData()
         title = "Favorites"
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.post(name: NSNotification.Name("dismiss"), object: nil)
+    }
 
     
     // MARK: Setup
@@ -114,6 +119,10 @@ extension FavoriteScreenViewController: UITableViewDelegate, UITableViewDataSour
                 self?.tableView.reloadData()
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        router?.routeToDetails(index: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
