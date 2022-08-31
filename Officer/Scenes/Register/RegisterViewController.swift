@@ -71,7 +71,6 @@ extension RegisterViewController: RegisterDisplayLogic {
         getAlert(alertTitle: alertTitle, actionTitle: actionTitle, message: message)
     }
     func displayOfficePage(alertTitle: String, actionTitle: String, message: String) {
-        
         router?.routeToOfficePage()
         getAlert(alertTitle: alertTitle, actionTitle: actionTitle, message: message)
     }

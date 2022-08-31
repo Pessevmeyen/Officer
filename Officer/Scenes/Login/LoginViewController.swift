@@ -10,6 +10,7 @@ import UIKit
 protocol LoginDisplayLogic: AnyObject {
     func displayPassword(password: String)
     func displayAlert(alertTitle: String, actionTitle: String, message: String)
+    func displayOfficePage()
 }
 
 final class LoginViewController: UIViewController {
@@ -65,7 +66,7 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction func logInClicked(_ sender: UIButton) {
-        router?.routeToOfficePage()
+        interactor?.fetchRegisteredUser(request: .init(email: emailTextField.text, password: passwordTextField.text))
     }
 }
 
@@ -85,5 +86,7 @@ extension LoginViewController: LoginDisplayLogic {
         getAlert(alertTitle: alertTitle, actionTitle: actionTitle, message: message)
     }
     
-
+    func displayOfficePage() {
+        router?.routeToOfficePage()
+    }
 }
