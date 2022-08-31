@@ -36,8 +36,29 @@ class WelcomeViewController: UIViewController {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection) // super ekledik sorun çıkarıcak mı bak?
-        buttonsBorderColors() //Buna gerek var mı? kodu kaldırıp IBInspectable ile eklediğini dene
+        buttonsBorderColors()
+    }
+    
+    //MARK: All properties that UI is loaded first time.
+    func setupUI() {
         
+        appNameLabel.text = Constants.appName
+        
+        //MARK: Register Button Attributes
+        registerButton.layer.cornerRadius = 24
+        registerButton.layer.borderWidth = CGFloat(2)
+        
+        //MARK: Login Button Attributes
+        loginButton.layer.cornerRadius = 24
+        loginButton.layer.borderWidth = CGFloat(2)
+        
+        //MARK: App Name Attributes.
+        //Added with @IBInspectable but couldn't get neon like effect, so was wroten here.
+        appNameLabel.layer.shadowOffset = CGSize(width: 0, height: 1)
+        appNameLabel.layer.shadowColor = UIColor.systemOrange.cgColor
+        appNameLabel.layer.shadowRadius = 4
+        appNameLabel.layer.shadowOpacity = 1
+        appNameLabel.layer.masksToBounds = false
     }
     
     //MARK: Register Button
@@ -51,29 +72,7 @@ class WelcomeViewController: UIViewController {
     }
     
     
-    //MARK: - All properties that UI is loaded first time.
-    func setupUI() {
-        
-        appNameLabel.text = Constants.appName
-        
-        //MARK: Register Button Attributes
-        registerButton.layer.cornerRadius = 24
-        registerButton.layer.borderWidth = CGFloat(2)
-        
-        
-        //MARK: Login Button Attributes
-        loginButton.layer.cornerRadius = 24
-        loginButton.layer.borderWidth = CGFloat(2)
-        
-        
-        //MARK: App Name Attributes.
-        //Added with @IBInspectable but couldn't get neon like effect, so was wroten here.
-        appNameLabel.layer.shadowOffset = CGSize(width: 0, height: 1)
-        appNameLabel.layer.shadowColor = UIColor.systemOrange.cgColor
-        appNameLabel.layer.shadowRadius = 4
-        appNameLabel.layer.shadowOpacity = 1
-        appNameLabel.layer.masksToBounds = false
-    }
+    
     
     
 
