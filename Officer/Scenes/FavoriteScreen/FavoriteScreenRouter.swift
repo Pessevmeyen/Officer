@@ -40,7 +40,8 @@ final class FavoriteScreenRouter: FavoriteScreenRoutingLogic, FavoriteScreenData
         let storyboard = UIStoryboard(name: Constants.detailsStoryboardName, bundle: nil)
         let destVC: DetailsViewController = storyboard.instantiateViewController(identifier: Constants.detailsIdentifier)
         destVC.router?.dataStore?.officeData = selected
-        viewController?.presentAsSheet(controller: destVC, contentMode: .fullScreen, syncViewHeightWithKeyboard: false)
+        NotificationCenter.default.post(name: NSNotification.Name("changebackground"), object: nil)
+        viewController?.presentAsSheet(controller: destVC)
     }
     
 }

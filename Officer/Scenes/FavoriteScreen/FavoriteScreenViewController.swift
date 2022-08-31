@@ -18,12 +18,7 @@ protocol FavoriteScreenDelegate {
     func detectDeletingFromCell()
 }
 
-
-
 final class FavoriteScreenViewController: UIViewController {
-    func favoriteAdded(model: Office.Fetch.ViewModel.OfficeModel) {
-        
-    }
     
     var interactor: FavoriteScreenBusinessLogic?
     var router: (FavoriteScreenRoutingLogic & FavoriteScreenDataPassing)?

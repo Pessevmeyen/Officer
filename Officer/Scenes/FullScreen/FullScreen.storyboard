@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kah-E5-M9S">
-                                <rect key="frame" x="0.0" y="294" width="416" height="318"/>
+                                <rect key="frame" x="0.0" y="298.5" width="414" height="299"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Q6H-zy-ewL">
                                     <size key="itemSize" width="415" height="210.5"/>
@@ -28,18 +28,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FullScreenCell" id="3Zf-lu-pc4" customClass="FullScreenCell" customModule="Officer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="54" width="415" height="210.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="415" height="210.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fF4-Ex-TVS">
                                             <rect key="frame" x="0.0" y="0.0" width="415" height="210.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="earth" translatesAutoresizingMaskIntoConstraints="NO" id="Vjg-mx-EL5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="415" height="210"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="250" id="6NQ-Uh-Ptt"/>
-                                                        <constraint firstAttribute="width" constant="415" id="KOl-O7-xzV"/>
-                                                    </constraints>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="earth" translatesAutoresizingMaskIntoConstraints="NO" id="Vjg-mx-EL5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="415" height="210.5"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="0.0"/>
@@ -54,15 +50,10 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Vjg-mx-EL5" firstAttribute="centerY" secondItem="fF4-Ex-TVS" secondAttribute="centerY" id="3Vp-Cg-4IQ"/>
-                                                <constraint firstItem="Vjg-mx-EL5" firstAttribute="centerX" secondItem="fF4-Ex-TVS" secondAttribute="centerX" id="9tJ-kk-9Au"/>
-                                                <constraint firstAttribute="trailing" secondItem="Vjg-mx-EL5" secondAttribute="trailing" id="JKy-Px-XrH"/>
-                                                <constraint firstItem="Vjg-mx-EL5" firstAttribute="leading" secondItem="fF4-Ex-TVS" secondAttribute="leading" id="K44-Of-ttG"/>
-                                                <constraint firstItem="Vjg-mx-EL5" firstAttribute="width" secondItem="fF4-Ex-TVS" secondAttribute="width" id="Pkh-QL-auj"/>
-                                                <constraint firstItem="Vjg-mx-EL5" firstAttribute="width" secondItem="fF4-Ex-TVS" secondAttribute="height" multiplier="83:42" id="Scf-8N-XAn"/>
-                                                <constraint firstItem="Vjg-mx-EL5" firstAttribute="height" secondItem="fF4-Ex-TVS" secondAttribute="height" id="au9-pN-Uw2"/>
-                                                <constraint firstAttribute="bottom" secondItem="Vjg-mx-EL5" secondAttribute="bottom" id="vY0-ar-DxJ"/>
-                                                <constraint firstItem="Vjg-mx-EL5" firstAttribute="top" secondItem="fF4-Ex-TVS" secondAttribute="top" id="wU9-IU-lOY"/>
+                                                <constraint firstAttribute="trailing" secondItem="Vjg-mx-EL5" secondAttribute="trailing" id="0K4-RK-5wy"/>
+                                                <constraint firstItem="Vjg-mx-EL5" firstAttribute="leading" secondItem="fF4-Ex-TVS" secondAttribute="leading" id="4jp-h7-NOR"/>
+                                                <constraint firstAttribute="bottom" secondItem="Vjg-mx-EL5" secondAttribute="bottom" id="KEj-gH-gCr"/>
+                                                <constraint firstItem="Vjg-mx-EL5" firstAttribute="top" secondItem="fF4-Ex-TVS" secondAttribute="top" id="mcX-Ra-kBl"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="415" height="210.5"/>
@@ -80,10 +71,10 @@
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="kah-E5-M9S" firstAttribute="leading" secondItem="chM-je-gA4" secondAttribute="leading" id="1SM-ow-eZv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kah-E5-M9S" secondAttribute="trailing" constant="-22" id="FQy-uw-d7N"/>
-                            <constraint firstItem="kah-E5-M9S" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" constant="250" id="WBW-KD-aNS"/>
-                            <constraint firstItem="acR-sl-ate" firstAttribute="bottom" secondItem="kah-E5-M9S" secondAttribute="bottom" constant="250" id="acs-vB-rbG"/>
+                            <constraint firstItem="kah-E5-M9S" firstAttribute="trailing" secondItem="acR-sl-ate" secondAttribute="trailing" id="KVE-FK-ZaO"/>
+                            <constraint firstItem="kah-E5-M9S" firstAttribute="height" secondItem="chM-je-gA4" secondAttribute="height" multiplier="1:3" id="tFn-za-zzd"/>
+                            <constraint firstItem="kah-E5-M9S" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="vRi-Xe-G2K"/>
+                            <constraint firstItem="kah-E5-M9S" firstAttribute="centerY" secondItem="chM-je-gA4" secondAttribute="centerY" id="zom-IW-Af3"/>
                         </constraints>
                     </view>
                     <connections>

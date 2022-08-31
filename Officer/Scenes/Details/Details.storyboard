@@ -274,6 +274,7 @@
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="addressLabel" destination="kY4-jP-nfb" id="1OR-pe-ejF"/>
+                        <outlet property="backgroundImage" destination="ILj-WF-iro" id="EP0-nL-UAn"/>
                         <outlet property="capacityLabel" destination="545-do-7t3" id="pd5-uc-mFJ"/>
                         <outlet property="collectionView" destination="Z7C-I4-Xph" id="Rop-cK-vX0"/>
                         <outlet property="imageView" destination="DJ8-LT-nrG" id="Ndh-9s-fPZ"/>

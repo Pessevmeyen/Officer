@@ -43,6 +43,8 @@ final class DetailsViewController: UIViewController {
             mapView.mapType = .standard
         }
     }
+    
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -80,6 +82,10 @@ final class DetailsViewController: UIViewController {
         super.viewWillAppear(animated)
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("changebackground"), object: nil, queue: .main) { _ in
+            //self.backgroundImage.removeFromSuperview()
+        }
     }
     
     // MARK: Setup

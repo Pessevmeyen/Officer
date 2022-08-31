@@ -34,6 +34,4 @@ final class OfficeRouter: OfficeRoutingLogic, OfficeDataPassing {
         let destVC: FavoriteScreenViewController = storyboard.instantiateViewController(identifier: Constants.favoriteIdentifier)
         self.viewController?.present(destVC, animated: true) // Burada pop'up olarak açılacak ekran. kullanıcı açısından daha basit olur.
     }
-    
-    
 }

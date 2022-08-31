@@ -21,6 +21,7 @@ final class FullScreenViewController: UIViewController {
     var interactor: FullScreenBusinessLogic?
     var router: (FullScreenRoutingLogic & FullScreenDataPassing)?
     var viewModel: FullScreen.Fetch.ViewModel?
+    let flowLayout = UICollectionViewFlowLayout()
     
     weak var delegate: FullScreenDelegate?
     
@@ -44,6 +45,11 @@ final class FullScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.collectionView?.layoutIfNeeded()
+        collectionView.collectionViewLayout = flowLayout
+        
+        
         interactor?.fetchData(request: FullScreen.Fetch.Request())
         
     }
@@ -114,6 +120,37 @@ extension FullScreenViewController: UICollectionViewDelegate, UICollectionViewDa
             delegate?.fullScreenDidScroll(indexPath: visibleIndexPath)
         }
     }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+      targetContentOffset.pointee = scrollView.contentOffset
+        self.collectionView.isPagingEnabled = false
+        let pageWidth:Float = Float(self.view.bounds.width)
+        let minSpace:Float = 10.0
+        var cellToSwipe:Double = Double(Float((scrollView.contentOffset.x))/Float((pageWidth+minSpace))) + Double(0.5)
+        if cellToSwipe < 0 {
+            cellToSwipe = 0
+        } else if cellToSwipe >= Double((viewModel?.images.count)!) {
+            cellToSwipe = Double((viewModel?.images.count)!)
+        }
+        
+        let indexPath: IndexPath = IndexPath(row: Int(cellToSwipe), section:0)
+        self.collectionView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+        self.collectionView.setNeedsLayout()
+        self.collectionView.isPagingEnabled = true
+        delegate?.fullScreenDidScroll(indexPath: indexPath)
+
+    }
+    
+}
+
+extension FullScreenViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.size.width
+        let height = collectionView.frame.size.height
+        return CGSize(width: width, height: height)
+    }
+    
 }
 
 

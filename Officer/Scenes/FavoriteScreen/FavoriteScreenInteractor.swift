@@ -12,6 +12,8 @@ protocol FavoriteScreenBusinessLogic: AnyObject {
     func deleteFromCoreData(id: Int)
 }
 
+
+
 protocol FavoriteScreenDataStore: AnyObject {
     var dataStore: [FavoriteScreen.Fetch.ViewModel.CoreDataModels]? { get set }
 }
@@ -21,6 +23,7 @@ final class FavoriteScreenInteractor: FavoriteScreenBusinessLogic, FavoriteScree
     var presenter: FavoriteScreenPresentationLogic?
     var worker: FavoriteScreenWorkingLogic = FavoriteScreenWorker()
     var dataStore: [FavoriteScreen.Fetch.ViewModel.CoreDataModels]?
+    
     
     func fetchCoreData() {
         worker.getCoreData { [weak self] response in

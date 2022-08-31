@@ -61,7 +61,7 @@ final class OfficeViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         navigationController?.navigationBar.isHidden = false
-        
+
         officesLabel.text = "Offices"
         
         createToolbarDoneButtonForPickerView()
